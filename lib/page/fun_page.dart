@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:huazhixia/config/config.dart';
+import 'package:huazhixia/widgets/widgets.dart';
+
 class FunPage extends StatefulWidget {
   const FunPage({super.key});
 
@@ -16,6 +19,8 @@ class _FunPageState extends State<FunPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             topAppBar(),
+            diversifyBar(),
+            modelBar(),
           ],
         ),
       ),
@@ -30,5 +35,13 @@ class _FunPageState extends State<FunPage> {
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
       ),
     );
+  }
+
+  Widget diversifyBar() {
+    return Container();
+  }
+
+  Widget modelBar() {
+    return Container();
   }
 }

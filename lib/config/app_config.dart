@@ -1,3 +1,4 @@
 class AppConfig {
-  static const String appVersion = '1.0.0';
+  ///应用版本号
+  static const String appVersion = '2.0.1';
 }

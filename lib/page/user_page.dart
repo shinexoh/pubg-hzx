@@ -86,6 +86,19 @@ class UserPage extends StatelessWidget {
           OnInk(
             color: Colors.white,
             padding: const EdgeInsets.all(18),
+            onTap: onDownload,
+            child: Row(children: [
+              Image.asset(AssetsConfig.downloadLink, height: 25, width: 25),
+              const SizedBox(width: 15),
+              const Text('下载地址', style: TextStyle(fontSize: 15)),
+              const Spacer(),
+              const Icon(Remix.arrow_right_s_line,
+                  color: Colors.grey, size: 22),
+            ]),
+          ),
+          OnInk(
+            color: Colors.white,
+            padding: const EdgeInsets.all(18),
             onTap: onQQ,
             child: Row(children: [
               Image.asset(AssetsConfig.contactAuthor, height: 25, width: 25),
@@ -141,6 +154,8 @@ class UserPage extends StatelessWidget {
   }
 
   void onUserInfo() {}
+
+  void onDownload() {}
 
   void onUseHelp() {}
 
