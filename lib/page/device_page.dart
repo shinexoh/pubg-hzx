@@ -137,7 +137,7 @@ class _DevicePageState extends State<DevicePage> {
   Widget deviceInfoBar() {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+      margin: const EdgeInsets.only(top: 15, left: 10, right: 10),
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       decoration: BoxDecoration(
           color: Colors.white,

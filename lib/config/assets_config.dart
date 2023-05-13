@@ -9,8 +9,11 @@ class AssetsConfig {
   static const String fun4 = 'assets/icon/fun4.png';
   static const String fun5 = 'assets/icon/fun5.png';
 
+  static const String vip = 'assets/icon/vip.png';
+  static const String theme = 'assets/icon/theme.png';
+  static const String language = 'assets/icon/language.png';
   static const String useHelp = 'assets/icon/use_help.png';
-  static const String downloadLink = 'assets/icon/download_link.png';
+  static const String download = 'assets/icon/download.png';
   static const String contactAuthor = 'assets/icon/contact_author.png';
   static const String share = 'assets/icon/share.png';
   static const String checkUpdate = 'assets/icon/check_update.png';
