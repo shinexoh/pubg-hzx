@@ -143,13 +143,12 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [
-                ClipOval(
-                    child: FadeInImage(
-                        height: 42,
-                        width: 42,
-                        fadeInDuration: const Duration(milliseconds: 120),
-                        placeholder: MemoryImage(kTransparentImage),
-                        image: const AssetImage(AssetsConfig.fun1))),
+                FadeInImage(
+                    height: 46,
+                    width: 46,
+                    fadeInDuration: const Duration(milliseconds: 120),
+                    placeholder: MemoryImage(kTransparentImage),
+                    image: const AssetImage(AssetsConfig.fun1)),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,13 +210,12 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [
-                ClipOval(
-                    child: FadeInImage(
-                        height: 42,
-                        width: 42,
-                        fadeInDuration: const Duration(milliseconds: 120),
-                        placeholder: MemoryImage(kTransparentImage),
-                        image: const AssetImage(AssetsConfig.fun2))),
+                FadeInImage(
+                    height: 45,
+                    width: 45,
+                    fadeInDuration: const Duration(milliseconds: 120),
+                    placeholder: MemoryImage(kTransparentImage),
+                    image: const AssetImage(AssetsConfig.fun2)),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -279,13 +277,12 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [
-                ClipOval(
-                    child: FadeInImage(
-                        height: 42,
-                        width: 42,
-                        fadeInDuration: const Duration(milliseconds: 120),
-                        placeholder: MemoryImage(kTransparentImage),
-                        image: const AssetImage(AssetsConfig.fun3))),
+                FadeInImage(
+                    height: 45,
+                    width: 45,
+                    fadeInDuration: const Duration(milliseconds: 120),
+                    placeholder: MemoryImage(kTransparentImage),
+                    image: const AssetImage(AssetsConfig.fun3)),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

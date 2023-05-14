@@ -3,8 +3,6 @@ class FunctionConfig {
   static const List quickData = [
     '渣机画质',
     '流畅画质',
-    '均衡画质',
-    '高清画质',
     'HDR高清画质',
     '超高清画质',
     '8P原生画质',
@@ -36,10 +34,17 @@ class FunctionConfig {
   static const List restoreData = ['重置画质', '重置音质'];
 
   ///多样化修改
-  static const List diversifyData = ['专属修改', '一键修改'];
+  static const List diversifyData = [
+    {'title': '专属修改', 'subtitle': '更加多样化的画质修改'},
+    {'title': '高优化修改', 'subtitle': '更多精心优化的画质修改'},
+  ];
 
   ///机型修改
-  static const List modelData = ['低端机', '中端机', '高端机'];
+  static const List modelData = [
+    {'title': '低端机', 'subtitle': '专门针对低端机的画质修改'},
+    {'title': '中端机', 'subtitle': '专门针对中端机的画质修改'},
+    {'title': '高端机', 'subtitle': '专门针对高端机的画质修改'},
+  ];
 
   ///专属修改
   static const List exclusive = [

@@ -29,7 +29,7 @@ class UseButton extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(title, style: const TextStyle(fontSize: 15)),
-              const SizedBox(height: 3),
+              const SizedBox(height: 5),
               Row(children: [
                 Container(
                     padding:
@@ -38,7 +38,7 @@ class UseButton extends StatelessWidget {
                         color: Colors.green.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(5)),
                     child: const Text('OpenGL',
-                        style: TextStyle(color: Colors.green, fontSize: 12))),
+                        style: TextStyle(color: Colors.green, fontSize: 13))),
                 const SizedBox(width: 5),
                 Container(
                     padding:
@@ -47,7 +47,7 @@ class UseButton extends StatelessWidget {
                         color: Colors.blue.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(5)),
                     child: const Text('画质优化',
-                        style: TextStyle(color: Colors.blue, fontSize: 12))),
+                        style: TextStyle(color: Colors.blue, fontSize: 13))),
               ])
             ],
           ),
