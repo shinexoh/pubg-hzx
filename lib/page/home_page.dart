@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
             Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
-                  Text('和平精英国服', style: TextStyle(fontSize: 15)),
+                  Text('和平精英', style: TextStyle(fontSize: 15)),
                   Text('PUBG Mobile',
                       style: TextStyle(color: Colors.grey, fontSize: 12))
                 ]),
@@ -322,7 +322,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget textBar(String data) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+      padding: const EdgeInsets.only(top: 10, left: 10),
       child: Row(
         children: [
           FadeInImage(

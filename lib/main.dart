@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'theme/theme.dart';
 
 import 'page/main_page.dart';
-import 'page/storage_page.dart';
+import 'page/permission_page.dart';
 import 'page/use/exclusive_page.dart';
 import 'page/use//highopti_page.dart';
 import 'page/use/low_model_page.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         getPages: [
           GetPage(name: '/', page: () => const MainPage()),
-          GetPage(name: '/storage', page: () => const StoragePage()),
+          GetPage(name: '/permission', page: () => const PermissionPage()),
           GetPage(name: '/exclusive', page: () => const ExclusivePage()),
           GetPage(name: '/highopti', page: () => const HighOptiPage()),
           GetPage(name: '/lowmodel', page: () => const LowModelPage()),

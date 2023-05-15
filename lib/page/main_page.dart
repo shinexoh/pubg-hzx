@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
@@ -29,10 +28,6 @@ class _MainPageState extends State<MainPage> {
             index: mainController.pageIndex.value,
             children: mainController.pageBody,
           ),
-          floatingActionButton: FloatingActionButton(
-              onPressed: on, child: const Icon(Remix.a24_hours_fill)),
         ));
   }
-
-  void on() => Get.toNamed('/highmodel');
 }

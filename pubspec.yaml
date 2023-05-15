@@ -12,12 +12,24 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  # 网络请求
+  dio: ^5.1.2
+  # 路由管理、状态管理
   get: ^4.6.5
+  # remix图标库
   remixicon: ^1.0.0
+  # toast提示
   oktoast: ^3.3.1
+  # Uint8List的透明图像
   transparent_image: ^2.0.1
+  # 设备信息
   device_info_plus: ^9.0.0
+  # 电池信息
   battery_plus: ^4.0.0
+  # 权限处理
+  permission_handler: ^10.2.0
+  # 弹窗、按钮
+  awesome_dialog: ^3.0.2
 
 dev_dependencies:
   flutter_test:
