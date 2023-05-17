@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:get/get.dart';
 
-import 'theme/theme.dart';
-
 import 'page/main_page.dart';
 import 'page/permission_page.dart';
 import 'page/use/exclusive_page.dart';
@@ -12,7 +10,15 @@ import 'page/use/low_model_page.dart';
 import 'page/use/medium_model_page.dart';
 import 'page/use/high_model_page.dart';
 
-void main() {
+import 'theme/theme.dart';
+import 'package:huazhixia/server/http_client.dart';
+import 'package:huazhixia/util/util.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await initDev();
+
   runApp(const MyApp());
 }
 
@@ -48,4 +54,11 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+//初始化实例
+Future<void> initDev() async {
+  HttpClient.getInstance();
+  await SpUtil.getInstance();
+  await DeviceInfo.getInstance();
 }

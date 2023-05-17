@@ -36,6 +36,10 @@ dependencies:
   android_intent_plus: ^4.0.0
   # 键值对存储
   shared_preferences: ^2.1.1
+  # 应用操作
+  device_apps: ^2.2.0
+  # 分享
+  share_plus: ^7.0.0
 
 dev_dependencies:
   flutter_test:

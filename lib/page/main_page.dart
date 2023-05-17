@@ -14,6 +14,16 @@ class _MainPageState extends State<MainPage> {
   final mainController = Get.put(MainController());
 
   @override
+  void initState() {
+    super.initState();
+    // mainController.checkUpdate();
+    // mainController.checkPause();
+    mainController.checkTask();
+    mainController.checkStorage();
+    mainController.checkDirectory();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
           bottomNavigationBar: BottomNavigationBar(

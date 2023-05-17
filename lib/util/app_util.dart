@@ -45,6 +45,20 @@ class AppUtil {
     }
   }
 
+  ///打开应用设置界面
+  static void openAppSettings() async {
+    const intent = AndroidIntent(
+      action: 'android.settings.APPLICATION_DETAILS_SETTINGS',
+      data: 'package:com.shinex.huazhixia',
+    );
+
+    if (await intent.canResolveActivity() ?? false) {
+      await intent.launch();
+    } else {
+      showToast('打开设置失败，请手动打开');
+    }
+  }
+
   ///设置状态栏样式Light
   static void setStatusBarLight() {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
