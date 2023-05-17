@@ -37,11 +37,6 @@ class _PermissionPageState extends State<PermissionPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Column(
-        children: [],
-      ),
-    );
+    return const Scaffold(backgroundColor: Colors.white);
   }
 }

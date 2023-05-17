@@ -30,6 +30,12 @@ dependencies:
   permission_handler: ^10.2.0
   # 弹窗、按钮
   awesome_dialog: ^3.0.2
+  # 授予文件夹、安卓11+的文件操作
+  shared_storage: ^0.7.1
+  # 安卓intent操作
+  android_intent_plus: ^4.0.0
+  # 键值对存储
+  shared_preferences: ^2.1.1
 
 dev_dependencies:
   flutter_test:
