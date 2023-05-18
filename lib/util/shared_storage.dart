@@ -32,10 +32,7 @@ class SharedStorage {
   ///读取指定文件内容（需先判断文件是否存在，防止崩溃）
   static Future<String?> readFileContent(Uri fileUri) async {
     final fileContent = await getDocumentContentAsString(fileUri);
-    if (fileContent != null) {
-      return fileContent;
-    }
-    return null;
+    return fileContent;
   }
 
   ///写入内容到指定文件（需先判断文件是否存在，防止崩溃）

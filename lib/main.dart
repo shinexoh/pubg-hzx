@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,7 @@ import 'page/use/low_model_page.dart';
 import 'page/use/medium_model_page.dart';
 import 'page/use/high_model_page.dart';
 
-import 'theme/theme.dart';
+import 'package:huazhixia/theme/app_theme.dart';
 import 'package:huazhixia/server/http_client.dart';
 import 'package:huazhixia/util/util.dart';
 
@@ -19,11 +20,15 @@ void main() async {
 
   await initDev();
 
-  runApp(const MyApp());
+  await Permission.storage.status != PermissionStatus.granted
+      ? runApp(const MyApp('/permission'))
+      : runApp(const MyApp('/'));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String initialRoute;
+
+  const MyApp(this.initialRoute, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +38,9 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         title: '画质侠',
         debugShowCheckedModeBanner: false,
+        color: Colors.transparent,
         theme: AppTheme.themeData,
-        initialRoute: '/',
+        initialRoute: initialRoute,
         getPages: [
           GetPage(name: '/', page: () => const MainPage()),
           GetPage(name: '/permission', page: () => const PermissionPage()),

@@ -16,7 +16,7 @@ class UriConfig {
       'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FUserSettings.ini');
 }
 
-class ClassName {
+class GameFilePath {
   ///画质文件路径
   static const String pqFilePath =
       '/storage/emulated/0/Android/data/com.tencent.tmgp.pubgmhd/files/UE4Game/ShadowTrackerExtra/ShadowTrackerExtra/Saved/Config/Android/${GameFileName.pqFileName}';

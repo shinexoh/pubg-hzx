@@ -38,6 +38,12 @@ class _MainPageState extends State<MainPage> {
             index: mainController.pageIndex.value,
             children: mainController.pageBody,
           ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: on,
+            child: const Icon(Icons.person),
+          ),
         ));
   }
+
+  void on() {}
 }

@@ -18,4 +18,6 @@ class AssetsConfig {
   static const String share = 'assets/icon/share.png';
   static const String checkUpdate = 'assets/icon/check_update.png';
   static const String about = 'assets/icon/about.png';
+
+  static const String permission = 'assets/image/permission.png';
 }
