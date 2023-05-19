@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:get/get.dart';
 
@@ -14,16 +15,24 @@ import 'page/use/high_model_page.dart';
 
 import 'package:huazhixia/theme/app_theme.dart';
 import 'package:huazhixia/server/http_client.dart';
+import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/util/util.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await initDev();
+  await initInstance();
 
-  if (double.parse(DeviceInfo.androidVersion) <= 10) {
-    if (await Permission.storage.status != PermissionStatus.granted) {
-      runApp(const MyApp('/permission'));
+  //初始化安卓版本
+  final appController = Get.put(AppController());
+  final androidVersion = double.parse(DeviceInfo.androidVersion);
+  appController.setAndroidVersion(androidVersion);
+
+  if (await checkNet()) {
+    if (appController.androidVersion.value <= 10) {
+      await Permission.storage.status == PermissionStatus.granted
+          ? runApp(const MyApp('/'))
+          : runApp(const MyApp('/permission'));
     }
   }
 }
@@ -67,8 +76,18 @@ class MyApp extends StatelessWidget {
 }
 
 //初始化实例
-Future<void> initDev() async {
+Future<void> initInstance() async {
   HttpClient.getInstance();
   await SpUtil.getInstance();
   await DeviceInfo.getInstance();
+}
+
+//检查网络是否可用
+Future<bool> checkNet() async {
+  final connectivity = await Connectivity().checkConnectivity();
+  if (connectivity != ConnectionState.none) {
+    final http = await HttpClient.get('https://www.baidu.com/');
+    if (http.isOk) return true;
+  }
+  return false;
 }

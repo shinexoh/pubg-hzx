@@ -174,7 +174,7 @@ class _HomePageState extends State<HomePage> {
               OnInk(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
-                onTap: () {},
+                onTap: () => homeController.onQuick(index),
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -241,7 +241,7 @@ class _HomePageState extends State<HomePage> {
               OnInk(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
-                onTap: () {},
+                onTap: () => homeController.onOther(index),
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -302,7 +302,7 @@ class _HomePageState extends State<HomePage> {
               OnInk(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
-                onTap: () {},
+                onTap: () => homeController.onRestore(index),
                 child: Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

@@ -10,8 +10,8 @@ class HttpClient {
 
   HttpClient._() {
     _dio = Dio(BaseOptions(
-        connectTimeout: const Duration(seconds: 8),
-        receiveTimeout: const Duration(seconds: 8)));
+        connectTimeout: const Duration(seconds: 7),
+        receiveTimeout: const Duration(seconds: 7)));
   }
 
   static HttpClient getInstance() => _instance ??= HttpClient._();

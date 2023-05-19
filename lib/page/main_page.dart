@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
+import 'package:huazhixia/util/util.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -40,10 +42,16 @@ class _MainPageState extends State<MainPage> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: on,
-            child: const Icon(Icons.person),
+            child: const Icon(Remix.star_fill),
           ),
         ));
   }
 
-  void on() {}
+  void on() {
+    final appController = Get.put(AppController());
+    prints('存储权限:${appController.storageState}');
+    prints('目录权限:${appController.directoryState}');
+    prints('任务状态:${appController.taskState}');
+    prints('安卓版本:${appController.androidVersion}');
+  }
 }

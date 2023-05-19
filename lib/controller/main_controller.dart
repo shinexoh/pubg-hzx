@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:permission_handler/permission_handler.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
@@ -52,7 +51,8 @@ class MainController extends GetxController {
   }
 
   //检查任务状态
-  void checkTask() {
+  void checkTask() async {
+    await SpUtil.addString(AppConfig.taskKey, '');
     SpUtil.containsKey(AppConfig.taskKey)
         ? _appController.setTaskState(true)
         : _appController.setTaskState(false);
