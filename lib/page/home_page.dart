@@ -93,8 +93,8 @@ class _HomePageState extends State<HomePage> {
         children: [
           Row(children: [
             FadeInImage(
-                height: 48,
-                width: 48,
+                height: 45,
+                width: 45,
                 fadeInDuration: const Duration(milliseconds: 120),
                 placeholder: MemoryImage(kTransparentImage),
                 image: const AssetImage(AssetsConfig.gameIcon)),

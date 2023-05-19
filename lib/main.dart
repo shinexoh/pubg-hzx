@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import 'page/main_page.dart';
 import 'page/permission_page.dart';
+import 'page/help_page.dart';
 import 'page/use/exclusive_page.dart';
 import 'page/use//highopti_page.dart';
 import 'page/use/low_model_page.dart';
@@ -20,9 +21,11 @@ void main() async {
 
   await initDev();
 
-  await Permission.storage.status != PermissionStatus.granted
-      ? runApp(const MyApp('/permission'))
-      : runApp(const MyApp('/'));
+  if (double.parse(DeviceInfo.androidVersion) <= 10) {
+    if (await Permission.storage.status != PermissionStatus.granted) {
+      runApp(const MyApp('/permission'));
+    }
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -49,6 +52,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/lowmodel', page: () => const LowModelPage()),
           GetPage(name: '/mediummodel', page: () => const MediumModelPage()),
           GetPage(name: '/highmodel', page: () => const HighModelPage()),
+          GetPage(name: '/help', page: () => const HelpPage()),
         ],
         defaultTransition: Transition.cupertino,
         //禁止字体大小跟随系统变化

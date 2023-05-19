@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
 
+import 'package:huazhixia/util/util.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
 
@@ -168,7 +171,7 @@ class UserPage extends StatelessWidget {
               child: Row(children: [
                 Image.asset(AssetsConfig.about, height: 28, width: 28),
                 const SizedBox(width: 15),
-                const Text('关于应用', style: TextStyle(fontSize: 16)),
+                const Text('关于画质侠', style: TextStyle(fontSize: 16)),
                 const Spacer(),
                 const Icon(Remix.arrow_right_s_line,
                     color: Colors.grey, size: 20),
@@ -181,20 +184,30 @@ class UserPage extends StatelessWidget {
 
   void onUserInfo() {}
 
-  void onTheme() {}
+  void onTheme() {
+    showToast('暂不支持');
+  }
 
-  void onLanguage() {}
+  void onLanguage() {
+    showToast('暂不支持');
+  }
 
-  void onUseHelp() {}
+  //使用帮助
+  void onUseHelp() => Get.toNamed('/help');
 
-  void onDownload() {}
+  //下载地址
+  void onDownload() => AppUtil.openUrl(AppConfig.appDownload);
 
-  void onQQ() {}
+  //联系作者
+  void onQQ() => AppUtil.openQQ(653143454);
 
-  void onShare() {}
+  //分享应用
+  void onShare() => Share.share(AppConfig.shareContent);
 
+  //检查更新
   void onCheckUpdate() {}
 
+  //关于应用
   void onAbout() => showLicensePage(
         context: Get.context!,
         applicationIcon: const FlutterLogo(size: 50),

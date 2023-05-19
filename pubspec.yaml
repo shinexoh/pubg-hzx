@@ -23,9 +23,9 @@ dependencies:
   # Uint8List的透明图像
   transparent_image: ^2.0.1
   # 设备信息
-  device_info_plus: ^9.0.0
+  device_info_plus: ^8.2.2
   # 电池信息
-  battery_plus: ^4.0.0
+  battery_plus: ^3.0.6
   # 权限处理
   permission_handler: ^10.2.0
   # 弹窗、按钮
@@ -33,13 +33,15 @@ dependencies:
   # 授予文件夹、安卓11+的文件操作
   shared_storage: ^0.7.1
   # 安卓intent操作
-  android_intent_plus: ^4.0.0
+  android_intent_plus: ^3.1.9
   # 键值对存储
   shared_preferences: ^2.1.1
   # 应用操作
   device_apps: ^2.2.0
   # 分享
-  share_plus: ^7.0.0
+  share_plus: ^6.3.4
+  # 网络检查
+  connectivity_plus: ^3.0.6
 
 dev_dependencies:
   flutter_test:
@@ -54,3 +56,10 @@ flutter:
   assets:
     - assets/icon/
     - assets/image/
+    - assets/file/
+    - assets/file/kjxg/
+    - assets/file/zsxg/
+    - assets/file/gyhxg/
+    - assets/file/ddj/
+    - assets/file/zdj/
+    - assets/file/gdj/

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
 
@@ -86,7 +85,7 @@ class _DevicePageState extends State<DevicePage> {
                     topRight: Radius.circular(10)),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                onTap: onStorage,
+                onTap: appController.storageState.value ? null : onStorage,
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -111,7 +110,7 @@ class _DevicePageState extends State<DevicePage> {
                     bottomRight: Radius.circular(10)),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                onTap: onDirectory,
+                onTap: appController.directoryState.value ? null : onDirectory,
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -276,9 +275,5 @@ class _DevicePageState extends State<DevicePage> {
 
   void onStorage() => Get.offAllNamed('/permission');
 
-  void onDirectory() {
-    appController.directoryState.value
-        ? showToast('你已授予游戏目录权限')
-        : AppDialog.gameDirectoryDialog();
-  }
+  void onDirectory() => AppDialog.gameDirectoryDialog();
 }
