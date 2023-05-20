@@ -41,25 +41,48 @@ class UserPage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
       child: Column(
         children: [
-          OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              padding: const EdgeInsets.all(15),
-              onLongPress: onUserInfo,
-              child: Row(children: [
-                Image.asset(AssetsConfig.vip, height: 28, width: 28),
-                const SizedBox(width: 15),
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text('画质侠用户', style: TextStyle(fontSize: 16)),
-                      // Text('当前状态：普通用户',
-                      //     style: TextStyle(fontSize: 13, color: Colors.grey)),
-                    ]),
-                const Spacer(),
-                const Icon(Remix.arrow_right_s_line,
-                    color: Colors.grey, size: 20),
-              ])),
+          // OnInk(
+          //     color: Colors.white,
+          //     borderRadius: BorderRadius.circular(10),
+          //     padding: const EdgeInsets.all(15),
+          //     onLongPress: onUserInfo,
+          //     child: Row(children: [
+          //       Image.asset(AssetsConfig.vip, height: 28, width: 28),
+          //       const SizedBox(width: 15),
+          //       Column(
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: const [
+          //             Text('画质侠用户', style: TextStyle(fontSize: 16)),
+          //             // Text('当前状态：普通用户',
+          //             //     style: TextStyle(fontSize: 13, color: Colors.grey)),
+          //           ]),
+          //       const Spacer(),
+          //       const Icon(Remix.arrow_right_s_line,
+          //           color: Colors.grey, size: 20),
+          //     ])),
+          GestureDetector(
+            onLongPress: onUserInfo,
+            child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Row(children: [
+                  Image.asset(AssetsConfig.vip, height: 28, width: 28),
+                  const SizedBox(width: 15),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('画质侠用户', style: TextStyle(fontSize: 16)),
+                        // Text('当前状态：普通用户',
+                        //     style: TextStyle(fontSize: 13, color: Colors.grey)),
+                      ]),
+                  const Spacer(),
+                  const Icon(Remix.arrow_right_s_line,
+                      color: Colors.grey, size: 20),
+                ])),
+          ),
           // const SizedBox(height: 15),
           // OnInk(
           //     color: Colors.white,
@@ -125,7 +148,7 @@ class UserPage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               onTap: onQQ,
               child: Row(children: [
-                Image.asset(AssetsConfig.contactAuthor, height: 28, width: 28),
+                Image.asset(AssetsConfig.contactAuthor, height: 26, width: 26),
                 const SizedBox(width: 15),
                 const Text('联系作者', style: TextStyle(fontSize: 16)),
                 const Spacer(),
@@ -140,7 +163,7 @@ class UserPage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               onTap: onShare,
               child: Row(children: [
-                Image.asset(AssetsConfig.share, height: 25, width: 25),
+                Image.asset(AssetsConfig.share, height: 26, width: 26),
                 const SizedBox(width: 15),
                 const Text('分享应用', style: TextStyle(fontSize: 16)),
                 const Spacer(),
@@ -205,7 +228,13 @@ class UserPage extends StatelessWidget {
   void onShare() => Share.share(AppConfig.shareContent);
 
   //检查更新
-  void onCheckUpdate() {}
+  void onCheckUpdate() {
+    DialogStyle.mainDialog(
+      subTitle: '画质侠已是最新版本！',
+      showCanceButton: false,
+      onOkButton: () => Get.back(),
+    );
+  }
 
   //关于应用
   void onAbout() => showLicensePage(

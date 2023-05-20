@@ -10,7 +10,7 @@ import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
 
 class HomeController extends GetxController {
-  final _appController = Get.put(AppController());
+  final _appController = Get.find<AppController>();
 
   //分享
   void onShare() => Share.share(AppConfig.shareContent);
@@ -23,7 +23,13 @@ class HomeController extends GetxController {
   }
 
   //切换游戏版本
-  void onGameVer() => showToast('暂不支持');
+  void onGameVer() {
+    DialogStyle.mainDialog(
+      subTitle: '暂不支持',
+      showCanceButton: false,
+      onOkButton: () => Get.back(),
+    );
+  }
 
   //快捷修改
   void onQuick(int index) {

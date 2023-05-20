@@ -21,18 +21,23 @@ import 'package:huazhixia/util/util.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await initInstance();
+  //初始化实例
+  Get.put(AppController());
+  HttpClient.getInstance();
+  await SpUtil.getInstance();
+  await DeviceInfo.getInstance();
 
   //初始化安卓版本
-  final appController = Get.put(AppController());
   final androidVersion = double.parse(DeviceInfo.androidVersion);
-  appController.setAndroidVersion(androidVersion);
+  Get.find<AppController>().setAndroidVersion(androidVersion);
 
   if (await checkNet()) {
-    if (appController.androidVersion.value <= 10) {
+    if (androidVersion <= 10) {
       await Permission.storage.status == PermissionStatus.granted
           ? runApp(const MyApp('/'))
           : runApp(const MyApp('/permission'));
+    } else {
+      runApp(const MyApp('/'));
     }
   }
 }
@@ -73,13 +78,6 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
-
-//初始化实例
-Future<void> initInstance() async {
-  HttpClient.getInstance();
-  await SpUtil.getInstance();
-  await DeviceInfo.getInstance();
 }
 
 //检查网络是否可用

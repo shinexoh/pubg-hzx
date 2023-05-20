@@ -48,7 +48,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   void on() {
-    final appController = Get.put(AppController());
+    final appController = Get.find<AppController>();
     prints('存储权限:${appController.storageState}');
     prints('目录权限:${appController.directoryState}');
     prints('任务状态:${appController.taskState}');

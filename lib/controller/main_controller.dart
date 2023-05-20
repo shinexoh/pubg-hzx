@@ -16,7 +16,7 @@ import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/util/util.dart';
 
 class MainController extends GetxController {
-  final _appController = Get.put(AppController());
+  final _appController = Get.find<AppController>();
 
   final pageIndex = 0.obs;
 

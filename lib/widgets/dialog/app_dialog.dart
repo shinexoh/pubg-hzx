@@ -23,7 +23,7 @@ class AppDialog {
         if (grantUri == GrantUriState.success) {
           Get
             ..back()
-            ..put(AppController()).setDirectoryState(true);
+            ..find<AppController>().setDirectoryState(true);
           showToast('授予成功');
         } else if (grantUri == GrantUriState.error) {
           showToast('授予文件夹错误，请重新授予');

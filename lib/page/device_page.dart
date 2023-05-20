@@ -14,7 +14,7 @@ class DevicePage extends StatefulWidget {
 }
 
 class _DevicePageState extends State<DevicePage> {
-  final appController = Get.put(AppController());
+  final appController = Get.find<AppController>();
 
   final model = ''.obs;
   final androidVersion = ''.obs;
