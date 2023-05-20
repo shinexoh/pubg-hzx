@@ -35,7 +35,16 @@ class AppDialog {
   }
 
   ///提示任务弹窗
-  static void taskDialog() {}
+  static void taskDialog() {
+    DialogStyle.mainDialog(
+      title: '未知错误',
+      subTitle: '发生未知错误，请尝试重启画质侠，如问题还不能解决请联系作者反馈！',
+      showCanceButton: false,
+      onOkButton: () {
+        Get.back();
+      },
+    );
+  }
 
   ///存储权限被拒绝弹窗
   static void storageDialog() {

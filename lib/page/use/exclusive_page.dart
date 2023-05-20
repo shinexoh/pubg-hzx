@@ -25,7 +25,7 @@ class ExclusivePage extends StatelessWidget {
             return UseButton(
               title: FunctionConfig.exclusive[index],
               margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-              onTap: onUse,
+              onTap: () => onUse(index),
             );
           }),
         ),
@@ -33,5 +33,7 @@ class ExclusivePage extends StatelessWidget {
     );
   }
 
-  void onUse() {}
+  void onUse(int index) {
+    UseDialog.usePqDialog(filePath: FileConfig.exclusiveFile[index]);
+  }
 }

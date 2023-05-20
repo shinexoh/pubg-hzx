@@ -18,8 +18,10 @@ import 'package:huazhixia/util/util.dart';
 class MainController extends GetxController {
   final _appController = Get.find<AppController>();
 
+  //界面索引
   final pageIndex = 0.obs;
 
+  //界面列表
   final List<Widget> pageBody = [
     const HomePage(),
     const FunPage(),
@@ -27,6 +29,7 @@ class MainController extends GetxController {
     const UserPage(),
   ];
 
+  //底部导航Item
   final List<BottomNavigationBarItem> items = const [
     BottomNavigationBarItem(
         label: '首页',
@@ -46,13 +49,11 @@ class MainController extends GetxController {
         activeIcon: Icon(Remix.user_smile_fill)),
   ];
 
-  void onTap(int index) {
-    pageIndex.value = index;
-  }
+  //底部导航切换界面
+  void onTap(int index) => pageIndex.value = index;
 
   //检查任务状态
   void checkTask() async {
-    await SpUtil.addString(AppConfig.taskKey, '');
     SpUtil.containsKey(AppConfig.taskKey)
         ? _appController.setTaskState(true)
         : _appController.setTaskState(false);
@@ -84,7 +85,7 @@ class MainController extends GetxController {
     }
   }
 
-  //检查应用更新，如果主更新链接挂了就请求备用更新链接
+  //检查应用更新，如果主更新链接失败就请求备用更新链接
   void checkUpdate() async {
     final appUpdate = await HttpClient.get(Api.main);
 
@@ -100,20 +101,20 @@ class MainController extends GetxController {
             isForce: appUpdate.data['appupdate']['isforce']);
       }
     } else {
-      final appUpdateAl = await HttpClient.get(Api.alternateUpdate);
+      final alAppUpdate = await HttpClient.get(Api.alternateUpdate);
 
-      if (appUpdateAl.isOk) {
-        final newVersionAl = appUpdateAl.data['appupdate']['version']
+      if (alAppUpdate.isOk) {
+        final alNewVersion = alAppUpdate.data['appupdate']['version']
             .toString()
             .split('.')
             .join();
 
-        if (double.parse(newVersionAl) > AppConfig.updateVersion) {
+        if (double.parse(alNewVersion) > AppConfig.updateVersion) {
           AppDialog.updateDialog(
-              title: appUpdateAl.data['appupdate']['title'],
-              subTitle: appUpdateAl.data['appupdate']['subtitle'],
-              url: appUpdateAl.data['appupdate']['downloadurl'],
-              isForce: appUpdateAl.data['appupdate']['isforce']);
+              title: alAppUpdate.data['appupdate']['title'],
+              subTitle: alAppUpdate.data['appupdate']['subtitle'],
+              url: alAppUpdate.data['appupdate']['downloadurl'],
+              isForce: alAppUpdate.data['appupdate']['isforce']);
         }
       }
     }

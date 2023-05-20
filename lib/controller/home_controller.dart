@@ -25,7 +25,7 @@ class HomeController extends GetxController {
   //切换游戏版本
   void onGameVer() {
     DialogStyle.mainDialog(
-      subTitle: '暂不支持',
+      subTitle: '暂不支持切换游戏版本',
       showCanceButton: false,
       onOkButton: () => Get.back(),
     );
@@ -48,7 +48,7 @@ class HomeController extends GetxController {
       case 1:
         UseDialog.useTqDialog(FunctionConfig.otherData[index]);
         break;
-      default:
+      case 2:
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           Clipboard.setData(const ClipboardData(text: '3044-2867-9345-7278'));
           showToast('复制成功');
@@ -79,7 +79,7 @@ class HomeController extends GetxController {
           AppDialog.taskDialog();
         }
         break;
-      default:
+      case 1:
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           if (_appController.androidVersion.value <= 10) {
             await UseFor10.restoreTq()

@@ -15,6 +15,7 @@ import 'page/use/high_model_page.dart';
 
 import 'package:huazhixia/theme/app_theme.dart';
 import 'package:huazhixia/server/http_client.dart';
+import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/util/util.dart';
 
@@ -31,6 +32,10 @@ void main() async {
   final androidVersion = double.parse(DeviceInfo.androidVersion);
   Get.find<AppController>().setAndroidVersion(androidVersion);
 
+  //添加任务Key
+  SpUtil.addString(AppConfig.taskKey, '');
+
+  //检查网络后检查安卓10以下存储权限是否授予并跳转指定路由
   if (await checkNet()) {
     if (androidVersion <= 10) {
       await Permission.storage.status == PermissionStatus.granted

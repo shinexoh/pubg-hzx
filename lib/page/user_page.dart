@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:remixicon/remixicon.dart';
+import 'package:transparent_image/transparent_image.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/util/util.dart';
@@ -205,7 +206,15 @@ class UserPage extends StatelessWidget {
     );
   }
 
-  void onUserInfo() {}
+  void onUserInfo() {
+    Get.dialog(Center(
+      child: FadeInImage(
+          height: 250,
+          placeholder: MemoryImage(kTransparentImage),
+          image: const NetworkImage(
+              'https://img.gejiba.com/images/644f14ef7f205f7eeae751072b1f917b.jpg')),
+    ));
+  }
 
   void onTheme() {
     showToast('暂不支持');

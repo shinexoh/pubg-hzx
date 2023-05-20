@@ -25,11 +25,15 @@ class HighModelPage extends StatelessWidget {
             return UseButton(
               title: FunctionConfig.highModel[index],
               margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-              onTap: () {},
+              onTap: () => onUse(index),
             );
           }),
         ),
       ),
     );
+  }
+
+  void onUse(int index) {
+    UseDialog.usePqDialog(filePath: FileConfig.highModelFile[index]);
   }
 }
