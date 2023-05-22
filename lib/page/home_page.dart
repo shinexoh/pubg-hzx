@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           topAppBar(),
+          Divider(height: 1, color: Colors.grey.shade100),
           Expanded(
             child: SingleChildScrollView(
                 child: Column(
@@ -44,12 +45,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget topAppBar() {
-    return Material(
-      color: Colors.white,
-      elevation: 0.2,
+    return DecoratedBox(
+      decoration: const BoxDecoration(color: Colors.white),
       child: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                     width: 46,
                     fadeInDuration: const Duration(milliseconds: 120),
                     placeholder: MemoryImage(kTransparentImage),
-                    image: const AssetImage(AssetsConfig.fun1)),
+                    image: const AssetImage(AssetsConfig.quick)),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                     width: 45,
                     fadeInDuration: const Duration(milliseconds: 120),
                     placeholder: MemoryImage(kTransparentImage),
-                    image: const AssetImage(AssetsConfig.fun2)),
+                    image: const AssetImage(AssetsConfig.other)),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -275,7 +275,7 @@ class _HomePageState extends State<HomePage> {
                     width: 45,
                     fadeInDuration: const Duration(milliseconds: 120),
                     placeholder: MemoryImage(kTransparentImage),
-                    image: const AssetImage(AssetsConfig.fun3)),
+                    image: const AssetImage(AssetsConfig.restore)),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

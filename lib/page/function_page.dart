@@ -1,8 +1,12 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:get/get.dart';
 
+import 'package:huazhixia/controller/controller.dart';
+import 'package:huazhixia/util/util.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
 
@@ -19,6 +23,7 @@ class FunctionPage extends StatelessWidget {
             topAppBar(),
             diversifyBar(),
             modelBar(),
+            randomBar(),
           ],
         ),
       ),
@@ -46,7 +51,8 @@ class FunctionPage extends StatelessWidget {
               margin: EdgeInsets.only(
                 left: 10,
                 right: 10,
-                bottom: index == 0 ? 10 : 0,
+                bottom:
+                    index == FunctionConfig.diversifyData.length - 1 ? 0 : 10,
               ),
               padding: const EdgeInsets.all(15),
               onTap: () => onDiversify(index),
@@ -57,7 +63,7 @@ class FunctionPage extends StatelessWidget {
                       width: 45,
                       fadeInDuration: const Duration(milliseconds: 120),
                       placeholder: MemoryImage(kTransparentImage),
-                      image: const AssetImage(AssetsConfig.fun4)),
+                      image: const AssetImage(AssetsConfig.diversify)),
                   const SizedBox(width: 10),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +97,7 @@ class FunctionPage extends StatelessWidget {
               margin: EdgeInsets.only(
                 left: 10,
                 right: 10,
-                bottom: index <= 1 ? 10 : 0,
+                bottom: index == FunctionConfig.modelData.length - 1 ? 0 : 10,
               ),
               padding: const EdgeInsets.all(15),
               onTap: () => onModel(index),
@@ -102,7 +108,7 @@ class FunctionPage extends StatelessWidget {
                       width: 45,
                       fadeInDuration: const Duration(milliseconds: 120),
                       placeholder: MemoryImage(kTransparentImage),
-                      image: const AssetImage(AssetsConfig.fun5)),
+                      image: const AssetImage(AssetsConfig.model)),
                   const SizedBox(width: 10),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,6 +131,50 @@ class FunctionPage extends StatelessWidget {
         ));
   }
 
+  Widget randomBar() {
+    return Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Column(
+          children: List.generate(FunctionConfig.randomData.length, (index) {
+            return OnInk(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              margin: EdgeInsets.only(
+                left: 10,
+                right: 10,
+                bottom: index == FunctionConfig.randomData.length - 1 ? 0 : 10,
+              ),
+              padding: const EdgeInsets.all(15),
+              onTap: () => onRandom(index),
+              child: Row(
+                children: [
+                  FadeInImage(
+                      height: 45,
+                      width: 45,
+                      fadeInDuration: const Duration(milliseconds: 120),
+                      placeholder: MemoryImage(kTransparentImage),
+                      image: const AssetImage(AssetsConfig.random)),
+                  const SizedBox(width: 10),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(FunctionConfig.randomData[index]['title'],
+                            style: const TextStyle(fontSize: 15)),
+                        Text(FunctionConfig.randomData[index]['subtitle'],
+                            style: const TextStyle(
+                                color: Colors.blue,
+                                fontSize: 12,
+                                fontStyle: FontStyle.italic)),
+                      ]),
+                  const Spacer(),
+                  Image.asset(AssetsConfig.lightning, height: 20, width: 20),
+                ],
+              ),
+            );
+          }),
+        ));
+  }
+
   void onDiversify(int index) {
     index == 0 ? Get.toNamed('/exclusive') : Get.toNamed('/highopti');
   }
@@ -140,6 +190,39 @@ class FunctionPage extends StatelessWidget {
       case 2:
         Get.toNamed('/highmodel');
         break;
+    }
+  }
+
+  void onRandom(int index) async {
+    final random = Random().nextInt(FileConfig.allPqFile.length - 1);
+
+    if (index == 0) {
+      DialogStyle.mainDialog(
+        title: '随机修改',
+        subTitle: '确定要随机修改一项画质？如出现问题请前往首页重置画质！',
+        onOkButton: () async {
+          Get.back();
+          final androidVersion = Get.find<AppController>().androidVersion.value;
+
+          if (SpUtil.containsKey(AppConfig.taskKey)) {
+            if (androidVersion <= 10) {
+              await UseFor10.usePq(FileConfig.allPqFile[random])
+                  ? showToast('修改成功')
+                  : showToast('修改失败，请检查权限是否授予');
+            } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
+              await UseFor11.usePq(FileConfig.allPqFile[random])
+                  ? showToast('修改成功')
+                  : showToast('修改失败，请检查权限是否授予');
+            } else {
+              AppDialog.gameDirectoryDialog();
+            }
+          } else {
+            AppDialog.taskDialog();
+          }
+        },
+      );
+    } else {
+      Get.toNamed('/modelimitate');
     }
   }
 }

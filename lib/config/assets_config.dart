@@ -3,12 +3,12 @@ class AssetsConfig {
   static const String gameIcon = 'assets/icon/game_icon.png';
   static const String lightning = 'assets/icon/lightning.png';
 
-  static const String fun1 = 'assets/icon/fun1.png';
-  static const String fun2 = 'assets/icon/fun2.png';
-  static const String fun3 = 'assets/icon/fun3.png';
-  static const String fun4 = 'assets/icon/fun4.png';
-  static const String fun5 = 'assets/icon/fun5.png';
-  static const String fun6 = 'assets/icon/fun6.png';
+  static const String quick = 'assets/icon/quick.png';
+  static const String other = 'assets/icon/other.png';
+  static const String restore = 'assets/icon/restore.png';
+  static const String diversify = 'assets/icon/diversify.png';
+  static const String model = 'assets/icon/model.png';
+  static const String random = 'assets/icon/random.png';
 
   static const String vip = 'assets/icon/vip.png';
   static const String theme = 'assets/icon/theme.png';

@@ -50,8 +50,7 @@ class UseFor10 {
 
   ///解锁音质
   static Future<bool> useTq() async {
-    final rootFileContent =
-        await rootBundle.loadString(FileConfig.tqFileSuperHigh);
+    final rootFileContent = await rootBundle.loadString(FileConfig.tqSuperHigh);
     final tqFile = File(GameFilePath.tqFilePath);
 
     if (await tqFile.exists()) {

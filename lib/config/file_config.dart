@@ -1,7 +1,7 @@
 //画质修改等文件的配置
 class FileConfig {
   ///超高音质
-  static const String tqFileSuperHigh = 'assets/file/tq_superhigh.ini';
+  static const String tqSuperHigh = 'assets/file/tq_superhigh.ini';
 
   ///解锁画质帧率
   static const String dlPq120Fps = 'assets/file/dl_pq120fps.ini';

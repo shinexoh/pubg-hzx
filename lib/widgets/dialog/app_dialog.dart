@@ -79,6 +79,8 @@ class AppDialog {
             child: AlertDialog(
               title: Text(title),
               content: Text(subTitle),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
               actions: [
                 TextButton(
                     onPressed: () => SystemNavigator.pop(),
@@ -107,6 +109,8 @@ class AppDialog {
             child: AlertDialog(
               title: Text(title),
               content: Text(subTitle),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
               actions: [
                 TextButton(
                   onPressed: () => isForce ? SystemNavigator.pop() : Get.back(),

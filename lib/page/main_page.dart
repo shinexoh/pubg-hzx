@@ -45,7 +45,8 @@ class _MainPageState extends State<MainPage> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: on,
-            child: const Icon(Remix.star_fill),
+            backgroundColor: Colors.blue,
+            child: const Icon(Remix.tools_line, color: Colors.white),
           ),
         ));
   }

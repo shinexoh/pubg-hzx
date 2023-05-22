@@ -57,8 +57,7 @@ class UseFor11 {
 
   ///解锁音质
   static Future<bool> useTq() async {
-    final rootFileContent =
-        await rootBundle.loadString(FileConfig.tqFileSuperHigh);
+    final rootFileContent = await rootBundle.loadString(FileConfig.tqSuperHigh);
 
     if (await SharedStorage.fileExist(GameFileName.tqFileName)) {
       return await SharedStorage.writeFileContent(

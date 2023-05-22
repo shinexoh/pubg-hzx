@@ -8,6 +8,7 @@ import 'page/main_page.dart';
 import 'page/permission_page.dart';
 import 'page/help_page.dart';
 import 'page/card_pass_page.dart';
+import 'page/model_imitate_page.dart';
 import 'page/use/exclusive_page.dart';
 import 'page/use//highopti_page.dart';
 import 'page/use/low_model_page.dart';
@@ -78,6 +79,7 @@ class MyApp extends StatelessWidget {
               name: '/cardpass',
               page: () => const CardPassPage(),
               transition: Transition.fade),
+          GetPage(name: '/modelimitate', page: () => const ModelImitatePage())
         ],
         defaultTransition: Transition.cupertino,
         //禁止字体大小跟随系统变化

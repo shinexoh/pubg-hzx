@@ -32,7 +32,7 @@ class DialogStyle {
               isFixedHeight: false,
               color: canceButtonColor,
               buttonTextStyle: const TextStyle(color: Colors.white),
-              pressEvent: onCanceButton ?? () {},
+              pressEvent: onCanceButton ?? () => Get.back(),
             )
           : null,
       btnOk: AnimatedButton(

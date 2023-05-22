@@ -19,7 +19,6 @@ class UseDialog {
       title: title,
       subTitle: subTitle,
       okButtonTitle: buttonTitle,
-      onCanceButton: () => Get.back(),
       onOkButton: () async {
         Get.back();
         final androidVersion = Get.find<AppController>().androidVersion.value;
@@ -49,7 +48,6 @@ class UseDialog {
       title: title,
       subTitle: '确定要解锁画质+120帧？如出现问题请前往首页重置画质！',
       okButtonTitle: '解锁',
-      onCanceButton: () => Get.back(),
       onOkButton: () async {
         Get.back();
         final androidVersion = Get.find<AppController>().androidVersion.value;
@@ -79,7 +77,6 @@ class UseDialog {
       title: title,
       subTitle: '确定要解锁超高音质？如出现问题请前往首页重置音质！',
       okButtonTitle: '解锁',
-      onCanceButton: () => Get.back(),
       onOkButton: () async {
         Get.back();
         final androidVersion = Get.find<AppController>().androidVersion.value;
