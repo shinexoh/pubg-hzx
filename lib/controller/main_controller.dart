@@ -4,7 +4,7 @@ import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
 
 import '../page/home_page.dart';
-import '../page/fun_page.dart';
+import '../page/function_page.dart';
 import '../page/device_page.dart';
 import '../page/user_page.dart';
 
@@ -24,7 +24,7 @@ class MainController extends GetxController {
   //界面列表
   final List<Widget> pageBody = [
     const HomePage(),
-    const FunPage(),
+    const FunctionPage(),
     const DevicePage(),
     const UserPage(),
   ];

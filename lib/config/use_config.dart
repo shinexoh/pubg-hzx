@@ -40,8 +40,7 @@ class GameFileName {
   ///音质文件名
   static const String tqFileName = 'UserSettings.ini';
 
-  //文件内容标签
-  // static const String userCustom = '[UserCustom DeviceProfile]';
+  ///BackUp内容标签
   static const String backUp = '[BackUp DeviceProfile]';
 }
 

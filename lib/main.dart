@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'page/main_page.dart';
 import 'page/permission_page.dart';
 import 'page/help_page.dart';
+import 'page/card_pass_page.dart';
 import 'page/use/exclusive_page.dart';
 import 'page/use//highopti_page.dart';
 import 'page/use/low_model_page.dart';
@@ -34,6 +35,7 @@ void main() async {
 
   //添加任务Key
   SpUtil.addString(AppConfig.taskKey, '');
+  // SpUtil.clear();
 
   //检查网络后检查安卓10以下存储权限是否授予并跳转指定路由
   if (await checkNet()) {
@@ -72,6 +74,10 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/mediummodel', page: () => const MediumModelPage()),
           GetPage(name: '/highmodel', page: () => const HighModelPage()),
           GetPage(name: '/help', page: () => const HelpPage()),
+          GetPage(
+              name: '/cardpass',
+              page: () => const CardPassPage(),
+              transition: Transition.fade),
         ],
         defaultTransition: Transition.cupertino,
         //禁止字体大小跟随系统变化

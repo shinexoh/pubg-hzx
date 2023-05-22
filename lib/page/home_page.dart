@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/util/util.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,12 +16,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeController = Get.put(HomeController());
-
-  @override
-  void initState() {
-    super.initState();
-    AppUtil.setStatusBarDark();
-  }
 
   @override
   Widget build(BuildContext context) {

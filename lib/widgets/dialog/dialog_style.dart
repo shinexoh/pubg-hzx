@@ -10,6 +10,8 @@ class DialogStyle {
     String? subTitle,
     String canceButtonTitle = '取消',
     String okButtonTitle = '确定',
+    Color canceButtonColor = Colors.pink,
+    Color okButtonColor = Colors.blue,
     bool dismissible = true,
     bool showCanceButton = true,
     GestureTapCallback? onCanceButton,
@@ -24,11 +26,11 @@ class DialogStyle {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       dialogBorderRadius: BorderRadius.circular(15),
       dismissOnTouchOutside: dismissible,
-      btnCancel: showCanceButton != false
+      btnCancel: showCanceButton
           ? AnimatedButton(
               text: canceButtonTitle,
               isFixedHeight: false,
-              color: Colors.pink,
+              color: canceButtonColor,
               buttonTextStyle: const TextStyle(color: Colors.white),
               pressEvent: onCanceButton ?? () {},
             )
@@ -36,7 +38,7 @@ class DialogStyle {
       btnOk: AnimatedButton(
         text: okButtonTitle,
         isFixedHeight: false,
-        color: Colors.blue,
+        color: okButtonColor,
         buttonTextStyle: const TextStyle(color: Colors.white),
         pressEvent: onOkButton ?? () {},
       ),

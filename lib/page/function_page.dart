@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
 
-class FunPage extends StatelessWidget {
-  const FunPage({super.key});
+class FunctionPage extends StatelessWidget {
+  const FunctionPage({super.key});
 
   @override
   Widget build(BuildContext context) {

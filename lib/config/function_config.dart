@@ -9,13 +9,6 @@ class FunctionConfig {
     '大主播同款',
   ];
 
-  ///其他功能
-  static const List otherData = [
-    '解锁画质+120帧（EC）',
-    '解锁超高音质',
-    '1000陀螺仪灵敏度',
-  ];
-
   ///性能优化
   static const List powerData = [
     {'title': '修复闪退', 'subtitle': '如部分华为、OPPO、VIVO等机型修改后出现游戏闪退，可通过修复解决！'},
@@ -28,6 +21,13 @@ class FunctionConfig {
       'subtitle':
           '什么是CPU超频？这是一款支持高通骁龙处理器大核小核的调节软件，可调满血或者锁定频率，无需手机Root权限。软件需要开启后台服务才会一直有效，超频后需将应用放入白名单防止杀后台！'
     }
+  ];
+
+  ///其他功能
+  static const List otherData = [
+    '解锁画质+120帧（EC）',
+    '解锁超高音质',
+    '1000陀螺仪灵敏度',
   ];
 
   ///重置功能
@@ -44,6 +44,12 @@ class FunctionConfig {
     {'title': '低端机', 'subtitle': '专门针对低端机的画质修改'},
     {'title': '中端机', 'subtitle': '专门针对中端机的画质修改'},
     {'title': '高端机', 'subtitle': '专门针对高端机的画质修改'},
+  ];
+
+  ///随机修改
+  static const List randomData = [
+    {'title': '随机修改', 'subtitle': '选择困难症？试试这个吧！'},
+    {'title': '机型画质模拟', 'subtitle': '根据设备参数一比一还原原生画质'},
   ];
 
   ///专属修改

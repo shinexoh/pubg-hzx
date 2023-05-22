@@ -98,7 +98,6 @@ class _PermissionPageState extends State<PermissionPage>
               Obx(() => AnimatedButton(
                     text: permissionGranted.value ? '进入画质侠' : '立即授予',
                     height: 45,
-                    borderRadius: BorderRadius.circular(50),
                     isFixedHeight: false,
                     color: Colors.blue,
                     pressEvent: onGrant,

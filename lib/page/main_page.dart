@@ -23,6 +23,9 @@ class _MainPageState extends State<MainPage> {
     mainController.checkTask();
     mainController.checkStorage();
     mainController.checkDirectory();
+
+    //设置Dark状态栏样式
+    AppUtil.setStatusBarDark();
   }
 
   @override

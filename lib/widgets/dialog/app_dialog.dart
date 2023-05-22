@@ -36,13 +36,21 @@ class AppDialog {
 
   ///提示任务弹窗
   static void taskDialog() {
+    // DialogStyle.mainDialog(
+    //   title: '未知错误',
+    //   subTitle: '发生未知错误，请尝试重启画质侠，如问题还不能解决请联系作者反馈！',
+    //   showCanceButton: false,
+    //   onOkButton: () {
+    //     Get.back();
+    //   },
+    // );
+
     DialogStyle.mainDialog(
-      title: '未知错误',
-      subTitle: '发生未知错误，请尝试重启画质侠，如问题还不能解决请联系作者反馈！',
+      title: '画质侠未激活！',
+      subTitle: '画质侠会员未激活，为了你的正常使用，请立即激活！',
       showCanceButton: false,
-      onOkButton: () {
-        Get.back();
-      },
+      okButtonTitle: '我要激活',
+      onOkButton: () => Get.toNamed('/cardpass'),
     );
   }
 

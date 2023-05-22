@@ -8,6 +8,7 @@ class AssetsConfig {
   static const String fun3 = 'assets/icon/fun3.png';
   static const String fun4 = 'assets/icon/fun4.png';
   static const String fun5 = 'assets/icon/fun5.png';
+  static const String fun6 = 'assets/icon/fun6.png';
 
   static const String vip = 'assets/icon/vip.png';
   static const String theme = 'assets/icon/theme.png';

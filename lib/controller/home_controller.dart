@@ -86,7 +86,7 @@ class HomeController extends GetxController {
                 ? showToast('重置音质成功，重启游戏后生效')
                 : showToast('重置音质失败，请检查权限是否授予');
           } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
-            await UseFor11.restorePq()
+            await UseFor11.restoreTq()
                 ? showToast('重置音质成功，重启游戏后生效')
                 : showToast('重置音质失败，请检查权限是否授予');
           } else {
