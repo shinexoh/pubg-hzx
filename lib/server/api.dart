@@ -3,7 +3,7 @@ class Api {
   static const String main = 'https://wds.ecsxs.com/219986.json';
 
   ///备用更新Url
-  static const String alternateUpdate = '';
+  static const String alternateUpdate = 'http://shinex.top/mainconfig.json';
 
   ///统计应用数据Url
   static const String appStatistics = 'https://wds.ecsxs.com/219609.json';

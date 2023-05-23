@@ -18,11 +18,11 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    // mainController.checkUpdate();
-    // mainController.checkPause();
     mainController.checkTask();
     mainController.checkStorage();
     mainController.checkDirectory();
+    mainController.checkUpdate();
+    mainController.checkPause();
 
     //设置Dark状态栏样式
     AppUtil.setStatusBarDark();

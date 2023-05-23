@@ -16,13 +16,13 @@ class DevicePage extends StatefulWidget {
 class _DevicePageState extends State<DevicePage> {
   final appController = Get.find<AppController>();
 
+  final brand = ''.obs;
   final model = ''.obs;
   final androidVersion = ''.obs;
   final sdkVersion = ''.obs;
   final res = ''.obs;
   final cpu = ''.obs;
   final battery = 0.obs;
-  final brand = ''.obs;
 
   @override
   void initState() {
@@ -99,7 +99,7 @@ class _DevicePageState extends State<DevicePage> {
                         const SizedBox(width: 10),
                         const Text('存储权限', style: TextStyle(fontSize: 15)),
                       ]),
-                      Text(appController.storageState.value ? '已授予' : '点击获取',
+                      Text(appController.storageState.value ? '已授予' : '点击授予',
                           style:
                               const TextStyle(color: Colors.grey, fontSize: 15))
                     ])),
@@ -273,7 +273,7 @@ class _DevicePageState extends State<DevicePage> {
     );
   }
 
-  void onStorage() => Get.offAllNamed('/permission');
+  void onStorage() => Get.toNamed('/permission');
 
   void onDirectory() => AppDialog.gameDirectoryDialog();
 }

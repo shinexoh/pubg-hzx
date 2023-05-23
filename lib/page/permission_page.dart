@@ -3,6 +3,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:get/get.dart';
 
+import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
 import 'package:huazhixia/util/util.dart';
@@ -38,6 +39,8 @@ class _PermissionPageState extends State<PermissionPage>
     if (state == AppLifecycleState.resumed) {
       if (await Permission.storage.status == PermissionStatus.granted) {
         permissionGranted.value = true;
+        Get.find<AppController>().setStorageState(true);
+
         Get.snackbar('', '',
             titleText: const Text('恭喜你！',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
@@ -49,7 +52,7 @@ class _PermissionPageState extends State<PermissionPage>
 
   //点击授予按钮
   void onGrant() {
-    permissionGranted.value ? Get.offNamed('/') : requestPermission();
+    permissionGranted.value ? Get.offAllNamed('/') : requestPermission();
   }
 
   //请求权限
@@ -58,11 +61,13 @@ class _PermissionPageState extends State<PermissionPage>
 
     if (request.isGranted) {
       permissionGranted.value = true;
+      Get.find<AppController>().setStorageState(true);
     } else if (request.isDenied) {
       final newRequest = await Permission.storage.request();
 
       if (newRequest.isGranted) {
         permissionGranted.value = true;
+        Get.find<AppController>().setStorageState(true);
       } else {
         AppDialog.storageDialog();
       }

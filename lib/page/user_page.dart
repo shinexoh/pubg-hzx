@@ -122,7 +122,7 @@ class UserPage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               onTap: onUseHelp,
               child: Row(children: [
-                Image.asset(AssetsConfig.useHelp, height: 28, width: 28),
+                Image.asset(AssetsConfig.useHelp, height: 30, width: 30),
                 const SizedBox(width: 15),
                 const Text('使用帮助', style: TextStyle(fontSize: 16)),
                 const Spacer(),
@@ -134,7 +134,7 @@ class UserPage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               onTap: onDownload,
               child: Row(children: [
-                Image.asset(AssetsConfig.download, height: 28, width: 28),
+                Image.asset(AssetsConfig.download, height: 30, width: 30),
                 const SizedBox(width: 15),
                 const Text('永久下载地址', style: TextStyle(fontSize: 16)),
                 const Spacer(),
@@ -149,7 +149,7 @@ class UserPage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               onTap: onQQ,
               child: Row(children: [
-                Image.asset(AssetsConfig.contactAuthor, height: 26, width: 26),
+                Image.asset(AssetsConfig.contactAuthor, height: 30, width: 30),
                 const SizedBox(width: 15),
                 const Text('联系作者', style: TextStyle(fontSize: 16)),
                 const Spacer(),
@@ -245,7 +245,7 @@ class UserPage extends StatelessWidget {
     );
   }
 
-  //关于应用
+  //关于画质侠
   void onAbout() => showLicensePage(
         context: Get.context!,
         applicationIcon: const FlutterLogo(size: 50),
