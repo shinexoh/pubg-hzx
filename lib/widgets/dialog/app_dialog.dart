@@ -58,7 +58,7 @@ class AppDialog {
   static void storageDialog() {
     DialogStyle.mainDialog(
       title: '你已拒绝权限',
-      subTitle: '由于画质侠需要【存储权限】才能修改画质，为保证你的正常使用，请点击【手动授予】跳转到设置，手动给画质助手授予【存储权限】',
+      subTitle: '由于画质侠需要【存储权限】才能修改画质，为保证你的正常使用，请点击【手动授予】跳转到设置，手动给画质侠授予【存储权限】',
       showCanceButton: false,
       okButtonTitle: '手动授予',
       onOkButton: () {

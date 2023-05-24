@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +23,8 @@ import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/util/util.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   //初始化实例
   Get.put(AppController());
@@ -40,6 +42,8 @@ void main() async {
 
   //检查网络后检查安卓10以下存储权限是否授予并跳转指定路由
   if (await checkNet()) {
+    await Future.delayed(const Duration(milliseconds: 500));
+
     if (androidVersion <= 10) {
       await Permission.storage.status == PermissionStatus.granted
           ? runApp(const MyApp('/'))

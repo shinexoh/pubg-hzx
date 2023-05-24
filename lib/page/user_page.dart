@@ -246,10 +246,22 @@ class UserPage extends StatelessWidget {
   }
 
   //关于画质侠
-  void onAbout() => showLicensePage(
-        context: Get.context!,
-        applicationIcon: const FlutterLogo(size: 50),
-        applicationName: '画质侠',
-        applicationVersion: AppConfig.appVersion,
-      );
+  void onAbout() {
+    DialogStyle.mainDialog(
+        title: '关于画质侠',
+        subTitle: '画质侠是专为和平精英玩家量身打造的画质助手。我们致力于提供简洁高效的服务，以协助玩家获得更加优质的游戏体验。',
+        okButtonTitle: '查看许可',
+        onOkButton: () {
+          Get.back();
+          showLicensePage(
+            context: Get.context!,
+            applicationIcon:
+                Image.asset(AssetsConfig.appIcon, height: 50, width: 50),
+            applicationName: '画质侠',
+            applicationLegalese:
+                '画质侠是专为和平精英玩家量身打造的画质修改器。我们致力于提供简洁高效的服务，以协助玩家获得更加优质的游戏体验。',
+            applicationVersion: AppConfig.appVersion,
+          );
+        });
+  }
 }

@@ -2,7 +2,7 @@ name: huazhixia
 description: A new Flutter project.
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 2.0.1+1001
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
@@ -42,12 +42,30 @@ dependencies:
   share_plus: ^6.3.4
   # 网络检查
   connectivity_plus: ^3.0.6
+  # 启动图
+  flutter_native_splash: ^2.2.19
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+# 生成应用图标
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/icon/icon.png"
+
+# 生成启动图
+flutter_native_splash:
+  android: true
+  color: "#FFFFFF"
+  image: assets/icon/splash_screen.png
+
+  android_12:
+    color: "#FFFFFF"
+    image: assets/icon/splash_screen.png
 
 flutter:
 

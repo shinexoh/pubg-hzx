@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:get/get.dart';
 
@@ -23,6 +24,8 @@ class _PermissionPageState extends State<PermissionPage>
   @override
   void initState() {
     super.initState();
+    FlutterNativeSplash.remove();
+
     WidgetsBinding.instance.addObserver(this);
     AppUtil.setStatusBarDark();
   }
@@ -86,12 +89,8 @@ class _PermissionPageState extends State<PermissionPage>
           child: Column(
             children: [
               SizedBox(height: Get.height * 0.1),
-              Image.asset(
-                AssetsConfig.permission,
-                height: Get.height * 0.2,
-                width: double.infinity,
-                filterQuality: FilterQuality.high,
-              ),
+              Image.asset(AssetsConfig.permission,
+                  height: Get.height * 0.2, width: double.infinity),
               const SizedBox(height: 20),
               const Text('请授予存储权限',
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),

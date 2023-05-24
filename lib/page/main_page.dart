@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon/remixicon.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
@@ -18,6 +19,8 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
+    FlutterNativeSplash.remove();
+
     mainController.checkTask();
     mainController.checkStorage();
     mainController.checkDirectory();

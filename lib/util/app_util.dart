@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:device_apps/device_apps.dart';
 import 'package:android_intent_plus/android_intent.dart';
 
 //常用的工具封装
@@ -13,7 +14,7 @@ class AppUtil {
     );
 
     if (await intent.canResolveActivity() ?? false) {
-      await intent.launch();
+      intent.launch();
     } else {
       showToast('打开浏览器失败');
     }
@@ -26,7 +27,7 @@ class AppUtil {
         data: 'mqqapi://card/show_pslcard?card_type=person&uin=$qq');
 
     if (await intent.canResolveActivity() ?? false) {
-      await intent.launch();
+      intent.launch();
     } else {
       showToast('打开QQ失败');
     }
@@ -39,7 +40,7 @@ class AppUtil {
         data: 'mqqapi://card/show_pslcard?card_type=group&uin=$qqGroup');
 
     if (await intent.canResolveActivity() ?? false) {
-      await intent.launch();
+      intent.launch();
     } else {
       showToast('打开QQ失败');
     }
@@ -47,14 +48,18 @@ class AppUtil {
 
   ///打开应用设置界面
   static void openAppSettings() async {
-    const intent = AndroidIntent(
-      action: 'android.settings.APPLICATION_DETAILS_SETTINGS',
-      data: 'package:com.shinex.huazhixia',
-    );
+    // const intent = AndroidIntent(
+    //   action: 'android.settings.APPLICATION_DETAILS_SETTINGS',
+    //   data: 'package:com.shinex.huazhixia',
+    // );
 
-    if (await intent.canResolveActivity() ?? false) {
-      await intent.launch();
-    } else {
+    // if (await intent.canResolveActivity() ?? false) {
+    //   await intent.launch();
+    // } else {
+    //   showToast('打开设置失败，请手动打开');
+    // }
+
+    if (!await DeviceApps.openAppSettings('com.shinex.huazhixia')) {
       showToast('打开设置失败，请手动打开');
     }
   }

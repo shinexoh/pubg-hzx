@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
 
@@ -85,12 +84,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(children: [
-            FadeInImage(
-                height: 45,
-                width: 45,
-                fadeInDuration: const Duration(milliseconds: 120),
-                placeholder: MemoryImage(kTransparentImage),
-                image: const AssetImage(AssetsConfig.gameIcon)),
+            Image.asset(AssetsConfig.gameIcon, height: 45, width: 45),
             const SizedBox(width: 10),
             Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -136,12 +130,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [
-                FadeInImage(
-                    height: 46,
-                    width: 46,
-                    fadeInDuration: const Duration(milliseconds: 120),
-                    placeholder: MemoryImage(kTransparentImage),
-                    image: const AssetImage(AssetsConfig.quick)),
+                Image.asset(AssetsConfig.quick, height: 45, width: 45),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -203,12 +192,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [
-                FadeInImage(
-                    height: 45,
-                    width: 45,
-                    fadeInDuration: const Duration(milliseconds: 120),
-                    placeholder: MemoryImage(kTransparentImage),
-                    image: const AssetImage(AssetsConfig.other)),
+                Image.asset(AssetsConfig.other, height: 45, width: 45),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -270,12 +254,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(children: [
-                FadeInImage(
-                    height: 45,
-                    width: 45,
-                    fadeInDuration: const Duration(milliseconds: 120),
-                    placeholder: MemoryImage(kTransparentImage),
-                    image: const AssetImage(AssetsConfig.restore)),
+                Image.asset(AssetsConfig.restore, height: 45, width: 45),
                 const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -318,12 +297,7 @@ class _HomePageState extends State<HomePage> {
       padding: const EdgeInsets.only(top: 10, left: 10),
       child: Row(
         children: [
-          FadeInImage(
-              height: 20,
-              width: 20,
-              fadeInDuration: const Duration(milliseconds: 120),
-              placeholder: MemoryImage(kTransparentImage),
-              image: const AssetImage(AssetsConfig.lightning)),
+          Image.asset(AssetsConfig.lightning, height: 20, width: 20),
           Text(data, style: const TextStyle(fontStyle: FontStyle.italic)),
         ],
       ),

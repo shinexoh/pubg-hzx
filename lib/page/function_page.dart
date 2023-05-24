@@ -2,7 +2,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:remixicon/remixicon.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
@@ -58,12 +57,7 @@ class FunctionPage extends StatelessWidget {
               onTap: () => onDiversify(index),
               child: Row(
                 children: [
-                  FadeInImage(
-                      height: 45,
-                      width: 45,
-                      fadeInDuration: const Duration(milliseconds: 120),
-                      placeholder: MemoryImage(kTransparentImage),
-                      image: const AssetImage(AssetsConfig.diversify)),
+                  Image.asset(AssetsConfig.diversify, height: 45, width: 45),
                   const SizedBox(width: 10),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,12 +97,7 @@ class FunctionPage extends StatelessWidget {
               onTap: () => onModel(index),
               child: Row(
                 children: [
-                  FadeInImage(
-                      height: 45,
-                      width: 45,
-                      fadeInDuration: const Duration(milliseconds: 120),
-                      placeholder: MemoryImage(kTransparentImage),
-                      image: const AssetImage(AssetsConfig.model)),
+                  Image.asset(AssetsConfig.model, height: 45, width: 45),
                   const SizedBox(width: 10),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,12 +137,7 @@ class FunctionPage extends StatelessWidget {
               onTap: () => onRandom(index),
               child: Row(
                 children: [
-                  FadeInImage(
-                      height: 45,
-                      width: 45,
-                      fadeInDuration: const Duration(milliseconds: 120),
-                      placeholder: MemoryImage(kTransparentImage),
-                      image: const AssetImage(AssetsConfig.random)),
+                  Image.asset(AssetsConfig.random, height: 45, width: 45),
                   const SizedBox(width: 10),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
