@@ -34,7 +34,7 @@ class _DevicePageState extends State<DevicePage> {
     brand.value = DeviceInfo.brand;
     model.value = DeviceInfo.model;
     androidVersion.value = DeviceInfo.androidVersion;
-    sdkVersion.value = DeviceInfo.sdkVersion;
+    sdkVersion.value = DeviceInfo.sdkVersion.toString();
     res.value = '${DeviceInfo.screenHeight}×${DeviceInfo.screenWidth}';
     cpu.value = DeviceInfo.cpu;
     battery.value = DeviceInfo.batteryLevel;

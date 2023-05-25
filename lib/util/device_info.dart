@@ -32,15 +32,15 @@ class DeviceInfo {
   static String get androidVersion => _androidDeviceInfo.version.release;
 
   ///安卓SDK版本号
-  static String get sdkVersion => _androidDeviceInfo.version.sdkInt.toString();
+  static int get sdkVersion => _androidDeviceInfo.version.sdkInt;
 
   ///屏幕高度
-  static String get screenHeight =>
-      _androidDeviceInfo.displayMetrics.heightPx.toInt().toString();
+  static int get screenHeight =>
+      _androidDeviceInfo.displayMetrics.heightPx.toInt();
 
   ///屏幕宽度
-  static String get screenWidth =>
-      _androidDeviceInfo.displayMetrics.widthPx.toInt().toString();
+  static int get screenWidth =>
+      _androidDeviceInfo.displayMetrics.widthPx.toInt();
 
   ///获取当前电量值
   static int get batteryLevel => _batteryLevel;

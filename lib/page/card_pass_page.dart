@@ -16,9 +16,7 @@ class _CardPassPageState extends State<CardPassPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: Colors.white,
           title: const Text('卡密激活'),
-          centerTitle: false,
           leading: IconButton(
               onPressed: () => Get.back(),
               icon: const Icon(Remix.arrow_left_line))),

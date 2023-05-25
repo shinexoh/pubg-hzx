@@ -21,10 +21,10 @@ class UseDialog {
       okButtonTitle: buttonTitle,
       onOkButton: () async {
         Get.back();
-        final androidVersion = Get.find<AppController>().androidVersion.value;
+        final androidVersion = Get.find<AppController>().sdkVersion.value;
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (androidVersion <= 10) {
+          if (androidVersion <= 29) {
             await UseFor10.usePq(filePath)
                 ? showToast('修改成功')
                 : showToast('修改失败，请检查权限是否授予');
@@ -50,10 +50,10 @@ class UseDialog {
       okButtonTitle: '解锁',
       onOkButton: () async {
         Get.back();
-        final androidVersion = Get.find<AppController>().androidVersion.value;
+        final androidVersion = Get.find<AppController>().sdkVersion.value;
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (androidVersion <= 10) {
+          if (androidVersion <= 29) {
             await UseFor10.useDl()
                 ? showToast('解锁画质成功')
                 : showToast('解锁画质失败，请检查权限是否授予');
@@ -79,10 +79,10 @@ class UseDialog {
       okButtonTitle: '解锁',
       onOkButton: () async {
         Get.back();
-        final androidVersion = Get.find<AppController>().androidVersion.value;
+        final androidVersion = Get.find<AppController>().sdkVersion.value;
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (androidVersion <= 10) {
+          if (androidVersion <= 29) {
             await UseFor10.useTq()
                 ? showToast('解锁音质成功')
                 : showToast('解锁音质失败，请检查权限是否授予');

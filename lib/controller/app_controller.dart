@@ -13,7 +13,7 @@ class AppController extends GetxController {
   final directoryState = false.obs;
   void setDirectoryState(bool value) => directoryState.value = value;
 
-  //安卓版本
-  final androidVersion = 0.0.obs;
-  void setAndroidVersion(double version) => androidVersion.value = version;
+  //安卓SDK版本号
+  final sdkVersion = 0.obs;
+  void setSdkVersion(int version) => sdkVersion.value = version;
 }

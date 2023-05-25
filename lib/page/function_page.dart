@@ -186,10 +186,10 @@ class FunctionPage extends StatelessWidget {
         subTitle: '确定要随机修改一项画质？如出现问题请前往首页重置画质！',
         onOkButton: () async {
           Get.back();
-          final androidVersion = Get.find<AppController>().androidVersion.value;
+          final androidVersion = Get.find<AppController>().sdkVersion.value;
 
           if (SpUtil.containsKey(AppConfig.taskKey)) {
-            if (androidVersion <= 10) {
+            if (androidVersion <= 29) {
               await UseFor10.usePq(FileConfig.allPqFile[random])
                   ? showToast('修改成功')
                   : showToast('修改失败，请检查权限是否授予');

@@ -10,7 +10,6 @@ class HelpPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('使用帮助'),
-        backgroundColor: Colors.white,
         leading: IconButton(
             onPressed: () => Get.back(),
             icon: const Icon(Remix.arrow_left_line)),

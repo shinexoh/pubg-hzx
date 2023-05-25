@@ -32,19 +32,17 @@ void main() async {
   await SpUtil.getInstance();
   await DeviceInfo.getInstance();
 
-  //初始化安卓版本
-  final androidVersion = double.parse(DeviceInfo.androidVersion);
-  Get.find<AppController>().setAndroidVersion(androidVersion);
+  //初始化安卓SDK版本号
+  final sdkVersion = DeviceInfo.sdkVersion;
+  Get.find<AppController>().setSdkVersion(sdkVersion);
 
   //添加任务Key
-  SpUtil.addString(AppConfig.taskKey, '');
-  // SpUtil.clear();
+  // SpUtil.addString(AppConfig.taskKey, '');
+  SpUtil.clear();
 
   //检查网络后检查安卓10以下存储权限是否授予并跳转指定路由
   if (await checkNet()) {
-    await Future.delayed(const Duration(milliseconds: 500));
-
-    if (androidVersion <= 10) {
+    if (sdkVersion <= 29) {
       await Permission.storage.status == PermissionStatus.granted
           ? runApp(const MyApp('/'))
           : runApp(const MyApp('/permission'));
@@ -79,10 +77,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/mediummodel', page: () => const MediumModelPage()),
           GetPage(name: '/highmodel', page: () => const HighModelPage()),
           GetPage(name: '/help', page: () => const HelpPage()),
-          GetPage(
-              name: '/cardpass',
-              page: () => const CardPassPage(),
-              transition: Transition.fade),
+          GetPage(name: '/cardpass', page: () => const CardPassPage()),
           GetPage(name: '/modelimitate', page: () => const ModelImitatePage())
         ],
         defaultTransition: Transition.cupertino,
@@ -102,7 +97,7 @@ Future<bool> checkNet() async {
   final connectivity = await Connectivity().checkConnectivity();
   if (connectivity != ConnectionState.none) {
     final http = await HttpClient.get('https://www.baidu.com/');
-    if (http.isOk) return true;
+    return http.isOk ? true : false;
   }
   return false;
 }
