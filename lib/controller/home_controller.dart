@@ -51,7 +51,7 @@ class HomeController extends GetxController {
       case 2:
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           Clipboard.setData(const ClipboardData(text: '3044-2867-9345-7278'));
-          showToast('复制成功');
+          showToast('复制分享码成功');
         } else {
           AppDialog.taskDialog();
         }
@@ -72,7 +72,7 @@ class HomeController extends GetxController {
               ? showToast('重置画质成功，重启游戏后生效')
               : showToast('重置画质失败，请检查权限是否授予');
         } else {
-          AppDialog.gameDirectoryDialog();
+          AppDialog.directoryDialog();
         }
         break;
       case 1:
@@ -85,7 +85,7 @@ class HomeController extends GetxController {
               ? showToast('重置音质成功，重启游戏后生效')
               : showToast('重置音质失败，请检查权限是否授予');
         } else {
-          AppDialog.gameDirectoryDialog();
+          AppDialog.directoryDialog();
         }
         break;
     }

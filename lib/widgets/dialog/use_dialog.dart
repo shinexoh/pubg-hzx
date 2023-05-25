@@ -21,19 +21,19 @@ class UseDialog {
       okButtonTitle: buttonTitle,
       onOkButton: () async {
         Get.back();
-        final androidVersion = Get.find<AppController>().sdkVersion.value;
+        final sdkVersion = Get.find<AppController>().sdkVersion;
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (androidVersion <= 29) {
+          if (sdkVersion <= 29) {
             await UseFor10.usePq(filePath)
-                ? showToast('修改成功')
+                ? showToast('修改成功，请重启游戏')
                 : showToast('修改失败，请检查权限是否授予');
           } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
             await UseFor11.usePq(filePath)
-                ? showToast('修改成功')
+                ? showToast('修改成功，请重启游戏')
                 : showToast('修改失败，请检查权限是否授予');
           } else {
-            AppDialog.gameDirectoryDialog();
+            AppDialog.directoryDialog();
           }
         } else {
           AppDialog.taskDialog();
@@ -50,19 +50,19 @@ class UseDialog {
       okButtonTitle: '解锁',
       onOkButton: () async {
         Get.back();
-        final androidVersion = Get.find<AppController>().sdkVersion.value;
+        final sdkVersion = Get.find<AppController>().sdkVersion;
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (androidVersion <= 29) {
+          if (sdkVersion <= 29) {
             await UseFor10.useDl()
-                ? showToast('解锁画质成功')
+                ? showToast('解锁画质成功，请重启游戏')
                 : showToast('解锁画质失败，请检查权限是否授予');
           } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
             await UseFor11.useDl()
-                ? showToast('解锁画质成功')
+                ? showToast('解锁画质成功，请重启游戏')
                 : showToast('解锁画质失败，请检查权限是否授予');
           } else {
-            AppDialog.gameDirectoryDialog();
+            AppDialog.directoryDialog();
           }
         } else {
           AppDialog.taskDialog();
@@ -79,19 +79,19 @@ class UseDialog {
       okButtonTitle: '解锁',
       onOkButton: () async {
         Get.back();
-        final androidVersion = Get.find<AppController>().sdkVersion.value;
+        final sdkVersion = Get.find<AppController>().sdkVersion;
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (androidVersion <= 29) {
+          if (sdkVersion <= 29) {
             await UseFor10.useTq()
-                ? showToast('解锁音质成功')
+                ? showToast('解锁音质成功，请重启游戏')
                 : showToast('解锁音质失败，请检查权限是否授予');
           } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
             await UseFor11.useTq()
-                ? showToast('解锁音质成功')
+                ? showToast('解锁音质成功，请重启游戏')
                 : showToast('解锁音质失败，请检查权限是否授予');
           } else {
-            AppDialog.gameDirectoryDialog();
+            AppDialog.directoryDialog();
           }
         } else {
           AppDialog.taskDialog();

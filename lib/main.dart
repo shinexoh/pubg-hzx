@@ -37,8 +37,8 @@ void main() async {
   Get.find<AppController>().setSdkVersion(sdkVersion);
 
   //添加任务Key
-  // SpUtil.addString(AppConfig.taskKey, '');
-  SpUtil.clear();
+  SpUtil.addString(AppConfig.taskKey, '');
+  // SpUtil.clear();
 
   //检查网络后检查安卓10以下存储权限是否授予并跳转指定路由
   if (await checkNet()) {

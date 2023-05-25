@@ -186,19 +186,19 @@ class FunctionPage extends StatelessWidget {
         subTitle: '确定要随机修改一项画质？如出现问题请前往首页重置画质！',
         onOkButton: () async {
           Get.back();
-          final androidVersion = Get.find<AppController>().sdkVersion.value;
+          final sdkVersion = Get.find<AppController>().sdkVersion.value;
 
           if (SpUtil.containsKey(AppConfig.taskKey)) {
-            if (androidVersion <= 29) {
+            if (sdkVersion <= 29) {
               await UseFor10.usePq(FileConfig.allPqFile[random])
-                  ? showToast('修改成功')
+                  ? showToast('修改成功，请重启游戏')
                   : showToast('修改失败，请检查权限是否授予');
             } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
               await UseFor11.usePq(FileConfig.allPqFile[random])
-                  ? showToast('修改成功')
+                  ? showToast('修改成功，请重启游戏')
                   : showToast('修改失败，请检查权限是否授予');
             } else {
-              AppDialog.gameDirectoryDialog();
+              AppDialog.directoryDialog();
             }
           } else {
             AppDialog.taskDialog();

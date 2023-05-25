@@ -275,5 +275,5 @@ class _DevicePageState extends State<DevicePage> {
 
   void onStorage() => Get.toNamed('/permission');
 
-  void onDirectory() => AppDialog.gameDirectoryDialog();
+  void onDirectory() => AppDialog.directoryDialog();
 }

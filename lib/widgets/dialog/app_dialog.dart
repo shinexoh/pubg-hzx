@@ -11,7 +11,7 @@ import 'dialog_style.dart';
 //一些常用的弹窗封装
 class AppDialog {
   ///授予游戏目录弹窗
-  static void gameDirectoryDialog() {
+  static void directoryDialog() {
     DialogStyle.mainDialog(
       title: '温馨提示',
       subTitle:
