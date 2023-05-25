@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         title: '画质侠',
         debugShowCheckedModeBanner: false,
-        color: Colors.transparent,
+        color: Colors.white,
         theme: AppTheme.themeData,
         initialRoute: initialRoute,
         getPages: [

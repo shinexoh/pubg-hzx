@@ -63,9 +63,10 @@ flutter_native_splash:
   color: "#FFFFFF"
   image: assets/icon/splash_screen.png
 
+# 安卓12以上使用透明启动图。不知道为啥使用其他图像就会被裁剪，影响美观
   android_12:
     color: "#FFFFFF"
-    image: assets/icon/splash_screen.png
+    image: assets/image/transparent.png
 
 flutter:
 

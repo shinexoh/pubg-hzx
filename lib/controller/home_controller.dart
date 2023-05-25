@@ -63,37 +63,29 @@ class HomeController extends GetxController {
   void onRestore(int index) async {
     switch (index) {
       case 0:
-        if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (_appController.androidVersion.value <= 10) {
-            await UseFor10.restorePq() && await UseFor10.restoreDl()
-                ? showToast('重置画质成功，重启游戏后生效')
-                : showToast('重置画质失败，请检查权限是否授予');
-          } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
-            await UseFor11.restorePq() && await UseFor11.restoreDl()
-                ? showToast('重置画质成功，重启游戏后生效')
-                : showToast('重置画质失败，请检查权限是否授予');
-          } else {
-            AppDialog.gameDirectoryDialog();
-          }
+        if (_appController.androidVersion.value <= 10) {
+          await UseFor10.restorePq() && await UseFor10.restoreDl()
+              ? showToast('重置画质成功，重启游戏后生效')
+              : showToast('重置画质失败，请检查权限是否授予');
+        } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
+          await UseFor11.restorePq() && await UseFor11.restoreDl()
+              ? showToast('重置画质成功，重启游戏后生效')
+              : showToast('重置画质失败，请检查权限是否授予');
         } else {
-          AppDialog.taskDialog();
+          AppDialog.gameDirectoryDialog();
         }
         break;
       case 1:
-        if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (_appController.androidVersion.value <= 10) {
-            await UseFor10.restoreTq()
-                ? showToast('重置音质成功，重启游戏后生效')
-                : showToast('重置音质失败，请检查权限是否授予');
-          } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
-            await UseFor11.restoreTq()
-                ? showToast('重置音质成功，重启游戏后生效')
-                : showToast('重置音质失败，请检查权限是否授予');
-          } else {
-            AppDialog.gameDirectoryDialog();
-          }
+        if (_appController.androidVersion.value <= 10) {
+          await UseFor10.restoreTq()
+              ? showToast('重置音质成功，重启游戏后生效')
+              : showToast('重置音质失败，请检查权限是否授予');
+        } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
+          await UseFor11.restoreTq()
+              ? showToast('重置音质成功，重启游戏后生效')
+              : showToast('重置音质失败，请检查权限是否授予');
         } else {
-          AppDialog.taskDialog();
+          AppDialog.gameDirectoryDialog();
         }
         break;
     }

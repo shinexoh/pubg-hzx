@@ -13,7 +13,6 @@ class HighModelPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('高端机'),
-        backgroundColor: Colors.white,
         leading: IconButton(
             onPressed: () => Get.back(),
             icon: const Icon(Remix.arrow_left_line)),

@@ -46,7 +46,7 @@ class UseDialog {
   static void useDlDialog(String title) {
     DialogStyle.mainDialog(
       title: title,
-      subTitle: '确定要解锁画质+120帧？如出现问题请前往首页重置画质！',
+      subTitle: '一旦解锁画质+120帧将会持续有效，期间修改其他画质功能会导致无效果，需要重置画质后即可修改其他画质功能！',
       okButtonTitle: '解锁',
       onOkButton: () async {
         Get.back();
