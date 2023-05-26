@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:device_apps/device_apps.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
@@ -126,5 +127,20 @@ class AppDialog {
               ],
             )),
         barrierDismissible: isForce ? false : true);
+  }
+
+  ///提示重启游戏弹窗
+  static void restartGameDialog() {
+    DialogStyle.mainDialog(
+      title: '重启游戏',
+      subTitle: '你需要重启游戏后才能生效，为了你的正常使用，请立即重启！',
+      okButtonTitle: '重启游戏',
+      onOkButton: () async {
+        Get.back();
+        if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
+          showToast('启动失败，请手动启动');
+        }
+      },
+    );
   }
 }
