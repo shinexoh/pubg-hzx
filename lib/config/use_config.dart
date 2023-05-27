@@ -1,5 +1,4 @@
 class UriConfig {
-  /*
   ///游戏目录Uri
   static final mainUri = Uri.parse(
       'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fcom.tencent.tmgp.pubgmhd%2Ffiles%2FUE4Game%2FShadowTrackerExtra%2FShadowTrackerExtra%2FSaved%2FConfig%2FAndroid');
@@ -15,19 +14,18 @@ class UriConfig {
   ///音质文件Uri
   static final tqFileUri = Uri.parse(
       '$mainUri/document/primary%3AAndroid%2Fdata%2Fcom.tencent.tmgp.pubgmhd%2Ffiles%2FUE4Game%2FShadowTrackerExtra%2FShadowTrackerExtra%2FSaved%2FConfig%2FAndroid%2FUserSettings.ini');
-  */
 
-  static final mainUri = Uri.parse(
-      'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo');
+  // static final mainUri = Uri.parse(
+  //     'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo');
 
-  static final pqFileUri = Uri.parse(
-      'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FUserCustom.ini');
+  // static final pqFileUri = Uri.parse(
+  //     'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FUserCustom.ini');
 
-  static final dlFileUri = Uri.parse(
-      'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FEnjoyCJZC.ini');
+  // static final dlFileUri = Uri.parse(
+  //     'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FEnjoyCJZC.ini');
 
-  static final tqFileUri = Uri.parse(
-      'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FUserSettings.ini');
+  // static final tqFileUri = Uri.parse(
+  //     'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FUserSettings.ini');
 }
 
 class GameFilePath {

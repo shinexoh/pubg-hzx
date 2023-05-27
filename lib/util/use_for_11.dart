@@ -75,9 +75,8 @@ class UseFor11 {
   ///还原画质
   static Future<bool> restorePq() async {
     if (await SharedStorage.fileExist(GameFileName.pqFileName)) {
-      return await SharedStorage.writeFileContent(UriConfig.pqFileUri, '');
+      await SharedStorage.writeFileContent(UriConfig.pqFileUri, '');
     }
-
     return true;
   }
 
@@ -85,7 +84,6 @@ class UseFor11 {
   static Future<bool> restoreDl() async {
     if (await SharedStorage.fileExist(GameFileName.dlFileName)) {
       SharedStorage.deleteFile(UriConfig.dlFileUri);
-      return true;
     }
     return true;
   }
@@ -93,7 +91,7 @@ class UseFor11 {
   ///还原解锁音质
   static Future<bool> restoreTq() async {
     if (await SharedStorage.fileExist(GameFileName.tqFileName)) {
-      return await SharedStorage.writeFileContent(UriConfig.tqFileUri, '');
+      await SharedStorage.writeFileContent(UriConfig.tqFileUri, '');
     }
     return true;
   }

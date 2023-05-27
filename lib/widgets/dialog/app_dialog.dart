@@ -41,9 +41,7 @@ class AppDialog {
       title: '未知错误',
       subTitle: '发生未知错误，请尝试重启画质侠，如问题还不能解决请联系作者反馈！',
       showCanceButton: false,
-      onOkButton: () {
-        Get.back();
-      },
+      onOkButton: () => Get.back(),
     );
 
     // DialogStyle.mainDialog(
@@ -62,8 +60,7 @@ class AppDialog {
   static void storageDialog() {
     DialogStyle.mainDialog(
       title: '你已拒绝权限',
-      subTitle:
-          '由于画质侠需要【文件存储权限】才能修改画质，为保证你的正常使用，请点击【手动授予】跳转到设置，手动给画质侠授予【文件存储权限】',
+      subTitle: '由于画质侠需要【文件存储权限】才能修改画质，请点击【手动授予】跳转到设置，手动给画质侠授予【文件存储权限】',
       showCanceButton: false,
       okButtonTitle: '手动授予',
       onOkButton: () {

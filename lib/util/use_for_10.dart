@@ -68,7 +68,6 @@ class UseFor10 {
     final pqFile = File(GameFilePath.pqFilePath);
     if (await pqFile.exists()) {
       await pqFile.writeAsString('');
-      return true;
     }
     return true;
   }
@@ -78,7 +77,6 @@ class UseFor10 {
     final dlFile = File(GameFilePath.dlFilePath);
     if (await dlFile.exists()) {
       dlFile.delete();
-      return true;
     }
     return true;
   }
@@ -88,7 +86,6 @@ class UseFor10 {
     final tqFile = File(GameFilePath.tqFilePath);
     if (await tqFile.exists()) {
       await tqFile.writeAsString('');
-      return true;
     }
     return true;
   }

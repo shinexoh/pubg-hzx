@@ -57,6 +57,9 @@ class MainController extends GetxController {
     SpUtil.containsKey(AppConfig.taskKey)
         ? _appController.setTaskState(true)
         : _appController.setTaskState(false);
+
+    prints('huazhixia:${_appController.taskState.value}');
+    prints('sdkversion:${_appController.sdkVersion.value}');
   }
 
   //检查存储权限
@@ -64,6 +67,8 @@ class MainController extends GetxController {
     await Permission.storage.status == PermissionStatus.granted
         ? _appController.setStorageState(true)
         : _appController.setStorageState(false);
+
+    prints('storege:${_appController.storageState.value}');
   }
 
   //检查游戏目录授予
@@ -71,7 +76,12 @@ class MainController extends GetxController {
     await SharedStorage.checkUriGrant(UriConfig.mainUri)
         ? _appController.setDirectoryState(true)
         : _appController.setDirectoryState(false);
+
+    prints('directory:${_appController.directoryState.value}');
   }
+
+  //统计应用数据
+  void statistics() => HttpClient.get(Api.appStatistics);
 
   //检查应用是否维护
   void checkPause() async {

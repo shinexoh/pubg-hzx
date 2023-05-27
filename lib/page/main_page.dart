@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
-import 'package:remixicon/remixicon.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +24,8 @@ class _MainPageState extends State<MainPage> {
     mainController.checkStorage();
     mainController.checkDirectory();
     mainController.checkUpdate();
-    mainController.checkPause();
+    mainController.statistics();
+    // mainController.checkPause();
 
     //设置Dark状态栏样式
     AppUtil.setStatusBarDark();
@@ -47,19 +46,6 @@ class _MainPageState extends State<MainPage> {
             index: mainController.pageIndex.value,
             children: mainController.pageBody,
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: on,
-            backgroundColor: Colors.blue,
-            child: const Icon(Remix.tools_line, color: Colors.white),
-          ),
         ));
-  }
-
-  void on() {
-    final appController = Get.find<AppController>();
-    final str =
-        '存储权限:${appController.storageState}\n目录权限:${appController.directoryState}\n任务状态:${appController.taskState}\nSdk版本号:${appController.sdkVersion}';
-
-    showToast(str);
   }
 }
