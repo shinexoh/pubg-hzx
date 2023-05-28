@@ -5,15 +5,15 @@ class UriConfig {
 
   ///画质文件Uri
   static final pqFileUri = Uri.parse(
-      '$mainUri/document/primary%3AAndroid%2Fdata%2Fcom.tencent.tmgp.pubgmhd%2Ffiles%2FUE4Game%2FShadowTrackerExtra%2FShadowTrackerExtra%2FSaved%2FConfig%2FAndroid%2FUserCustom.ini');
+      '$mainUri/document/primary%3AAndroid%2Fdata%2Fcom.tencent.tmgp.pubgmhd%2Ffiles%2FUE4Game%2FShadowTrackerExtra%2FShadowTrackerExtra%2FSaved%2FConfig%2FAndroid%2F${GameFileName.pqFileName}');
 
   ///解锁画质文件Uri
   static final dlFileUri = Uri.parse(
-      '$mainUri/document/primary%3AAndroid%2Fdata%2Fcom.tencent.tmgp.pubgmhd%2Ffiles%2FUE4Game%2FShadowTrackerExtra%2FShadowTrackerExtra%2FSaved%2FConfig%2FAndroid%2FEnjoyCJZC.ini');
+      '$mainUri/document/primary%3AAndroid%2Fdata%2Fcom.tencent.tmgp.pubgmhd%2Ffiles%2FUE4Game%2FShadowTrackerExtra%2FShadowTrackerExtra%2FSaved%2FConfig%2FAndroid%2F${GameFileName.dlFileName}');
 
   ///音质文件Uri
   static final tqFileUri = Uri.parse(
-      '$mainUri/document/primary%3AAndroid%2Fdata%2Fcom.tencent.tmgp.pubgmhd%2Ffiles%2FUE4Game%2FShadowTrackerExtra%2FShadowTrackerExtra%2FSaved%2FConfig%2FAndroid%2FUserSettings.ini');
+      '$mainUri/document/primary%3AAndroid%2Fdata%2Fcom.tencent.tmgp.pubgmhd%2Ffiles%2FUE4Game%2FShadowTrackerExtra%2FShadowTrackerExtra%2FSaved%2FConfig%2FAndroid%2F${GameFileName.tqFileName}');
 
   // static final mainUri = Uri.parse(
   //     'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo');

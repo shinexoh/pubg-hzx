@@ -17,8 +17,8 @@ import 'page/use/high_model_page.dart';
 
 import 'package:huazhixia/theme/app_theme.dart';
 import 'package:huazhixia/server/http_client.dart';
-import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/controller/controller.dart';
+import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/util/util.dart';
 
 void main() async {
