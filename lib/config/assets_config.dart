@@ -2,6 +2,7 @@ class AssetsConfig {
   static const String appIcon = 'assets/icon/icon.png';
   static const String gameIcon = 'assets/icon/game_icon.png';
   static const String lightning = 'assets/icon/lightning.png';
+  static const String arrow = 'assets/icon/arrow.png';
 
   static const String quick = 'assets/icon/quick.png';
   static const String other = 'assets/icon/other.png';

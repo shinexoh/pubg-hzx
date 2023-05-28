@@ -51,7 +51,11 @@ class HomeController extends GetxController {
       case 2:
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           Clipboard.setData(const ClipboardData(text: '3044-2867-9345-7278'));
-          showToast('复制分享码成功');
+          DialogStyle.mainDialog(
+            subTitle: '灵敏度分享码复制成功！请进入游戏大厅->设置->灵敏度设置->云端方案管理->搜索方案->粘贴分享码使用即可！',
+            showCanceButton: false,
+            onOkButton: () => Get.back(),
+          );
         } else {
           AppDialog.taskDialog();
         }

@@ -151,7 +151,7 @@ class FunctionPage extends StatelessWidget {
                                 fontStyle: FontStyle.italic)),
                       ]),
                   const Spacer(),
-                  Image.asset(AssetsConfig.lightning, height: 20, width: 20),
+                  Image.asset(AssetsConfig.arrow, height: 20, width: 20),
                 ],
               ),
             );
