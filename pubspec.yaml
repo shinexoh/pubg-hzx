@@ -42,8 +42,6 @@ dependencies:
   share_plus: ^6.3.4
   # 网络检查
   connectivity_plus: ^3.0.6
-  # 启动图
-  flutter_native_splash: ^2.2.19
 
 dev_dependencies:
   flutter_test:
@@ -56,17 +54,6 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   image_path: "assets/icon/icon.png"
-
-# 生成启动图
-flutter_native_splash:
-  android: true
-  color: "#FFFFFF"
-  image: assets/icon/splash_screen.png
-
-# 安卓12以上使用透明启动图。不知道为啥使用其他图像就会被裁剪，影响美观
-  android_12:
-    color: "#FFFFFF"
-    image: assets/image/transparent.png
 
 flutter:
 

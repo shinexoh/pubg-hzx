@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:get/get.dart';
 
@@ -23,8 +22,7 @@ import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/util/util.dart';
 
 void main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  WidgetsFlutterBinding.ensureInitialized();
 
   //初始化实例
   Get.put(AppController());

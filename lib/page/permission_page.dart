@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +23,6 @@ class _PermissionPageState extends State<PermissionPage>
   @override
   void initState() {
     super.initState();
-    FlutterNativeSplash.remove();
 
     WidgetsBinding.instance.addObserver(this);
     AppUtil.setStatusBarDark();
