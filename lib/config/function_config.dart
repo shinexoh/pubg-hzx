@@ -31,7 +31,11 @@ class FunctionConfig {
   ];
 
   ///重置功能
-  static const List restoreData = ['重置画质', '重置音质'];
+  static const List restoreData = [
+    {'title': '重置画质', 'subtitle': '重置画质为初始值'},
+    {'title': '重置音质', 'subtitle': '重置音质为初始值'},
+    {'title': '重置所有功能', 'subtitle': '重新初始化所有功能'}
+  ];
 
   ///多样化修改
   static const List diversifyData = [

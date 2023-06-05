@@ -126,16 +126,44 @@ class AppDialog {
         barrierDismissible: isForce ? false : true);
   }
 
-  ///提示重启游戏弹窗
-  static void restartGameDialog() {
+  ///重置画质后重启游戏弹窗
+  static void restoreDialog() {
     DialogStyle.mainDialog(
-      title: '重启游戏',
-      subTitle: '你需要重启游戏后才能生效，为了你的正常使用，请立即重启！',
+      title: '重置成功',
+      subTitle: '重置后需重启游戏才能生效，否则修改其他画质功能将导致无效，进入游戏10秒左右即可退出，请立即重启！',
       okButtonTitle: '重启游戏',
+      showCanceButton: false,
       onOkButton: () async {
         Get.back();
         if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
-          showToast('启动失败，请手动启动');
+          showToast('重启失败，请手动重启');
+        }
+      },
+    );
+  }
+
+  ///提示存在解锁文件重置画质
+  static void dlRestoreDialog() {
+    final appController = Get.find<AppController>();
+
+    DialogStyle.mainDialog(
+      title: '温馨提示',
+      subTitle: '检测到你使用过“解锁画质+120帧”，你需要重置画质并重启游戏才能修改其他画质功能！',
+      okButtonTitle: '重置画质',
+      showCanceButton: false,
+      onOkButton: () async {
+        Get.back();
+
+        if (appController.sdkVersion.value <= 29) {
+          await UseFor10.restorePq() && await UseFor10.restoreDl()
+              ? AppDialog.restoreDialog()
+              : showToast('重置画质失败，请检查权限是否授予');
+        } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
+          await UseFor11.restorePq() && await UseFor11.restoreDl()
+              ? AppDialog.restoreDialog()
+              : showToast('重置画质失败，请检查权限是否授予');
+        } else {
+          AppDialog.directoryDialog();
         }
       },
     );

@@ -1,8 +1,14 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:android_intent_plus/android_intent.dart';
+
+import 'package:huazhixia/controller/controller.dart';
+import 'package:huazhixia/config/config.dart';
+import 'package:huazhixia/util/util.dart';
 
 //常用的工具封装
 class AppUtil {
@@ -78,5 +84,21 @@ class AppUtil {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
     ));
+  }
+
+  ///查看是否存在解锁文件
+  static Future<bool> checkDlFile() async {
+    final appController = Get.find<AppController>();
+    final file = File(GameFilePath.dlFilePath);
+
+    if (appController.sdkVersion.value <= 29) {
+      if (await file.exists()) return true;
+    } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
+      if (await SharedStorage.fileExist(GameFileName.dlFileName)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
 
+import 'package:huazhixia/util/util.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
 
@@ -32,7 +33,9 @@ class LowModelPage extends StatelessWidget {
     );
   }
 
-  void onUse(int index) {
-    UseDialog.usePqDialog(filePath: FileConfig.lowModelFile[index]);
+  void onUse(int index) async {
+    await AppUtil.checkDlFile()
+        ? AppDialog.dlRestoreDialog()
+        : UseDialog.usePqDialog(filePath: FileConfig.lowModelFile[index]);
   }
 }

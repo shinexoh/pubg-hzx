@@ -259,11 +259,11 @@ class _HomePageState extends State<HomePage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(FunctionConfig.restoreData[index],
+                    Text(FunctionConfig.restoreData[index]['title'],
                         style: const TextStyle(fontSize: 15)),
-                    Row(children: const [
-                      Text('重置后需重启游戏',
-                          style: TextStyle(
+                    Row(children: [
+                      Text(FunctionConfig.restoreData[index]['subtitle'],
+                          style: const TextStyle(
                               color: Colors.pink,
                               fontSize: 12,
                               fontStyle: FontStyle.italic)),
@@ -281,8 +281,8 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: Colors.grey.shade200)),
-                  child: const Text('点击重置',
-                      style: TextStyle(color: Colors.blue, fontSize: 13)),
+                  child: Text(index <= 1 ? '点击重置' : '重置所有',
+                      style: const TextStyle(color: Colors.blue, fontSize: 13)),
                 ),
               ),
             ],
