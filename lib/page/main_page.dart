@@ -40,6 +40,18 @@ class _MainPageState extends State<MainPage> {
             type: BottomNavigationBarType.fixed,
             onTap: (index) => mainController.onTap(index),
           ),
+          // bottomNavigationBar: DecoratedBox(
+          //   decoration: BoxDecoration(boxShadow: [
+          //     BoxShadow(color: Colors.grey.shade200, blurRadius: 10)
+          //   ]),
+          //   child: SalomonBottomBar(
+          //     backgroundColor: Colors.white,
+          //     margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 22),
+          //     currentIndex: mainController.pageIndex.value,
+          //     onTap: (index) => mainController.onTap(index),
+          //     items: mainController.items,
+          //   ),
+          // ),
           body: IndexedStack(
             index: mainController.pageIndex.value,
             children: mainController.pageBody,
