@@ -42,25 +42,6 @@ class UserPage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
       child: Column(
         children: [
-          // OnInk(
-          //     color: Colors.white,
-          //     borderRadius: BorderRadius.circular(10),
-          //     padding: const EdgeInsets.all(15),
-          //     onLongPress: onUserInfo,
-          //     child: Row(children: [
-          //       Image.asset(AssetsConfig.vip, height: 28, width: 28),
-          //       const SizedBox(width: 15),
-          //       Column(
-          //           crossAxisAlignment: CrossAxisAlignment.start,
-          //           children: const [
-          //             Text('画质侠用户', style: TextStyle(fontSize: 16)),
-          //             // Text('当前状态：普通用户',
-          //             //     style: TextStyle(fontSize: 13, color: Colors.grey)),
-          //           ]),
-          //       const Spacer(),
-          //       const Icon(Remix.arrow_right_s_line,
-          //           color: Colors.grey, size: 20),
-          //     ])),
           GestureDetector(
             onLongPress: onUserInfo,
             child: Container(
@@ -96,8 +77,7 @@ class UserPage extends StatelessWidget {
           //       const SizedBox(width: 15),
           //       const Text('主题风格', style: TextStyle(fontSize: 16)),
           //       const Spacer(),
-          //       const Text('浅色主题',
-          //           style: TextStyle(fontSize: 13, color: Colors.grey)),
+          //       const Text('浅色主题', style: TextStyle(color: Colors.grey)),
           //     ])),
           // OnInk(
           //     color: Colors.white,
@@ -111,8 +91,7 @@ class UserPage extends StatelessWidget {
           //       const SizedBox(width: 15),
           //       const Text('切换语言', style: TextStyle(fontSize: 16)),
           //       const Spacer(),
-          //       const Text('简体中文',
-          //           style: TextStyle(fontSize: 13, color: Colors.grey)),
+          //       const Text('简体中文', style: TextStyle(color: Colors.grey)),
           //     ])),
           const SizedBox(height: 15),
           OnInk(
