@@ -96,6 +96,23 @@ class HomeController extends GetxController {
           AppDialog.directoryDialog();
         }
         break;
+      case 2:
+        if (_appController.sdkVersion.value <= 29) {
+          UseFor10.restorePq();
+          UseFor10.restoreDl();
+          UseFor10.restoreTq();
+
+          AppDialog.restoreDialog();
+        } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
+          UseFor11.restorePq();
+          UseFor11.restoreDl();
+          UseFor11.restoreTq();
+
+          AppDialog.restoreDialog();
+        } else {
+          AppDialog.directoryDialog();
+        }
+        break;
     }
   }
 }
