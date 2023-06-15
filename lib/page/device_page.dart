@@ -93,9 +93,11 @@ class _DevicePageState extends State<DevicePage> {
                         Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
-                                shape: BoxShape.circle),
-                            child: const Icon(Remix.folder_line)),
+                              color: Colors.orange.withOpacity(0.1),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(Remix.folder_line,
+                                color: Colors.orange)),
                         const SizedBox(width: 10),
                         const Text('存储权限', style: TextStyle(fontSize: 15)),
                       ]),
@@ -118,9 +120,11 @@ class _DevicePageState extends State<DevicePage> {
                         Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
-                                shape: BoxShape.circle),
-                            child: const Icon(Remix.folder_lock_line)),
+                              color: Colors.blue.withOpacity(0.1),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(Remix.folder_lock_line,
+                                color: Colors.blue)),
                         const SizedBox(width: 10),
                         const Text('游戏目录权限', style: TextStyle(fontSize: 15)),
                       ]),
@@ -151,8 +155,11 @@ class _DevicePageState extends State<DevicePage> {
                 Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                        color: Colors.grey.shade200, shape: BoxShape.circle),
-                    child: const Icon(Remix.information_line)),
+                      color: Colors.teal.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child:
+                        const Icon(Remix.information_line, color: Colors.teal)),
                 const SizedBox(width: 10),
                 const Text('手机品牌', style: TextStyle(fontSize: 15))
               ]),
@@ -169,8 +176,11 @@ class _DevicePageState extends State<DevicePage> {
                 Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                        color: Colors.grey.shade200, shape: BoxShape.circle),
-                    child: const Icon(Remix.smartphone_line)),
+                      color: Colors.indigoAccent.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Remix.smartphone_line,
+                        color: Colors.indigoAccent)),
                 const SizedBox(width: 10),
                 const Text('手机型号', style: TextStyle(fontSize: 15))
               ]),
@@ -187,8 +197,10 @@ class _DevicePageState extends State<DevicePage> {
                 Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                        color: Colors.grey.shade200, shape: BoxShape.circle),
-                    child: const Icon(Remix.android_line)),
+                      color: Colors.green.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Remix.android_line, color: Colors.green)),
                 const SizedBox(width: 10),
                 const Text('安卓版本', style: TextStyle(fontSize: 15))
               ]),
@@ -205,8 +217,10 @@ class _DevicePageState extends State<DevicePage> {
                 Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                        color: Colors.grey.shade200, shape: BoxShape.circle),
-                    child: const Icon(Remix.bug_2_line)),
+                      color: Colors.purple.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Remix.bug_2_line, color: Colors.purple)),
                 const SizedBox(width: 10),
                 const Text('SDK版本', style: TextStyle(fontSize: 15))
               ]),
@@ -223,8 +237,11 @@ class _DevicePageState extends State<DevicePage> {
                 Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                        color: Colors.grey.shade200, shape: BoxShape.circle),
-                    child: const Icon(Remix.tablet_line)),
+                      color: Colors.deepOrange.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Remix.tablet_line,
+                        color: Colors.deepOrange)),
                 const SizedBox(width: 10),
                 const Text('屏幕分辨率', style: TextStyle(fontSize: 15))
               ]),
@@ -241,8 +258,10 @@ class _DevicePageState extends State<DevicePage> {
                 Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                        color: Colors.grey.shade200, shape: BoxShape.circle),
-                    child: const Icon(Remix.cpu_line)),
+                      color: Colors.pink.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Remix.cpu_line, color: Colors.pink)),
                 const SizedBox(width: 10),
                 const Text('处理器', style: TextStyle(fontSize: 15))
               ]),
@@ -259,8 +278,11 @@ class _DevicePageState extends State<DevicePage> {
                 Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                        color: Colors.grey.shade200, shape: BoxShape.circle),
-                    child: const Icon(Remix.battery_2_charge_line)),
+                      color: Colors.cyan.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Remix.battery_2_charge_line,
+                        color: Colors.cyan)),
                 const SizedBox(width: 10),
                 const Text('当前电量', style: TextStyle(fontSize: 15))
               ]),

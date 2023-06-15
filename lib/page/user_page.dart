@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -42,57 +41,52 @@ class UserPage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
       child: Column(
         children: [
-          GestureDetector(
+          OnInk(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            padding: const EdgeInsets.all(15),
             onLongPress: onUserInfo,
-            child: Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Row(children: [
-                  Image.asset(AssetsConfig.vip, height: 28, width: 28),
-                  const SizedBox(width: 15),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('画质侠用户', style: TextStyle(fontSize: 16)),
-                        // Text('当前状态：普通用户',
-                        //     style: TextStyle(fontSize: 13, color: Colors.grey)),
-                      ]),
-                  const Spacer(),
-                  const Icon(Remix.arrow_right_s_line,
-                      color: Colors.grey, size: 20),
-                ])),
+            child: Row(children: [
+              Image.asset(AssetsConfig.vip, height: 28, width: 28),
+              const SizedBox(width: 15),
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text('画质侠用户', style: TextStyle(fontSize: 16)),
+                    // Text('当前状态：普通用户', style: TextStyle(color: Colors.grey)),
+                  ]),
+              const Spacer(),
+              const Icon(Remix.arrow_right_s_line, color: Colors.grey, size: 20)
+            ]),
           ),
-          // const SizedBox(height: 15),
-          // OnInk(
-          //     color: Colors.white,
-          //     borderRadius: const BorderRadius.only(
-          //         topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-          //     padding: const EdgeInsets.all(15),
-          //     onTap: () {},
-          //     child: Row(children: [
-          //       Image.asset(AssetsConfig.theme, height: 28, width: 28),
-          //       const SizedBox(width: 15),
-          //       const Text('主题风格', style: TextStyle(fontSize: 16)),
-          //       const Spacer(),
-          //       const Text('浅色主题', style: TextStyle(color: Colors.grey)),
-          //     ])),
-          // OnInk(
-          //     color: Colors.white,
-          //     borderRadius: const BorderRadius.only(
-          //         bottomLeft: Radius.circular(10),
-          //         bottomRight: Radius.circular(10)),
-          //     padding: const EdgeInsets.all(15),
-          //     onTap: () {},
-          //     child: Row(children: [
-          //       Image.asset(AssetsConfig.language, height: 28, width: 28),
-          //       const SizedBox(width: 15),
-          //       const Text('切换语言', style: TextStyle(fontSize: 16)),
-          //       const Spacer(),
-          //       const Text('简体中文', style: TextStyle(color: Colors.grey)),
-          //     ])),
+          const SizedBox(height: 15),
+          OnInk(
+              color: Colors.white,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+              padding: const EdgeInsets.all(15),
+              onTap: onTheme,
+              child: Row(children: [
+                Image.asset(AssetsConfig.theme, height: 28, width: 28),
+                const SizedBox(width: 15),
+                const Text('主题风格', style: TextStyle(fontSize: 16)),
+                const Spacer(),
+                const Text('浅色模式', style: TextStyle(color: Colors.grey)),
+              ])),
+          OnInk(
+              color: Colors.white,
+              borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)),
+              padding: const EdgeInsets.all(15),
+              onTap: onLanguage,
+              child: Row(children: [
+                Image.asset(AssetsConfig.language, height: 28, width: 28),
+                const SizedBox(width: 15),
+                const Text('切换语言', style: TextStyle(fontSize: 16)),
+                const Spacer(),
+                const Text('简体中文', style: TextStyle(color: Colors.grey)),
+              ])),
           const SizedBox(height: 15),
           OnInk(
               color: Colors.white,
@@ -187,20 +181,30 @@ class UserPage extends StatelessWidget {
 
   void onUserInfo() {
     Get.dialog(Center(
-      child: FadeInImage(
-          height: 250,
-          placeholder: MemoryImage(kTransparentImage),
-          image: const NetworkImage(
-              'https://img.gejiba.com/images/644f14ef7f205f7eeae751072b1f917b.jpg')),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: FadeInImage(
+            height: 250,
+            placeholder: MemoryImage(kTransparentImage),
+            image: const NetworkImage('http://shinex.top/tpss.jpg')),
+      ),
     ));
   }
 
   void onTheme() {
-    showToast('暂不支持');
+    DialogStyle.mainDialog(
+      subTitle: '暂不支持切换主题',
+      showCanceButton: false,
+      onOkButton: () => Get.back(),
+    );
   }
 
   void onLanguage() {
-    showToast('暂不支持');
+    DialogStyle.mainDialog(
+      subTitle: '暂不支持切换语言',
+      showCanceButton: false,
+      onOkButton: () => Get.back(),
+    );
   }
 
   //使用帮助

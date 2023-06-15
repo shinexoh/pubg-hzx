@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 class AppTheme {
   ///MaterialApp主题配置
-  static get themeData => ThemeData(
+  static ThemeData get themeData => ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
         scaffoldBackgroundColor: Colors.grey.shade100,

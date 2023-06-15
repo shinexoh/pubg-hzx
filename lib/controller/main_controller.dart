@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
 
@@ -29,54 +30,54 @@ class MainController extends GetxController {
     const UserPage(),
   ];
 
-  //底部导航Item
-  final List<BottomNavigationBarItem> items = const [
-    BottomNavigationBarItem(
-        label: '首页',
-        icon: Icon(Remix.home_5_line),
-        activeIcon: Icon(Remix.home_5_fill)),
-    BottomNavigationBarItem(
-        label: '功能',
-        icon: Icon(Remix.compass_3_line),
-        activeIcon: Icon(Remix.compass_3_fill)),
-    BottomNavigationBarItem(
-        label: '设备',
-        icon: Icon(Remix.dvd_line),
-        activeIcon: Icon(Remix.dvd_fill)),
-    BottomNavigationBarItem(
-        label: '我的',
-        icon: Icon(Remix.user_smile_line),
-        activeIcon: Icon(Remix.user_smile_fill)),
-  ];
+  // List<BottomNavigationBarItem> get items => const [
+  //       BottomNavigationBarItem(
+  //           label: '首页',
+  //           icon: Icon(Remix.home_5_line),
+  //           activeIcon: Icon(Remix.home_5_fill)),
+  //       BottomNavigationBarItem(
+  //           label: '功能',
+  //           icon: Icon(Remix.compass_3_line),
+  //           activeIcon: Icon(Remix.compass_3_fill)),
+  //       BottomNavigationBarItem(
+  //           label: '设备',
+  //           icon: Icon(Remix.dvd_line),
+  //           activeIcon: Icon(Remix.dvd_fill)),
+  //       BottomNavigationBarItem(
+  //           label: '我的',
+  //           icon: Icon(Remix.user_smile_line),
+  //           activeIcon: Icon(Remix.user_smile_fill)),
+  //     ];
 
-  // final List<SalomonBottomBarItem> items = [
-  //   SalomonBottomBarItem(
-  //       icon: const Icon(Remix.home_5_line),
-  //       activeIcon: const Icon(Remix.home_5_fill),
-  //       selectedColor: Colors.blue,
-  //       unselectedColor: Colors.black54,
-  //       title: const Text('首页')),
-  //   SalomonBottomBarItem(
-  //       icon: const Icon(Remix.compass_3_line),
-  //       activeIcon: const Icon(Remix.compass_3_fill),
-  //       selectedColor: Colors.pink,
-  //       unselectedColor: Colors.black54,
-  //       title: const Text('功能')),
-  //   SalomonBottomBarItem(
-  //     icon: const Icon(Remix.dvd_line),
-  //     activeIcon: const Icon(Remix.dvd_fill),
-  //     selectedColor: Colors.green,
-  //     unselectedColor: Colors.black54,
-  //     title: const Text('设备'),
-  //   ),
-  //   SalomonBottomBarItem(
-  //     icon: const Icon(Remix.user_smile_line),
-  //     activeIcon: const Icon(Remix.user_smile_fill),
-  //     selectedColor: Colors.teal,
-  //     unselectedColor: Colors.black54,
-  //     title: const Text('我的'),
-  //   ),
-  // ];
+  //底部导航Item
+  List<SalomonBottomBarItem> get items => [
+        SalomonBottomBarItem(
+            icon: const Icon(Remix.home_5_line),
+            activeIcon: const Icon(Remix.home_5_fill),
+            selectedColor: Colors.blue,
+            unselectedColor: Colors.black54,
+            title: const Text('首页')),
+        SalomonBottomBarItem(
+            icon: const Icon(Remix.compass_3_line),
+            activeIcon: const Icon(Remix.compass_3_fill),
+            selectedColor: Colors.pink,
+            unselectedColor: Colors.black54,
+            title: const Text('功能')),
+        SalomonBottomBarItem(
+          icon: const Icon(Remix.dvd_line),
+          activeIcon: const Icon(Remix.dvd_fill),
+          selectedColor: Colors.green,
+          unselectedColor: Colors.black54,
+          title: const Text('设备'),
+        ),
+        SalomonBottomBarItem(
+          icon: const Icon(Remix.user_smile_line),
+          activeIcon: const Icon(Remix.user_smile_fill),
+          selectedColor: Colors.orange,
+          unselectedColor: Colors.black54,
+          title: const Text('我的'),
+        ),
+      ];
 
   //底部导航切换界面
   void onTap(int index) => pageIndex.value = index;
