@@ -46,7 +46,7 @@ class HelpPage extends StatelessWidget {
                 ]),
             SizedBox(height: 10),
             ExpansionTile(
-                title: Text('修改后没有效果怎么办？'),
+                title: Text('修改画质后没有效果怎么办？'),
                 collapsedBackgroundColor: Colors.white,
                 backgroundColor: Colors.white,
                 expandedAlignment: Alignment.centerLeft,
@@ -55,11 +55,11 @@ class HelpPage extends StatelessWidget {
                     EdgeInsets.only(left: 15, right: 15, bottom: 15),
                 children: [
                   Text(
-                      '出现修改后没效果时，可能是因为你使用了“解锁画质+120帧”，那么就需要重置画质，重置后在重启游戏，然后就可以修改你需要的画质了（修改前需先退出游戏，否则无效果）'),
+                      '出现修改后没效果时，可能是因为你使用了“解锁画质+120帧”，那么就需要重置画质，重置后在重启游戏，然后就可以回到画质侠修改你需要的画质了（修改前需先退出游戏，否则无效果）'),
                 ]),
             SizedBox(height: 10),
             ExpansionTile(
-                title: Text('修改了高帧率或画质但是不显示?'),
+                title: Text('修改了帧率但是不显示？'),
                 collapsedBackgroundColor: Colors.white,
                 backgroundColor: Colors.white,
                 expandedAlignment: Alignment.centerLeft,
@@ -68,7 +68,7 @@ class HelpPage extends StatelessWidget {
                     EdgeInsets.only(left: 15, right: 15, bottom: 15),
                 children: [
                   Text(
-                      '部分机型修改后不显示高帧率，但是仍然可以使用高帧率。\n\n步骤：启动游戏->打开游戏画面设置->帧数设置(点击极限后面空白区域，就会提示选择成功！)'),
+                      '部分机型修改画质后不显示90/120帧率，但是仍然可以使用90/120。\n\n步骤：启动游戏->打开游戏画面设置->帧数设置（点击极限后面的空白区域就能选择90/120帧率）'),
                 ]),
             SizedBox(height: 10),
             ExpansionTile(
@@ -81,7 +81,7 @@ class HelpPage extends StatelessWidget {
                     EdgeInsets.only(left: 15, right: 15, bottom: 15),
                 children: [
                   Text(
-                      '重置画质->重启游戏->清理游戏后台->回到画质侠修改画质\n\n如问题还不能彻底解决，请联系作者寻求帮助！'),
+                      '重置画质->重启游戏->清理游戏后台->回到画质侠修改画质\n\n如问题还不能彻底解决，请卸载重装画质侠，或者联系作者寻求帮助！'),
                 ]),
           ],
         ),

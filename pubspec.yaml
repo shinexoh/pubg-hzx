@@ -13,7 +13,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   # 网络请求
-  dio: ^5.1.2
+  dio: ^5.2.1+1
   # 路由管理、状态管理
   get: ^4.6.5
   # remix图标库
@@ -27,7 +27,7 @@ dependencies:
   # 电池信息
   battery_plus: ^3.0.6
   # 权限处理
-  permission_handler: ^10.2.0
+  permission_handler: ^10.3.0
   # 弹窗、按钮
   awesome_dialog: ^3.0.2
   # 授予文件夹、安卓11+的文件操作
@@ -35,7 +35,7 @@ dependencies:
   # 安卓intent操作
   android_intent_plus: ^3.1.9
   # 键值对存储
-  shared_preferences: ^2.1.1
+  shared_preferences: ^2.1.2
   # 应用操作
   device_apps: ^2.2.0
   # 分享
