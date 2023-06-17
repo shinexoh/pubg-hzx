@@ -1,16 +1,18 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:android_intent_plus/android_intent.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:get/get.dart';
 
+import 'package:huazhixia/server/http_client.dart';
 import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/util/util.dart';
 
-//常用的工具封装
+//常用的方法封装
 class AppUtil {
   ///调用系统浏览器打开网页
   static void openUrl(String url) async {
@@ -99,6 +101,16 @@ class AppUtil {
       }
     }
 
+    return false;
+  }
+
+  ///检查网络是否可用
+  static Future<bool> checkNetAvailability() async {
+    final connectivity = await Connectivity().checkConnectivity();
+    if (connectivity != ConnectionState.none) {
+      final http = await HttpClient.get('https://www.baidu.com/');
+      return http.isOk ? true : false;
+    }
     return false;
   }
 }

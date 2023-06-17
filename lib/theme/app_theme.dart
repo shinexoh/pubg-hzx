@@ -15,9 +15,15 @@ class AppTheme {
           foregroundColor: Colors.black,
           titleTextStyle: TextStyle(fontSize: 20, color: Colors.black),
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-            statusBarIconBrightness: Brightness.dark,
-          ),
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness: Brightness.dark),
+        ),
+
+        //文本选择光标等颜色配置
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: Colors.blue,
+          selectionHandleColor: Colors.blue,
+          selectionColor: Colors.blue.shade200,
         ),
       );
 }

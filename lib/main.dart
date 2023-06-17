@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:get/get.dart';
 
@@ -39,7 +39,7 @@ void main() async {
   // SpUtil.clear();
 
   //检查网络后检查安卓10以下存储权限是否授予并跳转指定路由
-  if (await checkNet()) {
+  if (await AppUtil.checkNetAvailability()) {
     if (sdkVersion <= 29) {
       await Permission.storage.status == PermissionStatus.granted
           ? runApp(const MyApp('/'))
@@ -62,10 +62,11 @@ class MyApp extends StatelessWidget {
       duration: const Duration(seconds: 3),
       child: GetMaterialApp(
         title: '画质侠',
-        debugShowCheckedModeBanner: false,
         color: Colors.white,
         theme: AppTheme.themeData,
         initialRoute: initialRoute,
+        debugShowCheckedModeBanner: false,
+        defaultTransition: Transition.cupertino,
         getPages: [
           GetPage(name: '/', page: () => const MainPage()),
           GetPage(name: '/permission', page: () => const PermissionPage()),
@@ -78,7 +79,12 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/cardpass', page: () => const CardPassPage()),
           GetPage(name: '/modelimitate', page: () => const ModelImitatePage())
         ],
-        defaultTransition: Transition.cupertino,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
+        ],
+        supportedLocales: const [Locale('zh', 'CN')],
         //禁止字体大小跟随系统变化
         builder: (context, child) {
           return MediaQuery(
@@ -88,14 +94,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
-
-//检查网络是否可用
-Future<bool> checkNet() async {
-  final connectivity = await Connectivity().checkConnectivity();
-  if (connectivity != ConnectionState.none) {
-    final http = await HttpClient.get('https://www.baidu.com/');
-    return http.isOk ? true : false;
-  }
-  return false;
 }
