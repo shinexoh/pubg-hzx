@@ -3,7 +3,6 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/util/util.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -25,9 +24,6 @@ class _MainPageState extends State<MainPage> {
     mainController.checkUpdate();
     mainController.statistics();
     // mainController.checkPause();
-
-    //设置Dark状态栏样式
-    AppUtil.setStatusBarDark();
   }
 
   @override
@@ -56,6 +52,12 @@ class _MainPageState extends State<MainPage> {
           body: IndexedStack(
             index: mainController.pageIndex.value,
             children: mainController.pageBody,
+          ),
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.blue,
+            shape: const CircleBorder(),
+            onPressed: () => Get.toNamed('/cardpass'),
+            child: const Icon(Icons.send, color: Colors.white),
           ),
         ));
   }

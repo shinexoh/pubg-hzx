@@ -38,6 +38,9 @@ void main() async {
   SpUtil.addString(AppConfig.taskKey, '');
   // SpUtil.clear();
 
+  //设置Dark风格状态栏
+  AppUtil.setStatusBarDark();
+
   //检查网络后检查安卓10以下存储权限是否授予并跳转指定路由
   if (await AppUtil.checkNetAvailability()) {
     if (sdkVersion <= 29) {

@@ -13,7 +13,7 @@ class AssetsConfig {
 
   static const String vip = 'assets/icon/vip.png';
   static const String theme = 'assets/icon/theme.png';
-  static const String language = 'assets/icon/language.png';
+  static const String font = 'assets/icon/font.png';
   static const String useHelp = 'assets/icon/use_help.png';
   static const String download = 'assets/icon/download.png';
   static const String contactAuthor = 'assets/icon/contact_author.png';

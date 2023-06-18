@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/util/util.dart';
 
 class PermissionPage extends StatefulWidget {
   const PermissionPage({super.key});
@@ -23,9 +22,7 @@ class _PermissionPageState extends State<PermissionPage>
   @override
   void initState() {
     super.initState();
-
     WidgetsBinding.instance.addObserver(this);
-    AppUtil.setStatusBarDark();
   }
 
   @override

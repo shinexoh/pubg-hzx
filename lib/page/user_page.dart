@@ -79,13 +79,13 @@ class UserPage extends StatelessWidget {
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10)),
               padding: const EdgeInsets.all(15),
-              onTap: onLanguage,
+              onTap: onFont,
               child: Row(children: [
-                Image.asset(AssetsConfig.language, height: 28, width: 28),
+                Image.asset(AssetsConfig.font, height: 28, width: 28),
                 const SizedBox(width: 15),
-                const Text('切换语言', style: TextStyle(fontSize: 16)),
+                const Text('切换字体', style: TextStyle(fontSize: 16)),
                 const Spacer(),
-                const Text('简体中文', style: TextStyle(color: Colors.grey)),
+                const Text('系统默认', style: TextStyle(color: Colors.grey)),
               ])),
           const SizedBox(height: 15),
           OnInk(
@@ -199,9 +199,9 @@ class UserPage extends StatelessWidget {
     );
   }
 
-  void onLanguage() {
+  void onFont() {
     DialogStyle.mainDialog(
-      subTitle: '暂不支持切换语言',
+      subTitle: '暂不支持切换字体',
       showCanceButton: false,
       onOkButton: () => Get.back(),
     );

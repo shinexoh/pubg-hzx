@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppTheme {
-  ///MaterialApp主题配置
+  //浅色主题
   static ThemeData get themeData => ThemeData(
         useMaterial3: true,
+        brightness: Brightness.light,
         colorSchemeSeed: Colors.blue,
         scaffoldBackgroundColor: Colors.grey.shade100,
         appBarTheme: const AppBarTheme(
