@@ -233,7 +233,7 @@ class UserPage extends StatelessWidget {
     DialogStyle.mainDialog(
         title: '关于画质侠',
         subTitle: '画质侠是专为和平精英玩家量身打造的画质助手。我们致力于提供简洁高效的服务，以协助玩家获得更加优质的游戏体验。',
-        okButtonTitle: '查看许可',
+        okButtonTitle: '开源许可',
         onOkButton: () {
           Get.back();
           showLicensePage(

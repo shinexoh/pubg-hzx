@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:huazhixia/server/http_client.dart';
 import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/config/config.dart';
+import 'package:huazhixia/widgets/widgets.dart';
 import 'package:huazhixia/util/util.dart';
 
 //常用的方法封装
@@ -24,7 +25,14 @@ class AppUtil {
     if (await intent.canResolveActivity() ?? false) {
       intent.launch();
     } else {
-      showToast('打开浏览器失败');
+      DialogStyle.mainDialog(
+          subTitle: '打开浏览器失败，请下方点击复制网址 $url 后粘贴到浏览器打开！',
+          okButtonTitle: '点击复制网址',
+          onOkButton: () {
+            Get.back();
+            Clipboard.setData(ClipboardData(text: url));
+            showToast('复制网址成功');
+          });
     }
   }
 
@@ -37,7 +45,11 @@ class AppUtil {
     if (await intent.canResolveActivity() ?? false) {
       intent.launch();
     } else {
-      showToast('打开QQ失败');
+      DialogStyle.mainDialog(
+        subTitle: '打开QQ失败，请手动添加QQ：$qq',
+        showCanceButton: false,
+        onOkButton: () => Get.back(),
+      );
     }
   }
 
@@ -50,7 +62,11 @@ class AppUtil {
     if (await intent.canResolveActivity() ?? false) {
       intent.launch();
     } else {
-      showToast('打开QQ失败');
+      DialogStyle.mainDialog(
+        subTitle: '打开QQ失败，请手动添加QQ群：$qqGroup',
+        showCanceButton: false,
+        onOkButton: () => Get.back(),
+      );
     }
   }
 
