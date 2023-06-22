@@ -18,7 +18,7 @@ dependencies:
   # Cupertino图标
   cupertino_icons: ^1.0.2
   # 网络请求
-  dio: ^5.2.1+1
+  dio: ^5.1.2
   # 路由管理、状态管理
   get: ^4.6.5
   # remix图标库

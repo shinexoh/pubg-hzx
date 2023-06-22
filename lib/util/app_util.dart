@@ -28,6 +28,7 @@ class AppUtil {
       DialogStyle.mainDialog(
           subTitle: '打开浏览器失败，请下方点击复制网址 $url 后粘贴到浏览器打开！',
           okButtonTitle: '点击复制网址',
+          showCanceButton: false,
           onOkButton: () {
             Get.back();
             Clipboard.setData(ClipboardData(text: url));
