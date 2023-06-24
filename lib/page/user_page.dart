@@ -179,6 +179,44 @@ class UserPage extends StatelessWidget {
     );
   }
 
+  // Widget vipBar() {
+  //   return Padding(
+  //     padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
+  //     child: SizedBox(
+  //       width: double.infinity,
+  //       child: Material(
+  //         elevation: 4,
+  //         color: const Color.fromRGBO(26, 26, 26, 0.9),
+  //         borderRadius: BorderRadius.circular(15),
+  //         child: Padding(
+  //           padding: const EdgeInsets.all(15),
+  //           child: Column(
+  //             crossAxisAlignment: CrossAxisAlignment.start,
+  //             children: const [
+  //               Text(
+  //                 'VIP',
+  //                 style: TextStyle(
+  //                     fontSize: 25,
+  //                     color: Color.fromRGBO(252, 162, 86, 1),
+  //                     fontWeight: FontWeight.bold,
+  //                     height: 1.2,
+  //                     letterSpacing: 5),
+  //               ),
+  //               Text(
+  //                 '激活画质侠享受更多画质修改功能',
+  //                 style: TextStyle(
+  //                     fontSize: 13,
+  //                     color: Color.fromRGBO(252, 162, 86, 1),
+  //                     letterSpacing: 1),
+  //               )
+  //             ],
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+
   void onUserInfo() {
     Get.dialog(Center(
       child: ClipRRect(

@@ -7,4 +7,7 @@ class Api {
 
   ///统计应用数据Url
   static const String appStatistics = 'https://wds.ecsxs.com/219609.json';
+
+  ///卡密列表Url
+  static const String cardPassUrl = 'https://wds.ecsxs.com/1020.txt';
 }

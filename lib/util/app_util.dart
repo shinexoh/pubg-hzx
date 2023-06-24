@@ -26,7 +26,7 @@ class AppUtil {
       intent.launch();
     } else {
       DialogStyle.mainDialog(
-          subTitle: '打开浏览器失败，请下方点击复制网址 $url 后粘贴到浏览器打开！',
+          subTitle: '打开浏览器失败，请下方点击复制网址后粘贴到浏览器打开！',
           okButtonTitle: '点击复制网址',
           showCanceButton: false,
           onOkButton: () {
