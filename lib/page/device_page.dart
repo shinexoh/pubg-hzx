@@ -27,10 +27,7 @@ class _DevicePageState extends State<DevicePage> {
   @override
   void initState() {
     super.initState();
-    initDeviceInfo();
-  }
 
-  void initDeviceInfo() async {
     brand.value = DeviceInfo.brand;
     model.value = DeviceInfo.model;
     androidVersion.value = DeviceInfo.androidVersion;
