@@ -56,8 +56,8 @@ class _MainPageState extends State<MainPage> {
           floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.blue,
             shape: const CircleBorder(),
-            onPressed: () => Get.toNamed('/modelimitate'),
-            child: const Icon(Icons.send, color: Colors.white),
+            onPressed: () => Get.toNamed('/cardpass'),
+            child: const Icon(Icons.add, color: Colors.white),
           ),
         ));
   }

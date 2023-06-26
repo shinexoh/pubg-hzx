@@ -151,7 +151,10 @@ class FunctionPage extends StatelessWidget {
                                 fontStyle: FontStyle.italic)),
                       ]),
                   const Spacer(),
-                  Image.asset(AssetsConfig.arrow, height: 20, width: 20),
+                  index == 0
+                      ? Image.asset(AssetsConfig.arrow, height: 20, width: 20)
+                      : const Icon(Remix.arrow_right_s_line,
+                          color: Colors.grey, size: 20),
                 ],
               ),
             );

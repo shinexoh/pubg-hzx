@@ -9,6 +9,9 @@ class AppConfig {
   ///任务Key
   static const String taskKey = 'TaskKey';
 
+  ///机型模拟参数Key
+  static const String modelImitateKey = 'modelImitateKey';
+
   ///画质侠下载地址
   static const String appDownload = 'https://rcls.lanzoub.com/b0d9qtief';
 

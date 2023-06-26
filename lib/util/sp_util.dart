@@ -21,13 +21,21 @@ class SpUtil {
     return _sharedPreferences.setString(key, value);
   }
 
-  ///查询字符串
-  static String? getString(String key) {
-    return _sharedPreferences.getString(key);
+  ///添加List
+  static Future<bool> addList(String key, List<String> value) {
+    return _sharedPreferences.setStringList(key, value);
+  }
+
+  ///查询指定List
+  static List<String>? getList(String key) {
+    return _sharedPreferences.getStringList(key);
   }
 
   ///查询是否包含指定Key
   static bool containsKey(String key) => _sharedPreferences.containsKey(key);
+
+  ///删除指定Key
+  static Future<bool> remove(String key) => _sharedPreferences.remove(key);
 
   ///清空所有Key
   static Future<bool> clear() => _sharedPreferences.clear();

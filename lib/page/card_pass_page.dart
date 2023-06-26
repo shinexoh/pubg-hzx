@@ -49,7 +49,7 @@ class _CardPassPageState extends State<CardPassPage> {
                 color: Colors.grey.shade200,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
-                  BoxShadow(color: Colors.grey.shade200, blurRadius: 10)
+                  BoxShadow(color: Colors.grey.shade100, blurRadius: 10)
                 ],
               ),
               child: TextField(
@@ -142,8 +142,7 @@ class _CardPassPageState extends State<CardPassPage> {
             return Container(
               width: double.infinity,
               margin: EdgeInsets.only(
-                bottom: index == getRightsData.length - 1 ? 0 : 10,
-              ),
+                  bottom: index == getRightsData.length - 1 ? 0 : 10),
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                   color: Colors.white,

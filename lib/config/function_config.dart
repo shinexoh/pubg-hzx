@@ -53,7 +53,7 @@ class FunctionConfig {
   ///随机修改
   static const List randomData = [
     {'title': '随机修改', 'subtitle': '选择困难症？试试这个吧！'},
-    // {'title': '机型画质模拟', 'subtitle': '根据设备参数一比一还原原生画质'},
+    {'title': '机型画质模拟', 'subtitle': '根据设备参数一比一模拟原生画质'},
   ];
 
   ///专属修改
