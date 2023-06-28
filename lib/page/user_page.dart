@@ -60,24 +60,22 @@ class UserPage extends StatelessWidget {
             ]),
           ),
           const SizedBox(height: 15),
+          // OnInk(
+          //     color: Colors.white,
+          //     borderRadius: const BorderRadius.only(
+          //         topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+          //     padding: const EdgeInsets.all(15),
+          //     onTap: onTheme,
+          //     child: Row(children: [
+          //       Image.asset(AssetsConfig.theme, height: 28, width: 28),
+          //       const SizedBox(width: 15),
+          //       const Text('主题风格', style: TextStyle(fontSize: 16)),
+          //       const Spacer(),
+          //       const Text('浅色模式', style: TextStyle(color: Colors.grey)),
+          //     ])),
           OnInk(
               color: Colors.white,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-              padding: const EdgeInsets.all(15),
-              onTap: onTheme,
-              child: Row(children: [
-                Image.asset(AssetsConfig.theme, height: 28, width: 28),
-                const SizedBox(width: 15),
-                const Text('主题风格', style: TextStyle(fontSize: 16)),
-                const Spacer(),
-                const Text('浅色模式', style: TextStyle(color: Colors.grey)),
-              ])),
-          OnInk(
-              color: Colors.white,
-              borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10)),
+              borderRadius: BorderRadius.circular(10),
               padding: const EdgeInsets.all(15),
               onTap: onFont,
               child: Row(children: [

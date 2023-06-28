@@ -24,6 +24,8 @@ class _MainPageState extends State<MainPage> {
     mainController.checkUpdate();
     mainController.statistics();
     // mainController.checkPause();
+
+    mainController.print();
   }
 
   @override

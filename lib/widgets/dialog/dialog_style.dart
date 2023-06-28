@@ -8,6 +8,7 @@ class DialogStyle {
   static void mainDialog({
     String? title,
     String? subTitle,
+    DialogType dialogType = DialogType.noHeader,
     String canceButtonTitle = '取消',
     String okButtonTitle = '确定',
     Color canceButtonColor = Colors.pink,
@@ -21,7 +22,7 @@ class DialogStyle {
       context: Get.context!,
       title: title,
       desc: subTitle,
-      dialogType: DialogType.noHeader,
+      dialogType: dialogType,
       descTextStyle: const TextStyle(fontSize: 15),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       dialogBorderRadius: BorderRadius.circular(15),
@@ -41,6 +42,27 @@ class DialogStyle {
         color: okButtonColor,
         buttonTextStyle: const TextStyle(color: Colors.white),
         pressEvent: onOkButton ?? () {},
+      ),
+    ).show();
+  }
+
+  ///加载中弹窗
+  ///
+  ///如 [autoHideDuration] 不为null则使用await等待时间自动关闭
+  static Future<void> loadingDialog({
+    Duration? autoHideDuration,
+    bool dismissible = true,
+    Color loadingColor = Colors.blue,
+  }) async {
+    await AwesomeDialog(
+      context: Get.context!,
+      dialogType: DialogType.noHeader,
+      bodyHeaderDistance: 0,
+      autoHide: autoHideDuration,
+      dismissOnTouchOutside: dismissible,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 30),
+        child: CircularProgressIndicator(color: loadingColor),
       ),
     ).show();
   }

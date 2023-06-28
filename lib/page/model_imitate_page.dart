@@ -1,10 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:device_apps/device_apps.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:get/get.dart';
 
-import 'package:huazhixia/util/util.dart';
+import 'package:huazhixia/widgets/widgets.dart';
 import 'package:huazhixia/config/config.dart';
+import 'package:huazhixia/util/util.dart';
 
 class ModelImitatePage extends StatefulWidget {
   const ModelImitatePage({super.key});
@@ -21,7 +24,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
   TextEditingController cpuController = TextEditingController();
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
 
     if (SpUtil.getList(AppConfig.modelImitateKey) != null) {
@@ -327,18 +330,83 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
   }
 
   //开始模拟
-  void onStart() {
+  void onStart() async {
     if (brandController.text.isEmpty ||
         modelController.text.isEmpty ||
         resController.text.isEmpty ||
         hertzController.text.isEmpty ||
         cpuController.text.isEmpty) {
       showToast('请先输入完整参数');
+    } else {
+      FocusScope.of(context).unfocus();
+
+      if (await AppUtil.checkDlFile()) {
+        AppDialog.dlRestoreDialog();
+      } else {
+        await DialogStyle.loadingDialog(
+            autoHideDuration: const Duration(milliseconds: 1500),
+            dismissible: false);
+
+        AppUtil.randomUsePq(
+          errorToast: '模拟失败，请检查权限是否授予',
+          callBack: () {
+            DialogStyle.mainDialog(
+              dialogType: DialogType.success,
+              title: '模拟成功',
+              subTitle: '机型画质模拟成功，是否立即启动游戏？',
+              okButtonTitle: '启动游戏',
+              onOkButton: () async {
+                Get.back();
+                if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
+                  showToast('启动失败，请手动启动');
+                }
+              },
+            );
+          },
+        );
+      }
     }
   }
 
   //兼容模式模拟
-  void onStartCompatible() {}
+  void onStartCompatible() async {
+    if (brandController.text.isEmpty ||
+        modelController.text.isEmpty ||
+        resController.text.isEmpty ||
+        hertzController.text.isEmpty ||
+        cpuController.text.isEmpty) {
+      showToast('请先输入完整参数');
+    } else {
+      FocusScope.of(context).unfocus();
+
+      if (await AppUtil.checkDlFile()) {
+        AppDialog.dlRestoreDialog();
+      } else {
+        await DialogStyle.loadingDialog(
+            autoHideDuration: const Duration(milliseconds: 1500),
+            dismissible: false,
+            loadingColor: Colors.deepOrange);
+
+        AppUtil.randomUsePq(
+          errorToast: '模拟失败，请检查权限是否授予',
+          callBack: () {
+            DialogStyle.mainDialog(
+              dialogType: DialogType.success,
+              title: '模拟成功',
+              subTitle: '机型画质模拟成功，是否立即启动游戏？',
+              okButtonTitle: '启动游戏',
+              onOkButton: () async {
+                Get.back();
+                if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
+                  showToast('启动失败，请手动启动');
+                }
+              },
+            );
+          },
+        );
+      }
+    }
+  }
 
   //保存参数
   void saveArguments() {
@@ -349,6 +417,8 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         cpuController.text.isEmpty) {
       showToast('请先输入完整参数');
     } else {
+      FocusScope.of(context).unfocus();
+
       SpUtil.addList(AppConfig.modelImitateKey, [
         brandController.text,
         modelController.text,
@@ -362,6 +432,8 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
 
   //清除已保存参数
   void clearArguments() {
+    FocusScope.of(context).unfocus();
+
     if (SpUtil.containsKey(AppConfig.modelImitateKey)) {
       SpUtil.remove(AppConfig.modelImitateKey);
       showToast('清除成功');

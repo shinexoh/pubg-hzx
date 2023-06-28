@@ -20,13 +20,11 @@ class CardPassPage extends StatefulWidget {
 
 class _CardPassPageState extends State<CardPassPage> {
   TextEditingController controller = TextEditingController();
-  FocusNode focusNode = FocusNode();
 
   @override
   void dispose() {
     super.dispose();
     controller.dispose();
-    focusNode.dispose();
   }
 
   @override
@@ -44,46 +42,52 @@ class _CardPassPageState extends State<CardPassPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DecoratedBox(
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(color: Colors.grey.shade100, blurRadius: 10)
-                ],
-              ),
-              child: TextField(
-                  controller: controller,
-                  focusNode: focusNode,
-                  selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
-                  decoration: const InputDecoration(
-                    hintText: '请输入激活卡密',
-                    border: InputBorder.none,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 15),
-                  )),
-            ),
+            cardPassTextField(),
             const SizedBox(height: 20),
-            AnimatedButton(
-              height: 45,
-              text: '激活卡密',
-              color: Colors.blue,
-              isFixedHeight: false,
-              pressEvent: onUse,
-            ),
-            const SizedBox(height: 10),
-            AnimatedButton(
-              height: 45,
-              text: '没有卡密？点击购买',
-              isFixedHeight: false,
-              color: Colors.orange,
-              pressEvent: onBuy,
-            ),
+            buttonBar(),
             infoBar(),
-            getRightsBar(),
+            enjoyBar(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget cardPassTextField() {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: Colors.grey.shade200,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [BoxShadow(color: Colors.grey.shade100, blurRadius: 10)],
+      ),
+      child: TextField(
+          controller: controller,
+          selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
+          decoration: const InputDecoration(
+            hintText: '请输入激活卡密',
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+          )),
+    );
+  }
+
+  Widget buttonBar() {
+    return Column(
+      children: [
+        AnimatedButton(
+            height: 45,
+            text: '激活卡密',
+            color: Colors.blue,
+            isFixedHeight: false,
+            pressEvent: onUse),
+        const SizedBox(height: 10),
+        AnimatedButton(
+            height: 45,
+            text: '没有卡密？点击购买',
+            isFixedHeight: false,
+            color: Colors.orange,
+            pressEvent: onBuy)
+      ],
     );
   }
 
@@ -119,7 +123,7 @@ class _CardPassPageState extends State<CardPassPage> {
     );
   }
 
-  Widget getRightsBar() {
+  Widget enjoyBar() {
     const List<Map> getRightsData = [
       {'icon': Remix.a24_hours_line, 'title': '24小时专属客服'},
       {'icon': Remix.gamepad_line, 'title': '解锁画质+120帧率'},
@@ -171,13 +175,16 @@ class _CardPassPageState extends State<CardPassPage> {
     if (controller.text == '') {
       showToast('请输入卡密');
     } else {
+      FocusScope.of(context).unfocus();
+      DialogStyle.loadingDialog();
+
       final httpCardPass = await HttpClient.get(Api.cardPassUrl);
 
       if (httpCardPass.isOk) {
-        final List<String> cardPassList = httpCardPass.data.split('\n');
+        Get.back();
 
+        final List<String> cardPassList = httpCardPass.data.split('\n');
         if (cardPassList.contains(controller.text.toUpperCase())) {
-          focusNode.unfocus();
           SpUtil.addString(AppConfig.taskKey, '');
 
           DialogStyle.mainDialog(
@@ -191,6 +198,8 @@ class _CardPassPageState extends State<CardPassPage> {
           showToast('卡密不存在');
         }
       } else {
+        Get.back();
+
         DialogStyle.mainDialog(
           subTitle: '网络连接错误，请检查网络或重启画质侠后重试！',
           showCanceButton: false,
@@ -202,11 +211,14 @@ class _CardPassPageState extends State<CardPassPage> {
 
   //购买卡密
   void onBuy() {
-    focusNode.unfocus();
+    FocusScope.of(context).unfocus();
     AppUtil.openUrl(
         'http://shinex.haihaihai.cc/?classify_id=1173&goods_id=1897');
   }
 
   //联系客服
-  void onQQ() => AppUtil.openQQ(653143454);
+  void onQQ() {
+    FocusScope.of(context).unfocus();
+    AppUtil.openQQ(653143454);
+  }
 }

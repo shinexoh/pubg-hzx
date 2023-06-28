@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:oktoast/oktoast.dart';
@@ -129,5 +130,30 @@ class AppUtil {
       return http.isOk ? true : false;
     }
     return false;
+  }
+
+  ///随机修改画质
+  static void randomUsePq({
+    required Function callBack, //修改成功后回调方法
+    String errorToast = '修改失败，请检查权限是否授予',
+  }) async {
+    final random = Random().nextInt(FileConfig.allPqFile.length - 1);
+    final sdkVersion = Get.find<AppController>().sdkVersion.value;
+
+    if (SpUtil.containsKey(AppConfig.taskKey)) {
+      if (sdkVersion <= 29) {
+        await UseFor10.usePq(FileConfig.allPqFile[random])
+            ? callBack()
+            : showToast(errorToast);
+      } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
+        await UseFor11.usePq(FileConfig.allPqFile[random])
+            ? callBack()
+            : showToast(errorToast);
+      } else {
+        AppDialog.directoryDialog();
+      }
+    } else {
+      AppDialog.taskDialog();
+    }
   }
 }

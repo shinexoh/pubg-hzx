@@ -1,10 +1,8 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:get/get.dart';
 
-import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/util/util.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
@@ -181,8 +179,6 @@ class FunctionPage extends StatelessWidget {
   }
 
   void onRandom(int index) async {
-    final random = Random().nextInt(FileConfig.allPqFile.length - 1);
-
     switch (index) {
       case 0:
         if (await AppUtil.checkDlFile()) {
@@ -191,26 +187,10 @@ class FunctionPage extends StatelessWidget {
           DialogStyle.mainDialog(
             title: '随机修改',
             subTitle: '确定要随机修改一项画质？如出现问题请前往首页重置画质！',
-            onOkButton: () async {
+            okButtonTitle: '修改',
+            onOkButton: () {
               Get.back();
-              final sdkVersion = Get.find<AppController>().sdkVersion.value;
-
-              if (SpUtil.containsKey(AppConfig.taskKey)) {
-                if (sdkVersion <= 29) {
-                  await UseFor10.usePq(FileConfig.allPqFile[random])
-                      ? showToast('修改成功，请重启游戏')
-                      : showToast('修改失败，请检查权限是否授予');
-                } else if (await SharedStorage.checkUriGrant(
-                    UriConfig.mainUri)) {
-                  await UseFor11.usePq(FileConfig.allPqFile[random])
-                      ? showToast('修改成功，请重启游戏')
-                      : showToast('修改失败，请检查权限是否授予');
-                } else {
-                  AppDialog.directoryDialog();
-                }
-              } else {
-                AppDialog.taskDialog();
-              }
+              AppUtil.randomUsePq(callBack: () => showToast('修改成功，请重启游戏'));
             },
           );
         }

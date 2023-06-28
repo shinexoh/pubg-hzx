@@ -21,12 +21,12 @@ class SpUtil {
     return _sharedPreferences.setString(key, value);
   }
 
-  ///添加List
+  ///添加字符串List
   static Future<bool> addList(String key, List<String> value) {
     return _sharedPreferences.setStringList(key, value);
   }
 
-  ///查询指定List
+  ///查询指定字符串List
   static List<String>? getList(String key) {
     return _sharedPreferences.getStringList(key);
   }
@@ -34,9 +34,12 @@ class SpUtil {
   ///查询是否包含指定Key
   static bool containsKey(String key) => _sharedPreferences.containsKey(key);
 
+  ///查询所有Key
+  static Set<String> getAllKey() => _sharedPreferences.getKeys();
+
   ///删除指定Key
   static Future<bool> remove(String key) => _sharedPreferences.remove(key);
 
-  ///清空所有Key
+  ///删除所有Key
   static Future<bool> clear() => _sharedPreferences.clear();
 }
