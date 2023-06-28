@@ -4,6 +4,7 @@ class AssetsConfig {
   static const String lightning = 'assets/icon/lightning.png';
   static const String arrow = 'assets/icon/arrow.png';
   static const String modelImitate = 'assets/icon/model_imitate.png';
+  static const String permission = 'assets/icon/permission.png';
 
   static const String quick = 'assets/icon/quick.png';
   static const String other = 'assets/icon/other.png';
@@ -21,6 +22,4 @@ class AssetsConfig {
   static const String share = 'assets/icon/share.png';
   static const String checkUpdate = 'assets/icon/check_update.png';
   static const String about = 'assets/icon/about.png';
-
-  static const String permission = 'assets/image/permission.png';
 }

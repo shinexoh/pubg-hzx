@@ -68,7 +68,6 @@ flutter:
 
   assets:
     - assets/icon/
-    - assets/image/
     - assets/file/
     - assets/file/kjxg/
     - assets/file/zsxg/
