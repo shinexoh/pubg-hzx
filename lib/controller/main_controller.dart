@@ -80,7 +80,9 @@ class MainController extends GetxController {
       ];
 
   //底部导航切换界面
-  void onTap(int index) => pageIndex.value = index;
+  void onTap(int index) {
+    pageIndex.value = index;
+  }
 
   //检查任务状态
   void checkTask() async {
@@ -160,7 +162,6 @@ class MainController extends GetxController {
 所有Key：${SpUtil.getAllKey()}
 安卓Sdk版本：${_appController.sdkVersion.value}
 存储权限：${_appController.storageState.value}
-目录授予：${_appController.directoryState.value}
-''');
+目录授予：${_appController.directoryState.value}''');
   }
 }

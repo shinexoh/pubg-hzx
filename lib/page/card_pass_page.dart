@@ -45,7 +45,9 @@ class _CardPassPageState extends State<CardPassPage> {
             cardPassTextField(),
             const SizedBox(height: 20),
             buttonBar(),
+            const SizedBox(height: 20),
             infoBar(),
+            const SizedBox(height: 30),
             enjoyBar(),
           ],
         ),
@@ -94,7 +96,6 @@ class _CardPassPageState extends State<CardPassPage> {
   Widget infoBar() {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.only(top: 20),
       padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -139,7 +140,7 @@ class _CardPassPageState extends State<CardPassPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
-            padding: EdgeInsets.only(top: 30, bottom: 20),
+            padding: EdgeInsets.only(bottom: 20),
             child: Text('享受权益', style: TextStyle(fontSize: 20))),
         Column(
           children: List.generate(getRightsData.length, (index) {

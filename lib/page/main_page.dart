@@ -55,12 +55,14 @@ class _MainPageState extends State<MainPage> {
             index: mainController.pageIndex.value,
             children: mainController.pageBody,
           ),
+          /*
           floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.blue,
             shape: const CircleBorder(),
             onPressed: () => Get.toNamed('/cardpass'),
             child: const Icon(Icons.add, color: Colors.white),
           ),
+          */
         ));
   }
 }
