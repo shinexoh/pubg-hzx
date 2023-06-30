@@ -46,7 +46,7 @@ class UseButton extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.blue.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(5)),
-                    child: const Text('画质优化',
+                    child: const Text('120帧率',
                         style: TextStyle(color: Colors.blue, fontSize: 13))),
               ])
             ],

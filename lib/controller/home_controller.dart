@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/util/util.dart';
@@ -11,6 +11,31 @@ import 'package:huazhixia/widgets/widgets.dart';
 
 class HomeController extends GetxController {
   final _appController = Get.find<AppController>();
+
+  final title = ''.obs;
+  final subTitle = ''.obs;
+
+  //初始化标题与副标题
+  void initTitle() {
+    final nowDate = DateTime.now().hour;
+
+    if (nowDate >= 6 && nowDate < 11) {
+      title.value = '早上好';
+      subTitle.value = '一日之计在于晨，一年之计在于春。';
+    } else if (nowDate >= 11 && nowDate < 13) {
+      title.value = '中午好';
+      subTitle.value = '享受中午的阳光，感受生命的活力！';
+    } else if (nowDate >= 13 && nowDate < 19) {
+      title.value = '下午好';
+      subTitle.value = '下午时分，加强学习，充实自己！';
+    } else if (nowDate >= 19 && nowDate < 24) {
+      title.value = '晚上好';
+      subTitle.value = '每个宁静的夜晚都是思考的好时机。';
+    } else {
+      title.value = '凌晨好';
+      subTitle.value = '夜深了，放下手机，早点休息。';
+    }
+  }
 
   //分享
   void onShare() => Share.share(AppConfig.shareContent);

@@ -32,7 +32,8 @@ class FunctionPage extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(top: 20, left: 20),
         child: Text('功能',
-            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            style: TextStyle(
+                fontSize: 22, letterSpacing: 1, fontWeight: FontWeight.bold)),
       ),
     );
   }

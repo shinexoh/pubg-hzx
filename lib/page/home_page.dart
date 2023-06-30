@@ -17,98 +17,108 @@ class _HomePageState extends State<HomePage> {
   final homeController = Get.put(HomeController());
 
   @override
+  void initState() {
+    super.initState();
+    homeController.initTitle();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
+      body: SingleChildScrollView(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           topAppBar(),
-          Divider(height: 1, color: Colors.grey.shade100),
-          Expanded(
-            child: SingleChildScrollView(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                gameVerBar(),
-                textBar('快捷修改'),
-                quickBar(),
-                textBar('其他功能'),
-                otherBar(),
-                textBar('重置功能'),
-                restoreBar(),
-              ],
-            )),
-          ),
-        ],
+          infoBar(),
+          textBar('快捷修改'),
+          quickBar(),
+          textBar('其他功能'),
+          otherBar(),
+          textBar('重置功能'),
+          restoreBar(),
+        ]),
       ),
     );
   }
 
   Widget topAppBar() {
-    return DecoratedBox(
-      decoration: const BoxDecoration(color: Colors.white),
-      child: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text('画质侠', style: TextStyle(fontSize: 20)),
-                  Text('PUBG Picture Quality',
-                      style: TextStyle(color: Colors.grey))
-                ]),
-            Row(children: [
-              IconButton(
-                  onPressed: homeController.onShare,
-                  icon: const Icon(Remix.share_line, color: Colors.black)),
+    return SafeArea(
+      child: Padding(
+          padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Obx(() => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(homeController.title.value,
+                          style: const TextStyle(
+                              fontSize: 22,
+                              letterSpacing: 1,
+                              fontWeight: FontWeight.bold)),
+                      Text(homeController.subTitle.value,
+                          style: const TextStyle(
+                              color: Colors.grey, letterSpacing: 1)),
+                    ],
+                  )),
               IconButton(
                   onPressed: homeController.onOpenGame,
-                  icon: const Icon(Remix.rocket_line, color: Colors.black)),
-            ]),
-          ],
-        ),
-      )),
+                  icon: const Icon(Remix.rocket_line)),
+            ],
+          )),
     );
   }
 
-  Widget gameVerBar() {
+  Widget infoBar() {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
-      padding: const EdgeInsets.all(15),
+      margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(10)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(children: [
-            Image.asset(AssetsConfig.gameIcon, height: 45, width: 45),
-            const SizedBox(width: 10),
-            Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text('和平精英', style: TextStyle(fontSize: 15)),
-                  Text('PUBG Mobile',
-                      style: TextStyle(color: Colors.grey, fontSize: 12))
-                ]),
-          ]),
-          OnInk(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            onTap: homeController.onGameVer,
+      child: Column(children: [
+        Row(children: [
+          Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey.shade200)),
-              child: const Text('切换版本',
-                  style: TextStyle(color: Colors.blue, fontSize: 13)),
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(children: const [
+                Icon(Remix.wireless_charging_line),
+                SizedBox(width: 10),
+                Text('服务器状态：正常', style: TextStyle(fontSize: 15)),
+              ]),
             ),
           ),
-        ],
-      ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(children: const [
+                Icon(Remix.compasses_2_line),
+                SizedBox(width: 10),
+                Text('文件状态：正常', style: TextStyle(fontSize: 15)),
+              ]),
+            ),
+          ),
+        ]),
+        const SizedBox(height: 10),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+          decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(10)),
+          child: Row(children: const [
+            Icon(Remix.chat_smile_2_line),
+            SizedBox(width: 10),
+            Text('如出现问题请及时反馈。祝你玩的开心！', style: TextStyle(fontSize: 15)),
+          ]),
+        ),
+      ]),
     );
   }
 
@@ -298,7 +308,9 @@ class _HomePageState extends State<HomePage> {
       child: Row(
         children: [
           Image.asset(AssetsConfig.lightning, height: 20, width: 20),
-          Text(data, style: const TextStyle(fontStyle: FontStyle.italic)),
+          Text(data,
+              style:
+                  const TextStyle(fontStyle: FontStyle.italic, fontSize: 15)),
         ],
       ),
     );
