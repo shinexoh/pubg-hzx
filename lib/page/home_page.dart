@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ]),
-        const SizedBox(height: 10),
+        const SizedBox(height: 12),
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
