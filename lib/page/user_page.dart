@@ -50,9 +50,9 @@ class UserPage extends StatelessWidget {
             child: Row(children: [
               Image.asset(AssetsConfig.vip, height: 28, width: 28),
               const SizedBox(width: 15),
-              Column(
+              const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text('画质侠用户', style: TextStyle(fontSize: 16)),
                     // Text('当前状态：普通用户', style: TextStyle(color: Colors.grey)),
                   ]),

@@ -14,10 +14,10 @@ class HelpPage extends StatelessWidget {
             onPressed: () => Get.back(),
             icon: const Icon(Remix.arrow_left_line)),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.symmetric(vertical: 10),
         child: Column(
-          children: const [
+          children: [
             ExpansionTile(
                 title: Text('画质侠授予权限问题'),
                 initiallyExpanded: true,

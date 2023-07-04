@@ -268,9 +268,9 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Colors.grey.shade200),
         ),
-        child: Column(
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text('使用教程',
                 style: TextStyle(
                     fontSize: 15,

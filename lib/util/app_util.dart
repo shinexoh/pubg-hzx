@@ -125,7 +125,7 @@ class AppUtil {
   ///检查网络是否可用
   static Future<bool> checkNetAvailability() async {
     final connectivity = await Connectivity().checkConnectivity();
-    if (connectivity != ConnectionState.none) {
+    if (connectivity != ConnectivityResult.none) {
       final http = await HttpClient.get('https://www.baidu.com/');
       return http.isOk ? true : false;
     }

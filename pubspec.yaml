@@ -5,7 +5,8 @@ publish_to: 'none'
 version: 2.1.0+3
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  # sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -32,7 +33,7 @@ dependencies:
   # 电池信息
   battery_plus: ^3.0.6
   # 权限处理
-  permission_handler: ^10.3.0
+  permission_handler: ^10.4.1
   # 弹窗、按钮
   awesome_dialog: ^3.0.2
   # 授予文件夹、安卓11+的文件操作

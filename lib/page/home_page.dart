@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10)),
-              child: Row(children: const [
+              child: const Row(children: [
                 Icon(Remix.wireless_charging_line),
                 SizedBox(width: 10),
                 Text('服务器状态：正常', style: TextStyle(fontSize: 15)),
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
               decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10)),
-              child: Row(children: const [
+              child: const Row(children: [
                 Icon(Remix.compasses_2_line),
                 SizedBox(width: 10),
                 Text('文件状态：正常', style: TextStyle(fontSize: 15)),
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
           decoration: BoxDecoration(
               color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10)),
-          child: Row(children: const [
+          child: const Row(children: [
             Icon(Remix.chat_smile_2_line),
             SizedBox(width: 10),
             Text('如出现问题请及时反馈。祝你玩的开心！', style: TextStyle(fontSize: 15)),
@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Text(FunctionConfig.quickData[index],
                         style: const TextStyle(fontSize: 15)),
-                    Row(children: const [
+                    const Row(children: [
                       Text('官方',
                           style: TextStyle(
                               color: Colors.green,
@@ -209,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Text(FunctionConfig.otherData[index],
                         style: const TextStyle(fontSize: 15)),
-                    Row(children: const [
+                    const Row(children: [
                       Text('官方',
                           style: TextStyle(
                               color: Colors.green,
