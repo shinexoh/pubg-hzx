@@ -23,6 +23,8 @@ class HelpPage extends StatelessWidget {
                 initiallyExpanded: true,
                 collapsedBackgroundColor: Colors.white,
                 backgroundColor: Colors.white,
+                textColor: Colors.blue,
+                iconColor: Colors.blue,
                 expandedAlignment: Alignment.centerLeft,
                 shape: Border(),
                 childrenPadding:
@@ -36,6 +38,8 @@ class HelpPage extends StatelessWidget {
                 title: Text('画质修改失败怎么回事？'),
                 collapsedBackgroundColor: Colors.white,
                 backgroundColor: Colors.white,
+                textColor: Colors.blue,
+                iconColor: Colors.blue,
                 expandedAlignment: Alignment.centerLeft,
                 shape: Border(),
                 childrenPadding:
@@ -49,6 +53,8 @@ class HelpPage extends StatelessWidget {
                 title: Text('修改画质后没有效果怎么办？'),
                 collapsedBackgroundColor: Colors.white,
                 backgroundColor: Colors.white,
+                textColor: Colors.blue,
+                iconColor: Colors.blue,
                 expandedAlignment: Alignment.centerLeft,
                 shape: Border(),
                 childrenPadding:
@@ -62,6 +68,8 @@ class HelpPage extends StatelessWidget {
                 title: Text('修改了帧率但是不显示？'),
                 collapsedBackgroundColor: Colors.white,
                 backgroundColor: Colors.white,
+                textColor: Colors.blue,
+                iconColor: Colors.blue,
                 expandedAlignment: Alignment.centerLeft,
                 shape: Border(),
                 childrenPadding:
@@ -75,6 +83,8 @@ class HelpPage extends StatelessWidget {
                 title: Text('万能的解决方法'),
                 collapsedBackgroundColor: Colors.white,
                 backgroundColor: Colors.white,
+                textColor: Colors.blue,
+                iconColor: Colors.blue,
                 expandedAlignment: Alignment.centerLeft,
                 shape: Border(),
                 childrenPadding:
