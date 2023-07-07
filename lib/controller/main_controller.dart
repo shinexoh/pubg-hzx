@@ -23,12 +23,8 @@ class MainController extends GetxController {
   final pageIndex = 0.obs;
 
   //界面列表
-  final List<Widget> pageBody = [
-    const HomePage(),
-    const FunctionPage(),
-    const DevicePage(),
-    const UserPage(),
-  ];
+  List<Widget> get pageBody =>
+      const [HomePage(), FunctionPage(), DevicePage(), UserPage()];
 
   // List<BottomNavigationBarItem> get items => const [
   //       BottomNavigationBarItem(
@@ -80,9 +76,7 @@ class MainController extends GetxController {
       ];
 
   //底部导航切换界面
-  void onTap(int index) {
-    pageIndex.value = index;
-  }
+  void onTap(int index) => pageIndex.value = index;
 
   //检查任务状态
   void checkTask() async {

@@ -22,9 +22,9 @@ dependencies:
   dio: ^5.1.2
   # 路由管理、状态管理
   get: ^4.6.5
-  # remix图标库
+  # Remix图标库
   remixicon: ^1.0.0
-  # toast提示
+  # Toast提示
   oktoast: ^3.3.1
   # Uint8List的透明图像
   transparent_image: ^2.0.1
@@ -34,7 +34,7 @@ dependencies:
   battery_plus: ^3.0.6
   # 权限处理
   permission_handler: ^10.4.1
-  # 弹窗、按钮
+  # 动画弹窗、动画按钮
   awesome_dialog: ^3.0.2
   # 授予文件夹、安卓11+的文件操作
   shared_storage: ^0.7.1

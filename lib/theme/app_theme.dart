@@ -8,13 +8,16 @@ class AppTheme {
         brightness: Brightness.light,
         colorSchemeSeed: Colors.blue,
         scaffoldBackgroundColor: Colors.grey.shade100,
+        cardColor: Colors.white,
+        splashFactory: InkSparkle.splashFactory,
         appBarTheme: const AppBarTheme(
           elevation: 0,
           scrolledUnderElevation: 0,
           centerTitle: true,
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
-          titleTextStyle: TextStyle(fontSize: 20, color: Colors.black),
+          titleTextStyle:
+              TextStyle(fontSize: 20, color: Colors.black, letterSpacing: 1),
           systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
               statusBarIconBrightness: Brightness.dark),
