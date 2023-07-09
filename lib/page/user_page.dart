@@ -46,7 +46,7 @@ class UserPage extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
             padding: const EdgeInsets.all(15),
-            onLongPress: onUserInfo,
+            onTap: onUserInfo,
             child: Row(children: [
               Image.asset(AssetsConfig.vip, height: 28, width: 28),
               const SizedBox(width: 15),

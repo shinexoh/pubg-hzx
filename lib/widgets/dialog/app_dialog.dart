@@ -118,7 +118,7 @@ class AppDialog {
                   onPressed: () => isForce ? SystemNavigator.pop() : Get.back(),
                   child: Text(isForce ? '退出' : '取消'),
                 ),
-                TextButton(
+                FilledButton(
                     onPressed: () => AppUtil.openUrl(url),
                     child: const Text('前往更新'))
               ],

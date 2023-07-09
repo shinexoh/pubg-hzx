@@ -60,41 +60,41 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OKToast(
-      position: ToastPosition.bottom,
-      duration: const Duration(seconds: 3),
-      child: GetMaterialApp(
-        title: '画质侠',
-        color: Colors.white,
-        theme: AppTheme.themeData,
-        initialRoute: initialRoute,
-        debugShowCheckedModeBanner: false,
-        defaultTransition: Transition.cupertino,
-        getPages: [
-          GetPage(name: '/', page: () => const MainPage()),
-          GetPage(name: '/permission', page: () => const PermissionPage()),
-          GetPage(name: '/exclusive', page: () => const ExclusivePage()),
-          GetPage(name: '/highopti', page: () => const HighOptiPage()),
-          GetPage(name: '/lowmodel', page: () => const LowModelPage()),
-          GetPage(name: '/mediummodel', page: () => const MediumModelPage()),
-          GetPage(name: '/highmodel', page: () => const HighModelPage()),
-          GetPage(name: '/help', page: () => const HelpPage()),
-          GetPage(name: '/cardpass', page: () => const CardPassPage()),
-          GetPage(name: '/modelimitate', page: () => const ModelImitatePage())
-        ],
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate
-        ],
-        supportedLocales: const [Locale('zh', 'CN')],
+    return GetMaterialApp(
+      title: '画质侠',
+      color: Colors.white,
+      theme: AppTheme.themeData,
+      initialRoute: initialRoute,
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.cupertino,
+      getPages: [
+        GetPage(name: '/', page: () => const MainPage()),
+        GetPage(name: '/permission', page: () => const PermissionPage()),
+        GetPage(name: '/exclusive', page: () => const ExclusivePage()),
+        GetPage(name: '/highopti', page: () => const HighOptiPage()),
+        GetPage(name: '/lowmodel', page: () => const LowModelPage()),
+        GetPage(name: '/mediummodel', page: () => const MediumModelPage()),
+        GetPage(name: '/highmodel', page: () => const HighModelPage()),
+        GetPage(name: '/help', page: () => const HelpPage()),
+        GetPage(name: '/cardpass', page: () => const CardPassPage()),
+        GetPage(name: '/modelimitate', page: () => const ModelImitatePage())
+      ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
+      supportedLocales: const [Locale('zh', 'CN')],
+      builder: (context, child) {
         //禁止字体大小跟随系统变化
-        builder: (context, child) {
-          return MediaQuery(
-              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-              child: child!);
-        },
-      ),
+        return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: OKToast(
+              duration: const Duration(seconds: 3),
+              position: ToastPosition.bottom,
+              child: child!,
+            ));
+      },
     );
   }
 }

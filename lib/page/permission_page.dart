@@ -41,9 +41,9 @@ class _PermissionPageState extends State<PermissionPage>
 
         Get.snackbar('', '',
             titleText: const Text('恭喜你！',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
             messageText: const Text('存储权限授予成功，开启你的旅程吧！',
-                style: TextStyle(color: Colors.black87)));
+                style: TextStyle(color: Colors.black)));
       }
     }
   }
