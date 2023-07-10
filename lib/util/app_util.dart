@@ -134,7 +134,7 @@ class AppUtil {
 
   ///随机修改画质
   static void randomUsePq({
-    required Function callBack, //修改成功后回调方法
+    required VoidCallback callBack, //修改成功后回调方法
     String errorToast = '修改失败，请检查权限是否授予',
   }) async {
     final random = Random().nextInt(FileConfig.allPqFile.length - 1);

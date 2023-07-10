@@ -7,6 +7,7 @@ class AssetsConfig {
   static const String permission = 'assets/icon/permission.png';
 
   static const String quick = 'assets/icon/quick.png';
+  static const String power = 'assets/icon/power.png';
   static const String other = 'assets/icon/other.png';
   static const String restore = 'assets/icon/restore.png';
   static const String diversify = 'assets/icon/diversify.png';

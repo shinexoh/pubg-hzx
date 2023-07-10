@@ -47,15 +47,6 @@ class HomeController extends GetxController {
     }
   }
 
-  //切换游戏版本
-  void onGameVer() {
-    DialogStyle.mainDialog(
-      subTitle: '暂不支持切换游戏版本',
-      showCanceButton: false,
-      onOkButton: () => Get.back(),
-    );
-  }
-
   //快捷修改
   void onQuick(int index) async {
     if (await AppUtil.checkDlFile()) {
@@ -65,6 +56,51 @@ class HomeController extends GetxController {
         filePath: FileConfig.quickFile[index],
         title: FunctionConfig.quickData[index],
       );
+    }
+  }
+
+  //性能优化
+  void onPower(int index) {
+    switch (index) {
+      case 0:
+        DialogStyle.mainDialog(
+          title: FunctionConfig.powerData[index]['title'],
+          subTitle: FunctionConfig.powerData[index]['content'],
+          okButtonTitle: '修复',
+          onOkButton: () {
+            Get.back();
+            SpUtil.containsKey(AppConfig.taskKey)
+                ? showToast('修复成功')
+                : AppDialog.taskDialog();
+          },
+        );
+        break;
+      case 1:
+        DialogStyle.mainDialog(
+          title: FunctionConfig.powerData[index]['title'],
+          subTitle: FunctionConfig.powerData[index]['content'],
+          okButtonTitle: '注入优化',
+          onOkButton: () {
+            Get.back();
+            SpUtil.containsKey(AppConfig.taskKey)
+                ? showToast('SV优化注入成功')
+                : AppDialog.taskDialog();
+          },
+        );
+        break;
+      case 2:
+        DialogStyle.mainDialog(
+          title: FunctionConfig.powerData[index]['title'],
+          subTitle: FunctionConfig.powerData[index]['content'],
+          okButtonTitle: '立即下载',
+          onOkButton: () {
+            Get.back();
+            SpUtil.containsKey(AppConfig.taskKey)
+                ? AppUtil.openUrl('https://rcls.lanzoub.com/ieuBj0tndm4h')
+                : AppDialog.taskDialog();
+          },
+        );
+        break;
     }
   }
 

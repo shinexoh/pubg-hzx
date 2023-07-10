@@ -52,17 +52,18 @@ class UseButton extends StatelessWidget {
             ],
           ),
           OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              onTap: onTap,
-              child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey.shade200)),
-                  child: const Text('点击修改',
-                      style: TextStyle(color: Colors.blue, fontSize: 13)))),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            onTap: onTap,
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey.shade200)),
+                child: const Text('点击修改',
+                    style: TextStyle(color: Colors.blue, fontSize: 13))),
+          ),
         ],
       ),
     );

@@ -31,6 +31,8 @@ class _HomePageState extends State<HomePage> {
           infoBar(),
           textBar('快捷修改'),
           quickBar(),
+          textBar('性能优化', showNewTag: true),
+          powerBar(),
           textBar('其他功能'),
           otherBar(),
           textBar('重置功能'),
@@ -135,50 +137,103 @@ class _HomePageState extends State<HomePage> {
           ),
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(children: [
-                Image.asset(AssetsConfig.quick, height: 45, width: 45),
-                const SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(FunctionConfig.quickData[index],
-                        style: const TextStyle(fontSize: 15)),
-                    const Row(children: [
-                      Text('官方',
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic)),
-                      SizedBox(width: 5),
-                      Text('推荐',
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic)),
-                    ])
-                  ],
-                )
-              ]),
-              OnInk(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                onTap: () => homeController.onQuick(index),
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey.shade200)),
-                  child: const Text('点击修改',
-                      style: TextStyle(color: Colors.blue, fontSize: 13)),
-                ),
-              ),
-            ],
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
           ),
+          child: Row(children: [
+            Image.asset(AssetsConfig.quick, height: 45, width: 45),
+            const SizedBox(width: 10),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                FunctionConfig.quickData[index],
+                style: const TextStyle(fontSize: 15),
+              ),
+              const Row(children: [
+                Text('官方',
+                    style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic)),
+                SizedBox(width: 5),
+                Text('推荐',
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic)),
+              ]),
+            ]),
+            const Spacer(),
+            OnInk(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              onTap: () => homeController.onQuick(index),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey.shade200)),
+                child: const Text('点击修改',
+                    style: TextStyle(color: Colors.blue, fontSize: 13)),
+              ),
+            ),
+          ]),
+        );
+      }),
+    );
+  }
+
+  Widget powerBar() {
+    return Column(
+      children: List.generate(FunctionConfig.powerData.length, (index) {
+        return Container(
+          width: double.infinity,
+          margin: EdgeInsets.only(
+            left: 10,
+            right: 10,
+            top: index == 0 ? 10 : 0,
+            bottom: index == FunctionConfig.powerData.length - 1 ? 0 : 10,
+          ),
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(children: [
+            Image.asset(AssetsConfig.power, height: 45, width: 45),
+            const SizedBox(width: 10),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                FunctionConfig.powerData[index]['title'],
+                style: const TextStyle(fontSize: 15),
+              ),
+              Text(FunctionConfig.powerData[index]['subtitle'],
+                  style: const TextStyle(
+                      color: Colors.blue,
+                      fontSize: 12,
+                      fontStyle: FontStyle.italic)),
+            ]),
+            const Spacer(),
+            OnInk(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              onTap: () => homeController.onPower(index),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey.shade200)),
+                child: Text(
+                    index == 0
+                        ? '点击修复'
+                        : index == 1
+                            ? '点击优化'
+                            : '点击下载',
+                    style: const TextStyle(color: Colors.blue, fontSize: 13)),
+              ),
+            ),
+          ]),
         );
       }),
     );
@@ -197,50 +252,47 @@ class _HomePageState extends State<HomePage> {
           ),
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(children: [
-                Image.asset(AssetsConfig.other, height: 45, width: 45),
-                const SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(FunctionConfig.otherData[index],
-                        style: const TextStyle(fontSize: 15)),
-                    const Row(children: [
-                      Text('官方',
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic)),
-                      SizedBox(width: 5),
-                      Text('推荐',
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic)),
-                    ])
-                  ],
-                )
-              ]),
-              OnInk(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                onTap: () => homeController.onOther(index),
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey.shade200)),
-                  child: Text(index < 2 ? '点击解锁' : '点击复制',
-                      style: const TextStyle(color: Colors.blue, fontSize: 13)),
-                ),
-              ),
-            ],
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
           ),
+          child: Row(children: [
+            Image.asset(AssetsConfig.other, height: 45, width: 45),
+            const SizedBox(width: 10),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                FunctionConfig.otherData[index],
+                style: const TextStyle(fontSize: 15),
+              ),
+              const Row(children: [
+                Text('官方',
+                    style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic)),
+                SizedBox(width: 5),
+                Text('推荐',
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic)),
+              ]),
+            ]),
+            const Spacer(),
+            OnInk(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              onTap: () => homeController.onOther(index),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey.shade200)),
+                child: Text(index < 2 ? '点击解锁' : '点击复制',
+                    style: const TextStyle(color: Colors.blue, fontSize: 13)),
+              ),
+            ),
+          ]),
         );
       }),
     );
@@ -259,58 +311,60 @@ class _HomePageState extends State<HomePage> {
           ),
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(children: [
-                Image.asset(AssetsConfig.restore, height: 45, width: 45),
-                const SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(FunctionConfig.restoreData[index]['title'],
-                        style: const TextStyle(fontSize: 15)),
-                    Row(children: [
-                      Text(FunctionConfig.restoreData[index]['subtitle'],
-                          style: const TextStyle(
-                              color: Colors.pink,
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic)),
-                    ])
-                  ],
-                )
-              ]),
-              OnInk(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                onTap: () => homeController.onRestore(index),
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey.shade200)),
-                  child: Text(index <= 1 ? '点击重置' : '重置所有',
-                      style: const TextStyle(color: Colors.blue, fontSize: 13)),
-                ),
-              ),
-            ],
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
           ),
+          child: Row(children: [
+            Image.asset(AssetsConfig.restore, height: 45, width: 45),
+            const SizedBox(width: 10),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(
+                FunctionConfig.restoreData[index]['title'],
+                style: const TextStyle(fontSize: 15),
+              ),
+              Text(FunctionConfig.restoreData[index]['subtitle'],
+                  style: const TextStyle(
+                      color: Colors.pink,
+                      fontSize: 12,
+                      fontStyle: FontStyle.italic)),
+            ]),
+            const Spacer(),
+            OnInk(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              onTap: () => homeController.onRestore(index),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey.shade200)),
+                child: Text(index <= 1 ? '点击重置' : '重置所有',
+                    style: const TextStyle(color: Colors.blue, fontSize: 13)),
+              ),
+            ),
+          ]),
         );
       }),
     );
   }
 
-  Widget textBar(String data) {
+  Widget textBar(String data, {bool showNewTag = false}) {
     return Padding(
       padding: const EdgeInsets.only(top: 10, left: 10),
       child: Row(
         children: [
           Image.asset(AssetsConfig.lightning, height: 20, width: 20),
-          Text(data,
-              style:
-                  const TextStyle(fontStyle: FontStyle.italic, fontSize: 15)),
+          Text(
+            data,
+            style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 15),
+          ),
+          const SizedBox(width: 5),
+          showNewTag
+              ? const Text('[New]',
+                  style: TextStyle(
+                      color: Colors.pink, fontStyle: FontStyle.italic))
+              : const SizedBox(),
         ],
       ),
     );
