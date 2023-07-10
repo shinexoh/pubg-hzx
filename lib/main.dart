@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:oktoast/oktoast.dart';
@@ -23,6 +24,12 @@ import 'package:huazhixia/util/util.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //强制竖屏
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
   //初始化实例
   Get.put(AppController());
