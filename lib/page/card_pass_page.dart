@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import 'package:huazhixia/server/api.dart';
 import 'package:huazhixia/server/http_client.dart';
+import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
 import 'package:huazhixia/util/util.dart';
@@ -19,6 +20,7 @@ class CardPassPage extends StatefulWidget {
 }
 
 class _CardPassPageState extends State<CardPassPage> {
+  final appController = Get.find<AppController>();
   TextEditingController controller = TextEditingController();
 
   @override
@@ -42,6 +44,8 @@ class _CardPassPageState extends State<CardPassPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            vipBar(),
+            const SizedBox(height: 20),
             cardPassTextField(),
             const SizedBox(height: 20),
             buttonBar(),
@@ -50,6 +54,39 @@ class _CardPassPageState extends State<CardPassPage> {
             const SizedBox(height: 30),
             enjoyBar(),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget vipBar() {
+    return SizedBox(
+      width: double.infinity,
+      child: Material(
+        elevation: 4,
+        color: const Color.fromRGBO(26, 26, 26, 0.9),
+        borderRadius: BorderRadius.circular(15),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const Text(
+              'VIP',
+              style: TextStyle(
+                  fontSize: 24,
+                  color: Color.fromRGBO(252, 162, 86, 1),
+                  fontWeight: FontWeight.bold,
+                  height: 1.2,
+                  letterSpacing: 5),
+            ),
+            Text(
+              appController.taskState.value ? '您已成功激活画质侠会员' : '激活画质侠享受更多画质功能',
+              style: const TextStyle(
+                  fontSize: 13,
+                  color: Color.fromRGBO(252, 162, 86, 1),
+                  letterSpacing: 2),
+            ),
+          ]),
         ),
       ),
     );

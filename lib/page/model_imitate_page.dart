@@ -82,8 +82,8 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         children: [
           const SizedBox(height: 20),
           Container(
-              height: 80,
-              width: 80,
+              height: 70,
+              width: 70,
               decoration: BoxDecoration(
                   image: const DecorationImage(
                       image: AssetImage(AssetsConfig.modelImitate)),

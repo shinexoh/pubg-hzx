@@ -56,7 +56,10 @@ class FunctionPage extends StatelessWidget {
               onTap: () => onDiversify(index),
               child: Row(
                 children: [
-                  Image.asset(AssetsConfig.diversify, height: 45, width: 45),
+                  Hero(
+                      tag: 'diversify$index',
+                      child: Image.asset(AssetsConfig.diversify,
+                          height: 45, width: 45)),
                   const SizedBox(width: 10),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,7 +99,10 @@ class FunctionPage extends StatelessWidget {
               onTap: () => onModel(index),
               child: Row(
                 children: [
-                  Image.asset(AssetsConfig.model, height: 45, width: 45),
+                  Hero(
+                      tag: 'model$index',
+                      child: Image.asset(AssetsConfig.model,
+                          height: 45, width: 45)),
                   const SizedBox(width: 10),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -162,19 +168,21 @@ class FunctionPage extends StatelessWidget {
   }
 
   void onDiversify(int index) {
-    index == 0 ? Get.toNamed('/exclusive') : Get.toNamed('/highopti');
+    index == 0
+        ? Get.toNamed('/exclusive', arguments: 'diversify$index')
+        : Get.toNamed('/highopti', arguments: 'diversify$index');
   }
 
   void onModel(int index) {
     switch (index) {
       case 0:
-        Get.toNamed('/lowmodel');
+        Get.toNamed('/lowmodel', arguments: 'model$index');
         break;
       case 1:
-        Get.toNamed('/mediummodel');
+        Get.toNamed('/mediummodel', arguments: 'model$index');
         break;
       case 2:
-        Get.toNamed('/highmodel');
+        Get.toNamed('/highmodel', arguments: 'model$index');
         break;
     }
   }

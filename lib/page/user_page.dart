@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:remixicon/remixicon.dart';
-import 'package:transparent_image/transparent_image.dart';
 import 'package:get/get.dart';
 
+import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/util/util.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
@@ -50,12 +50,13 @@ class UserPage extends StatelessWidget {
             child: Row(children: [
               Image.asset(AssetsConfig.vip, height: 28, width: 28),
               const SizedBox(width: 15),
-              const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('画质侠用户', style: TextStyle(fontSize: 16)),
-                    // Text('当前状态：普通用户', style: TextStyle(color: Colors.grey)),
-                  ]),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                const Text('画质侠用户', style: TextStyle(fontSize: 16)),
+                Text(
+                  '当前状态：${Get.find<AppController>().taskState.value ? '会员用户' : '普通用户'}',
+                  style: const TextStyle(color: Colors.grey, fontSize: 13),
+                ),
+              ]),
               const Spacer(),
               const Icon(Remix.arrow_right_s_line, color: Colors.grey, size: 20)
             ]),
@@ -178,56 +179,10 @@ class UserPage extends StatelessWidget {
     );
   }
 
-  // Widget vipBar() {
-  //   return Padding(
-  //     padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
-  //     child: SizedBox(
-  //       width: double.infinity,
-  //       child: Material(
-  //         elevation: 4,
-  //         color: const Color.fromRGBO(26, 26, 26, 0.9),
-  //         borderRadius: BorderRadius.circular(15),
-  //         child: Padding(
-  //           padding: const EdgeInsets.all(15),
-  //           child: Column(
-  //             crossAxisAlignment: CrossAxisAlignment.start,
-  //             children: const [
-  //               Text(
-  //                 'VIP',
-  //                 style: TextStyle(
-  //                     fontSize: 25,
-  //                     color: Color.fromRGBO(252, 162, 86, 1),
-  //                     fontWeight: FontWeight.bold,
-  //                     height: 1.2,
-  //                     letterSpacing: 5),
-  //               ),
-  //               Text(
-  //                 '激活画质侠享受更多画质修改功能',
-  //                 style: TextStyle(
-  //                     fontSize: 13,
-  //                     color: Color.fromRGBO(252, 162, 86, 1),
-  //                     letterSpacing: 1),
-  //               )
-  //             ],
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
+  //点击用户信息
+  void onUserInfo() => Get.toNamed('/cardpass');
 
-  void onUserInfo() {
-    Get.dialog(Center(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: FadeInImage(
-            height: 250,
-            placeholder: MemoryImage(kTransparentImage),
-            image: const NetworkImage('http://shinex.top/tpss.jpg')),
-      ),
-    ));
-  }
-
+  //切换主题
   void onTheme() {
     DialogStyle.mainDialog(
       subTitle: '暂不支持切换主题',
@@ -236,6 +191,7 @@ class UserPage extends StatelessWidget {
     );
   }
 
+  //切换字体
   void onFont() {
     DialogStyle.mainDialog(
       subTitle: '暂不支持切换字体',
