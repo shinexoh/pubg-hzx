@@ -12,6 +12,7 @@ class AssetsConfig {
   static const String restore = 'assets/icon/restore.png';
   static const String diversify = 'assets/icon/diversify.png';
   static const String model = 'assets/icon/model.png';
+  static const String wideAngle = 'assets/icon/wide_angle.png';
   static const String random = 'assets/icon/random.png';
 
   static const String vip = 'assets/icon/vip.png';

@@ -10,6 +10,7 @@ import 'page/permission_page.dart';
 import 'page/help_page.dart';
 import 'page/card_pass_page.dart';
 import 'page/model_imitate_page.dart';
+import 'page/wide_angle_page.dart';
 import 'page/use/exclusive_page.dart';
 import 'page/use//highopti_page.dart';
 import 'page/use/low_model_page.dart';
@@ -84,7 +85,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/highmodel', page: () => const HighModelPage()),
         GetPage(name: '/help', page: () => const HelpPage()),
         GetPage(name: '/cardpass', page: () => const CardPassPage()),
-        GetPage(name: '/modelimitate', page: () => const ModelImitatePage())
+        GetPage(name: '/modelimitate', page: () => const ModelImitatePage()),
+        GetPage(name: '/wideangle', page: () => const WideAnglePage()),
       ],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

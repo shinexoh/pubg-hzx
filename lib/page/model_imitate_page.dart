@@ -81,15 +81,18 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          Container(
-              height: 70,
-              width: 70,
-              decoration: BoxDecoration(
-                  image: const DecorationImage(
-                      image: AssetImage(AssetsConfig.modelImitate)),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey.shade300, blurRadius: 30),
-                  ])),
+          Hero(
+            tag: Get.arguments,
+            child: Container(
+                height: 70,
+                width: 70,
+                decoration: BoxDecoration(
+                    image: const DecorationImage(
+                        image: AssetImage(AssetsConfig.modelImitate)),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey.shade300, blurRadius: 30),
+                    ])),
+          ),
           const SizedBox(height: 5),
           const Text(
             '机型画质模拟',

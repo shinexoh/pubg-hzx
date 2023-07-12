@@ -52,10 +52,10 @@ class UserPage extends StatelessWidget {
               const SizedBox(width: 15),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 const Text('画质侠用户', style: TextStyle(fontSize: 16)),
-                Text(
-                  '当前状态：${Get.find<AppController>().taskState.value ? '会员用户' : '普通用户'}',
-                  style: const TextStyle(color: Colors.grey, fontSize: 13),
-                ),
+                Obx(() => Text(
+                      '当前状态：${Get.find<AppController>().taskState.value ? '会员用户' : '普通用户'}',
+                      style: const TextStyle(color: Colors.grey, fontSize: 13),
+                    )),
               ]),
               const Spacer(),
               const Icon(Remix.arrow_right_s_line, color: Colors.grey, size: 20)

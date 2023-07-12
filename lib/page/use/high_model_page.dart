@@ -12,24 +12,64 @@ class HighModelPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('高端机'),
-        leading: IconButton(
-            onPressed: () => Get.back(),
-            icon: const Icon(Remix.arrow_left_line)),
-      ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 10),
-        child: Column(
-          children: List.generate(FunctionConfig.highModel.length, (index) {
-            return UseButton(
-              title: FunctionConfig.highModel[index],
-              margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-              onTap: () => onUse(index),
-            );
-          }),
-        ),
+        padding: const EdgeInsets.all(20),
+        child: Column(children: [
+          headBar(),
+          const SizedBox(height: 30),
+          itemBar(),
+        ]),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.back(),
+        backgroundColor: const Color.fromRGBO(0, 179, 254, 1),
+        shape: const CircleBorder(),
+        child: const Icon(Remix.arrow_left_line, color: Colors.white),
+      ),
+    );
+  }
+
+  Widget headBar() {
+    return SafeArea(
+      child: Column(
+        children: [
+          const SizedBox(height: 20),
+          Hero(
+            tag: Get.arguments,
+            child: Container(
+                height: 70,
+                width: 70,
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                      image: AssetImage(AssetsConfig.model)),
+                  boxShadow: [
+                    BoxShadow(color: Colors.grey.shade300, blurRadius: 30)
+                  ],
+                )),
+          ),
+          const SizedBox(height: 5),
+          const Text(
+            '高端机',
+            style: TextStyle(
+                fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget itemBar() {
+    return Column(
+      children: List.generate(FunctionConfig.highModel.length, (index) {
+        return UseButton(
+          title: FunctionConfig.highModel[index],
+          margin: EdgeInsets.only(
+            bottom: index == FunctionConfig.highModel.length - 1 ? 0 : 15,
+          ),
+          onTap: () => onUse(index),
+        );
+      }),
     );
   }
 
