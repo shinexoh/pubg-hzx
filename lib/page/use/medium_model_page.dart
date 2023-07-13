@@ -36,7 +36,7 @@ class MediumModelPage extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           Hero(
-            tag: Get.arguments,
+            tag: 'model1',
             child: Container(
                 height: 70,
                 width: 70,

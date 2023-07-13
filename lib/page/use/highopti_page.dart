@@ -36,7 +36,7 @@ class HighOptiPage extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           Hero(
-            tag: Get.arguments,
+            tag: 'diversify1',
             child: Container(
                 height: 70,
                 width: 70,

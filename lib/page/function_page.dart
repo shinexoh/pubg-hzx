@@ -18,9 +18,10 @@ class FunctionPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             topAppBar(),
+            infoBar(),
             diversifyBar(),
             modelBar(),
-            randomBar(),
+            moreBar(),
           ],
         ),
       ),
@@ -38,158 +39,206 @@ class FunctionPage extends StatelessWidget {
     );
   }
 
+  Widget infoBar() {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(children: [
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(children: [
+              const Icon(Remix.pie_chart_2_line),
+              const SizedBox(width: 10),
+              Text(
+                '画质总数：${FileConfig.allPqFile.length}',
+                style: const TextStyle(fontSize: 15),
+              ),
+            ]),
+          ),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+            decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(10)),
+            child: Row(children: [
+              const Icon(Remix.magic_line),
+              const SizedBox(width: 10),
+              Text(
+                '超广角总数：${FunctionConfig.wideAngle.length}',
+                style: const TextStyle(fontSize: 15),
+              ),
+            ]),
+          ),
+        ),
+      ]),
+    );
+  }
+
   Widget diversifyBar() {
     return Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: Column(
-          children: List.generate(FunctionConfig.diversifyData.length, (index) {
-            return OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              margin: EdgeInsets.only(
+      padding: const EdgeInsets.only(top: 10),
+      child: Column(
+        children: List.generate(FunctionConfig.diversifyData.length, (index) {
+          return OnInk(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            onTap: () => onDiversify(index),
+            margin: EdgeInsets.only(
                 left: 10,
                 right: 10,
                 bottom:
-                    index == FunctionConfig.diversifyData.length - 1 ? 0 : 10,
+                    index == FunctionConfig.diversifyData.length - 1 ? 0 : 10),
+            padding: const EdgeInsets.all(15),
+            child: Row(children: [
+              Hero(
+                tag: 'diversify$index',
+                child:
+                    Image.asset(AssetsConfig.diversify, height: 45, width: 45),
               ),
-              padding: const EdgeInsets.all(15),
-              onTap: () => onDiversify(index),
-              child: Row(
-                children: [
-                  Hero(
-                      tag: 'diversify$index',
-                      child: Image.asset(AssetsConfig.diversify,
-                          height: 45, width: 45)),
-                  const SizedBox(width: 10),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(FunctionConfig.diversifyData[index]['title'],
-                            style: const TextStyle(fontSize: 15)),
-                        Text(FunctionConfig.diversifyData[index]['subtitle'],
-                            style: const TextStyle(
-                                color: Colors.blue,
-                                fontSize: 12,
-                                fontStyle: FontStyle.italic)),
-                      ]),
-                  const Spacer(),
-                  const Icon(Remix.arrow_right_s_line,
-                      color: Colors.grey, size: 20),
-                ],
-              ),
-            );
-          }),
-        ));
+              const SizedBox(width: 10),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(FunctionConfig.diversifyData[index]['title'],
+                    style: const TextStyle(fontSize: 15)),
+                Text(FunctionConfig.diversifyData[index]['subtitle'],
+                    style: const TextStyle(
+                        color: Colors.blue,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic)),
+              ]),
+              const Spacer(),
+              const Icon(Remix.arrow_right_s_line,
+                  color: Colors.grey, size: 20),
+            ]),
+          );
+        }),
+      ),
+    );
   }
 
   Widget modelBar() {
     return Padding(
-        padding: const EdgeInsets.only(top: 10),
-        child: Column(
-          children: List.generate(FunctionConfig.modelData.length, (index) {
-            return OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              margin: EdgeInsets.only(
+      padding: const EdgeInsets.only(top: 10),
+      child: Column(
+        children: List.generate(FunctionConfig.modelData.length, (index) {
+          return OnInk(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            onTap: () => onModel(index),
+            margin: EdgeInsets.only(
                 left: 10,
                 right: 10,
-                bottom: index == FunctionConfig.modelData.length - 1 ? 0 : 10,
+                bottom: index == FunctionConfig.modelData.length - 1 ? 0 : 10),
+            padding: const EdgeInsets.all(15),
+            child: Row(children: [
+              Hero(
+                tag: 'model$index',
+                child: Image.asset(AssetsConfig.model, height: 45, width: 45),
               ),
-              padding: const EdgeInsets.all(15),
-              onTap: () => onModel(index),
-              child: Row(
-                children: [
-                  Hero(
-                      tag: 'model$index',
-                      child: Image.asset(AssetsConfig.model,
-                          height: 45, width: 45)),
-                  const SizedBox(width: 10),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(FunctionConfig.modelData[index]['title'],
-                            style: const TextStyle(fontSize: 15)),
-                        Text(FunctionConfig.modelData[index]['subtitle'],
-                            style: const TextStyle(
-                                color: Colors.blue,
-                                fontSize: 12,
-                                fontStyle: FontStyle.italic)),
-                      ]),
-                  const Spacer(),
-                  const Icon(Remix.arrow_right_s_line,
-                      color: Colors.grey, size: 20),
-                ],
-              ),
-            );
-          }),
-        ));
+              const SizedBox(width: 10),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(FunctionConfig.modelData[index]['title'],
+                    style: const TextStyle(fontSize: 15)),
+                Text(FunctionConfig.modelData[index]['subtitle'],
+                    style: const TextStyle(
+                        color: Colors.blue,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic)),
+              ]),
+              const Spacer(),
+              const Icon(Remix.arrow_right_s_line,
+                  color: Colors.grey, size: 20),
+            ]),
+          );
+        }),
+      ),
+    );
   }
 
-  Widget randomBar() {
+  Widget moreBar() {
     return Padding(
-        padding: const EdgeInsets.only(top: 10),
-        child: Column(
-          children: List.generate(FunctionConfig.randomData.length, (index) {
-            return OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              margin: EdgeInsets.only(
-                left: 10,
-                right: 10,
-                bottom: index == FunctionConfig.randomData.length - 1 ? 0 : 10,
+      padding: const EdgeInsets.only(top: 10),
+      child: Column(
+        children: List.generate(FunctionConfig.moreData.length, (index) {
+          return OnInk(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            onTap: () => onMore(index),
+            margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            padding: const EdgeInsets.all(15),
+            child: Row(children: [
+              Hero(
+                tag: 'more$index',
+                child: Image.asset(
+                    index == 0
+                        ? AssetsConfig.modelImitate
+                        : index == 1
+                            ? AssetsConfig.wideAngle
+                            : AssetsConfig.random,
+                    height: 45,
+                    width: 45),
               ),
-              padding: const EdgeInsets.all(15),
-              onTap: () => onRandom(index),
-              child: Row(
-                children: [
-                  Image.asset(AssetsConfig.random, height: 45, width: 45),
-                  const SizedBox(width: 10),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(FunctionConfig.randomData[index]['title'],
-                            style: const TextStyle(fontSize: 15)),
-                        Text(FunctionConfig.randomData[index]['subtitle'],
-                            style: const TextStyle(
-                                color: Colors.blue,
-                                fontSize: 12,
-                                fontStyle: FontStyle.italic)),
-                      ]),
-                  const Spacer(),
-                  index == 0
-                      ? Image.asset(AssetsConfig.arrow, height: 20, width: 20)
-                      : const Icon(Remix.arrow_right_s_line,
-                          color: Colors.grey, size: 20),
-                ],
-              ),
-            );
-          }),
-        ));
+              const SizedBox(width: 10),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(FunctionConfig.moreData[index]['title'],
+                    style: const TextStyle(fontSize: 15)),
+                Text(FunctionConfig.moreData[index]['subtitle'],
+                    style: const TextStyle(
+                        color: Colors.blue,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic)),
+              ]),
+              const Spacer(),
+              index == 2
+                  ? Image.asset(AssetsConfig.arrow, height: 20, width: 20)
+                  : const Icon(Remix.arrow_right_s_line,
+                      color: Colors.grey, size: 20),
+            ]),
+          );
+        }),
+      ),
+    );
   }
 
   void onDiversify(int index) {
-    index == 0
-        ? Get.toNamed('/exclusive', arguments: 'diversify$index')
-        : Get.toNamed('/highopti', arguments: 'diversify$index');
+    index == 0 ? Get.toNamed('/exclusive') : Get.toNamed('/highopti');
   }
 
   void onModel(int index) {
     switch (index) {
       case 0:
-        Get.toNamed('/lowmodel', arguments: 'model$index');
+        Get.toNamed('/lowmodel');
         break;
       case 1:
-        Get.toNamed('/mediummodel', arguments: 'model$index');
+        Get.toNamed('/mediummodel');
         break;
       case 2:
-        Get.toNamed('/highmodel', arguments: 'model$index');
+        Get.toNamed('/highmodel');
         break;
     }
   }
 
-  void onRandom(int index) async {
+  void onMore(int index) async {
     switch (index) {
       case 0:
+        Get.toNamed('/modelimitate');
+        break;
+      case 1:
+        Get.toNamed('/wideangle');
+        break;
+      case 2:
         if (await AppUtil.checkDlFile()) {
           AppDialog.dlRestoreDialog();
         } else {
@@ -203,9 +252,6 @@ class FunctionPage extends StatelessWidget {
             },
           );
         }
-        break;
-      case 1:
-        Get.toNamed('/modelimitate');
         break;
     }
   }

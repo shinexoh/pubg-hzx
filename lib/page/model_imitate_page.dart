@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:device_apps/device_apps.dart';
+import 'package:remixicon/remixicon.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:get/get.dart';
 
@@ -73,6 +74,12 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
           infoBar(),
         ]),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.back(),
+        backgroundColor: const Color.fromRGBO(254, 93, 109, 1),
+        shape: const CircleBorder(),
+        child: const Icon(Remix.arrow_left_line, color: Colors.white),
+      ),
     );
   }
 
@@ -82,7 +89,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         children: [
           const SizedBox(height: 20),
           Hero(
-            tag: Get.arguments,
+            tag: 'more0',
             child: Container(
                 height: 70,
                 width: 70,

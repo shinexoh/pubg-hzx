@@ -36,7 +36,7 @@ class LowModelPage extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           Hero(
-            tag: Get.arguments,
+            tag: 'model0',
             child: Container(
                 height: 70,
                 width: 70,
