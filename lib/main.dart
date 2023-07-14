@@ -43,7 +43,7 @@ void main() async {
   Get.find<AppController>().setSdkVersion(sdkVersion);
 
   //添加任务Key
-  SpUtil.addString(AppConfig.taskKey, '');
+  // SpUtil.addString(AppConfig.taskKey, '');
   // SpUtil.clear();
 
   //设置Dark风格状态栏

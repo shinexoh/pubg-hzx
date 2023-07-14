@@ -70,28 +70,6 @@ class AppDialog {
     );
   }
 
-  ///应用维护弹窗
-  static void pauseDialog(String title, String subTitle) {
-    Get.dialog(
-        WillPopScope(
-            onWillPop: () async {
-              SystemNavigator.pop();
-              return true;
-            },
-            child: AlertDialog(
-              title: Text(title),
-              content: Text(subTitle),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)),
-              actions: [
-                TextButton(
-                    onPressed: () => SystemNavigator.pop(),
-                    child: const Text('退出')),
-              ],
-            )),
-        barrierDismissible: false);
-  }
-
   ///应用更新弹窗
   static void updateDialog({
     required String title,
@@ -130,7 +108,7 @@ class AppDialog {
   static void restoreDialog() {
     DialogStyle.mainDialog(
       title: '重置成功',
-      subTitle: '重置后需重启游戏才能生效，否则修改其他画质功能将导致无效，进入游戏10秒左右即可退出，请立即重启！',
+      subTitle: '重置后需重启游戏才能生效，否则修改其他画质功能将导致无效，进入游戏5秒左右即可退出，请立即重启！',
       okButtonTitle: '重启游戏',
       showCanceButton: false,
       onOkButton: () async {

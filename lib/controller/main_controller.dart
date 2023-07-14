@@ -102,18 +102,6 @@ class MainController extends GetxController {
   //统计应用数据
   void statistics() => HttpClient.get(Api.appStatistics);
 
-  //检查应用是否维护
-  void checkPause() async {
-    final appPause = await HttpClient.get(Api.main);
-
-    if (appPause.isOk && appPause.data['apppause']['enable'] == true) {
-      AppDialog.pauseDialog(
-        appPause.data['apppause']['title'],
-        appPause.data['apppause']['subtitle'],
-      );
-    }
-  }
-
   //检查应用更新，如果主更新链接失败就请求备用更新链接
   void checkUpdate() async {
     final appUpdate = await HttpClient.get(Api.main);
@@ -157,5 +145,22 @@ class MainController extends GetxController {
 安卓Sdk版本：${_appController.sdkVersion.value}
 存储权限：${_appController.storageState.value}
 目录授予：${_appController.directoryState.value}''');
+  }
+
+  //如果旧Key存在就还原画质
+  void restoreFile() async {
+    if (SpUtil.containsKey('TaskKey')) {
+      SpUtil.remove('TaskKey');
+
+      if (_appController.sdkVersion.value <= 29) {
+        UseFor10.restorePq();
+        UseFor10.restoreDl();
+      } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
+        UseFor11.restorePq();
+        UseFor11.restoreDl();
+      }
+    } else {
+      prints(false);
+    }
   }
 }

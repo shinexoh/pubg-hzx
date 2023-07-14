@@ -23,7 +23,7 @@ class _MainPageState extends State<MainPage> {
     mainController.checkDirectory();
     mainController.checkUpdate();
     mainController.statistics();
-    // mainController.checkPause();
+    mainController.restoreFile();
 
     mainController.print();
   }
