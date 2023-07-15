@@ -159,8 +159,6 @@ class MainController extends GetxController {
         UseFor11.restorePq();
         UseFor11.restoreDl();
       }
-    } else {
-      prints(false);
     }
   }
 }

@@ -20,7 +20,6 @@ import 'page/use/high_model_page.dart';
 import 'package:huazhixia/theme/app_theme.dart';
 import 'package:huazhixia/server/http_client.dart';
 import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/util/util.dart';
 
 void main() async {
@@ -41,10 +40,6 @@ void main() async {
   //初始化安卓SDK版本号
   final sdkVersion = DeviceInfo.sdkVersion;
   Get.find<AppController>().setSdkVersion(sdkVersion);
-
-  //添加任务Key
-  // SpUtil.addString(AppConfig.taskKey, '');
-  // SpUtil.clear();
 
   //设置Dark风格状态栏
   AppUtil.setStatusBarDark();

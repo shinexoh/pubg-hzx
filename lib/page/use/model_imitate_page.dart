@@ -123,9 +123,10 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
               style: const TextStyle(fontSize: 15),
               selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
               decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 12, vertical: 15))),
+                border: InputBorder.none,
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+              )),
         ],
       ),
     );
@@ -147,15 +148,16 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
                   style: TextStyle(fontSize: 15, color: Colors.grey))),
           Row(children: [
             Expanded(
-                child: TextField(
-                    controller: modelController,
-                    style: const TextStyle(fontSize: 15),
-                    selectionHeightStyle:
-                        BoxHeightStyle.includeLineSpacingMiddle,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 15)))),
+              child: TextField(
+                  controller: modelController,
+                  style: const TextStyle(fontSize: 15),
+                  selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+                  )),
+            ),
             const Text('机型', style: TextStyle(color: Colors.grey)),
             const SizedBox(width: 12),
           ]),
@@ -180,15 +182,17 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
                   style: TextStyle(fontSize: 15, color: Colors.grey))),
           Row(children: [
             Expanded(
-                child: TextField(
-                    controller: resController,
-                    style: const TextStyle(fontSize: 15),
-                    selectionHeightStyle:
-                        BoxHeightStyle.includeLineSpacingMiddle,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 15)))),
+              child: TextField(
+                  controller: resController,
+                  style: const TextStyle(fontSize: 15),
+                  keyboardType: TextInputType.phone,
+                  selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+                  )),
+            ),
             const Text('像素', style: TextStyle(color: Colors.grey)),
             const SizedBox(width: 12),
           ]),
@@ -213,15 +217,17 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
                   style: TextStyle(fontSize: 15, color: Colors.grey))),
           Row(children: [
             Expanded(
-                child: TextField(
-                    controller: hertzController,
-                    style: const TextStyle(fontSize: 15),
-                    selectionHeightStyle:
-                        BoxHeightStyle.includeLineSpacingMiddle,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 15)))),
+              child: TextField(
+                  controller: hertzController,
+                  style: const TextStyle(fontSize: 15),
+                  keyboardType: TextInputType.number,
+                  selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+                  )),
+            ),
             const Text('赫兹', style: TextStyle(color: Colors.grey)),
             const SizedBox(width: 12),
           ]),
@@ -246,15 +252,16 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
                   style: TextStyle(fontSize: 15, color: Colors.grey))),
           Row(children: [
             Expanded(
-                child: TextField(
-                    controller: cpuController,
-                    style: const TextStyle(fontSize: 15),
-                    selectionHeightStyle:
-                        BoxHeightStyle.includeLineSpacingMiddle,
-                    decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 15)))),
+              child: TextField(
+                  controller: cpuController,
+                  style: const TextStyle(fontSize: 15),
+                  selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+                  )),
+            ),
             const Text('麒麟/骁龙/联发科', style: TextStyle(color: Colors.grey)),
             const SizedBox(width: 12),
           ]),

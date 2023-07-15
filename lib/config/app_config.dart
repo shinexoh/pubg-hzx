@@ -7,7 +7,8 @@ class AppConfig {
       double.parse(appVersion.split('.').join());
 
   ///任务Key
-  static const String taskKey = 'TaskKey';
+  // static const String taskKey = 'TaskKey';
+  static const String taskKey = 'CardPassKey';
 
   ///机型模拟参数Key
   static const String modelImitateKey = 'ModelImitateKey';

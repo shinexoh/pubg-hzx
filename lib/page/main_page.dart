@@ -3,6 +3,7 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
+import 'package:huazhixia/util/util.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -58,7 +59,11 @@ class _MainPageState extends State<MainPage> {
           /*
           floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.blue,
-            onPressed: () => Get.toNamed('/cardpass'),
+            onPressed: () async {
+              await SpUtil.addString('TaskKey', '')
+                  ? prints('添加成功')
+                  : prints('添加失败');
+            },
             child: const Icon(Icons.add, color: Colors.white),
           ),
           */
