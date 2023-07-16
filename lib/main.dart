@@ -96,6 +96,7 @@ class MyApp extends StatelessWidget {
             child: OKToast(
               duration: const Duration(seconds: 3),
               position: ToastPosition.bottom,
+              dismissOtherOnShow: true,
               child: child!,
             ));
       },

@@ -88,7 +88,12 @@ class _HomePageState extends State<HomePage> {
               child: const Row(children: [
                 Icon(Remix.wireless_charging_line),
                 SizedBox(width: 10),
-                Text('服务器状态：正常', style: TextStyle(fontSize: 15)),
+                Expanded(
+                  child: Text('服务器状态：正常',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle(fontSize: 15)),
+                ),
               ]),
             ),
           ),
@@ -102,7 +107,12 @@ class _HomePageState extends State<HomePage> {
               child: const Row(children: [
                 Icon(Remix.compasses_2_line),
                 SizedBox(width: 10),
-                Text('文件状态：正常', style: TextStyle(fontSize: 15)),
+                Expanded(
+                  child: Text('文件状态：正常',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle(fontSize: 15)),
+                ),
               ]),
             ),
           ),
@@ -117,7 +127,12 @@ class _HomePageState extends State<HomePage> {
           child: const Row(children: [
             Icon(Remix.chat_smile_2_line),
             SizedBox(width: 10),
-            Text('如出现问题请及时反馈。祝你玩的开心！', style: TextStyle(fontSize: 15)),
+            Expanded(
+              child: Text('如出现问题请及时反馈，祝你玩的开心！',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontSize: 15)),
+            ),
           ]),
         ),
       ]),
@@ -173,8 +188,10 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey.shade200)),
-                child: const Text('点击修改',
-                    style: TextStyle(color: Colors.blue, fontSize: 13)),
+                child: const Text(
+                  '点击修改',
+                  style: TextStyle(color: Colors.blue, fontSize: 13),
+                ),
               ),
             ),
           ]),
@@ -288,8 +305,10 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey.shade200)),
-                child: Text(index < 2 ? '点击解锁' : '点击复制',
-                    style: const TextStyle(color: Colors.blue, fontSize: 13)),
+                child: Text(
+                  index < 2 ? '点击解锁' : '点击复制',
+                  style: const TextStyle(color: Colors.blue, fontSize: 13),
+                ),
               ),
             ),
           ]),
@@ -339,8 +358,10 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.grey.shade200)),
-                child: Text(index <= 1 ? '点击重置' : '重置所有',
-                    style: const TextStyle(color: Colors.blue, fontSize: 13)),
+                child: Text(
+                  index <= 1 ? '点击重置' : '重置所有',
+                  style: const TextStyle(color: Colors.blue, fontSize: 13),
+                ),
               ),
             ),
           ]),

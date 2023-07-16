@@ -228,7 +228,7 @@ class _CardPassPageState extends State<CardPassPage> {
           DialogStyle.mainDialog(
             title: '激活成功',
             subTitle:
-                '画质侠激活成功！注意：一张卡密只能激活一台设备，如果在另一台设备激活同一张卡密，那么原设备将会失效，请不要将卡密泄露给他人！',
+                '画质侠激活成功！注意：一张卡密只能激活一台设备，如果在另一台设备激活同一张卡密，那么原设备将会失效，请勿将卡密泄露给他人！',
             showCanceButton: false,
             onOkButton: () => Get.back(),
           );

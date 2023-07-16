@@ -59,9 +59,11 @@ class FunctionPage extends StatelessWidget {
             child: Row(children: [
               const Icon(Remix.pie_chart_2_line),
               const SizedBox(width: 10),
-              Text(
-                '画质总数：${FileConfig.allPqFile.length}',
-                style: const TextStyle(fontSize: 15),
+              Expanded(
+                child: Text('画质总数：${FileConfig.allPqFile.length}',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: const TextStyle(fontSize: 15)),
               ),
             ]),
           ),
@@ -76,9 +78,11 @@ class FunctionPage extends StatelessWidget {
             child: Row(children: [
               const Icon(Remix.magic_line),
               const SizedBox(width: 10),
-              Text(
-                '超广角总数：${FunctionConfig.wideAngle.length}',
-                style: const TextStyle(fontSize: 15),
+              Expanded(
+                child: Text('超广角总数：${FunctionConfig.wideAngle.length}',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: const TextStyle(fontSize: 15)),
               ),
             ]),
           ),

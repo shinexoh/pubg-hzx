@@ -3,7 +3,6 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/util/util.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
