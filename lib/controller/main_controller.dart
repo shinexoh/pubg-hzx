@@ -79,7 +79,7 @@ class MainController extends GetxController {
   void onTap(int index) => pageIndex.value = index;
 
   //检查任务状态
-  void checkTask() async {
+  void checkTask() {
     SpUtil.containsKey(AppConfig.taskKey)
         ? _appController.setTaskState(true)
         : _appController.setTaskState(false);

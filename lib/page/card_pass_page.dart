@@ -79,13 +79,15 @@ class _CardPassPageState extends State<CardPassPage> {
                   height: 1.2,
                   letterSpacing: 5),
             ),
-            Text(
-              appController.taskState.value ? '您已成功激活画质侠会员' : '激活画质侠享受更多画质功能',
-              style: const TextStyle(
-                  fontSize: 13,
-                  color: Color.fromRGBO(252, 162, 86, 1),
-                  letterSpacing: 2),
-            ),
+            Obx(() => Text(
+                  appController.taskState.value
+                      ? '您已成功激活画质侠会员'
+                      : '激活画质侠享受更多画质功能',
+                  style: const TextStyle(
+                      fontSize: 13,
+                      color: Color.fromRGBO(252, 162, 86, 1),
+                      letterSpacing: 2),
+                )),
           ]),
         ),
       ),
@@ -176,9 +178,8 @@ class _CardPassPageState extends State<CardPassPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-            padding: EdgeInsets.only(bottom: 20),
-            child: Text('享受权益', style: TextStyle(fontSize: 20))),
+        const Text('享受权益', style: TextStyle(fontSize: 20)),
+        const SizedBox(height: 20),
         Column(
           children: List.generate(getRightsData.length, (index) {
             return Container(
@@ -214,7 +215,7 @@ class _CardPassPageState extends State<CardPassPage> {
       showToast('请输入卡密');
     } else {
       FocusScope.of(context).unfocus();
-      DialogStyle.loadingDialog();
+      DialogStyle.loadingDialog(dismissible: false);
 
       final httpCardPass = await HttpClient.get(Api.cardPassUrl);
 
@@ -224,6 +225,7 @@ class _CardPassPageState extends State<CardPassPage> {
         final List<String> cardPassList = httpCardPass.data.split('\n');
         if (cardPassList.contains(controller.text.toUpperCase())) {
           SpUtil.addString(AppConfig.taskKey, '');
+          appController.setTaskState(true);
 
           DialogStyle.mainDialog(
             title: '激活成功',
