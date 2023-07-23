@@ -252,8 +252,7 @@ class _CardPassPageState extends State<CardPassPage> {
   //购买卡密
   void onBuy() {
     FocusScope.of(context).unfocus();
-    AppUtil.openUrl(
-        'http://shinex.haihaihai.cc/?classify_id=1173&goods_id=1897');
+    AppUtil.openUrl('http://shinex.haihaihai.cc/');
   }
 
   //联系客服

@@ -31,7 +31,7 @@ dependencies:
   # 电池信息
   battery_plus: ^3.0.6
   # 权限处理
-  permission_handler: ^10.4.1
+  permission_handler: ^10.4.3
   # 动画弹窗、动画按钮
   awesome_dialog: ^3.0.2
   # 授予文件夹、安卓11+的文件操作
