@@ -2,7 +2,7 @@ name: huazhixia
 description: A new Flutter project.
 publish_to: 'none'
 
-version: 2.1.1+4
+version: 2.1.2+5
 
 environment:
   # sdk: '>=2.19.6 <3.0.0'
@@ -23,31 +23,31 @@ dependencies:
   # 路由管理、状态管理
   get: ^4.6.5
   # Remix图标库
-  remixicon: ^1.0.0
+  remixicon_updated: ^1.0.2
   # Toast提示
   oktoast: ^3.3.1
-  # 设备信息
-  device_info_plus: ^8.2.2
-  # 电池信息
-  battery_plus: ^3.0.6
   # 权限处理
   permission_handler: ^10.4.3
   # 动画弹窗、动画按钮
   awesome_dialog: ^3.0.2
   # 授予文件夹、安卓11+的文件操作
   shared_storage: ^0.7.1
-  # 安卓intent操作
-  android_intent_plus: ^3.1.9
   # 键值对存储
   shared_preferences: ^2.1.2
   # 应用操作
   device_apps: ^2.2.0
-  # 分享
-  share_plus: ^6.3.4
-  # 网络检查
-  connectivity_plus: ^3.0.6
   # 底部导航
   salomon_bottom_bar: ^3.3.2
+  # 分享
+  share_plus: ^6.3.4
+  # 电池信息
+  battery_plus: ^3.0.6
+  # 安卓intent操作
+  android_intent_plus: ^3.1.9
+  # 设备信息
+  device_info_plus: ^8.2.2
+  # 网络检查
+  connectivity_plus: ^3.0.6
 
 dev_dependencies:
   flutter_test:

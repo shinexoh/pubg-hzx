@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:remixicon/remixicon.dart';
+import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';

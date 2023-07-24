@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:remixicon/remixicon.dart';
+import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/util/util.dart';

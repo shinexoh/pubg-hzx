@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:remixicon/remixicon.dart';
+import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:get/get.dart';
 
 import '../page/home_page.dart';

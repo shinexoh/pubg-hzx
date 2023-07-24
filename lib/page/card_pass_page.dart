@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:remixicon/remixicon.dart';
+import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:get/get.dart';
 

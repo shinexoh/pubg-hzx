@@ -509,14 +509,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.2.4"
-  remixicon:
+  remixicon_updated:
     dependency: "direct main"
     description:
-      name: remixicon
-      sha256: "9bef40aeea97e61ba78eadbaecdc629af7e8d30a77e536d37317aa78d491eaee"
+      name: remixicon_updated
+      sha256: "0d4cc6ea010d02df88948d4300f1bb8629169e4b469923b2436080cffdc69dea"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.2"
   rive:
     dependency: transitive
     description:
