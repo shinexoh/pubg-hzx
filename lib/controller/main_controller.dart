@@ -161,4 +161,35 @@ class MainController extends GetxController {
       }
     }
   }
+
+  //显示应用公告Snackbar
+  void showAppTips() async {
+    final appTips = await HttpClient.get(Api.main);
+
+    if (appTips.isOk) {
+      final tipsContent = appTips.data['apptips'];
+
+      if (tipsContent != null) {
+        ScaffoldMessenger.of(Get.context!).showSnackBar(
+          SnackBar(
+            content: Text(
+              tipsContent,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            dismissDirection: DismissDirection.horizontal,
+            action: SnackBarAction(
+                label: '查看',
+                onPressed: () {
+                  DialogStyle.mainDialog(
+                    subTitle: tipsContent,
+                    showCanceButton: false,
+                    onOkButton: () => Get.back(),
+                  );
+                }),
+          ),
+        );
+      }
+    }
+  }
 }

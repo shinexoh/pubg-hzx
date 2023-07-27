@@ -29,5 +29,12 @@ class AppTheme {
           selectionHandleColor: Colors.blue,
           selectionColor: Colors.blue.shade200,
         ),
+
+        //SnackBar样式配置
+        snackBarTheme: SnackBarThemeData(
+          behavior: SnackBarBehavior.floating,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
       );
 }

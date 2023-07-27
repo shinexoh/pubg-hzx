@@ -22,6 +22,7 @@ class _MainPageState extends State<MainPage> {
     mainController.checkStorage();
     mainController.checkDirectory();
     mainController.checkUpdate();
+    mainController.showAppTips();
     mainController.statistics();
     mainController.restoreFile();
 
