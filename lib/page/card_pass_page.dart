@@ -170,7 +170,7 @@ class _CardPassPageState extends State<CardPassPage> {
       {'icon': Remix.honor_of_kings_line, 'title': '专属画质修改功能'},
       {'icon': Remix.flashlight_line, 'title': '高优化画质修改功能'},
       {'icon': Remix.device_line, 'title': '机型画质模拟器'},
-      {'icon': Remix.space_ship_line, 'title': '修改自动注入OpenGL+P1优化'},
+      {'icon': Remix.space_ship_line, 'title': '修改自动注入OpenGL+SV优化'},
       {'icon': Remix.leaf_line, 'title': '优先体验画质侠内测版'},
       {'icon': Remix.fire_line, 'title': '以及更多画质侠功能'},
     ];

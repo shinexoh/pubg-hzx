@@ -26,25 +26,6 @@ class MainController extends GetxController {
   List<Widget> get pageBody =>
       const [HomePage(), FunctionPage(), DevicePage(), UserPage()];
 
-  // List<BottomNavigationBarItem> get items => const [
-  //       BottomNavigationBarItem(
-  //           label: '首页',
-  //           icon: Icon(Remix.home_5_line),
-  //           activeIcon: Icon(Remix.home_5_fill)),
-  //       BottomNavigationBarItem(
-  //           label: '功能',
-  //           icon: Icon(Remix.compass_3_line),
-  //           activeIcon: Icon(Remix.compass_3_fill)),
-  //       BottomNavigationBarItem(
-  //           label: '设备',
-  //           icon: Icon(Remix.dvd_line),
-  //           activeIcon: Icon(Remix.dvd_fill)),
-  //       BottomNavigationBarItem(
-  //           label: '我的',
-  //           icon: Icon(Remix.user_smile_line),
-  //           activeIcon: Icon(Remix.user_smile_fill)),
-  //     ];
-
   //底部导航Item
   List<SalomonBottomBarItem> get items => [
         SalomonBottomBarItem(

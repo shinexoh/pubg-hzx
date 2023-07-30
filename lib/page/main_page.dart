@@ -32,14 +32,6 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Obx(() => Scaffold(
-          // bottomNavigationBar: BottomNavigationBar(
-          //   backgroundColor: Colors.white,
-          //   currentIndex: mainController.pageIndex.value,
-          //   items: mainController.items,
-          //   selectedItemColor: Colors.blue,
-          //   type: BottomNavigationBarType.fixed,
-          //   onTap: (index) => mainController.onTap(index),
-          // ),
           bottomNavigationBar: DecoratedBox(
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(color: Colors.grey.shade200, blurRadius: 10)
@@ -56,17 +48,6 @@ class _MainPageState extends State<MainPage> {
             index: mainController.pageIndex.value,
             children: mainController.pageBody,
           ),
-          /*
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: Colors.blue,
-            onPressed: () async {
-              await SpUtil.addString('TaskKey', '')
-                  ? prints('添加成功')
-                  : prints('添加失败');
-            },
-            child: const Icon(Icons.add, color: Colors.white),
-          ),
-          */
         ));
   }
 }

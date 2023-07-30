@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
           infoBar(),
           textBar('快捷修改'),
           quickBar(),
-          textBar('性能优化', showNewTag: true),
+          textBar('性能优化'),
           powerBar(),
           textBar('其他功能'),
           otherBar(),
