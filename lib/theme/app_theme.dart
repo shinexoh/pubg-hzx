@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 class AppTheme {
   //浅色主题
-  static ThemeData get themeData => ThemeData(
+  static ThemeData get light => ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
         colorSchemeSeed: Colors.blue,

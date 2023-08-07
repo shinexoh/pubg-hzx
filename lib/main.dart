@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: '画质侠',
       color: Colors.white,
-      theme: AppTheme.themeData,
+      theme: AppTheme.light,
       initialRoute: initialRoute,
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.cupertino,
