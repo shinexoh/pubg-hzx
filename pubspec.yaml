@@ -33,7 +33,7 @@ dependencies:
   # 授予文件夹、安卓11+的文件操作
   shared_storage: ^0.7.1
   # 键值对存储
-  shared_preferences: ^2.1.2
+  shared_preferences: ^2.2.0
   # 应用操作
   device_apps: ^2.2.0
   # 底部导航
