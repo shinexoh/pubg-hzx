@@ -38,6 +38,7 @@ class _MainPageState extends State<MainPage> {
             ]),
             child: SalomonBottomBar(
               backgroundColor: Colors.white,
+              curve: Curves.bounceOut,
               margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 25),
               currentIndex: mainController.pageIndex.value,
               onTap: (index) => mainController.onTap(index),
