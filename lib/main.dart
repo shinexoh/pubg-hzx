@@ -5,8 +5,8 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:get/get.dart';
 
-import 'page/main_page.dart';
-import 'page/permission_page.dart';
+import 'page/main/main_page.dart';
+import 'page/permission/permission_page.dart';
 import 'page/help_page.dart';
 import 'page/card_pass_page.dart';
 import 'page/use/model_imitate_page.dart';

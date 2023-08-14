@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:get/get.dart';
 
-import 'package:huazhixia/controller/controller.dart';
 import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/widgets/widgets.dart';
+import 'package:huazhixia/page/home/home_logic.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,15 +13,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final homeController = Get.put(HomeController());
-
-  @override
-  void initState() {
-    super.initState();
-    homeController.initTitle();
-  }
-
+class _HomePageState extends State<HomePage> with HomeLogic {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,19 +44,18 @@ class _HomePageState extends State<HomePage> {
               Obx(() => Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(homeController.title.value,
+                      Text(title.value,
                           style: const TextStyle(
                               fontSize: 22,
                               letterSpacing: 1,
                               fontWeight: FontWeight.bold)),
-                      Text(homeController.subTitle.value,
+                      Text(subTitle.value,
                           style: const TextStyle(
                               color: Colors.grey, letterSpacing: 1)),
                     ],
                   )),
               IconButton(
-                  onPressed: homeController.onOpenGame,
-                  icon: const Icon(Remix.rocket_line)),
+                  onPressed: onOpenGame, icon: const Icon(Remix.rocket_line)),
             ],
           )),
     );
@@ -181,7 +172,7 @@ class _HomePageState extends State<HomePage> {
             OnInk(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              onTap: () => homeController.onQuick(index),
+              onTap: () => onQuick(index),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -234,7 +225,7 @@ class _HomePageState extends State<HomePage> {
             OnInk(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              onTap: () => homeController.onPower(index),
+              onTap: () => onPower(index),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -298,7 +289,7 @@ class _HomePageState extends State<HomePage> {
             OnInk(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              onTap: () => homeController.onOther(index),
+              onTap: () => onOther(index),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -351,7 +342,7 @@ class _HomePageState extends State<HomePage> {
             OnInk(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              onTap: () => homeController.onRestore(index),
+              onTap: () => onRestore(index),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

@@ -1,19 +1,27 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:device_apps/device_apps.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:get/get.dart';
 
 import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/util/util.dart';
 import 'package:huazhixia/config/config.dart';
+import 'package:huazhixia/util/util.dart';
 import 'package:huazhixia/widgets/widgets.dart';
+import 'package:huazhixia/page/home/home_page.dart';
 
-class HomeController extends GetxController {
+mixin HomeLogic on State<HomePage> {
   final _appController = Get.find<AppController>();
 
-  final title = ''.obs;
-  final subTitle = ''.obs;
+  var title = ''.obs;
+  var subTitle = ''.obs;
+
+  @override
+  void initState() {
+    super.initState();
+    initTitle();
+  }
 
   //初始化标题与副标题
   void initTitle() {

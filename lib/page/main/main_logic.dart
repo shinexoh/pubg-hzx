@@ -1,63 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:get/get.dart';
-
-import '../page/home_page.dart';
-import '../page/function_page.dart';
-import '../page/device_page.dart';
-import '../page/user_page.dart';
 
 import 'package:huazhixia/server/api.dart';
 import 'package:huazhixia/server/http_client.dart';
 import 'package:huazhixia/controller/controller.dart';
+import 'package:huazhixia/page/main/main_page.dart';
 import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/config/config.dart';
 import 'package:huazhixia/util/util.dart';
+import 'package:huazhixia/config/config.dart';
 
-class MainController extends GetxController {
+mixin MainLogic on State<MainPage> {
   final _appController = Get.find<AppController>();
 
-  //界面索引
-  final pageIndex = 0.obs;
+  @override
+  void initState() {
+    super.initState();
 
-  //界面列表
-  List<Widget> get pageBody =>
-      const [HomePage(), FunctionPage(), DevicePage(), UserPage()];
+    checkTask();
+    checkStorage();
+    checkDirectory();
+    checkUpdate();
+    showAppTips();
+    statistics();
+    restoreFile();
 
-  //底部导航Item
-  List<SalomonBottomBarItem> get items => [
-        SalomonBottomBarItem(
-            icon: const Icon(Remix.home_5_line),
-            activeIcon: const Icon(Remix.home_5_fill),
-            selectedColor: Colors.blue,
-            unselectedColor: Colors.black54,
-            title: const Text('首页')),
-        SalomonBottomBarItem(
-            icon: const Icon(Remix.compass_3_line),
-            activeIcon: const Icon(Remix.compass_3_fill),
-            selectedColor: Colors.pink,
-            unselectedColor: Colors.black54,
-            title: const Text('功能')),
-        SalomonBottomBarItem(
-          icon: const Icon(Remix.dvd_line),
-          activeIcon: const Icon(Remix.dvd_fill),
-          selectedColor: Colors.green,
-          unselectedColor: Colors.black54,
-          title: const Text('设备'),
-        ),
-        SalomonBottomBarItem(
-          icon: const Icon(Remix.user_smile_line),
-          activeIcon: const Icon(Remix.user_smile_fill),
-          selectedColor: Colors.orange,
-          unselectedColor: Colors.black54,
-          title: const Text('我的'),
-        ),
-      ];
-
-  //底部导航切换界面
-  void onTap(int index) => pageIndex.value = index;
+    printInfo();
+  }
 
   //检查任务状态
   void checkTask() {
@@ -119,7 +88,7 @@ class MainController extends GetxController {
   }
 
   //打印一些信息
-  void print() async {
+  void printInfo() async {
     await Future.delayed(const Duration(seconds: 2));
     prints('''
 所有Key：${SpUtil.getAllKey()}
