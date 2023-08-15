@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:huazhixia/config/config.dart';
+import 'color_text_card.dart';
 import 'on_ink.dart';
 
 //修改界面的按钮封装
@@ -30,43 +31,29 @@ class UseButton extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         onTap: onTap,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: const TextStyle(fontSize: 15)),
-                const SizedBox(height: 5),
-                Row(children: [
-                  Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 2),
-                      decoration: BoxDecoration(
-                          color: Colors.blue.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: const Text('120FPS',
-                          style: TextStyle(color: Colors.blue, fontSize: 13))),
-                  const SizedBox(width: 5),
-                  Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 2),
-                      decoration: BoxDecoration(
-                          color: Colors.pink.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: const Text('SV优化',
-                          style: TextStyle(color: Colors.pink, fontSize: 13))),
-                  const SizedBox(width: 5),
-                  Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 2),
-                      decoration: BoxDecoration(
-                          color: Colors.green.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: const Text('OpenGL',
-                          style: TextStyle(color: Colors.green, fontSize: 13))),
-                ]),
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 15),
+                  ),
+                  const SizedBox(height: 5),
+                  const Row(children: [
+                    ColorTextCard(color: Colors.blue, text: '120FPS'),
+                    SizedBox(width: 5),
+                    ColorTextCard(color: Colors.pink, text: 'SV优化'),
+                    SizedBox(width: 5),
+                    ColorTextCard(color: Colors.green, text: 'OpenGL'),
+                  ]),
+                ],
+              ),
             ),
+            const SizedBox(width: 10),
             Image.asset(AssetsConfig.arrow, height: 20, width: 20),
           ],
         ),

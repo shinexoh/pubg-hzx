@@ -82,40 +82,27 @@ class WideAnglePage extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             onTap: () => onUse(index),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(FunctionConfig.wideAngle[index],
-                        style: const TextStyle(fontSize: 15)),
-                    const SizedBox(height: 5),
-                    Row(children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.2),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: const Text('内测中',
-                            style: TextStyle(color: Colors.grey, fontSize: 13)),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        FunctionConfig.wideAngle[index],
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 15),
                       ),
-                      const SizedBox(width: 5),
-                      Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(
-                            color: Colors.green.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Text(
-                            '无黑边',
-                            style: TextStyle(color: Colors.green, fontSize: 13),
-                          )),
-                    ]),
-                  ],
+                      const SizedBox(height: 5),
+                      const Row(children: [
+                        ColorTextCard(color: Colors.grey, text: '内测中'),
+                        SizedBox(width: 5),
+                        ColorTextCard(color: Colors.green, text: '无黑边'),
+                      ]),
+                    ],
+                  ),
                 ),
+                const SizedBox(width: 10),
                 Image.asset(AssetsConfig.arrow, height: 20, width: 20),
               ],
             ),

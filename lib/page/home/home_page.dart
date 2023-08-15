@@ -169,22 +169,7 @@ class _HomePageState extends State<HomePage> with HomeLogic {
               ]),
             ]),
             const Spacer(),
-            OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              onTap: () => onQuick(index),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey.shade200)),
-                child: const Text(
-                  '点击修改',
-                  style: TextStyle(color: Colors.blue, fontSize: 13),
-                ),
-              ),
-            ),
+            OutlinedTextButton(title: '点击修改', onTap: () => onQuick(index)),
           ]),
         );
       }),
@@ -222,25 +207,13 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                       fontStyle: FontStyle.italic)),
             ]),
             const Spacer(),
-            OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              onTap: () => onPower(index),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey.shade200)),
-                child: Text(
-                    index == 0
-                        ? '点击修复'
-                        : index == 1
-                            ? '点击优化'
-                            : '点击下载',
-                    style: const TextStyle(color: Colors.blue, fontSize: 13)),
-              ),
-            ),
+            OutlinedTextButton(
+                title: index == 0
+                    ? '点击修复'
+                    : index == 1
+                        ? '点击优化'
+                        : '点击下载',
+                onTap: () => onPower(index))
           ]),
         );
       }),
@@ -286,22 +259,8 @@ class _HomePageState extends State<HomePage> with HomeLogic {
               ]),
             ]),
             const Spacer(),
-            OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              onTap: () => onOther(index),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey.shade200)),
-                child: Text(
-                  index < 2 ? '点击解锁' : '点击复制',
-                  style: const TextStyle(color: Colors.blue, fontSize: 13),
-                ),
-              ),
-            ),
+            OutlinedTextButton(
+                title: index < 2 ? '点击解锁' : '点击复制', onTap: () => onOther(index))
           ]),
         );
       }),
@@ -339,22 +298,9 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                       fontStyle: FontStyle.italic)),
             ]),
             const Spacer(),
-            OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              onTap: () => onRestore(index),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey.shade200)),
-                child: Text(
-                  index <= 1 ? '点击重置' : '重置所有',
-                  style: const TextStyle(color: Colors.blue, fontSize: 13),
-                ),
-              ),
-            ),
+            OutlinedTextButton(
+                title: index <= 1 ? '点击重置' : '重置所有',
+                onTap: () => onRestore(index))
           ]),
         );
       }),

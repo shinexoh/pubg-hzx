@@ -23,7 +23,7 @@ class _PermissionPageState extends State<PermissionPage>
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
-              SizedBox(height: Get.height * 0.15),
+              SizedBox(height: Get.height * 0.12),
               Image.asset(AssetsConfig.permission,
                   height: Get.height * 0.2, width: double.infinity),
               const SizedBox(height: 20),
