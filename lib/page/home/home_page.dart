@@ -260,7 +260,9 @@ class _HomePageState extends State<HomePage> with HomeLogic {
             ]),
             const Spacer(),
             OutlinedTextButton(
-                title: index < 2 ? '点击解锁' : '点击复制', onTap: () => onOther(index))
+              title: index <= 1 ? '点击解锁' : '点击复制',
+              onTap: () => onOther(index),
+            )
           ]),
         );
       }),
