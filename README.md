@@ -1,16 +1,18 @@
-# huazhixia
+# 画质侠
 
-A new Flutter project.
+一款和平精英画质助手，是之前开发的 [Doge画质助手](https://github.com/shinexoh/dogehzzs) 升级版。仅支持安卓手机，没什么技术含量 :)
 
-## Getting Started
+## 应用功能
 
-This project is a starting point for a Flutter application.
+* 一些简单的画质修改
+* 通过购买卡密激活即可使用
+* 还有一些花里胡哨没用的功能
+* 支持安卓13画质修改
 
-A few resources to get you started if this is your first Flutter project:
+## 应用截图
+![应用截图1](./docs/img1.png)
+![应用截图2](./docs/img2.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 其他
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+这个分支的代码主要使用了 [GetX](https://pub.dev/packages/get) 来状态管理、路由管理等。以后有机会应该会使用 [Provider](https://pub.dev/packages/provider) 来重构。
