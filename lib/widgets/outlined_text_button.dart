@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'on_ink.dart';
 
+// 轮毂文本按钮的封装
 class OutlinedTextButton extends StatelessWidget {
   final String title;
   final Color? titleColor;

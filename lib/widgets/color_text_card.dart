@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// 颜色文本卡片封装
 class ColorTextCard extends StatelessWidget {
   final Color color;
   final double? colorOpacity;

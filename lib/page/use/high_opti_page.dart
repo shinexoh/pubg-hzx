@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 
-// 下面注释的import代码有问题，用这种方式import的话就报错导入失败，而其他在此文件夹里的dart文件使用这种方式导入就没问题，应该是bug。
-
-// import '../../util/util.dart';
-// import '../../config/config.dart';
-// import '../../widgets/widgets.dart';
-
-import 'package:huazhixia/util/util.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/widgets/widgets.dart';
+import '../../util/util.dart';
+import '../../config/config.dart';
+import '../../widgets/widgets.dart';
 
 class HighOptiPage extends StatelessWidget {
   const HighOptiPage({super.key});
@@ -21,7 +15,7 @@ class HighOptiPage extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(children: [
-          headBar(),
+          headBar(context),
           const SizedBox(height: 30),
           itemBar(),
         ]),
@@ -35,13 +29,13 @@ class HighOptiPage extends StatelessWidget {
     );
   }
 
-  Widget headBar() {
+  Widget headBar(BuildContext context) {
     return SafeArea(
       child: Column(
         children: [
           const SizedBox(height: 20),
           Hero(
-            tag: 'diversify1',
+            tag: ModalRoute.of(context)!.settings.arguments.toString(),
             child: Container(
                 height: 70,
                 width: 70,

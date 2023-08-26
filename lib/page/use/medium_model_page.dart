@@ -15,7 +15,7 @@ class MediumModelPage extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(children: [
-          headBar(),
+          headBar(context),
           const SizedBox(height: 30),
           itemBar(),
         ]),
@@ -29,13 +29,13 @@ class MediumModelPage extends StatelessWidget {
     );
   }
 
-  Widget headBar() {
+  Widget headBar(BuildContext context) {
     return SafeArea(
       child: Column(
         children: [
           const SizedBox(height: 20),
           Hero(
-            tag: 'model1',
+            tag: ModalRoute.of(context)!.settings.arguments.toString(),
             child: Container(
                 height: 70,
                 width: 70,

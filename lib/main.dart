@@ -17,7 +17,7 @@ import 'page/card_pass_page.dart';
 import 'page/use/model_imitate_page.dart';
 import 'page/use/wide_angle_page.dart';
 import 'page/use/exclusive_page.dart';
-import 'page/use//highopti_page.dart';
+import 'page/use/high_opti_page.dart';
 import 'page/use/low_model_page.dart';
 import 'page/use/medium_model_page.dart';
 import 'page/use/high_model_page.dart';

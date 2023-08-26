@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//点击水波纹组件封装
+// 点击水波纹组件封装
 class OnInk extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final Color? color;

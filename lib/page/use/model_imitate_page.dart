@@ -16,11 +16,11 @@ class ModelImitatePage extends StatefulWidget {
 }
 
 class _ModelImitatePageState extends State<ModelImitatePage> {
-  TextEditingController brandController = TextEditingController();
-  TextEditingController modelController = TextEditingController();
-  TextEditingController resController = TextEditingController();
-  TextEditingController hertzController = TextEditingController();
-  TextEditingController cpuController = TextEditingController();
+  final TextEditingController brandController = TextEditingController();
+  final TextEditingController modelController = TextEditingController();
+  final TextEditingController resController = TextEditingController();
+  final TextEditingController hertzController = TextEditingController();
+  final TextEditingController cpuController = TextEditingController();
 
   @override
   void initState() {
@@ -81,7 +81,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         children: [
           const SizedBox(height: 20),
           Hero(
-            tag: 'more0',
+            tag: ModalRoute.of(context)!.settings.arguments.toString(),
             child: Container(
                 height: 70,
                 width: 70,

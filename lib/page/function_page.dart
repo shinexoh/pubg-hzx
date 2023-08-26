@@ -218,20 +218,25 @@ class FunctionPage extends StatelessWidget {
 
   void onDiversify(int index) {
     index == 0
-        ? Navigator.pushNamed(navigatorKey.currentContext!, '/exclusive')
-        : Navigator.pushNamed(navigatorKey.currentContext!, '/highopti');
+        ? Navigator.pushNamed(navigatorKey.currentContext!, '/exclusive',
+            arguments: 'diversify$index')
+        : Navigator.pushNamed(navigatorKey.currentContext!, '/highopti',
+            arguments: 'diversify$index');
   }
 
   void onModel(int index) {
     switch (index) {
       case 0:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/lowmodel');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/lowmodel',
+            arguments: 'model$index');
         break;
       case 1:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/mediummodel');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/mediummodel',
+            arguments: 'model$index');
         break;
       case 2:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/highmodel');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/highmodel',
+            arguments: 'model$index');
         break;
     }
   }
@@ -239,10 +244,12 @@ class FunctionPage extends StatelessWidget {
   void onMore(int index) async {
     switch (index) {
       case 0:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/modelimitate');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/modelimitate',
+            arguments: 'more$index');
         break;
       case 1:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/wideangle');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/wideangle',
+            arguments: 'more$index');
         break;
       case 2:
         if (await AppUtil.checkDlFile()) {
