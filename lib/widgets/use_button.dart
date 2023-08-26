@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:huazhixia/config/config.dart';
+import '../config/config.dart';
 import 'color_text_card.dart';
 import 'on_ink.dart';
 
-//修改界面的按钮封装
+// 修改界面的按钮封装
 class UseButton extends StatelessWidget {
   final String title;
   final EdgeInsetsGeometry? margin;

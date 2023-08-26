@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:huazhixia/page/main/main_logic.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:get/get.dart';
 
 import '../device_page.dart';
 import '../function_page.dart';
 import '../home/home_page.dart';
 import '../user_page.dart';
+
+import 'main_logic.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -17,14 +17,14 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> with MainLogic {
-  //界面索引
-  var pageIndex = 0.obs;
+  // 界面索引
+  final ValueNotifier<int> pageIndex = ValueNotifier(0);
 
-  //界面列表
+  // 界面列表
   List<Widget> get pageBody =>
       const [HomePage(), FunctionPage(), DevicePage(), UserPage()];
 
-  //底部导航Item
+  // 底部导航Item
   List<SalomonBottomBarItem> get items => [
         SalomonBottomBarItem(
             icon: const Icon(Remix.home_5_line),
@@ -54,26 +54,29 @@ class _MainPageState extends State<MainPage> with MainLogic {
         ),
       ];
 
-  //底部导航切换界面
+  // 底部导航切换界面
   void onTap(int index) => pageIndex.value = index;
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
-          bottomNavigationBar: DecoratedBox(
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(color: Colors.grey.shade200, blurRadius: 10)
-            ]),
-            child: SalomonBottomBar(
-              backgroundColor: Colors.white,
-              curve: Curves.bounceOut,
-              margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 25),
-              currentIndex: pageIndex.value,
-              onTap: (index) => onTap(index),
-              items: items,
-            ),
+    return ValueListenableBuilder(
+      valueListenable: pageIndex,
+      builder: (context, pageIndex, child) => Scaffold(
+        bottomNavigationBar: DecoratedBox(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(color: Colors.grey.shade200, blurRadius: 10)
+          ]),
+          child: SalomonBottomBar(
+            backgroundColor: Colors.white,
+            curve: Curves.bounceOut,
+            margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 25),
+            currentIndex: pageIndex,
+            onTap: (index) => onTap(index),
+            items: items,
           ),
-          body: IndexedStack(index: pageIndex.value, children: pageBody),
-        ));
+        ),
+        body: IndexedStack(index: pageIndex, children: pageBody),
+      ),
+    );
   }
 }

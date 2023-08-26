@@ -1,14 +1,19 @@
-import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:oktoast/oktoast.dart';
 
-import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/util/util.dart';
+import '../../app/app.dart';
+import '../../controller/controller.dart';
+import '../../config/config.dart';
+import '../../widgets/widgets.dart';
+import '../../util/util.dart';
 
-//修改功能的弹窗封装
+// 修改功能的弹窗封装
 class UseDialog {
-  ///修改画质弹窗
+  static final _appController =
+      navigatorKey.currentContext!.read<AppController>();
+
+  /// 修改画质弹窗
   static void usePqDialog({
     required String filePath,
     String title = '温馨提示',
@@ -20,11 +25,10 @@ class UseDialog {
       subTitle: subTitle,
       okButtonTitle: buttonTitle,
       onOkButton: () async {
-        Get.back();
-        final sdkVersion = Get.find<AppController>().sdkVersion;
+        Navigator.pop(navigatorKey.currentContext!);
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (sdkVersion <= 29) {
+          if (_appController.sdkVersion <= 29) {
             await UseFor10.usePq(filePath)
                 ? showToast('修改成功，请重启游戏')
                 : showToast('修改失败，请检查权限是否授予');
@@ -42,18 +46,17 @@ class UseDialog {
     );
   }
 
-  ///解锁画质帧率弹窗
+  /// 解锁画质帧率弹窗
   static void useDlDialog(String title) {
     DialogStyle.mainDialog(
       title: title,
       subTitle: '一旦解锁画质+120帧将会持续有效，期间修改其他画质功能会导致无效果，需要重置画质后即可修改其他画质功能！',
       okButtonTitle: '解锁',
       onOkButton: () async {
-        Get.back();
-        final sdkVersion = Get.find<AppController>().sdkVersion;
+        Navigator.pop(navigatorKey.currentContext!);
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (sdkVersion <= 29) {
+          if (_appController.sdkVersion <= 29) {
             await UseFor10.useDl()
                 ? showToast('解锁画质成功，请重启游戏')
                 : showToast('解锁画质失败，请检查权限是否授予');
@@ -71,18 +74,17 @@ class UseDialog {
     );
   }
 
-  ///解锁超高音质弹窗
+  /// 解锁超高音质弹窗
   static void useTqDialog(String title) {
     DialogStyle.mainDialog(
       title: title,
       subTitle: '确定要解锁超高音质？如出现问题请前往首页重置音质！',
       okButtonTitle: '解锁',
       onOkButton: () async {
-        Get.back();
-        final sdkVersion = Get.find<AppController>().sdkVersion;
+        Navigator.pop(navigatorKey.currentContext!);
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (sdkVersion <= 29) {
+          if (_appController.sdkVersion <= 29) {
             await UseFor10.useTq()
                 ? showToast('解锁音质成功，请重启游戏')
                 : showToast('解锁音质失败，请检查权限是否授予');

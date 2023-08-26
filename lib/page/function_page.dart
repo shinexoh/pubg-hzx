@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/util/util.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/widgets/widgets.dart';
+import '../app/app.dart';
+import '../util/util.dart';
+import '../config/config.dart';
+import '../widgets/widgets.dart';
 
 class FunctionPage extends StatelessWidget {
   const FunctionPage({super.key});
@@ -217,19 +217,21 @@ class FunctionPage extends StatelessWidget {
   }
 
   void onDiversify(int index) {
-    index == 0 ? Get.toNamed('/exclusive') : Get.toNamed('/highopti');
+    index == 0
+        ? Navigator.pushNamed(navigatorKey.currentContext!, '/exclusive')
+        : Navigator.pushNamed(navigatorKey.currentContext!, '/highopti');
   }
 
   void onModel(int index) {
     switch (index) {
       case 0:
-        Get.toNamed('/lowmodel');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/lowmodel');
         break;
       case 1:
-        Get.toNamed('/mediummodel');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/mediummodel');
         break;
       case 2:
-        Get.toNamed('/highmodel');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/highmodel');
         break;
     }
   }
@@ -237,10 +239,10 @@ class FunctionPage extends StatelessWidget {
   void onMore(int index) async {
     switch (index) {
       case 0:
-        Get.toNamed('/modelimitate');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/modelimitate');
         break;
       case 1:
-        Get.toNamed('/wideangle');
+        Navigator.pushNamed(navigatorKey.currentContext!, '/wideangle');
         break;
       case 2:
         if (await AppUtil.checkDlFile()) {
@@ -251,7 +253,7 @@ class FunctionPage extends StatelessWidget {
             subTitle: '确定要随机修改一项画质？如出现问题请前往首页重置画质！',
             okButtonTitle: '修改',
             onOkButton: () {
-              Get.back();
+              Navigator.pop(navigatorKey.currentContext!);
               AppUtil.randomUsePq(callBack: () => showToast('修改成功，请重启游戏'));
             },
           );

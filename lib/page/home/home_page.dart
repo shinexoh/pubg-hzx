@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/page/home/home_logic.dart';
+import '../../config/config.dart';
+import '../../widgets/widgets.dart';
+
+import 'home_logic.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,19 +41,25 @@ class _HomePageState extends State<HomePage> with HomeLogic {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Obx(() => Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(title.value,
-                          style: const TextStyle(
-                              fontSize: 22,
-                              letterSpacing: 1,
-                              fontWeight: FontWeight.bold)),
-                      Text(subTitle.value,
-                          style: const TextStyle(
-                              color: Colors.grey, letterSpacing: 1)),
-                    ],
-                  )),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ValueListenableBuilder(
+                    valueListenable: title,
+                    builder: (context, title, child) => Text(title,
+                        style: const TextStyle(
+                            fontSize: 22,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  ValueListenableBuilder(
+                    valueListenable: subTitle,
+                    builder: (context, subTitle, child) => Text(subTitle,
+                        style: const TextStyle(
+                            color: Colors.grey, letterSpacing: 1)),
+                  ),
+                ],
+              ),
               IconButton(
                   onPressed: onOpenGame, icon: const Icon(Remix.rocket_line)),
             ],

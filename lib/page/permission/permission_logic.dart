@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:huazhixia/page/permission/permission_page.dart';
+import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/widgets/widgets.dart';
+import '../../app/app.dart';
+import '../../controller/controller.dart';
+import '../../widgets/widgets.dart';
+
+import 'permission_page.dart';
 
 mixin PermissionLogic on State<PermissionPage>, WidgetsBindingObserver {
-  //存储权限状态
-  var permissionGranted = false.obs;
+  final _appController = navigatorKey.currentContext!.read<AppController>();
+
+  // 存储权限状态
+  final ValueNotifier<bool> permissionIsGranted = ValueNotifier(false);
 
   @override
   void initState() {
@@ -20,6 +24,7 @@ mixin PermissionLogic on State<PermissionPage>, WidgetsBindingObserver {
   void dispose() {
     super.dispose();
     WidgetsBinding.instance.removeObserver(this);
+    permissionIsGranted.dispose();
   }
 
   @override
@@ -27,36 +32,39 @@ mixin PermissionLogic on State<PermissionPage>, WidgetsBindingObserver {
     super.didChangeAppLifecycleState(state);
     if (state == AppLifecycleState.resumed) {
       if (await Permission.storage.status == PermissionStatus.granted) {
-        permissionGranted.value = true;
-        Get.find<AppController>().setStorageState(true);
-
-        Get.snackbar('', '',
-            titleText: const Text('恭喜你！',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-            messageText: const Text('存储权限授予成功，开启你的旅程吧！',
-                style: TextStyle(color: Colors.black)));
+        permissionIsGranted.value = true;
+        _appController.setStorageState(true);
+        DialogStyle.mainDialog(
+          subTitle: '存储权限授予成功，开始你的旅程吧！',
+          showCanceButton: false,
+          okButtonTitle: '开始旅程',
+          onOkButton: () =>
+              Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false),
+        );
       }
     }
   }
 
-  //点击授予按钮
+  // 点击授予按钮
   void onGrant() {
-    permissionGranted.value ? Get.offAllNamed('/') : requestPermission();
+    permissionIsGranted.value
+        ? Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false)
+        : requestPermission();
   }
 
-  //请求权限
+  // 请求权限
   void requestPermission() async {
     final request = await Permission.storage.request();
 
     if (request.isGranted) {
-      permissionGranted.value = true;
-      Get.find<AppController>().setStorageState(true);
+      permissionIsGranted.value = true;
+      _appController.setStorageState(true);
     } else if (request.isDenied) {
       final newRequest = await Permission.storage.request();
 
       if (newRequest.isGranted) {
-        permissionGranted.value = true;
-        Get.find<AppController>().setStorageState(true);
+        permissionIsGranted.value = true;
+        _appController.setStorageState(true);
       } else {
         AppDialog.storageDialog();
       }

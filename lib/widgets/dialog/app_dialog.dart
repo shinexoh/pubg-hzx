@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:device_apps/device_apps.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/util/util.dart';
-import 'dialog_style.dart';
+import '../../app/app.dart';
+import '../../util/util.dart';
+import '../../config/config.dart';
+import '../../controller/controller.dart';
+import '../../widgets/widgets.dart';
 
-//一些常用的弹窗封装
+// 一些常用的弹窗封装
 class AppDialog {
-  ///授予游戏目录弹窗
+  static final _appController =
+      navigatorKey.currentContext!.read<AppController>();
+
+  /// 授予游戏目录弹窗
   static void directoryDialog() {
     DialogStyle.mainDialog(
       title: '温馨提示',
@@ -22,9 +26,8 @@ class AppDialog {
       onOkButton: () async {
         final grantUri = await SharedStorage.grantDirectory(UriConfig.mainUri);
         if (grantUri == GrantUriState.success) {
-          Get
-            ..back()
-            ..find<AppController>().setDirectoryState(true);
+          Navigator.pop(navigatorKey.currentContext!);
+          _appController.setDirectoryState(true);
           showToast('授予成功');
         } else if (grantUri == GrantUriState.error) {
           showToast('授予文件夹错误，请重新授予');
@@ -35,7 +38,7 @@ class AppDialog {
     );
   }
 
-  ///提示任务弹窗
+  /// 提示任务弹窗
   static void taskDialog() {
     // DialogStyle.mainDialog(
     //   title: '未知错误',
@@ -50,13 +53,13 @@ class AppDialog {
         showCanceButton: false,
         okButtonTitle: '我要激活',
         onOkButton: () {
-          Get
-            ..back()
-            ..toNamed('/cardpass');
+          Navigator.of(navigatorKey.currentContext!)
+            ..pop()
+            ..pushNamed('/cardpass');
         });
   }
 
-  ///存储权限被拒绝弹窗
+  /// 存储权限被拒绝弹窗
   static void storageDialog() {
     DialogStyle.mainDialog(
       title: '你已拒绝权限',
@@ -64,21 +67,22 @@ class AppDialog {
       showCanceButton: false,
       okButtonTitle: '手动授予',
       onOkButton: () {
-        Get.back();
+        Navigator.pop(navigatorKey.currentContext!);
         AppUtil.openAppSettings();
       },
     );
   }
 
-  ///应用更新弹窗
+  /// 应用更新弹窗
   static void updateDialog({
     required String title,
     required String subTitle,
     required String url,
     required bool isForce,
   }) {
-    Get.dialog(
-        WillPopScope(
+    showDialog(
+        context: navigatorKey.currentContext!,
+        builder: (context) => WillPopScope(
             onWillPop: () async {
               if (isForce) {
                 SystemNavigator.pop();
@@ -93,7 +97,9 @@ class AppDialog {
                   borderRadius: BorderRadius.circular(15)),
               actions: [
                 TextButton(
-                  onPressed: () => isForce ? SystemNavigator.pop() : Get.back(),
+                  onPressed: () {
+                    isForce ? SystemNavigator.pop() : Navigator.pop(context);
+                  },
                   child: Text(isForce ? '退出' : '取消'),
                 ),
                 FilledButton(
@@ -104,7 +110,7 @@ class AppDialog {
         barrierDismissible: isForce ? false : true);
   }
 
-  ///重置画质后重启游戏弹窗
+  /// 重置画质后重启游戏弹窗
   static void restoreDialog() {
     DialogStyle.mainDialog(
       title: '重置成功',
@@ -112,7 +118,7 @@ class AppDialog {
       okButtonTitle: '重启游戏',
       showCanceButton: false,
       onOkButton: () async {
-        Get.back();
+        Navigator.pop(navigatorKey.currentContext!);
         if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
           showToast('重启失败，请手动重启');
         }
@@ -120,19 +126,17 @@ class AppDialog {
     );
   }
 
-  ///提示存在解锁文件重置画质
+  /// 提示存在解锁文件重置画质
   static void dlRestoreDialog() {
-    final appController = Get.find<AppController>();
-
     DialogStyle.mainDialog(
       title: '温馨提示',
       subTitle: '检测到你使用过“解锁画质+120帧”，你需要重置画质并重启游戏才能修改其他画质功能！',
       okButtonTitle: '重置画质',
       showCanceButton: false,
       onOkButton: () async {
-        Get.back();
+        Navigator.pop(navigatorKey.currentContext!);
 
-        if (appController.sdkVersion.value <= 29) {
+        if (_appController.sdkVersion <= 29) {
           await UseFor10.restorePq() && await UseFor10.restoreDl()
               ? AppDialog.restoreDialog()
               : showToast('重置画质失败，请检查权限是否授予');

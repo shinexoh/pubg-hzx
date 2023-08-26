@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
-import 'package:get/get.dart';
+
+// 下面注释的import代码有问题，用这种方式import的话就报错导入失败，而其他在此文件夹里的dart文件使用这种方式导入就没问题，应该是bug。
+
+// import '../../util/util.dart';
+// import '../../config/config.dart';
+// import '../../widgets/widgets.dart';
 
 import 'package:huazhixia/util/util.dart';
 import 'package:huazhixia/config/config.dart';
@@ -22,7 +27,7 @@ class HighOptiPage extends StatelessWidget {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.back(),
+        onPressed: () => Navigator.pop(context),
         backgroundColor: const Color.fromRGBO(251, 135, 115, 1),
         shape: const CircleBorder(),
         child: const Icon(Remix.arrow_left_line, color: Colors.white),

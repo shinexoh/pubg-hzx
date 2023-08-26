@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:get/get.dart';
 
-//弹窗样式的封装
+import '../../app/app.dart';
+
+// 弹窗样式的封装
 class DialogStyle {
-  ///主要的弹窗样式
+  /// 主要的弹窗样式
   static void mainDialog({
     String? title,
     String? subTitle,
@@ -19,7 +20,7 @@ class DialogStyle {
     GestureTapCallback? onOkButton,
   }) {
     AwesomeDialog(
-      context: Get.context!,
+      context: navigatorKey.currentContext!,
       title: title,
       desc: subTitle,
       dialogType: dialogType,
@@ -33,8 +34,8 @@ class DialogStyle {
               isFixedHeight: false,
               color: canceButtonColor,
               buttonTextStyle: const TextStyle(color: Colors.white),
-              pressEvent: onCanceButton ?? () => Get.back(),
-            )
+              pressEvent: onCanceButton ??
+                  () => Navigator.pop(navigatorKey.currentContext!))
           : null,
       btnOk: AnimatedButton(
         text: okButtonTitle,
@@ -46,16 +47,16 @@ class DialogStyle {
     ).show();
   }
 
-  ///加载中弹窗
+  /// 加载中弹窗
   ///
-  ///如 [autoHideDuration] 不为null则使用await等待时间自动关闭
+  /// 如 [autoHideDuration] 不为null则使用await等待时间自动关闭
   static Future<void> loadingDialog({
     Duration? autoHideDuration,
     bool dismissible = true,
     Color loadingColor = Colors.blue,
   }) async {
     await AwesomeDialog(
-      context: Get.context!,
+      context: navigatorKey.currentContext!,
       dialogType: DialogType.noHeader,
       bodyHeaderDistance: 0,
       autoHide: autoHideDuration,

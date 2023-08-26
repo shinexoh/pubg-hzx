@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/util/util.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/widgets/widgets.dart';
+import '../../util/util.dart';
+import '../../config/config.dart';
+import '../../widgets/widgets.dart';
 
 class LowModelPage extends StatelessWidget {
   const LowModelPage({super.key});
@@ -22,7 +21,7 @@ class LowModelPage extends StatelessWidget {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.back(),
+        onPressed: () => Navigator.pop(context),
         backgroundColor: const Color.fromRGBO(0, 179, 254, 1),
         shape: const CircleBorder(),
         child: const Icon(Remix.arrow_left_line, color: Colors.white),

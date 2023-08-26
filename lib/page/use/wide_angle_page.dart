@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/util/util.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/widgets/widgets.dart';
+import '../../app/app.dart';
+import '../../util/util.dart';
+import '../../config/config.dart';
+import '../../widgets/widgets.dart';
 
 class WideAnglePage extends StatelessWidget {
   const WideAnglePage({super.key});
@@ -22,7 +22,7 @@ class WideAnglePage extends StatelessWidget {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.back(),
+        onPressed: () => Navigator.pop(context),
         backgroundColor: const Color.fromRGBO(255, 65, 85, 1),
         shape: const CircleBorder(),
         child: const Icon(Remix.arrow_left_line, color: Colors.white),
@@ -117,7 +117,7 @@ class WideAnglePage extends StatelessWidget {
       DialogStyle.mainDialog(
         subTitle: '很遗憾，您的设备未获得资格，请等待下次资格发放！',
         showCanceButton: false,
-        onOkButton: () => Get.back(),
+        onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
       );
     } else {
       AppDialog.taskDialog();

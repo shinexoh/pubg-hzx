@@ -19,29 +19,29 @@ class DeviceInfo {
     return _instance!;
   }
 
-  ///手机品牌
+  /// 手机品牌
   static String get brand => _androidDeviceInfo.brand;
 
-  ///手机型号
+  /// 手机型号
   static String get model => _androidDeviceInfo.model;
 
-  ///CPU信息
+  /// CPU信息
   static String get cpu => _androidDeviceInfo.board;
 
-  ///安卓版本号
+  /// 安卓版本号
   static String get androidVersion => _androidDeviceInfo.version.release;
 
-  ///安卓SDK版本号
+  /// 安卓SDK版本号
   static int get sdkVersion => _androidDeviceInfo.version.sdkInt;
 
-  ///屏幕高度
+  /// 屏幕高度
   static int get screenHeight =>
       _androidDeviceInfo.displayMetrics.heightPx.toInt();
 
-  ///屏幕宽度
+  /// 屏幕宽度
   static int get screenWidth =>
       _androidDeviceInfo.displayMetrics.widthPx.toInt();
 
-  ///获取当前电量值
+  /// 获取当前电量值
   static int get batteryLevel => _batteryLevel;
 }

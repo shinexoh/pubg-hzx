@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:device_apps/device_apps.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/util/util.dart';
-import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/page/home/home_page.dart';
+import '../../app/app.dart';
+import '../../util/util.dart';
+import '../../config/config.dart';
+import '../../controller/controller.dart';
+import '../../widgets/widgets.dart';
+
+import 'home_page.dart';
 
 mixin HomeLogic on State<HomePage> {
-  final _appController = Get.find<AppController>();
+  final _appController = navigatorKey.currentContext!.read<AppController>();
 
-  var title = ''.obs;
-  var subTitle = ''.obs;
+  final ValueNotifier<String> title = ValueNotifier('');
+  final ValueNotifier<String> subTitle = ValueNotifier('');
 
   @override
   void initState() {
@@ -23,7 +25,7 @@ mixin HomeLogic on State<HomePage> {
     initTitle();
   }
 
-  //初始化标题与副标题
+  // 初始化标题与副标题
   void initTitle() {
     final nowDate = DateTime.now().hour;
 
@@ -45,17 +47,17 @@ mixin HomeLogic on State<HomePage> {
     }
   }
 
-  //分享
+  // 分享
   void onShare() => Share.share(AppConfig.shareContent);
 
-  //启动游戏
+  // 启动游戏
   void onOpenGame() async {
     if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
       showToast('启动失败，请手动启动');
     }
   }
 
-  //快捷修改
+  // 快捷修改
   void onQuick(int index) async {
     if (await AppUtil.checkDlFile()) {
       AppDialog.dlRestoreDialog();
@@ -67,7 +69,7 @@ mixin HomeLogic on State<HomePage> {
     }
   }
 
-  //性能优化
+  // 性能优化
   void onPower(int index) {
     switch (index) {
       case 0:
@@ -76,7 +78,7 @@ mixin HomeLogic on State<HomePage> {
           subTitle: FunctionConfig.powerData[index]['content'],
           okButtonTitle: '修复',
           onOkButton: () {
-            Get.back();
+            Navigator.pop(context);
             SpUtil.containsKey(AppConfig.taskKey)
                 ? showToast('修复成功')
                 : AppDialog.taskDialog();
@@ -89,7 +91,7 @@ mixin HomeLogic on State<HomePage> {
           subTitle: FunctionConfig.powerData[index]['content'],
           okButtonTitle: '注入优化',
           onOkButton: () {
-            Get.back();
+            Navigator.pop(context);
             SpUtil.containsKey(AppConfig.taskKey)
                 ? showToast('SV优化注入成功')
                 : AppDialog.taskDialog();
@@ -102,7 +104,7 @@ mixin HomeLogic on State<HomePage> {
           subTitle: FunctionConfig.powerData[index]['content'],
           okButtonTitle: '立即下载',
           onOkButton: () {
-            Get.back();
+            Navigator.pop(context);
             SpUtil.containsKey(AppConfig.taskKey)
                 ? AppUtil.openUrl('https://rcls.lanzoub.com/ieuBj0tndm4h')
                 : AppDialog.taskDialog();
@@ -112,7 +114,7 @@ mixin HomeLogic on State<HomePage> {
     }
   }
 
-  //其他功能
+  // 其他功能
   void onOther(int index) {
     switch (index) {
       case 0:
@@ -127,7 +129,7 @@ mixin HomeLogic on State<HomePage> {
           DialogStyle.mainDialog(
             subTitle: '灵敏度分享码复制成功！请进入游戏大厅->设置->灵敏度设置->云端方案管理->搜索方案->粘贴分享码使用即可！',
             showCanceButton: false,
-            onOkButton: () => Get.back(),
+            onOkButton: () => Navigator.pop(context),
           );
         } else {
           AppDialog.taskDialog();
@@ -136,11 +138,11 @@ mixin HomeLogic on State<HomePage> {
     }
   }
 
-  //重置功能
+  // 重置功能
   void onRestore(int index) async {
     switch (index) {
       case 0:
-        if (_appController.sdkVersion.value <= 29) {
+        if (_appController.sdkVersion <= 29) {
           await UseFor10.restorePq() && await UseFor10.restoreDl()
               ? AppDialog.restoreDialog()
               : showToast('重置画质失败，请检查权限是否授予');
@@ -153,7 +155,7 @@ mixin HomeLogic on State<HomePage> {
         }
         break;
       case 1:
-        if (_appController.sdkVersion.value <= 29) {
+        if (_appController.sdkVersion <= 29) {
           await UseFor10.restoreTq()
               ? showToast('重置音质成功')
               : showToast('重置音质失败，请检查权限是否授予');
@@ -166,7 +168,7 @@ mixin HomeLogic on State<HomePage> {
         }
         break;
       case 2:
-        if (_appController.sdkVersion.value <= 29) {
+        if (_appController.sdkVersion <= 29) {
           UseFor10.restorePq();
           UseFor10.restoreDl();
           UseFor10.restoreTq();

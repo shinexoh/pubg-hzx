@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
 
-import 'package:huazhixia/config/config.dart';
+import '../config/config.dart';
 
-//安卓10及以下的修改封装
+// 安卓10及以下的修改封装
 class UseFor10 {
-  ///修改画质
+  /// 修改画质
   static Future<bool> usePq(String rootFilePath) async {
     final rootFileContent = await rootBundle.loadString(rootFilePath);
     final pqFile = File(GameFilePath.pqFilePath);
@@ -33,7 +33,7 @@ class UseFor10 {
     }
   }
 
-  ///解锁画质
+  /// 解锁画质
   static Future<bool> useDl() async {
     final rootFileContent = await rootBundle.loadString(FileConfig.dlPq120Fps);
     final dlFile = File(GameFilePath.dlFilePath);
@@ -48,7 +48,7 @@ class UseFor10 {
     return true;
   }
 
-  ///解锁音质
+  /// 解锁音质
   static Future<bool> useTq() async {
     final rootFileContent = await rootBundle.loadString(FileConfig.tqSuperHigh);
     final tqFile = File(GameFilePath.tqFilePath);
@@ -63,7 +63,7 @@ class UseFor10 {
     return true;
   }
 
-  ///还原画质
+  /// 还原画质
   static Future<bool> restorePq() async {
     final pqFile = File(GameFilePath.pqFilePath);
     if (await pqFile.exists()) {
@@ -72,7 +72,7 @@ class UseFor10 {
     return true;
   }
 
-  ///还原解锁画质
+  /// 还原解锁画质
   static Future<bool> restoreDl() async {
     final dlFile = File(GameFilePath.dlFilePath);
     if (await dlFile.exists()) {
@@ -81,7 +81,7 @@ class UseFor10 {
     return true;
   }
 
-  ///还原解锁音质
+  /// 还原解锁音质
   static Future<bool> restoreTq() async {
     final tqFile = File(GameFilePath.tqFilePath);
     if (await tqFile.exists()) {

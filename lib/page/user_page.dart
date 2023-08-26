@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/util/util.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/widgets/widgets.dart';
+import '../app/app.dart';
+import '../controller/controller.dart';
+import '../config/config.dart';
+import '../widgets/widgets.dart';
+import '../util/util.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});
@@ -52,10 +53,13 @@ class UserPage extends StatelessWidget {
               const SizedBox(width: 15),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 const Text('画质侠用户', style: TextStyle(fontSize: 16)),
-                Obx(() => Text(
-                      '当前状态：${Get.find<AppController>().taskState.value ? '会员用户' : '普通用户'}',
-                      style: const TextStyle(color: Colors.grey, fontSize: 13),
-                    )),
+                Selector<AppController, bool>(
+                  selector: (_, appController) => appController.taskState,
+                  builder: (context, taskState, child) => Text(
+                    '当前状态：${taskState ? '会员用户' : '普通用户'}',
+                    style: const TextStyle(color: Colors.grey, fontSize: 13),
+                  ),
+                ),
               ]),
               const Spacer(),
               const Icon(Remix.arrow_right_s_line, color: Colors.grey, size: 20)
@@ -179,63 +183,65 @@ class UserPage extends StatelessWidget {
     );
   }
 
-  //点击用户信息
-  void onUserInfo() => Get.toNamed('/cardpass');
+  // 点击用户信息
+  void onUserInfo() =>
+      Navigator.pushNamed(navigatorKey.currentContext!, '/cardpass');
 
-  //切换主题
+  // 切换主题
   void onTheme() {
     DialogStyle.mainDialog(
       subTitle: '暂不支持切换主题',
       showCanceButton: false,
-      onOkButton: () => Get.back(),
+      onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
     );
   }
 
-  //切换字体
+  // 切换字体
   void onFont() {
     DialogStyle.mainDialog(
       subTitle: '暂不支持切换字体',
       showCanceButton: false,
-      onOkButton: () => Get.back(),
+      onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
     );
   }
 
-  //使用帮助
-  void onUseHelp() => Get.toNamed('/help');
+  // 使用帮助
+  void onUseHelp() {
+    Navigator.pushNamed(navigatorKey.currentContext!, '/usehelp');
+  }
 
-  //下载地址
+  // 下载地址
   void onDownload() => AppUtil.openUrl(AppConfig.appDownload);
 
-  //联系作者
+  // 联系作者
   void onQQ() => AppUtil.openQQ(653143454);
 
-  //分享应用
+  // 分享应用
   void onShare() => Share.share(AppConfig.shareContent);
 
-  //检查更新
+  // 检查更新
   void onCheckUpdate() {
     DialogStyle.mainDialog(
       subTitle: '画质侠已是最新版本！',
       showCanceButton: false,
-      onOkButton: () => Get.back(),
+      onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
     );
   }
 
-  //关于画质侠
+  // 关于画质侠
   void onAbout() {
     DialogStyle.mainDialog(
         title: '关于画质侠',
         subTitle: '画质侠是专为和平精英玩家量身打造的画质助手。我们致力于提供简洁高效的服务，以协助玩家获得更加优质的游戏体验。',
         okButtonTitle: '开源许可',
         onOkButton: () {
-          Get.back();
+          Navigator.pop(navigatorKey.currentContext!);
           showLicensePage(
-            context: Get.context!,
+            context: navigatorKey.currentContext!,
             applicationIcon:
                 Image.asset(AssetsConfig.appIcon, height: 50, width: 50),
             applicationName: '画质侠',
-            applicationLegalese:
-                '画质侠是专为和平精英玩家量身打造的画质修改器。我们致力于提供简洁高效的服务，以协助玩家获得更加优质的游戏体验。',
+            applicationLegalese: AppConfig.appIntro,
             applicationVersion: AppConfig.appVersion,
           );
         });

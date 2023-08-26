@@ -1,16 +1,16 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:provider/provider.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/server/api.dart';
-import 'package:huazhixia/server/http_client.dart';
-import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/util/util.dart';
+import '../app/app.dart';
+import '../server/server.dart';
+import '../controller/controller.dart';
+import '../config/config.dart';
+import '../widgets/widgets.dart';
+import '../util/util.dart';
 
 class CardPassPage extends StatefulWidget {
   const CardPassPage({super.key});
@@ -20,8 +20,8 @@ class CardPassPage extends StatefulWidget {
 }
 
 class _CardPassPageState extends State<CardPassPage> {
-  final appController = Get.find<AppController>();
-  TextEditingController controller = TextEditingController();
+  final appController = navigatorKey.currentContext!.read<AppController>();
+  final TextEditingController controller = TextEditingController();
 
   @override
   void dispose() {
@@ -36,7 +36,7 @@ class _CardPassPageState extends State<CardPassPage> {
       appBar: AppBar(
         title: const Text('卡密激活'),
         leading: IconButton(
-            onPressed: () => Get.back(),
+            onPressed: () => Navigator.pop(context),
             icon: const Icon(Remix.arrow_left_line)),
       ),
       body: SingleChildScrollView(
@@ -79,15 +79,15 @@ class _CardPassPageState extends State<CardPassPage> {
                   height: 1.2,
                   letterSpacing: 5),
             ),
-            Obx(() => Text(
-                  appController.taskState.value
-                      ? '您已成功激活画质侠会员'
-                      : '激活画质侠享受更多画质功能',
-                  style: const TextStyle(
-                      fontSize: 13,
-                      color: Color.fromRGBO(252, 162, 86, 1),
-                      letterSpacing: 2),
-                )),
+            Selector<AppController, bool>(
+                selector: (_, appController) => appController.taskState,
+                builder: (context, taskState, child) => Text(
+                      taskState ? '您已成功激活画质侠会员' : '激活画质侠享受更多画质功能',
+                      style: const TextStyle(
+                          fontSize: 13,
+                          color: Color.fromRGBO(252, 162, 86, 1),
+                          letterSpacing: 2),
+                    )),
           ]),
         ),
       ),
@@ -209,7 +209,7 @@ class _CardPassPageState extends State<CardPassPage> {
     );
   }
 
-  //激活卡密
+  // 激活卡密
   void onUse() async {
     if (controller.text == '') {
       showToast('请输入卡密');
@@ -220,7 +220,7 @@ class _CardPassPageState extends State<CardPassPage> {
       final httpCardPass = await HttpClient.get(Api.cardPassUrl);
 
       if (httpCardPass.isOk) {
-        Get.back();
+        Navigator.pop(navigatorKey.currentContext!);
 
         final List<String> cardPassList = httpCardPass.data.split('\n');
         if (cardPassList.contains(controller.text.toUpperCase())) {
@@ -232,30 +232,30 @@ class _CardPassPageState extends State<CardPassPage> {
             subTitle:
                 '画质侠激活成功！注意：一张卡密只能激活一台设备，如果在另一台设备激活同一张卡密，那么原设备将会失效，请勿将卡密泄露给他人！',
             showCanceButton: false,
-            onOkButton: () => Get.back(),
+            onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
           );
         } else {
           showToast('卡密不存在');
         }
       } else {
-        Get.back();
+        Navigator.pop(navigatorKey.currentContext!);
 
         DialogStyle.mainDialog(
           subTitle: '网络连接错误，请检查网络或重启画质侠后重试！',
           showCanceButton: false,
-          onOkButton: () => Get.back(),
+          onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
         );
       }
     }
   }
 
-  //购买卡密
+  // 购买卡密
   void onBuy() {
     FocusScope.of(context).unfocus();
     AppUtil.openUrl('http://shinex.haihaihai.cc/');
   }
 
-  //联系客服
+  // 联系客服
   void onQQ() {
     FocusScope.of(context).unfocus();
     AppUtil.openQQ(653143454);

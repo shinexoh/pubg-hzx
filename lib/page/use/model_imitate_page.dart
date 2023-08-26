@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/util/util.dart';
+import '../../util/util.dart';
+import '../../config/config.dart';
+import '../../widgets/widgets.dart';
 
 class ModelImitatePage extends StatefulWidget {
   const ModelImitatePage({super.key});
@@ -366,7 +365,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
               subTitle: '机型画质模拟成功，是否立即启动游戏？',
               okButtonTitle: '启动游戏',
               onOkButton: () async {
-                Get.back();
+                Navigator.pop(context);
                 if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
                   showToast('启动失败，请手动启动');
                 }
@@ -406,7 +405,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
               subTitle: '机型画质模拟成功，是否立即启动游戏？',
               okButtonTitle: '启动游戏',
               onOkButton: () async {
-                Get.back();
+                Navigator.pop(context);
                 if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
                   showToast('启动失败，请手动启动');
                 }

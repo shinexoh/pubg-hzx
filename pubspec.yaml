@@ -20,8 +20,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   # 网络请求
   dio: ^5.1.2
-  # 路由管理、状态管理
-  get: ^4.6.5
+  # 状态管理
+  provider: ^6.0.5
   # Remix图标库
   remixicon_updated: ^1.0.2
   # Toast提示

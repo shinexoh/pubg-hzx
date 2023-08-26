@@ -1,11 +1,11 @@
 import 'package:flutter/services.dart';
 
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/util/util.dart';
+import '../config/config.dart';
+import '../util/util.dart';
 
-//安卓11及以上的修改封装
+// 安卓11及以上的修改封装
 class UseFor11 {
-  ///修改画质
+  /// 修改画质
   static Future<bool> usePq(String rootFilePath) async {
     final rootFileContent = await rootBundle.loadString(rootFilePath);
 
@@ -38,7 +38,7 @@ class UseFor11 {
     }
   }
 
-  ///解锁画质帧率
+  /// 解锁画质帧率
   static Future<bool> useDl() async {
     final rootFileContent = await rootBundle.loadString(FileConfig.dlPq120Fps);
 
@@ -55,7 +55,7 @@ class UseFor11 {
     );
   }
 
-  ///解锁音质
+  /// 解锁音质
   static Future<bool> useTq() async {
     final rootFileContent = await rootBundle.loadString(FileConfig.tqSuperHigh);
 
@@ -72,7 +72,7 @@ class UseFor11 {
     );
   }
 
-  ///还原画质
+  /// 还原画质
   static Future<bool> restorePq() async {
     if (await SharedStorage.fileExist(GameFileName.pqFileName)) {
       await SharedStorage.writeFileContent(UriConfig.pqFileUri, '');
@@ -80,7 +80,7 @@ class UseFor11 {
     return true;
   }
 
-  ///还原解锁画质
+  /// 还原解锁画质
   static Future<bool> restoreDl() async {
     if (await SharedStorage.fileExist(GameFileName.dlFileName)) {
       SharedStorage.deleteFile(UriConfig.dlFileUri);
@@ -88,7 +88,7 @@ class UseFor11 {
     return true;
   }
 
-  ///还原解锁音质
+  /// 还原解锁音质
   static Future<bool> restoreTq() async {
     if (await SharedStorage.fileExist(GameFileName.tqFileName)) {
       await SharedStorage.writeFileContent(UriConfig.tqFileUri, '');

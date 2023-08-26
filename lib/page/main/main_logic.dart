@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/server/api.dart';
-import 'package:huazhixia/server/http_client.dart';
-import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/page/main/main_page.dart';
-import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/util/util.dart';
-import 'package:huazhixia/config/config.dart';
+import '../../app/app.dart';
+import '../../server/server.dart';
+import '../../controller/controller.dart';
+import '../../widgets/widgets.dart';
+import '../../config/config.dart';
+import '../../util/util.dart';
+
+import 'main_page.dart';
 
 mixin MainLogic on State<MainPage> {
-  final _appController = Get.find<AppController>();
+  final _appController = navigatorKey.currentContext!.read<AppController>();
 
   @override
   void initState() {
     super.initState();
 
-    checkTask();
-    checkStorage();
-    checkDirectory();
+    Future(() {
+      checkTask();
+      checkStorage();
+      checkDirectory();
+    });
+
     checkUpdate();
     showAppTips();
     statistics();
@@ -28,31 +32,31 @@ mixin MainLogic on State<MainPage> {
     printInfo();
   }
 
-  //检查任务状态
+  // 检查任务状态
   void checkTask() {
     SpUtil.containsKey(AppConfig.taskKey)
         ? _appController.setTaskState(true)
         : _appController.setTaskState(false);
   }
 
-  //检查存储权限
+  // 检查存储权限
   void checkStorage() async {
     await Permission.storage.status == PermissionStatus.granted
         ? _appController.setStorageState(true)
         : _appController.setStorageState(false);
   }
 
-  //检查游戏目录授予
+  // 检查游戏目录授予
   void checkDirectory() async {
     await SharedStorage.checkUriGrant(UriConfig.mainUri)
         ? _appController.setDirectoryState(true)
         : _appController.setDirectoryState(false);
   }
 
-  //统计应用数据
+  // 统计应用数据
   void statistics() => HttpClient.get(Api.appStatistics);
 
-  //检查应用更新，如果主更新链接失败就请求备用更新链接
+  // 检查应用更新，如果主更新链接失败就请求备用更新链接
   void checkUpdate() async {
     final appUpdate = await HttpClient.get(Api.main);
 
@@ -87,22 +91,22 @@ mixin MainLogic on State<MainPage> {
     }
   }
 
-  //打印一些信息
+  // 打印一些信息
   void printInfo() async {
     await Future.delayed(const Duration(seconds: 2));
     prints('''
 所有Key：${SpUtil.getAllKey()}
-安卓Sdk版本：${_appController.sdkVersion.value}
-存储权限：${_appController.storageState.value}
-目录授予：${_appController.directoryState.value}''');
+安卓Sdk版本：${_appController.sdkVersion}
+存储权限：${_appController.storageState}
+目录授予：${_appController.directoryState}''');
   }
 
-  //如果旧Key存在就还原画质
+  // 如果旧Key存在就还原画质
   void restoreFile() async {
     if (SpUtil.containsKey('TaskKey')) {
       SpUtil.remove('TaskKey');
 
-      if (_appController.sdkVersion.value <= 29) {
+      if (_appController.sdkVersion <= 29) {
         UseFor10.restorePq();
         UseFor10.restoreDl();
       } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
@@ -112,7 +116,7 @@ mixin MainLogic on State<MainPage> {
     }
   }
 
-  //显示应用公告Snackbar
+  // 显示应用公告SnackBar
   void showAppTips() async {
     final appTips = await HttpClient.get(Api.main);
 
@@ -120,13 +124,10 @@ mixin MainLogic on State<MainPage> {
       final tipsContent = appTips.data['apptips'];
 
       if (tipsContent != null) {
-        ScaffoldMessenger.of(Get.context!).showSnackBar(
+        ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
           SnackBar(
-            content: Text(
-              tipsContent,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
+            content:
+                Text(tipsContent, maxLines: 1, overflow: TextOverflow.ellipsis),
             dismissDirection: DismissDirection.horizontal,
             action: SnackBarAction(
                 label: '查看',
@@ -134,7 +135,7 @@ mixin MainLogic on State<MainPage> {
                   DialogStyle.mainDialog(
                     subTitle: tipsContent,
                     showCanceButton: false,
-                    onOkButton: () => Get.back(),
+                    onOkButton: () => Navigator.pop(context),
                   );
                 }),
           ),

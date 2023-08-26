@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/config/config.dart';
-import 'package:huazhixia/page/permission/permission_logic.dart';
+import '../../config/config.dart';
+
+import 'permission_logic.dart';
 
 class PermissionPage extends StatefulWidget {
   const PermissionPage({super.key});
@@ -16,6 +16,8 @@ class _PermissionPageState extends State<PermissionPage>
     with WidgetsBindingObserver, PermissionLogic {
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -23,9 +25,12 @@ class _PermissionPageState extends State<PermissionPage>
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
-              SizedBox(height: Get.height * 0.12),
-              Image.asset(AssetsConfig.permission,
-                  height: Get.height * 0.2, width: double.infinity),
+              SizedBox(height: screenSize.height * 0.12),
+              Image.asset(
+                AssetsConfig.permission,
+                height: screenSize.height * 0.2,
+                width: double.infinity,
+              ),
               const SizedBox(height: 20),
               const Text('请授予存储权限',
                   style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
@@ -34,13 +39,17 @@ class _PermissionPageState extends State<PermissionPage>
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 15, color: Colors.grey)),
               const Spacer(),
-              Obx(() => AnimatedButton(
-                    text: permissionGranted.value ? '进入画质侠' : '立即授予',
-                    height: 45,
-                    isFixedHeight: false,
-                    color: Colors.blue,
-                    pressEvent: onGrant,
-                  )),
+              ValueListenableBuilder(
+                  valueListenable: permissionIsGranted,
+                  builder: (context, permissionIsGranted, child) {
+                    return AnimatedButton(
+                      text: permissionIsGranted ? '进入画质侠' : '立即授予',
+                      height: 45,
+                      isFixedHeight: false,
+                      color: Colors.blue,
+                      pressEvent: onGrant,
+                    );
+                  }),
               const SizedBox(height: 20),
             ],
           ),

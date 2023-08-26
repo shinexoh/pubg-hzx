@@ -1,56 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
-import 'package:get/get.dart';
 
-import 'package:huazhixia/widgets/widgets.dart';
-import 'package:huazhixia/controller/controller.dart';
-import 'package:huazhixia/util/util.dart';
+import '../controller/controller.dart';
+import '../widgets/widgets.dart';
+import '../app/app.dart';
+import '../util/util.dart';
 
-class DevicePage extends StatefulWidget {
+class DevicePage extends StatelessWidget {
   const DevicePage({super.key});
 
   @override
-  State<DevicePage> createState() => _DevicePageState();
-}
-
-class _DevicePageState extends State<DevicePage> {
-  final appController = Get.find<AppController>();
-
-  final brand = ''.obs;
-  final model = ''.obs;
-  final androidVersion = ''.obs;
-  final sdkVersion = ''.obs;
-  final res = ''.obs;
-  final cpu = ''.obs;
-  final battery = 0.obs;
-
-  @override
-  void initState() {
-    super.initState();
-
-    brand.value = DeviceInfo.brand;
-    model.value = DeviceInfo.model;
-    androidVersion.value = DeviceInfo.androidVersion;
-    sdkVersion.value = DeviceInfo.sdkVersion.toString();
-    res.value = '${DeviceInfo.screenHeight}×${DeviceInfo.screenWidth}';
-    cpu.value = DeviceInfo.cpu;
-    battery.value = DeviceInfo.batteryLevel;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                topAppBar(),
-                permissionBar(),
-                deviceInfoBar(),
-              ],
-            ),
-          ),
-        ));
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            topAppBar(),
+            permissionBar(),
+            deviceInfoBar(),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget topAppBar() {
@@ -75,49 +48,58 @@ class _DevicePageState extends State<DevicePage> {
       ),
       child: Column(
         children: [
-          OnInk(
-            color: Colors.white,
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-            onTap: appController.storageState.value ? null : onStorage,
-            child: Row(children: [
-              Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.orange.withOpacity(0.1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(Remix.folder_line, color: Colors.orange)),
-              const SizedBox(width: 15),
-              const Text('存储权限', style: TextStyle(fontSize: 16)),
-              const Spacer(),
-              Text(appController.storageState.value ? '已授予' : '点击授予',
-                  style: const TextStyle(color: Colors.grey, fontSize: 16)),
-            ]),
+          Selector<AppController, bool>(
+            selector: (_, appController) => appController.storageState,
+            builder: (context, storageState, child) => OnInk(
+              color: Colors.white,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+              onTap: storageState ? null : onStorage,
+              child: Row(children: [
+                Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.orange.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Remix.folder_line, color: Colors.orange)),
+                const SizedBox(width: 15),
+                const Text('存储权限', style: TextStyle(fontSize: 16)),
+                const Spacer(),
+                Text(storageState ? '已授予' : '点击授予',
+                    style: const TextStyle(color: Colors.grey, fontSize: 16)),
+              ]),
+            ),
           ),
-          OnInk(
-            color: Colors.white,
-            borderRadius: const BorderRadius.only(
+          Selector<AppController, bool>(
+            selector: (_, appController) => appController.directoryState,
+            builder: (context, directoryState, child) => OnInk(
+              color: Colors.white,
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10)),
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-            onTap: appController.directoryState.value ? null : onDirectory,
-            child: Row(children: [
-              Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.blue.withOpacity(0.1),
-                    shape: BoxShape.circle,
-                  ),
-                  child:
-                      const Icon(Remix.folder_lock_line, color: Colors.blue)),
-              const SizedBox(width: 15),
-              const Text('游戏目录权限', style: TextStyle(fontSize: 16)),
-              const Spacer(),
-              Text(appController.directoryState.value ? '已授予' : '点击授予',
-                  style: const TextStyle(color: Colors.grey, fontSize: 16))
-            ]),
+                bottomRight: Radius.circular(10),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+              onTap: directoryState ? null : onDirectory,
+              child: Row(children: [
+                Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child:
+                        const Icon(Remix.folder_lock_line, color: Colors.blue)),
+                const SizedBox(width: 15),
+                const Text('游戏目录权限', style: TextStyle(fontSize: 16)),
+                const Spacer(),
+                Text(directoryState ? '已授予' : '点击授予',
+                    style: const TextStyle(color: Colors.grey, fontSize: 16)),
+              ]),
+            ),
           ),
         ],
       ),
@@ -146,7 +128,7 @@ class _DevicePageState extends State<DevicePage> {
           const SizedBox(width: 15),
           const Text('手机品牌', style: TextStyle(fontSize: 16)),
           const Spacer(),
-          Text(brand.value,
+          Text(DeviceInfo.brand,
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
@@ -163,7 +145,7 @@ class _DevicePageState extends State<DevicePage> {
           const SizedBox(width: 15),
           const Text('手机型号', style: TextStyle(fontSize: 16)),
           const Spacer(),
-          Text(model.value,
+          Text(DeviceInfo.model,
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
@@ -179,7 +161,7 @@ class _DevicePageState extends State<DevicePage> {
           const SizedBox(width: 15),
           const Text('安卓版本', style: TextStyle(fontSize: 16)),
           const Spacer(),
-          Text(androidVersion.value,
+          Text(DeviceInfo.androidVersion,
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
@@ -195,7 +177,7 @@ class _DevicePageState extends State<DevicePage> {
           const SizedBox(width: 15),
           const Text('SDK版本', style: TextStyle(fontSize: 16)),
           const Spacer(),
-          Text(sdkVersion.value,
+          Text(DeviceInfo.sdkVersion.toString(),
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
@@ -211,7 +193,7 @@ class _DevicePageState extends State<DevicePage> {
           const SizedBox(width: 15),
           const Text('分辨率', style: TextStyle(fontSize: 16)),
           const Spacer(),
-          Text(res.value,
+          Text('${DeviceInfo.screenHeight}×${DeviceInfo.screenWidth}',
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
@@ -227,7 +209,7 @@ class _DevicePageState extends State<DevicePage> {
           const SizedBox(width: 15),
           const Text('处理器', style: TextStyle(fontSize: 16)),
           const Spacer(),
-          Text(cpu.value,
+          Text(DeviceInfo.cpu,
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
@@ -244,14 +226,19 @@ class _DevicePageState extends State<DevicePage> {
           const SizedBox(width: 15),
           const Text('当前电量', style: TextStyle(fontSize: 16)),
           const Spacer(),
-          Text(battery.value == 100 ? '已充满' : '${battery.value}%',
+          Text(
+              DeviceInfo.batteryLevel == 100
+                  ? '已充满'
+                  : '${DeviceInfo.batteryLevel}%',
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
       ]),
     );
   }
 
-  void onStorage() => Get.toNamed('/permission');
+  void onStorage() {
+    Navigator.pushNamed(navigatorKey.currentContext!, '/permission');
+  }
 
   void onDirectory() => AppDialog.directoryDialog();
 }

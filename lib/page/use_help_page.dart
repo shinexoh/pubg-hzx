@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
-import 'package:get/get.dart';
 
-class HelpPage extends StatelessWidget {
-  const HelpPage({super.key});
+class UseHelpPage extends StatelessWidget {
+  const UseHelpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +10,7 @@ class HelpPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('使用帮助'),
         leading: IconButton(
-            onPressed: () => Get.back(),
+            onPressed: () => Navigator.pop(context),
             icon: const Icon(Remix.arrow_left_line)),
       ),
       body: const SingleChildScrollView(

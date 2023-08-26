@@ -1,5 +1,5 @@
 class FunctionConfig {
-  ///快捷修改
+  /// 快捷修改
   static const List quickData = [
     '渣机画质',
     '流畅画质',
@@ -9,7 +9,7 @@ class FunctionConfig {
     '大主播同款',
   ];
 
-  ///性能优化
+  /// 性能优化
   static const List powerData = [
     {
       'title': '修复闪退',
@@ -29,41 +29,41 @@ class FunctionConfig {
     }
   ];
 
-  ///其他功能
+  /// 其他功能
   static const List otherData = [
     '解锁画质+120帧（EC）',
     '解锁超高音质',
     '1000陀螺仪灵敏度',
   ];
 
-  ///重置功能
+  /// 重置功能
   static const List restoreData = [
     {'title': '重置画质', 'subtitle': '重置画质为初始值'},
     {'title': '重置音质', 'subtitle': '重置音质为初始值'},
     {'title': '重置所有功能', 'subtitle': '重新初始化所有功能'}
   ];
 
-  ///多样化修改
+  /// 多样化修改
   static const List diversifyData = [
     {'title': '专属修改', 'subtitle': '更加多样化的画质修改'},
     {'title': '高优化修改', 'subtitle': '更多精心优化的画质修改'},
   ];
 
-  ///机型修改
+  /// 机型修改
   static const List modelData = [
     {'title': '低端机', 'subtitle': '专门针对低端机的画质修改'},
     {'title': '中端机', 'subtitle': '专门针对中端机的画质修改'},
     {'title': '高端机', 'subtitle': '专门针对高端机的画质修改'},
   ];
 
-  ///更多功能
+  /// 更多功能
   static const List moreData = [
     {'title': '机型画质模拟', 'subtitle': '根据设备参数一比一模拟原生画质'},
     {'title': '超广角专区', 'subtitle': '拥有平板比例、超视角游戏等'},
     {'title': '随机修改', 'subtitle': '选择困难症？试试这个吧！'},
   ];
 
-  ///专属修改
+  /// 专属修改
   static const List exclusive = [
     '高优化/低纹理/高地面材质',
     '1.25分辨率/中纹理/中清晰度/中阴影',
@@ -79,7 +79,7 @@ class FunctionConfig {
     '高清/中阴影/中纹理'
   ];
 
-  ///高优化修改
+  /// 高优化修改
   static const List highOptimize = [
     '流畅/极限/鲜艳',
     '高优化/流畅/钢枪专用',
@@ -95,7 +95,7 @@ class FunctionConfig {
     '高端机优化/HDR高清/钢枪/极限'
   ];
 
-  ///低端机
+  /// 低端机
   static const List lowModel = [
     '低端机钢枪不卡',
     '渣机极限帧画质',
@@ -111,7 +111,7 @@ class FunctionConfig {
     '鲜艳流畅钢枪'
   ];
 
-  ///中端机
+  /// 中端机
   static const List mediumModel = [
     '稳定帧率画质',
     '1K分辨率超远视距HDR渲染',
@@ -126,7 +126,7 @@ class FunctionConfig {
     '极限帧不掉帧',
   ];
 
-  ///高端机
+  /// 高端机
   static const List highModel = [
     '超强粒子特效鲜艳强大画质顶级',
     '特效基本全开反光阴影HDR电影',
@@ -140,7 +140,7 @@ class FunctionConfig {
     '超高清电影画质'
   ];
 
-  ///超广角
+  /// 超广角
   static const List wideAngle = [
     '《和平精英》平板超广角无黑边+120帧率🔥',
     '《和平精英》手机16：9专用超广角+120帧率🚀',
