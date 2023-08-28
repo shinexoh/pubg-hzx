@@ -10,8 +10,8 @@ import '../../util/util.dart';
 
 // 修改功能的弹窗封装
 class UseDialog {
-  static final _appController =
-      navigatorKey.currentContext!.read<AppController>();
+  static final _sdkVersion =
+      navigatorKey.currentContext!.read<AppController>().sdkVersion;
 
   /// 修改画质弹窗
   static void usePqDialog({
@@ -28,7 +28,7 @@ class UseDialog {
         Navigator.pop(navigatorKey.currentContext!);
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (_appController.sdkVersion <= 29) {
+          if (_sdkVersion <= 29) {
             await UseFor10.usePq(filePath)
                 ? showToast('修改成功，请重启游戏')
                 : showToast('修改失败，请检查权限是否授予');
@@ -56,7 +56,7 @@ class UseDialog {
         Navigator.pop(navigatorKey.currentContext!);
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (_appController.sdkVersion <= 29) {
+          if (_sdkVersion <= 29) {
             await UseFor10.useDl()
                 ? showToast('解锁画质成功，请重启游戏')
                 : showToast('解锁画质失败，请检查权限是否授予');
@@ -84,7 +84,7 @@ class UseDialog {
         Navigator.pop(navigatorKey.currentContext!);
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
-          if (_appController.sdkVersion <= 29) {
+          if (_sdkVersion <= 29) {
             await UseFor10.useTq()
                 ? showToast('解锁音质成功，请重启游戏')
                 : showToast('解锁音质失败，请检查权限是否授予');

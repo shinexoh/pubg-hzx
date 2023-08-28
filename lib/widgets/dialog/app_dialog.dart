@@ -44,7 +44,7 @@ class AppDialog {
     //   title: '未知错误',
     //   subTitle: '发生未知错误，请尝试重启画质侠，如问题还不能解决请联系作者反馈！',
     //   showCanceButton: false,
-    //   onOkButton: () => Get.back(),
+    //   onOkButton: () => Navigator.of(navigatorKey.currentContext!),
     // );
 
     DialogStyle.mainDialog(
