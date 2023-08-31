@@ -1,6 +1,7 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:battery_plus/battery_plus.dart';
 
+// 封装设备信息和电量
 class DeviceInfo {
   static DeviceInfo? _instance;
 

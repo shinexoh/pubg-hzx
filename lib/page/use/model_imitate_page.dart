@@ -274,8 +274,8 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         width: double.infinity,
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
+          color: Colors.grey.shade100,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey.shade200),
         ),
         child: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -346,34 +346,35 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         hertzController.text.isEmpty ||
         cpuController.text.isEmpty) {
       showToast('请先输入完整参数');
+      return;
+    }
+
+    FocusScope.of(context).unfocus();
+
+    if (await AppUtil.checkDlFile()) {
+      AppDialog.dlRestoreDialog();
     } else {
-      FocusScope.of(context).unfocus();
+      await DialogStyle.loadingDialog(
+          autoHideDuration: const Duration(milliseconds: 1500),
+          dismissible: false);
 
-      if (await AppUtil.checkDlFile()) {
-        AppDialog.dlRestoreDialog();
-      } else {
-        await DialogStyle.loadingDialog(
-            autoHideDuration: const Duration(milliseconds: 1500),
-            dismissible: false);
-
-        AppUtil.randomUsePq(
-          errorToast: '模拟失败，请检查权限是否授予',
-          callBack: () {
-            DialogStyle.mainDialog(
-              dialogType: DialogType.success,
-              title: '模拟成功',
-              subTitle: '机型画质模拟成功，是否立即启动游戏？',
-              okButtonTitle: '启动游戏',
-              onOkButton: () async {
-                Navigator.pop(context);
-                if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
-                  showToast('启动失败，请手动启动');
-                }
-              },
-            );
-          },
-        );
-      }
+      AppUtil.randomUsePq(
+        errorToast: '模拟失败，请检查权限是否授予',
+        callBack: () {
+          DialogStyle.mainDialog(
+            dialogType: DialogType.success,
+            title: '模拟成功',
+            subTitle: '机型画质模拟成功，是否立即启动游戏？',
+            okButtonTitle: '启动游戏',
+            onOkButton: () async {
+              Navigator.pop(context);
+              if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
+                showToast('启动失败，请手动启动');
+              }
+            },
+          );
+        },
+      );
     }
   }
 

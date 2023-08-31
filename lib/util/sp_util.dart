@@ -1,5 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+// shared_preferences的二次封装
 class SpUtil {
   static SpUtil? _instance;
 

@@ -73,11 +73,13 @@ class _CardPassPageState extends State<CardPassPage> {
             const Text(
               'VIP',
               style: TextStyle(
-                  fontSize: 24,
-                  color: Color.fromRGBO(252, 162, 86, 1),
-                  fontWeight: FontWeight.bold,
-                  height: 1.2,
-                  letterSpacing: 5),
+                fontSize: 24,
+                color: Color.fromRGBO(252, 162, 86, 1),
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+                height: 1.2,
+                letterSpacing: 5,
+              ),
             ),
             Selector<AppController, bool>(
                 selector: (_, appController) => appController.taskState,
@@ -137,8 +139,8 @@ class _CardPassPageState extends State<CardPassPage> {
       width: double.infinity,
       padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 10),
       decoration: BoxDecoration(
+        color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey.shade200),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const Text(
@@ -213,39 +215,40 @@ class _CardPassPageState extends State<CardPassPage> {
   void onUse() async {
     if (controller.text == '') {
       showToast('请输入卡密');
-    } else {
-      FocusScope.of(context).unfocus();
-      DialogStyle.loadingDialog(dismissible: false);
+      return;
+    }
 
-      final httpCardPass = await HttpClient.get(Api.cardPassUrl);
+    FocusScope.of(context).unfocus();
+    DialogStyle.loadingDialog(dismissible: false);
 
-      if (httpCardPass.isOk) {
-        Navigator.pop(navigatorKey.currentContext!);
+    final httpCardPass = await HttpClient.get(Api.cardPassUrl);
 
-        final List<String> cardPassList = httpCardPass.data.split('\n');
-        if (cardPassList.contains(controller.text.toUpperCase())) {
-          SpUtil.addString(AppConfig.taskKey, '');
-          appController.setTaskState(true);
+    if (httpCardPass.isOk) {
+      Navigator.pop(navigatorKey.currentContext!);
 
-          DialogStyle.mainDialog(
-            title: '激活成功',
-            subTitle:
-                '画质侠激活成功！注意：一张卡密只能激活一台设备，如果在另一台设备激活同一张卡密，那么原设备将会失效，请勿将卡密泄露给他人！',
-            showCanceButton: false,
-            onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
-          );
-        } else {
-          showToast('卡密不存在');
-        }
-      } else {
-        Navigator.pop(navigatorKey.currentContext!);
+      final List<String> cardPassList = httpCardPass.data.split('\n');
+      if (cardPassList.contains(controller.text.toUpperCase())) {
+        SpUtil.addString(AppConfig.taskKey, '');
+        appController.setTaskState(true);
 
         DialogStyle.mainDialog(
-          subTitle: '网络连接错误，请检查网络或重启画质侠后重试！',
+          title: '激活成功',
+          subTitle:
+              '画质侠激活成功！注意：一张卡密只能激活一台设备，如果在另一台设备激活同一张卡密，那么原设备将会失效，请勿将卡密泄露给他人！',
           showCanceButton: false,
           onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
         );
+      } else {
+        showToast('卡密不存在');
       }
+    } else {
+      Navigator.pop(navigatorKey.currentContext!);
+
+      DialogStyle.mainDialog(
+        subTitle: '网络连接错误，请检查网络或重启画质侠后重试！',
+        showCanceButton: false,
+        onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
+      );
     }
   }
 
