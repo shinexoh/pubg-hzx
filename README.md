@@ -10,8 +10,8 @@
 * 支持安卓13画质修改
 
 ## 应用截图
-![应用截图1](./docs/img1.png)
-![应用截图2](./docs/img2.png)
+![应用截图1](./docs/screen1.png)
+![应用截图2](./docs/screen2.png)
 
 ## 其他
 
