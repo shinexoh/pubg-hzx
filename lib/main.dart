@@ -8,7 +8,7 @@ import 'package:oktoast/oktoast.dart';
 import 'app/app.dart';
 import 'server/server.dart';
 import 'controller/controller.dart';
-import 'util/util.dart';
+import 'utils/utils.dart';
 
 import 'page/main/main_page.dart';
 import 'page/permission/permission_page.dart';

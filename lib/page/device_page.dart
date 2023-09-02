@@ -5,7 +5,7 @@ import 'package:remixicon_updated/remixicon_updated.dart';
 import '../controller/controller.dart';
 import '../widgets/widgets.dart';
 import '../app/app.dart';
-import '../util/util.dart';
+import '../utils/utils.dart';
 
 class DevicePage extends StatelessWidget {
   const DevicePage({super.key});

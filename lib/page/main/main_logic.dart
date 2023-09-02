@@ -7,7 +7,7 @@ import '../../server/server.dart';
 import '../../controller/controller.dart';
 import '../../widgets/widgets.dart';
 import '../../config/config.dart';
-import '../../util/util.dart';
+import '../../utils/utils.dart';
 
 import 'main_page.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 
 import '../config/config.dart';
-import '../util/util.dart';
+import '../utils/utils.dart';
 
 // 安卓11及以上的修改封装
 class UseFor11 {

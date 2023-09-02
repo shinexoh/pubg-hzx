@@ -10,7 +10,7 @@ import '../server/server.dart';
 import '../controller/controller.dart';
 import '../config/config.dart';
 import '../widgets/widgets.dart';
-import '../util/util.dart';
+import '../utils/utils.dart';
 
 class CardPassPage extends StatefulWidget {
   const CardPassPage({super.key});

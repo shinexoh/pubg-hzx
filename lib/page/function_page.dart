@@ -3,7 +3,7 @@ import 'package:oktoast/oktoast.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 
 import '../app/app.dart';
-import '../util/util.dart';
+import '../utils/utils.dart';
 import '../config/config.dart';
 import '../widgets/widgets.dart';
 

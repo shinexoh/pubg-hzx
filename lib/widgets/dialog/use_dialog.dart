@@ -6,7 +6,7 @@ import '../../app/app.dart';
 import '../../controller/controller.dart';
 import '../../config/config.dart';
 import '../../widgets/widgets.dart';
-import '../../util/util.dart';
+import '../../utils/utils.dart';
 
 // 修改功能的弹窗封装
 class UseDialog {

@@ -4,7 +4,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:oktoast/oktoast.dart';
 
-import '../../util/util.dart';
+import '../../utils/utils.dart';
 import '../../config/config.dart';
 import '../../widgets/widgets.dart';
 

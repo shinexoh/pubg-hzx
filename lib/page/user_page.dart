@@ -7,7 +7,7 @@ import '../app/app.dart';
 import '../controller/controller.dart';
 import '../config/config.dart';
 import '../widgets/widgets.dart';
-import '../util/util.dart';
+import '../utils/utils.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});

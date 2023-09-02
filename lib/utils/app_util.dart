@@ -9,7 +9,7 @@ import 'package:android_intent_plus/android_intent.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 import '../app/app.dart';
-import '../util/util.dart';
+import '../utils/utils.dart';
 import '../config/config.dart';
 import '../controller/controller.dart';
 import '../server/server.dart';

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 
-import '../util/util.dart';
+import '../utils/utils.dart';
 
 class HttpClient {
   static HttpClient? _instance;

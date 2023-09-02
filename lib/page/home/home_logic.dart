@@ -6,7 +6,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:device_apps/device_apps.dart';
 
 import '../../app/app.dart';
-import '../../util/util.dart';
+import '../../utils/utils.dart';
 import '../../config/config.dart';
 import '../../controller/controller.dart';
 import '../../widgets/widgets.dart';
