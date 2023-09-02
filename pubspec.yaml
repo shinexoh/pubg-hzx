@@ -33,7 +33,7 @@ dependencies:
   # 授予文件夹、安卓11+的文件操作
   shared_storage: ^0.7.1
   # 键值对存储
-  shared_preferences: ^2.2.0
+  shared_preferences: ^2.2.1
   # 应用操作
   device_apps: ^2.2.0
   # 底部导航
@@ -59,18 +59,18 @@ dev_dependencies:
 # 生成应用图标
 flutter_launcher_icons:
   android: true
-  image_path: "assets/icon/icon.png"
+  image_path: "assets/icons/icon.png"
 
 flutter:
 
   uses-material-design: true
 
   assets:
-    - assets/icon/
-    - assets/file/
-    - assets/file/kjxg/
-    - assets/file/zsxg/
-    - assets/file/gyhxg/
-    - assets/file/ddj/
-    - assets/file/zdj/
-    - assets/file/gdj/
+    - assets/icons/
+    - assets/files/
+    - assets/files/kjxg/
+    - assets/files/zsxg/
+    - assets/files/gyhxg/
+    - assets/files/ddj/
+    - assets/files/zdj/
+    - assets/files/gdj/
