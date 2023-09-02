@@ -135,25 +135,32 @@ class _CardPassPageState extends State<CardPassPage> {
   }
 
   Widget infoBar() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 10),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const Text(
-          '温馨提示',
-          style: TextStyle(
-              fontSize: 15, letterSpacing: 1, fontWeight: FontWeight.bold),
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            color: Colors.grey.shade100,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '温馨提示',
+                  style: TextStyle(
+                      fontSize: 15,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  '没有卡密请点击【购买卡密】前往购买，购买时请填写有效手机号接收卡密短信，收到卡密后回到画质侠输入并激活即可。',
+                  style: TextStyle(fontSize: 13, color: Colors.grey),
+                ),
+              ]),
         ),
-        const SizedBox(height: 8),
-        const Text(
-          '没有卡密请点击【购买卡密】前往购买，购买时请填写有效手机号接收卡密短信，收到卡密后回到画质侠输入并激活即可。',
-          style: TextStyle(fontSize: 13, color: Colors.grey),
-        ),
-        const SizedBox(height: 5),
         Align(
           alignment: Alignment.centerRight,
           child: TextButton(
@@ -161,7 +168,7 @@ class _CardPassPageState extends State<CardPassPage> {
               style: TextButton.styleFrom(foregroundColor: Colors.blue),
               child: const Text('联系作者', style: TextStyle(fontSize: 13))),
         ),
-      ]),
+      ],
     );
   }
 
