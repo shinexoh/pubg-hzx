@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppTheme {
-  // 浅色主题
+  /// 浅色主题
   static ThemeData get light => ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,

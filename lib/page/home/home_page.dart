@@ -41,24 +41,21 @@ class _HomePageState extends State<HomePage> with HomeLogic {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ValueListenableBuilder(
-                    valueListenable: title,
-                    builder: (context, title, child) => Text(title,
+              ListenableBuilder(
+                listenable: Listenable.merge([title, subTitle]),
+                builder: (context, child) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title.value,
                         style: const TextStyle(
                             fontSize: 22,
                             letterSpacing: 1,
                             fontWeight: FontWeight.bold)),
-                  ),
-                  ValueListenableBuilder(
-                    valueListenable: subTitle,
-                    builder: (context, subTitle, child) => Text(subTitle,
+                    Text(subTitle.value,
                         style: const TextStyle(
                             color: Colors.grey, letterSpacing: 1)),
-                  ),
-                ],
+                  ],
+                ),
               ),
               IconButton(
                   onPressed: onOpenGame, icon: const Icon(Remix.rocket_line)),
