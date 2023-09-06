@@ -338,7 +338,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
     ]);
   }
 
-  //开始模拟
+  // 开始模拟
   void onStart() async {
     if (brandController.text.isEmpty ||
         modelController.text.isEmpty ||
@@ -378,7 +378,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
     }
   }
 
-  //兼容模式模拟
+  // 兼容模式模拟
   void onStartCompatible() async {
     if (brandController.text.isEmpty ||
         modelController.text.isEmpty ||
@@ -418,7 +418,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
     }
   }
 
-  //保存参数
+  // 保存参数
   void saveArguments() {
     if (brandController.text.isEmpty ||
         modelController.text.isEmpty ||
@@ -440,7 +440,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
     }
   }
 
-  //清除已保存参数
+  // 清除已保存参数
   void clearArguments() {
     FocusScope.of(context).unfocus();
 

@@ -5,9 +5,9 @@ class OnInk extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final Color? color;
   final BorderRadius? borderRadius;
-  final bool? showSplash;
-  final GestureTapCallback? onTap;
-  final GestureTapCallback? onLongPress;
+  final bool showSplash;
+  final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
   final EdgeInsetsGeometry? padding;
   final Widget? child;
 
@@ -16,7 +16,7 @@ class OnInk extends StatelessWidget {
     this.margin,
     this.color,
     this.borderRadius,
-    this.showSplash,
+    this.showSplash = true,
     this.onTap,
     this.onLongPress,
     this.padding,
@@ -32,7 +32,7 @@ class OnInk extends StatelessWidget {
         borderRadius: borderRadius,
         child: InkWell(
             borderRadius: borderRadius,
-            splashFactory: showSplash ?? true
+            splashFactory: showSplash
                 ? Theme.of(context).splashFactory
                 : NoSplash.splashFactory,
             onTap: onTap,
