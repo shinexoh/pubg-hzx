@@ -18,7 +18,7 @@ mixin MainLogic on State<MainPage> {
   void initState() {
     super.initState();
 
-    Future(() {
+    Future.microtask(() {
       checkTask();
       checkStorage();
       checkDirectory();
@@ -94,7 +94,7 @@ mixin MainLogic on State<MainPage> {
   // 打印一些信息
   void printInfo() async {
     await Future.delayed(const Duration(seconds: 2));
-    prints('''
+    debugPrint('''
 所有Key：${SpUtil.getAllKey()}
 安卓Sdk版本：${_appController.sdkVersion}
 存储权限：${_appController.storageState}
