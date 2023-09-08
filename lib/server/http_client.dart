@@ -30,7 +30,7 @@ class HttpClient {
             isOk: false, errorMsg: '请求失败，状态码：${response.statusCode}');
       }
     } catch (e) {
-      debugPrint('捕抓到错误');
+      debugPrint('捕抓到错误$e');
       return HttpData(isOk: false, errorMsg: '请求错误：$e');
     }
   }

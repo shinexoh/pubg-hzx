@@ -1,5 +1,9 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    // ext.kotlin_version = '1.7.10'
+
+    // 有些依赖的最新版需要Kotlin版本1.8.0以上，不然运行会报错。
+    ext.kotlin_version = '1.8.10'
+
     repositories {
         google()
         mavenCentral()
