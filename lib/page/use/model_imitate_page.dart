@@ -16,11 +16,11 @@ class ModelImitatePage extends StatefulWidget {
 }
 
 class _ModelImitatePageState extends State<ModelImitatePage> {
-  final TextEditingController brandController = TextEditingController();
-  final TextEditingController modelController = TextEditingController();
-  final TextEditingController resController = TextEditingController();
-  final TextEditingController hertzController = TextEditingController();
-  final TextEditingController cpuController = TextEditingController();
+  final TextEditingController _brandController = TextEditingController();
+  final TextEditingController _modelController = TextEditingController();
+  final TextEditingController _resController = TextEditingController();
+  final TextEditingController _hertzController = TextEditingController();
+  final TextEditingController _cpuController = TextEditingController();
 
   @override
   void initState() {
@@ -29,11 +29,11 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
     if (SpUtil.getList(AppConfig.modelImitateKey) != null) {
       final List<String> content = SpUtil.getList(AppConfig.modelImitateKey)!;
 
-      brandController.text = content[0];
-      modelController.text = content[1];
-      resController.text = content[2];
-      hertzController.text = content[3];
-      cpuController.text = content[4];
+      _brandController.text = content[0];
+      _modelController.text = content[1];
+      _resController.text = content[2];
+      _hertzController.text = content[3];
+      _cpuController.text = content[4];
     }
   }
 
@@ -41,11 +41,11 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
   void dispose() {
     super.dispose();
 
-    brandController.dispose();
-    modelController.dispose();
-    resController.dispose();
-    hertzController.dispose();
-    cpuController.dispose();
+    _brandController.dispose();
+    _modelController.dispose();
+    _resController.dispose();
+    _hertzController.dispose();
+    _cpuController.dispose();
   }
 
   @override
@@ -118,7 +118,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
               child: Text('设备品牌',
                   style: TextStyle(fontSize: 15, color: Colors.grey))),
           TextField(
-              controller: brandController,
+              controller: _brandController,
               style: const TextStyle(fontSize: 15),
               selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
               decoration: const InputDecoration(
@@ -148,7 +148,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
           Row(children: [
             Expanded(
               child: TextField(
-                  controller: modelController,
+                  controller: _modelController,
                   style: const TextStyle(fontSize: 15),
                   selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
                   decoration: const InputDecoration(
@@ -182,7 +182,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
           Row(children: [
             Expanded(
               child: TextField(
-                  controller: resController,
+                  controller: _resController,
                   style: const TextStyle(fontSize: 15),
                   keyboardType: TextInputType.phone,
                   selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
@@ -217,7 +217,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
           Row(children: [
             Expanded(
               child: TextField(
-                  controller: hertzController,
+                  controller: _hertzController,
                   style: const TextStyle(fontSize: 15),
                   keyboardType: TextInputType.number,
                   selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
@@ -252,7 +252,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
           Row(children: [
             Expanded(
               child: TextField(
-                  controller: cpuController,
+                  controller: _cpuController,
                   style: const TextStyle(fontSize: 15),
                   selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
                   decoration: const InputDecoration(
@@ -313,7 +313,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         height: 45,
         isFixedHeight: false,
         color: Colors.deepOrange,
-        pressEvent: onStartCompatible,
+        pressEvent: () => onStart(true),
       ),
       const SizedBox(height: 10),
       Row(children: [
@@ -339,12 +339,12 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
   }
 
   // 开始模拟
-  void onStart() async {
-    if (brandController.text.isEmpty ||
-        modelController.text.isEmpty ||
-        resController.text.isEmpty ||
-        hertzController.text.isEmpty ||
-        cpuController.text.isEmpty) {
+  void onStart([bool isCompatible = false]) async {
+    if (_brandController.text.isEmpty ||
+        _modelController.text.isEmpty ||
+        _resController.text.isEmpty ||
+        _hertzController.text.isEmpty ||
+        _cpuController.text.isEmpty) {
       showToast('请先输入完整参数');
       return;
     }
@@ -356,6 +356,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
     } else {
       await DialogStyle.loadingDialog(
           autoHideDuration: const Duration(milliseconds: 1500),
+          loadingColor: isCompatible ? Colors.deepOrange : Colors.blue,
           dismissible: false);
 
       AppUtil.randomUsePq(
@@ -378,63 +379,23 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
     }
   }
 
-  // 兼容模式模拟
-  void onStartCompatible() async {
-    if (brandController.text.isEmpty ||
-        modelController.text.isEmpty ||
-        resController.text.isEmpty ||
-        hertzController.text.isEmpty ||
-        cpuController.text.isEmpty) {
-      showToast('请先输入完整参数');
-    } else {
-      FocusScope.of(context).unfocus();
-
-      if (await AppUtil.checkDlFile()) {
-        AppDialog.dlRestoreDialog();
-      } else {
-        await DialogStyle.loadingDialog(
-            autoHideDuration: const Duration(milliseconds: 1500),
-            dismissible: false,
-            loadingColor: Colors.deepOrange);
-
-        AppUtil.randomUsePq(
-          errorToast: '模拟失败，请检查权限是否授予',
-          callBack: () {
-            DialogStyle.mainDialog(
-              dialogType: DialogType.success,
-              title: '模拟成功',
-              subTitle: '机型画质模拟成功，是否立即启动游戏？',
-              okButtonTitle: '启动游戏',
-              onOkButton: () async {
-                Navigator.pop(context);
-                if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
-                  showToast('启动失败，请手动启动');
-                }
-              },
-            );
-          },
-        );
-      }
-    }
-  }
-
   // 保存参数
   void saveArguments() {
-    if (brandController.text.isEmpty ||
-        modelController.text.isEmpty ||
-        resController.text.isEmpty ||
-        hertzController.text.isEmpty ||
-        cpuController.text.isEmpty) {
+    if (_brandController.text.isEmpty ||
+        _modelController.text.isEmpty ||
+        _resController.text.isEmpty ||
+        _hertzController.text.isEmpty ||
+        _cpuController.text.isEmpty) {
       showToast('请先输入完整参数');
     } else {
       FocusScope.of(context).unfocus();
 
       SpUtil.addList(AppConfig.modelImitateKey, [
-        brandController.text,
-        modelController.text,
-        resController.text,
-        hertzController.text,
-        cpuController.text,
+        _brandController.text,
+        _modelController.text,
+        _resController.text,
+        _hertzController.text,
+        _cpuController.text,
       ]);
       showToast('保存成功');
     }

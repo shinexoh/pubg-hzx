@@ -11,9 +11,9 @@ import 'controller/controller.dart';
 import 'utils/utils.dart';
 
 import 'page/main/main_page.dart';
-import 'page/permission/permission_page.dart';
+import 'page/permission_page.dart';
 import 'page/use_help_page.dart';
-import 'page/card_pass_page.dart';
+import 'page/key_pass_page.dart';
 import 'page/use/model_imitate_page.dart';
 import 'page/use/wide_angle_page.dart';
 import 'page/use/exclusive_page.dart';
@@ -97,7 +97,7 @@ class MyApp extends StatelessWidget {
         '/mediummodel': (context) => const MediumModelPage(),
         '/highmodel': (context) => const HighModelPage(),
         '/usehelp': (context) => const UseHelpPage(),
-        '/cardpass': (context) => const CardPassPage(),
+        '/keypass': (context) => const KeyPassPage(),
         '/modelimitate': (context) => const ModelImitatePage(),
         '/wideangle': (context) => const WideAnglePage(),
       },

@@ -12,21 +12,21 @@ import '../config/config.dart';
 import '../widgets/widgets.dart';
 import '../utils/utils.dart';
 
-class CardPassPage extends StatefulWidget {
-  const CardPassPage({super.key});
+class KeyPassPage extends StatefulWidget {
+  const KeyPassPage({super.key});
 
   @override
-  State<CardPassPage> createState() => _CardPassPageState();
+  State<KeyPassPage> createState() => _KeyPassPageState();
 }
 
-class _CardPassPageState extends State<CardPassPage> {
-  final appController = navigatorKey.currentContext!.read<AppController>();
-  final TextEditingController controller = TextEditingController();
+class _KeyPassPageState extends State<KeyPassPage> {
+  final _appController = navigatorKey.currentContext!.read<AppController>();
+  final _textEditingController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
-    controller.dispose();
+    _textEditingController.dispose();
   }
 
   @override
@@ -104,7 +104,7 @@ class _CardPassPageState extends State<CardPassPage> {
         boxShadow: [BoxShadow(color: Colors.grey.shade100, blurRadius: 10)],
       ),
       child: TextField(
-          controller: controller,
+          controller: _textEditingController,
           selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
           decoration: const InputDecoration(
             hintText: '请输入激活卡密',
@@ -220,7 +220,7 @@ class _CardPassPageState extends State<CardPassPage> {
 
   // 激活卡密
   void onUse() async {
-    if (controller.text == '') {
+    if (_textEditingController.text == '') {
       showToast('请输入卡密');
       return;
     }
@@ -234,9 +234,9 @@ class _CardPassPageState extends State<CardPassPage> {
       Navigator.pop(navigatorKey.currentContext!);
 
       final List<String> cardPassList = httpCardPass.data.split('\n');
-      if (cardPassList.contains(controller.text.toUpperCase())) {
+      if (cardPassList.contains(_textEditingController.text.toUpperCase())) {
         SpUtil.addString(AppConfig.taskKey, '');
-        appController.setTaskState(true);
+        _appController.setTaskState(true);
 
         DialogStyle.mainDialog(
           title: '激活成功',

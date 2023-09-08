@@ -185,7 +185,7 @@ class UserPage extends StatelessWidget {
 
   // 点击用户信息
   void onUserInfo() =>
-      Navigator.pushNamed(navigatorKey.currentContext!, '/cardpass');
+      Navigator.pushNamed(navigatorKey.currentContext!, '/keypass');
 
   // 切换主题
   void onTheme() {

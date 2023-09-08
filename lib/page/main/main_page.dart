@@ -18,14 +18,14 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> with MainLogic {
   // 界面索引
-  final ValueNotifier<int> pageIndex = ValueNotifier(0);
+  final ValueNotifier<int> _pageIndex = ValueNotifier(0);
 
   // 界面列表
-  List<Widget> get pageBody =>
+  List<Widget> get _pageBody =>
       const [HomePage(), FunctionPage(), DevicePage(), UserPage()];
 
   // 底部导航Item
-  List<SalomonBottomBarItem> get items => [
+  List<SalomonBottomBarItem> get _items => [
         SalomonBottomBarItem(
             icon: const Icon(Remix.home_5_line),
             activeIcon: const Icon(Remix.home_5_fill),
@@ -54,13 +54,28 @@ class _MainPageState extends State<MainPage> with MainLogic {
         ),
       ];
 
-  // 底部导航切换界面
-  void onTap(int index) => pageIndex.value = index;
+  @override
+  void initState() {
+    super.initState();
+
+    Future.microtask(() {
+      checkTask();
+      checkStorage();
+      checkDirectory();
+    });
+
+    checkUpdate();
+    showAppTips();
+    statistics();
+    restoreFile();
+
+    printInfo();
+  }
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: pageIndex,
+      valueListenable: _pageIndex,
       builder: (context, pageIndex, child) => Scaffold(
         bottomNavigationBar: DecoratedBox(
           decoration: BoxDecoration(boxShadow: [
@@ -72,11 +87,14 @@ class _MainPageState extends State<MainPage> with MainLogic {
             margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 25),
             currentIndex: pageIndex,
             onTap: (index) => onTap(index),
-            items: items,
+            items: _items,
           ),
         ),
-        body: IndexedStack(index: pageIndex, children: pageBody),
+        body: IndexedStack(index: pageIndex, children: _pageBody),
       ),
     );
   }
+
+  // 底部导航切换界面
+  void onTap(int index) => _pageIndex.value = index;
 }

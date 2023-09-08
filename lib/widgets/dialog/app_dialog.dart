@@ -55,7 +55,7 @@ class AppDialog {
         onOkButton: () {
           Navigator.of(navigatorKey.currentContext!)
             ..pop()
-            ..pushNamed('/cardpass');
+            ..pushNamed('/keypass');
         });
   }
 

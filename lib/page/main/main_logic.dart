@@ -14,24 +14,6 @@ import 'main_page.dart';
 mixin MainLogic on State<MainPage> {
   final _appController = navigatorKey.currentContext!.read<AppController>();
 
-  @override
-  void initState() {
-    super.initState();
-
-    Future.microtask(() {
-      checkTask();
-      checkStorage();
-      checkDirectory();
-    });
-
-    checkUpdate();
-    showAppTips();
-    statistics();
-    restoreFile();
-
-    printInfo();
-  }
-
   // 检查任务状态
   void checkTask() {
     SpUtil.containsKey(AppConfig.taskKey)

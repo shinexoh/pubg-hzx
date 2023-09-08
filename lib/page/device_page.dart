@@ -116,7 +116,7 @@ class DevicePage extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           boxShadow: [BoxShadow(color: Colors.grey.shade200, blurRadius: 10)]),
       child: Column(children: [
-        //手机品牌
+        // 手机品牌
         Row(children: [
           Container(
               padding: const EdgeInsets.all(8),
@@ -132,7 +132,7 @@ class DevicePage extends StatelessWidget {
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
-        //手机型号
+        // 手机型号
         Row(children: [
           Container(
               padding: const EdgeInsets.all(8),
@@ -149,7 +149,7 @@ class DevicePage extends StatelessWidget {
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
-        //安卓版本
+        // 安卓版本
         Row(children: [
           Container(
               padding: const EdgeInsets.all(8),
@@ -165,7 +165,7 @@ class DevicePage extends StatelessWidget {
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
-        //SDK版本
+        // SDK版本
         Row(children: [
           Container(
               padding: const EdgeInsets.all(8),
@@ -181,7 +181,7 @@ class DevicePage extends StatelessWidget {
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
-        //分辨率
+        // 分辨率
         Row(children: [
           Container(
               padding: const EdgeInsets.all(8),
@@ -197,7 +197,7 @@ class DevicePage extends StatelessWidget {
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
-        //处理器
+        // 处理器
         Row(children: [
           Container(
               padding: const EdgeInsets.all(8),
@@ -213,7 +213,7 @@ class DevicePage extends StatelessWidget {
               style: const TextStyle(color: Colors.grey, fontSize: 16)),
         ]),
         const SizedBox(height: 16),
-        //电量
+        // 电量
         Row(children: [
           Container(
               padding: const EdgeInsets.all(8),

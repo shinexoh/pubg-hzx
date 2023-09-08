@@ -19,12 +19,6 @@ mixin HomeLogic on State<HomePage> {
   final ValueNotifier<String> title = ValueNotifier('');
   final ValueNotifier<String> subTitle = ValueNotifier('');
 
-  @override
-  void initState() {
-    super.initState();
-    initTitle();
-  }
-
   // 初始化标题与副标题
   void initTitle() {
     final nowDate = DateTime.now().hour;
