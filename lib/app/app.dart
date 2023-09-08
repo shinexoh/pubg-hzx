@@ -1,2 +1,2 @@
 export 'app_theme.dart';
-export 'navigator_key.dart';
+export 'global_key.dart';

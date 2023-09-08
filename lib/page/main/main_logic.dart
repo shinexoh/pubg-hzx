@@ -103,10 +103,10 @@ mixin MainLogic on State<MainPage> {
     final appTips = await HttpClient.get(Api.main);
 
     if (appTips.isOk) {
-      final tipsContent = appTips.data['apptips'];
+      final String? tipsContent = appTips.data['apptips'];
 
       if (tipsContent != null) {
-        ScaffoldMessenger.of(navigatorKey.currentContext!).showSnackBar(
+        scaffoldMessengerKey.currentState!.showSnackBar(
           SnackBar(
             content:
                 Text(tipsContent, maxLines: 1, overflow: TextOverflow.ellipsis),

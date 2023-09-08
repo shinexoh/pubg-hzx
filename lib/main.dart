@@ -74,9 +74,10 @@ class MyApp extends StatelessWidget {
       title: '画质侠',
       color: Colors.white,
       theme: AppTheme.light,
-      initialRoute: initialRoute,
       navigatorKey: navigatorKey,
-      debugShowCheckedModeBanner: false,
+      scaffoldMessengerKey: scaffoldMessengerKey,
+      initialRoute: initialRoute,
+
       // 防止 initialRoute 是 /permission 时预先加载 / 路由
       onGenerateInitialRoutes: (initialRoute) {
         if (initialRoute == '/permission') {

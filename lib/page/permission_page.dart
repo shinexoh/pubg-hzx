@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:huazhixia/controller/app_controller.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 import '../app/app.dart';
 import '../config/config.dart';
 import '../widgets/widgets.dart';
+import '../controller/controller.dart';
 
 class PermissionPage extends StatefulWidget {
   const PermissionPage({super.key});
