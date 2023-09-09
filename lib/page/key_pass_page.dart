@@ -220,7 +220,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
 
   // 激活卡密
   void onUse() async {
-    if (_textEditingController.text == '') {
+    if (_textEditingController.text.isEmpty) {
       showToast('请输入卡密');
       return;
     }
@@ -228,13 +228,13 @@ class _KeyPassPageState extends State<KeyPassPage> {
     FocusScope.of(context).unfocus();
     DialogStyle.loadingDialog(dismissible: false);
 
-    final httpCardPass = await HttpClient.get(Api.cardPassUrl);
+    final httpKeyPass = await HttpClient.get(Api.keyPass);
 
-    if (httpCardPass.isOk) {
+    if (httpKeyPass.isOk) {
       navigatorKey.currentState!.pop();
 
-      final List<String> cardPassList = httpCardPass.data.split('\n');
-      if (cardPassList.contains(_textEditingController.text.toUpperCase())) {
+      final List<String> keyPassList = httpKeyPass.data.split('\n');
+      if (keyPassList.contains(_textEditingController.text.toUpperCase())) {
         SpUtil.addString(AppConfig.taskKey, '');
         _appController.setTaskState(true);
 

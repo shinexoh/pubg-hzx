@@ -9,5 +9,5 @@ class Api {
   static const String appStatistics = 'https://wds.ecsxs.com/219609.json';
 
   /// 卡密列表Api
-  static const String cardPassUrl = 'https://wds.ecsxs.com/1020.txt';
+  static const String keyPass = 'https://wds.ecsxs.com/1020.txt';
 }

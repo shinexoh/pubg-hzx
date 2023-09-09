@@ -27,17 +27,19 @@ class _MainPageState extends State<MainPage> with MainLogic {
   // 底部导航Item
   List<SalomonBottomBarItem> get _items => [
         SalomonBottomBarItem(
-            icon: const Icon(Remix.home_5_line),
-            activeIcon: const Icon(Remix.home_5_fill),
-            selectedColor: Colors.blue,
-            unselectedColor: Colors.black54,
-            title: const Text('首页')),
+          icon: const Icon(Remix.home_5_line),
+          activeIcon: const Icon(Remix.home_5_fill),
+          selectedColor: Colors.blue,
+          unselectedColor: Colors.black54,
+          title: const Text('首页'),
+        ),
         SalomonBottomBarItem(
-            icon: const Icon(Remix.compass_3_line),
-            activeIcon: const Icon(Remix.compass_3_fill),
-            selectedColor: Colors.pink,
-            unselectedColor: Colors.black54,
-            title: const Text('功能')),
+          icon: const Icon(Remix.compass_3_line),
+          activeIcon: const Icon(Remix.compass_3_fill),
+          selectedColor: Colors.pink,
+          unselectedColor: Colors.black54,
+          title: const Text('功能'),
+        ),
         SalomonBottomBarItem(
           icon: const Icon(Remix.dvd_line),
           activeIcon: const Icon(Remix.dvd_fill),
