@@ -72,7 +72,7 @@ mixin HomeLogic on State<HomePage> {
           subTitle: FunctionConfig.powerData[index]['content'],
           okButtonTitle: '修复',
           onOkButton: () {
-            Navigator.pop(context);
+            navigatorKey.currentState!.pop();
             SpUtil.containsKey(AppConfig.taskKey)
                 ? showToast('修复成功')
                 : AppDialog.taskDialog();
@@ -85,7 +85,7 @@ mixin HomeLogic on State<HomePage> {
           subTitle: FunctionConfig.powerData[index]['content'],
           okButtonTitle: '注入优化',
           onOkButton: () {
-            Navigator.pop(context);
+            navigatorKey.currentState!.pop();
             SpUtil.containsKey(AppConfig.taskKey)
                 ? showToast('SV优化注入成功')
                 : AppDialog.taskDialog();
@@ -98,7 +98,7 @@ mixin HomeLogic on State<HomePage> {
           subTitle: FunctionConfig.powerData[index]['content'],
           okButtonTitle: '立即下载',
           onOkButton: () {
-            Navigator.pop(context);
+            navigatorKey.currentState!.pop();
             SpUtil.containsKey(AppConfig.taskKey)
                 ? AppUtil.openUrl('https://rcls.lanzoub.com/ieuBj0tndm4h')
                 : AppDialog.taskDialog();
@@ -123,7 +123,7 @@ mixin HomeLogic on State<HomePage> {
           DialogStyle.mainDialog(
             subTitle: '灵敏度分享码复制成功！请进入游戏大厅->设置->灵敏度设置->云端方案管理->搜索方案->粘贴分享码使用即可！',
             showCanceButton: false,
-            onOkButton: () => Navigator.pop(context),
+            onOkButton: () => navigatorKey.currentState!.pop(),
           );
         } else {
           AppDialog.taskDialog();

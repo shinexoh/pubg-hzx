@@ -36,7 +36,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
       appBar: AppBar(
         title: const Text('卡密激活'),
         leading: IconButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () => navigatorKey.currentState!.pop(),
             icon: const Icon(Remix.arrow_left_line)),
       ),
       body: SingleChildScrollView(
@@ -231,7 +231,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
     final httpCardPass = await HttpClient.get(Api.cardPassUrl);
 
     if (httpCardPass.isOk) {
-      Navigator.pop(navigatorKey.currentContext!);
+      navigatorKey.currentState!.pop();
 
       final List<String> cardPassList = httpCardPass.data.split('\n');
       if (cardPassList.contains(_textEditingController.text.toUpperCase())) {
@@ -243,18 +243,18 @@ class _KeyPassPageState extends State<KeyPassPage> {
           subTitle:
               '画质侠激活成功！注意：一张卡密只能激活一台设备，如果在另一台设备激活同一张卡密，那么原设备将会失效，请勿将卡密泄露给他人！',
           showCanceButton: false,
-          onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
+          onOkButton: () => navigatorKey.currentState!.pop(),
         );
       } else {
         showToast('卡密不存在');
       }
     } else {
-      Navigator.pop(navigatorKey.currentContext!);
+      navigatorKey.currentState!.pop();
 
       DialogStyle.mainDialog(
         subTitle: '网络连接错误，请检查网络或重启画质侠后重试！',
         showCanceButton: false,
-        onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
+        onOkButton: () => navigatorKey.currentState!.pop(),
       );
     }
   }

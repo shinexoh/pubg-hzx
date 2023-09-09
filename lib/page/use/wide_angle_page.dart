@@ -22,7 +22,7 @@ class WideAnglePage extends StatelessWidget {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => navigatorKey.currentState!.pop(),
         backgroundColor: const Color.fromRGBO(255, 65, 85, 1),
         shape: const CircleBorder(),
         child: const Icon(Remix.arrow_left_line, color: Colors.white),
@@ -117,7 +117,7 @@ class WideAnglePage extends StatelessWidget {
       DialogStyle.mainDialog(
         subTitle: '很遗憾，您的设备未获得资格，请等待下次资格发放！',
         showCanceButton: false,
-        onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
+        onOkButton: () => navigatorKey.currentState!.pop(),
       );
     } else {
       AppDialog.taskDialog();

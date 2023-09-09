@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 
-import '../controller/controller.dart';
-import '../widgets/widgets.dart';
 import '../app/app.dart';
+import '../widgets/widgets.dart';
 import '../utils/utils.dart';
+import '../controller/controller.dart';
 
 class DevicePage extends StatelessWidget {
   const DevicePage({super.key});
@@ -237,7 +237,7 @@ class DevicePage extends StatelessWidget {
   }
 
   void onStorage() {
-    Navigator.pushNamed(navigatorKey.currentContext!, '/permission');
+    navigatorKey.currentState!.pushNamed('/permission');
   }
 
   void onDirectory() => AppDialog.directoryDialog();

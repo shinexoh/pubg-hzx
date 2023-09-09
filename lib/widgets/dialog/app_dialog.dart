@@ -26,7 +26,7 @@ class AppDialog {
       onOkButton: () async {
         final grantUri = await SharedStorage.grantDirectory(UriConfig.mainUri);
         if (grantUri == GrantUriState.success) {
-          Navigator.pop(navigatorKey.currentContext!);
+          navigatorKey.currentState!.pop();
           _appController.setDirectoryState(true);
           showToast('授予成功');
         } else if (grantUri == GrantUriState.error) {
@@ -44,7 +44,7 @@ class AppDialog {
     //   title: '未知错误',
     //   subTitle: '发生未知错误，请尝试重启画质侠，如问题还不能解决请联系作者反馈！',
     //   showCanceButton: false,
-    //   onOkButton: () => Navigator.of(navigatorKey.currentContext!),
+    //   onOkButton: () => navigatorKey.currentState!.pop(),
     // );
 
     DialogStyle.mainDialog(
@@ -53,7 +53,7 @@ class AppDialog {
         showCanceButton: false,
         okButtonTitle: '我要激活',
         onOkButton: () {
-          Navigator.of(navigatorKey.currentContext!)
+          navigatorKey.currentState!
             ..pop()
             ..pushNamed('/keypass');
         });
@@ -67,7 +67,7 @@ class AppDialog {
       showCanceButton: false,
       okButtonTitle: '手动授予',
       onOkButton: () {
-        Navigator.pop(navigatorKey.currentContext!);
+        navigatorKey.currentState!.pop();
         AppUtil.openAppSettings();
       },
     );
@@ -98,7 +98,9 @@ class AppDialog {
               actions: [
                 TextButton(
                   onPressed: () {
-                    isForce ? SystemNavigator.pop() : Navigator.pop(context);
+                    isForce
+                        ? SystemNavigator.pop()
+                        : navigatorKey.currentState!.pop();
                   },
                   child: Text(isForce ? '退出' : '取消'),
                 ),
@@ -118,7 +120,7 @@ class AppDialog {
       okButtonTitle: '重启游戏',
       showCanceButton: false,
       onOkButton: () async {
-        Navigator.pop(navigatorKey.currentContext!);
+        navigatorKey.currentState!.pop();
         if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
           showToast('重启失败，请手动重启');
         }
@@ -134,7 +136,7 @@ class AppDialog {
       okButtonTitle: '重置画质',
       showCanceButton: false,
       onOkButton: () async {
-        Navigator.pop(navigatorKey.currentContext!);
+        navigatorKey.currentState!.pop();
 
         if (_appController.sdkVersion <= 29) {
           await UseFor10.restorePq() && await UseFor10.restoreDl()

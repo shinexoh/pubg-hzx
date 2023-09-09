@@ -35,7 +35,7 @@ class AppUtil {
           okButtonTitle: '点击复制网址',
           showCanceButton: false,
           onOkButton: () {
-            Navigator.pop(navigatorKey.currentContext!);
+            navigatorKey.currentState!.pop();
             Clipboard.setData(ClipboardData(text: url));
             showToast('复制网址成功');
           });
@@ -54,7 +54,7 @@ class AppUtil {
       DialogStyle.mainDialog(
         subTitle: '打开QQ失败，请手动添加QQ：$qq',
         showCanceButton: false,
-        onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
+        onOkButton: () => navigatorKey.currentState!.pop(),
       );
     }
   }
@@ -71,7 +71,7 @@ class AppUtil {
       DialogStyle.mainDialog(
         subTitle: '打开QQ失败，请手动添加QQ群：$qqGroup',
         showCanceButton: false,
-        onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
+        onOkButton: () => navigatorKey.currentState!.pop(),
       );
     }
   }

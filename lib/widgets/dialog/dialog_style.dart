@@ -34,8 +34,8 @@ class DialogStyle {
               isFixedHeight: false,
               color: canceButtonColor,
               buttonTextStyle: const TextStyle(color: Colors.white),
-              pressEvent: onCanceButton ??
-                  () => Navigator.pop(navigatorKey.currentContext!))
+              pressEvent:
+                  onCanceButton ?? () => navigatorKey.currentState!.pop())
           : null,
       btnOk: AnimatedButton(
         text: okButtonTitle,

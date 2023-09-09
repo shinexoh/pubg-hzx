@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -25,7 +24,7 @@ class UseDialog {
       subTitle: subTitle,
       okButtonTitle: buttonTitle,
       onOkButton: () async {
-        Navigator.pop(navigatorKey.currentContext!);
+        navigatorKey.currentState!.pop();
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           if (_sdkVersion <= 29) {
@@ -53,7 +52,7 @@ class UseDialog {
       subTitle: '一旦解锁画质+120帧将会持续有效，期间修改其他画质功能会导致无效果，需要重置画质后即可修改其他画质功能！',
       okButtonTitle: '解锁',
       onOkButton: () async {
-        Navigator.pop(navigatorKey.currentContext!);
+        navigatorKey.currentState!.pop();
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           if (_sdkVersion <= 29) {
@@ -81,7 +80,7 @@ class UseDialog {
       subTitle: '确定要解锁超高音质？如出现问题请前往首页重置音质！',
       okButtonTitle: '解锁',
       onOkButton: () async {
-        Navigator.pop(navigatorKey.currentContext!);
+        navigatorKey.currentState!.pop();
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           if (_sdkVersion <= 29) {

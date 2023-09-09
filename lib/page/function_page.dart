@@ -218,25 +218,25 @@ class FunctionPage extends StatelessWidget {
 
   void onDiversify(int index) {
     index == 0
-        ? Navigator.pushNamed(navigatorKey.currentContext!, '/exclusive',
-            arguments: 'diversify$index')
-        : Navigator.pushNamed(navigatorKey.currentContext!, '/highopti',
-            arguments: 'diversify$index');
+        ? navigatorKey.currentState!
+            .pushNamed('/exclusive', arguments: 'diversify$index')
+        : navigatorKey.currentState!
+            .pushNamed('/highopti', arguments: 'diversify$index');
   }
 
   void onModel(int index) {
     switch (index) {
       case 0:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/lowmodel',
-            arguments: 'model$index');
+        navigatorKey.currentState!
+            .pushNamed('/lowmodel', arguments: 'model$index');
         break;
       case 1:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/mediummodel',
-            arguments: 'model$index');
+        navigatorKey.currentState!
+            .pushNamed('/mediummodel', arguments: 'model$index');
         break;
       case 2:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/highmodel',
-            arguments: 'model$index');
+        navigatorKey.currentState!
+            .pushNamed('/highmodel', arguments: 'model$index');
         break;
     }
   }
@@ -244,12 +244,12 @@ class FunctionPage extends StatelessWidget {
   void onMore(int index) async {
     switch (index) {
       case 0:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/modelimitate',
-            arguments: 'more$index');
+        navigatorKey.currentState!
+            .pushNamed('/modelimitate', arguments: 'more$index');
         break;
       case 1:
-        Navigator.pushNamed(navigatorKey.currentContext!, '/wideangle',
-            arguments: 'more$index');
+        navigatorKey.currentState!
+            .pushNamed('/wideangle', arguments: 'more$index');
         break;
       case 2:
         if (await AppUtil.checkDlFile()) {
@@ -260,7 +260,7 @@ class FunctionPage extends StatelessWidget {
             subTitle: '确定要随机修改一项画质？如出现问题请前往首页重置画质！',
             okButtonTitle: '修改',
             onOkButton: () {
-              Navigator.pop(navigatorKey.currentContext!);
+              navigatorKey.currentState!.pop();
               AppUtil.randomUsePq(callBack: () => showToast('修改成功，请重启游戏'));
             },
           );

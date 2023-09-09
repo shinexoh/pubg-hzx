@@ -4,6 +4,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:oktoast/oktoast.dart';
 
+import '../../app/app.dart';
 import '../../utils/utils.dart';
 import '../../config/config.dart';
 import '../../widgets/widgets.dart';
@@ -368,7 +369,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
             subTitle: '机型画质模拟成功，是否立即启动游戏？',
             okButtonTitle: '启动游戏',
             onOkButton: () async {
-              Navigator.pop(context);
+              navigatorKey.currentState!.pop();
               if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
                 showToast('启动失败，请手动启动');
               }

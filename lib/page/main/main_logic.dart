@@ -117,7 +117,7 @@ mixin MainLogic on State<MainPage> {
                   DialogStyle.mainDialog(
                     subTitle: tipsContent,
                     showCanceButton: false,
-                    onOkButton: () => Navigator.pop(context),
+                    onOkButton: () => navigatorKey.currentState!.pop(),
                   );
                 }),
           ),

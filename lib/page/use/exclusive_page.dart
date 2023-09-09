@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 
+import '../../app/app.dart';
 import '../../utils/utils.dart';
 import '../../config/config.dart';
 import '../../widgets/widgets.dart';
@@ -21,7 +22,7 @@ class ExclusivePage extends StatelessWidget {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => navigatorKey.currentState!.pop(),
         backgroundColor: const Color.fromRGBO(251, 135, 115, 1),
         shape: const CircleBorder(),
         child: const Icon(Remix.arrow_left_line, color: Colors.white),

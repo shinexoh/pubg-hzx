@@ -184,15 +184,14 @@ class UserPage extends StatelessWidget {
   }
 
   // 点击用户信息
-  void onUserInfo() =>
-      Navigator.pushNamed(navigatorKey.currentContext!, '/keypass');
+  void onUserInfo() => navigatorKey.currentState!.pushNamed('/keypass');
 
   // 切换主题
   void onTheme() {
     DialogStyle.mainDialog(
       subTitle: '暂不支持切换主题',
       showCanceButton: false,
-      onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
+      onOkButton: () => navigatorKey.currentState!.pop(),
     );
   }
 
@@ -201,13 +200,13 @@ class UserPage extends StatelessWidget {
     DialogStyle.mainDialog(
       subTitle: '暂不支持切换字体',
       showCanceButton: false,
-      onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
+      onOkButton: () => navigatorKey.currentState!.pop(),
     );
   }
 
   // 使用帮助
   void onUseHelp() {
-    Navigator.pushNamed(navigatorKey.currentContext!, '/usehelp');
+    navigatorKey.currentState!.pushNamed('/usehelp');
   }
 
   // 下载地址
@@ -224,7 +223,7 @@ class UserPage extends StatelessWidget {
     DialogStyle.mainDialog(
       subTitle: '画质侠已是最新版本！',
       showCanceButton: false,
-      onOkButton: () => Navigator.pop(navigatorKey.currentContext!),
+      onOkButton: () => navigatorKey.currentState!.pop(),
     );
   }
 
@@ -235,7 +234,7 @@ class UserPage extends StatelessWidget {
         subTitle: '画质侠是专为和平精英玩家量身打造的画质助手。我们致力于提供简洁高效的服务，以协助玩家获得更加优质的游戏体验。',
         okButtonTitle: '开源许可',
         onOkButton: () {
-          Navigator.pop(navigatorKey.currentContext!);
+          navigatorKey.currentState!.pop();
           showLicensePage(
             context: navigatorKey.currentContext!,
             applicationIcon:

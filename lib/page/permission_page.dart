@@ -46,8 +46,8 @@ class _PermissionPageState extends State<PermissionPage>
           subTitle: '存储权限授予成功，开始你的旅程吧！',
           showCanceButton: false,
           okButtonTitle: '开始旅程',
-          onOkButton: () =>
-              Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false),
+          onOkButton: () => navigatorKey.currentState!
+              .pushNamedAndRemoveUntil('/', (route) => false),
         );
       }
     }
@@ -100,7 +100,8 @@ class _PermissionPageState extends State<PermissionPage>
   // 点击授予按钮
   void onGrant() {
     _permissionIsGranted.value
-        ? Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false)
+        ? navigatorKey.currentState!
+            .pushNamedAndRemoveUntil('/', (route) => false)
         : requestPermission();
   }
 
