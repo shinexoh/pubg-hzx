@@ -29,7 +29,7 @@ dependencies:
   # 权限处理
   permission_handler: ^10.4.5
   # 动画弹窗、动画按钮
-  awesome_dialog: ^3.0.2
+  awesome_dialog: 3.0.2
   # 授予文件夹、安卓11及以上的文件操作
   shared_storage: ^0.8.0
   # 键值对存储
