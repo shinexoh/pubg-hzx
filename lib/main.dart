@@ -107,6 +107,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
+      locale: const Locale('zh', 'CN'),
       supportedLocales: const [Locale('zh', 'CN')],
       builder: (context, child) {
         // 禁止字体大小跟随系统变化

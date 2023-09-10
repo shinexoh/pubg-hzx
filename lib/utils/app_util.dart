@@ -130,7 +130,7 @@ class AppUtil {
     final connectivity = await Connectivity().checkConnectivity();
     if (connectivity != ConnectivityResult.none) {
       final http = await HttpClient.get('https://juejin.cn/');
-      return http.isOk ? true : false;
+      return http.isOk;
     }
     return false;
   }
