@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -46,7 +45,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
           children: [
             vipBar(),
             const SizedBox(height: 20),
-            cardPassTextField(),
+            keyPassTextField(),
             const SizedBox(height: 20),
             buttonBar(),
             const SizedBox(height: 20),
@@ -96,7 +95,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
     );
   }
 
-  Widget cardPassTextField() {
+  Widget keyPassTextField() {
     return DecoratedBox(
       decoration: BoxDecoration(
         color: Colors.grey.shade200,
@@ -221,7 +220,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
   // 激活卡密
   void onUse() async {
     if (_textEditingController.text.isEmpty) {
-      showToast('请输入卡密');
+      showSnackBar('请输入卡密');
       return;
     }
 
@@ -246,16 +245,11 @@ class _KeyPassPageState extends State<KeyPassPage> {
           onOkButton: () => navigatorKey.currentState!.pop(),
         );
       } else {
-        showToast('卡密不存在');
+        showSnackBar('卡密不存在');
       }
     } else {
       navigatorKey.currentState!.pop();
-
-      DialogStyle.mainDialog(
-        subTitle: '网络连接错误，请检查网络或重启画质侠后重试！',
-        showCanceButton: false,
-        onOkButton: () => navigatorKey.currentState!.pop(),
-      );
+      showSnackBar('网络错误，请检查网络或重启画质侠后重试！');
     }
   }
 

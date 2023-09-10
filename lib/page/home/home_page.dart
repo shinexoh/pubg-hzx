@@ -220,7 +220,7 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                 title: index == 0
                     ? '点击修复'
                     : index == 1
-                        ? '点击优化'
+                        ? '注入优化'
                         : '点击下载',
                 onTap: () => onPower(index))
           ]),

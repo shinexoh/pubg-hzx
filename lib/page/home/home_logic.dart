@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:oktoast/oktoast.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:device_apps/device_apps.dart';
 
 import '../../app/app.dart';
@@ -41,13 +39,10 @@ mixin HomeLogic on State<HomePage> {
     }
   }
 
-  // 分享
-  void onShare() => Share.share(AppConfig.shareContent);
-
   // 启动游戏
   void onOpenGame() async {
     if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
-      showToast('启动失败，请手动启动');
+      showSnackBar('启动游戏失败，请手动启动');
     }
   }
 
@@ -74,7 +69,7 @@ mixin HomeLogic on State<HomePage> {
           onOkButton: () {
             navigatorKey.currentState!.pop();
             SpUtil.containsKey(AppConfig.taskKey)
-                ? showToast('修复成功')
+                ? showSnackBar('修复成功')
                 : AppDialog.taskDialog();
           },
         );
@@ -87,7 +82,7 @@ mixin HomeLogic on State<HomePage> {
           onOkButton: () {
             navigatorKey.currentState!.pop();
             SpUtil.containsKey(AppConfig.taskKey)
-                ? showToast('SV优化注入成功')
+                ? showSnackBar('SV优化注入成功')
                 : AppDialog.taskDialog();
           },
         );
@@ -139,11 +134,11 @@ mixin HomeLogic on State<HomePage> {
         if (_appController.sdkVersion <= 29) {
           await UseFor10.restorePq() && await UseFor10.restoreDl()
               ? AppDialog.restoreDialog()
-              : showToast('重置画质失败，请检查权限是否授予');
+              : showSnackBar('重置画质失败，请检查权限是否授予');
         } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
           await UseFor11.restorePq() && await UseFor11.restoreDl()
               ? AppDialog.restoreDialog()
-              : showToast('重置画质失败，请检查权限是否授予');
+              : showSnackBar('重置画质失败，请检查权限是否授予');
         } else {
           AppDialog.directoryDialog();
         }
@@ -151,12 +146,12 @@ mixin HomeLogic on State<HomePage> {
       case 1:
         if (_appController.sdkVersion <= 29) {
           await UseFor10.restoreTq()
-              ? showToast('重置音质成功')
-              : showToast('重置音质失败，请检查权限是否授予');
+              ? showSnackBar('重置音质成功')
+              : showSnackBar('重置音质失败，请检查权限是否授予');
         } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
           await UseFor11.restoreTq()
-              ? showToast('重置音质成功')
-              : showToast('重置音质失败，请检查权限是否授予');
+              ? showSnackBar('重置音质成功')
+              : showSnackBar('重置音质失败，请检查权限是否授予');
         } else {
           AppDialog.directoryDialog();
         }

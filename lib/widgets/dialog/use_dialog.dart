@@ -1,5 +1,4 @@
 import 'package:provider/provider.dart';
-import 'package:oktoast/oktoast.dart';
 
 import '../../app/app.dart';
 import '../../controller/controller.dart';
@@ -29,12 +28,12 @@ class UseDialog {
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           if (_sdkVersion <= 29) {
             await UseFor10.usePq(filePath)
-                ? showToast('修改成功，请重启游戏')
-                : showToast('修改失败，请检查权限是否授予');
+                ? showSnackBar('修改成功，请重启游戏')
+                : showSnackBar('修改失败，请检查权限是否授予');
           } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
             await UseFor11.usePq(filePath)
-                ? showToast('修改成功，请重启游戏')
-                : showToast('修改失败，请检查权限是否授予');
+                ? showSnackBar('修改成功，请重启游戏')
+                : showSnackBar('修改失败，请检查权限是否授予');
           } else {
             AppDialog.directoryDialog();
           }
@@ -57,12 +56,12 @@ class UseDialog {
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           if (_sdkVersion <= 29) {
             await UseFor10.useDl()
-                ? showToast('解锁画质成功，请重启游戏')
-                : showToast('解锁画质失败，请检查权限是否授予');
+                ? showSnackBar('解锁画质成功，请重启游戏')
+                : showSnackBar('解锁画质失败，请检查权限是否授予');
           } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
             await UseFor11.useDl()
-                ? showToast('解锁画质成功，请重启游戏')
-                : showToast('解锁画质失败，请检查权限是否授予');
+                ? showSnackBar('解锁画质成功，请重启游戏')
+                : showSnackBar('解锁画质失败，请检查权限是否授予');
           } else {
             AppDialog.directoryDialog();
           }
@@ -85,12 +84,12 @@ class UseDialog {
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           if (_sdkVersion <= 29) {
             await UseFor10.useTq()
-                ? showToast('解锁音质成功，请重启游戏')
-                : showToast('解锁音质失败，请检查权限是否授予');
+                ? showSnackBar('解锁音质成功，请重启游戏')
+                : showSnackBar('解锁音质失败，请检查权限是否授予');
           } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
             await UseFor11.useTq()
-                ? showToast('解锁音质成功，请重启游戏')
-                : showToast('解锁音质失败，请检查权限是否授予');
+                ? showSnackBar('解锁音质成功，请重启游戏')
+                : showSnackBar('解锁音质失败，请检查权限是否授予');
           } else {
             AppDialog.directoryDialog();
           }

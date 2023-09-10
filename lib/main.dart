@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -113,12 +112,7 @@ class MyApp extends StatelessWidget {
         // 禁止字体大小跟随系统变化
         return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-            child: OKToast(
-              duration: const Duration(seconds: 3),
-              position: ToastPosition.bottom,
-              dismissOtherOnShow: true,
-              child: child!,
-            ));
+            child: child!);
       },
     );
   }

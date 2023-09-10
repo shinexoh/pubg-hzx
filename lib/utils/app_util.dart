@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:android_intent_plus/android_intent.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -37,7 +36,7 @@ class AppUtil {
           onOkButton: () {
             navigatorKey.currentState!.pop();
             Clipboard.setData(ClipboardData(text: url));
-            showToast('复制网址成功');
+            showSnackBar('复制网址成功');
           });
     }
   }
@@ -86,11 +85,11 @@ class AppUtil {
     // if (await intent.canResolveActivity() ?? false) {
     //   await intent.launch();
     // } else {
-    //   showToast('打开设置失败，请手动打开');
+    //   showSnackBar('打开设置失败，请手动打开');
     // }
 
     if (!await DeviceApps.openAppSettings('com.shinex.huazhixia')) {
-      showToast('打开设置失败，请手动打开');
+      showSnackBar('打开设置失败，请手动打开');
     }
   }
 
@@ -147,11 +146,11 @@ class AppUtil {
       if (_appController.sdkVersion <= 29) {
         await UseFor10.usePq(FileConfig.allPqFile[random])
             ? callBack()
-            : showToast(errorToast);
+            : showSnackBar(errorToast);
       } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
         await UseFor11.usePq(FileConfig.allPqFile[random])
             ? callBack()
-            : showToast(errorToast);
+            : showSnackBar(errorToast);
       } else {
         AppDialog.directoryDialog();
       }

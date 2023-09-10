@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 
 import '../app/app.dart';
@@ -261,7 +260,7 @@ class FunctionPage extends StatelessWidget {
             okButtonTitle: '修改',
             onOkButton: () {
               navigatorKey.currentState!.pop();
-              AppUtil.randomUsePq(callBack: () => showToast('修改成功，请重启游戏'));
+              AppUtil.randomUsePq(callBack: () => showSnackBar('修改成功，请重启游戏'));
             },
           );
         }

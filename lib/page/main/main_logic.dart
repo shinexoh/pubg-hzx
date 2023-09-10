@@ -106,21 +106,13 @@ mixin MainLogic on State<MainPage> {
       final String? tipsContent = appTips.data['apptips'];
 
       if (tipsContent != null) {
-        scaffoldMessengerKey.currentState!.showSnackBar(
-          SnackBar(
-            content:
-                Text(tipsContent, maxLines: 1, overflow: TextOverflow.ellipsis),
-            dismissDirection: DismissDirection.horizontal,
-            action: SnackBarAction(
-                label: '查看',
-                onPressed: () {
-                  DialogStyle.mainDialog(
-                    subTitle: tipsContent,
-                    showCanceButton: false,
-                    onOkButton: () => navigatorKey.currentState!.pop(),
-                  );
-                }),
-          ),
+        showSnackBar(
+          tipsContent,
+          label: '查看',
+          onPressed: () => DialogStyle.mainDialog(
+              subTitle: tipsContent,
+              showCanceButton: false,
+              onOkButton: () => navigatorKey.currentState!.pop()),
         );
       }
     }

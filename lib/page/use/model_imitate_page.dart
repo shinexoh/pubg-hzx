@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:device_apps/device_apps.dart';
-import 'package:oktoast/oktoast.dart';
 
 import '../../app/app.dart';
 import '../../utils/utils.dart';
@@ -346,7 +345,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         _resController.text.isEmpty ||
         _hertzController.text.isEmpty ||
         _cpuController.text.isEmpty) {
-      showToast('请先输入完整参数');
+      showSnackBar('请先输入完整参数');
       return;
     }
 
@@ -371,7 +370,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
             onOkButton: () async {
               navigatorKey.currentState!.pop();
               if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
-                showToast('启动失败，请手动启动');
+                showSnackBar('启动游戏失败，请手动启动');
               }
             },
           );
@@ -387,7 +386,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         _resController.text.isEmpty ||
         _hertzController.text.isEmpty ||
         _cpuController.text.isEmpty) {
-      showToast('请先输入完整参数');
+      showSnackBar('请先输入完整参数');
     } else {
       FocusScope.of(context).unfocus();
 
@@ -398,7 +397,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         _hertzController.text,
         _cpuController.text,
       ]);
-      showToast('保存成功');
+      showSnackBar('保存成功');
     }
   }
 
@@ -408,9 +407,9 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
 
     if (SpUtil.containsKey(AppConfig.modelImitateKey)) {
       SpUtil.remove(AppConfig.modelImitateKey);
-      showToast('清除成功');
+      showSnackBar('清除成功');
     } else {
-      showToast('未发现已保存的参数');
+      showSnackBar('未发现已保存的参数');
     }
   }
 }

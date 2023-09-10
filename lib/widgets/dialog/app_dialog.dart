@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
-import 'package:oktoast/oktoast.dart';
+import 'package:provider/provider.dart';
 import 'package:device_apps/device_apps.dart';
 
 import '../../app/app.dart';
@@ -24,15 +23,16 @@ class AppDialog {
       showCanceButton: false,
       okButtonTitle: '立即授予',
       onOkButton: () async {
+        navigatorKey.currentState!.pop();
         final grantUri = await SharedStorage.grantDirectory(UriConfig.mainUri);
+
         if (grantUri == GrantUriState.success) {
-          navigatorKey.currentState!.pop();
           _appController.setDirectoryState(true);
-          showToast('授予成功');
+          showSnackBar('授予成功');
         } else if (grantUri == GrantUriState.error) {
-          showToast('授予文件夹错误，请重新授予');
+          showSnackBar('授予文件夹错误，请重新授予');
         } else {
-          showToast('未选择授予文件夹，请重新授予');
+          showSnackBar('未选择授予文件夹，请重新授予');
         }
       },
     );
@@ -122,7 +122,7 @@ class AppDialog {
       onOkButton: () async {
         navigatorKey.currentState!.pop();
         if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
-          showToast('重启失败，请手动重启');
+          showSnackBar('重启游戏失败，请手动重启');
         }
       },
     );
@@ -141,11 +141,11 @@ class AppDialog {
         if (_appController.sdkVersion <= 29) {
           await UseFor10.restorePq() && await UseFor10.restoreDl()
               ? AppDialog.restoreDialog()
-              : showToast('重置画质失败，请检查权限是否授予');
+              : showSnackBar('重置画质失败，请检查权限是否授予');
         } else if (await SharedStorage.checkUriGrant(UriConfig.mainUri)) {
           await UseFor11.restorePq() && await UseFor11.restoreDl()
               ? AppDialog.restoreDialog()
-              : showToast('重置画质失败，请检查权限是否授予');
+              : showSnackBar('重置画质失败，请检查权限是否授予');
         } else {
           AppDialog.directoryDialog();
         }
