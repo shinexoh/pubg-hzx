@@ -112,6 +112,7 @@ mixin MainLogic on State<MainPage> {
           onPressed: () => DialogStyle.mainDialog(
               subTitle: tipsContent,
               showCanceButton: false,
+              okButtonTitle: '知道了',
               onOkButton: () => navigatorKey.currentState!.pop()),
         );
       }

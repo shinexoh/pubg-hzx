@@ -172,47 +172,49 @@ class _KeyPassPageState extends State<KeyPassPage> {
   }
 
   Widget enjoyBar() {
-    const List<Map> getRightsData = [
-      {'icon': Remix.a24_hours_line, 'title': '24小时专属客服'},
-      {'icon': Remix.gamepad_line, 'title': '解锁画质+120帧率'},
-      {'icon': Remix.honor_of_kings_line, 'title': '专属画质修改功能'},
-      {'icon': Remix.flashlight_line, 'title': '高优化画质修改功能'},
-      {'icon': Remix.device_line, 'title': '机型画质模拟器'},
-      {'icon': Remix.space_ship_line, 'title': '修改自动注入OpenGL+SV优化'},
-      {'icon': Remix.leaf_line, 'title': '优先体验画质侠内测版'},
-      {'icon': Remix.fire_line, 'title': '以及更多画质侠功能'},
+    const List<String> enjoyContent = [
+      '24小时专属客服解决问题',
+      '享受解锁画质+120帧率',
+      '享受专属画质修改功能',
+      '享受高优化画质修改功能',
+      '享受机型画质模拟器带来原生的体验',
+      '修改自动注入OpenGL+SV优化',
+      '优先推送画质侠内测版体验最新功能',
+      '以及更多画质侠功能'
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('享受权益', style: TextStyle(fontSize: 20)),
+        const Text('激活画质侠会员即可享受：',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 0.8,
+            )),
         const SizedBox(height: 20),
         Column(
-          children: List.generate(getRightsData.length, (index) {
-            return Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(
-                  bottom: index == getRightsData.length - 1 ? 0 : 10),
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey.shade200, blurRadius: 10)
-                  ]),
-              child: Row(children: [
-                Icon(
-                  getRightsData[index]['icon'],
-                  color: const Color.fromRGBO(207, 166, 78, 1),
-                  size: 26,
-                ),
-                const SizedBox(width: 10),
-                Text(getRightsData[index]['title']),
-              ]),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: List.generate(enjoyContent.length, (index) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 10, bottom: 20),
+              child: Row(
+                children: [
+                  Container(
+                      height: 8,
+                      width: 8,
+                      decoration: const BoxDecoration(
+                        color: Color.fromRGBO(207, 166, 78, 1.0),
+                        shape: BoxShape.circle,
+                      )),
+                  const SizedBox(width: 15),
+                  Text(enjoyContent[index],
+                      style: const TextStyle(fontSize: 15)),
+                ],
+              ),
             );
           }),
-        )
+        ),
       ],
     );
   }

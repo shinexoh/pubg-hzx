@@ -6,8 +6,8 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'app/app.dart';
 import 'server/server.dart';
-import 'controller/controller.dart';
 import 'utils/utils.dart';
+import 'controller/controller.dart';
 
 import 'page/main/main_page.dart';
 import 'page/permission_page.dart';
