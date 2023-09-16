@@ -219,7 +219,11 @@ class UserPage extends StatelessWidget {
   void onShare() => Share.share(AppConfig.shareContent);
 
   // 检查更新
-  void onCheckUpdate() {
+  void onCheckUpdate() async {
+    await DialogStyle.loadingDialog(
+      autoHideDuration: const Duration(seconds: 1),
+      dismissible: false,
+    );
     DialogStyle.mainDialog(
       subTitle: '画质侠已是最新版本！',
       showCanceButton: false,

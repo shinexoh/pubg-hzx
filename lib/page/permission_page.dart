@@ -42,6 +42,7 @@ class _PermissionPageState extends State<PermissionPage>
       if (await Permission.storage.status == PermissionStatus.granted) {
         _permissionIsGranted.value = true;
         _appController.setStorageState(true);
+
         DialogStyle.mainDialog(
           subTitle: '存储权限授予成功，开始你的旅程吧！',
           showCanceButton: false,
