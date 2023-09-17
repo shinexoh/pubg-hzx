@@ -17,7 +17,7 @@ class AppTheme {
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
           titleTextStyle:
-              TextStyle(fontSize: 19, color: Colors.black, letterSpacing: 1),
+              TextStyle(fontSize: 20, color: Colors.black, letterSpacing: 0.8),
           systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
               statusBarIconBrightness: Brightness.dark),
