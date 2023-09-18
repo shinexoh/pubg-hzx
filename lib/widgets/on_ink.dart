@@ -28,7 +28,7 @@ class OnInk extends StatelessWidget {
     return Padding(
       padding: margin ?? EdgeInsets.zero,
       child: Material(
-        color: color,
+        color: color ?? Colors.transparent,
         borderRadius: borderRadius,
         child: InkWell(
             borderRadius: borderRadius,

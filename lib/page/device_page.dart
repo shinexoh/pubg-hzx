@@ -13,13 +13,15 @@ class DevicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             topAppBar(),
-            permissionBar(),
             deviceInfoBar(),
+            permissionBar(),
+            reportBar(),
           ],
         ),
       ),
@@ -37,229 +39,179 @@ class DevicePage extends StatelessWidget {
     );
   }
 
-  Widget permissionBar() {
+  Widget deviceInfoBar() {
     return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(top: 20),
-      decoration: const BoxDecoration(color: Colors.white),
+      margin: const EdgeInsets.only(top: 20, left: 10, right: 10),
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      decoration: BoxDecoration(
+        color: Colors.grey.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(10),
+        // border: Border.all(
+        //   color: Colors.grey.withOpacity(0.15),
+        //   strokeAlign: BorderSide.strokeAlignOutside,
+        // ),
+      ),
       child: Column(
         children: [
-          Selector<AppController, bool>(
-            selector: (_, appController) => appController.storageState,
-            builder: (context, storageState, child) => OnInk(
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              onTap: storageState ? null : onStorage,
-              child: Row(children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.orange,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(
-                    Remix.folder_line,
-                    color: Colors.white,
-                    size: 20,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                const Text('存储权限', style: TextStyle(fontSize: 16)),
-                const Spacer(),
-                Text(storageState ? '已授予' : '点击授予',
-                    style: const TextStyle(color: Colors.grey, fontSize: 16)),
-              ]),
-            ),
+          Row(
+            children: [
+              DeviceInfoCard(
+                  color: Colors.blue,
+                  icons: Remix.box_3_line,
+                  title: '设备品牌',
+                  devceInfo: DeviceInfo.brand),
+              DeviceInfoCard(
+                  color: Colors.orange,
+                  icons: Remix.smartphone_line,
+                  title: '设备型号',
+                  devceInfo: DeviceInfo.model),
+              DeviceInfoCard(
+                  color: Colors.green,
+                  icons: Remix.android_line,
+                  title: '安卓版本',
+                  devceInfo: DeviceInfo.androidVersion),
+            ],
           ),
-          Selector<AppController, bool>(
-            selector: (_, appController) => appController.directoryState,
-            builder: (context, directoryState, child) => OnInk(
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              onTap: directoryState ? null : onDirectory,
-              child: Row(children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(
-                    Remix.folder_lock_line,
-                    color: Colors.white,
-                    size: 20,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                const Text('游戏目录权限', style: TextStyle(fontSize: 16)),
-                const Spacer(),
-                Text(directoryState ? '已授予' : '点击授予',
-                    style: const TextStyle(color: Colors.grey, fontSize: 16)),
-              ]),
-            ),
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              DeviceInfoCard(
+                  color: Colors.blueGrey,
+                  icons: Remix.bug_2_line,
+                  title: 'SDK版本',
+                  devceInfo: DeviceInfo.sdkVersion.toString()),
+              DeviceInfoCard(
+                  color: Colors.deepOrange,
+                  icons: Remix.device_line,
+                  title: '分辨率',
+                  devceInfo:
+                      '${DeviceInfo.screenHeight}×${DeviceInfo.screenWidth}'),
+              DeviceInfoCard(
+                  color: Colors.pink,
+                  icons: Remix.cpu_line,
+                  title: '处理器',
+                  devceInfo: DeviceInfo.cpu),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              DeviceInfoCard(
+                  color: const Color.fromRGBO(238, 75, 134, 1.0),
+                  icons: Remix.phone_find_line,
+                  title: '设备大小',
+                  devceInfo: DeviceInfo.sizeInches.toString()),
+              DeviceInfoCard(
+                  color: Colors.indigo,
+                  icons: Remix.server_line,
+                  title: '硬件名称',
+                  devceInfo: DeviceInfo.hardwareName.toString()),
+              DeviceInfoCard(
+                  color: Colors.purple,
+                  icons: Remix.mouse_line,
+                  title: 'DPi',
+                  devceInfo: '${DeviceInfo.xDpi}×${DeviceInfo.yDpi}')
+            ],
           ),
         ],
       ),
     );
   }
 
-  Widget deviceInfoBar() {
+  Widget permissionBar() {
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.only(top: 15),
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      decoration: const BoxDecoration(color: Colors.white),
+      margin: const EdgeInsets.only(top: 15, left: 10, right: 10),
+      decoration: BoxDecoration(
+        color: Colors.grey.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(10),
+        // border: Border.all(
+        //   color: Colors.grey.withOpacity(0.15),
+        //   strokeAlign: BorderSide.strokeAlignOutside,
+        // ),
+      ),
       child: Column(children: [
-        // 手机品牌
-        Row(children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.teal,
-              borderRadius: BorderRadius.circular(8),
+        Selector<AppController, bool>(
+          selector: (_, appController) => appController.storageState,
+          builder: (context, storageState, child) => OnInk(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
             ),
-            child: const Icon(
-              Remix.information_line,
-              color: Colors.white,
-              size: 20,
-            ),
-          ),
-          const SizedBox(width: 10),
-          const Text('手机品牌', style: TextStyle(fontSize: 16)),
-          const Spacer(),
-          Text(DeviceInfo.brand,
-              style: const TextStyle(color: Colors.grey, fontSize: 16)),
-        ]),
-        const SizedBox(height: 20),
-        // 手机型号
-        Row(children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.indigoAccent,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Remix.smartphone_line,
-              color: Colors.white,
-              size: 20,
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            onTap: storageState ? null : onStorage,
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: const BoxDecoration(
+                    color: Colors.orange,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Remix.folder_line, color: Colors.white),
+                ),
+                const SizedBox(width: 10),
+                const Text(
+                  '应用存储权限',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                ),
+                const Spacer(),
+                Text(
+                  storageState ? '已授予' : '点击授予',
+                  style: const TextStyle(color: Colors.grey, fontSize: 15),
+                ),
+              ],
             ),
           ),
-          const SizedBox(width: 10),
-          const Text('手机型号', style: TextStyle(fontSize: 16)),
-          const Spacer(),
-          Text(DeviceInfo.model,
-              style: const TextStyle(color: Colors.grey, fontSize: 16)),
-        ]),
-        const SizedBox(height: 20),
-        // 安卓版本
-        Row(children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(8),
+        ),
+        Selector<AppController, bool>(
+          selector: (_, appController) => appController.directoryState,
+          builder: (context, directoryState, child) => OnInk(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
             ),
-            child: const Icon(
-              Remix.android_line,
-              color: Colors.white,
-              size: 20,
-            ),
-          ),
-          const SizedBox(width: 10),
-          const Text('安卓版本', style: TextStyle(fontSize: 16)),
-          const Spacer(),
-          Text(DeviceInfo.androidVersion,
-              style: const TextStyle(color: Colors.grey, fontSize: 16)),
-        ]),
-        const SizedBox(height: 20),
-        // SDK版本
-        Row(children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.purple,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Remix.bug_2_line,
-              color: Colors.white,
-              size: 20,
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            onTap: directoryState ? null : onDirectory,
+            child: Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.circle,
+                  ),
+                  child:
+                      const Icon(Remix.folder_lock_line, color: Colors.white),
+                ),
+                const SizedBox(width: 10),
+                const Text(
+                  '游戏目录权限',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
+                ),
+                const Spacer(),
+                Text(
+                  directoryState ? '已授予' : '点击授予',
+                  style: const TextStyle(color: Colors.grey, fontSize: 15),
+                ),
+              ],
             ),
           ),
-          const SizedBox(width: 10),
-          const Text('SDK版本', style: TextStyle(fontSize: 16)),
-          const Spacer(),
-          Text(DeviceInfo.sdkVersion.toString(),
-              style: const TextStyle(color: Colors.grey, fontSize: 16)),
-        ]),
-        const SizedBox(height: 20),
-        // 分辨率
-        Row(children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.deepOrange,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Remix.tablet_line,
-              color: Colors.white,
-              size: 20,
-            ),
-          ),
-          const SizedBox(width: 10),
-          const Text('分辨率', style: TextStyle(fontSize: 16)),
-          const Spacer(),
-          Text('${DeviceInfo.screenHeight}×${DeviceInfo.screenWidth}',
-              style: const TextStyle(color: Colors.grey, fontSize: 16)),
-        ]),
-        const SizedBox(height: 20),
-        // 处理器
-        Row(children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.pink,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Remix.cpu_line,
-              color: Colors.white,
-              size: 20,
-            ),
-          ),
-          const SizedBox(width: 10),
-          const Text('处理器', style: TextStyle(fontSize: 16)),
-          const Spacer(),
-          Text(DeviceInfo.cpu,
-              style: const TextStyle(color: Colors.grey, fontSize: 16)),
-        ]),
-        const SizedBox(height: 20),
-        // 电量
-        Row(children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.cyan,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Remix.battery_2_charge_line,
-              color: Colors.white,
-              size: 20,
-            ),
-          ),
-          const SizedBox(width: 10),
-          const Text('当前电量', style: TextStyle(fontSize: 16)),
-          const Spacer(),
-          Text(
-              DeviceInfo.batteryLevel == 100
-                  ? '已充满'
-                  : '${DeviceInfo.batteryLevel}%',
-              style: const TextStyle(color: Colors.grey, fontSize: 16)),
-        ]),
+        ),
       ]),
+    );
+  }
+
+  Widget reportBar() {
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: TextButton(
+            onPressed: onReport,
+            style: TextButton.styleFrom(foregroundColor: Colors.blue),
+            child: const Text('信息有误？点击报告')),
+      ),
     );
   }
 
@@ -268,4 +220,6 @@ class DevicePage extends StatelessWidget {
   }
 
   void onDirectory() => AppDialog.directoryDialog();
+
+  void onReport() => showSnackBar('报告成功');
 }

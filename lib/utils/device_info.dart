@@ -43,6 +43,21 @@ class DeviceInfo {
   static int get screenWidth =>
       _androidDeviceInfo.displayMetrics.widthPx.toInt();
 
+  /// 设备大小（英寸）
+  static double get sizeInches => double.parse(
+      _androidDeviceInfo.displayMetrics.sizeInches.toStringAsFixed(1));
+
+  /// 设备硬件名称
+  static String get hardwareName => _androidDeviceInfo.hardware;
+
+  /// Xdpi
+  static double get xDpi =>
+      double.parse(_androidDeviceInfo.displayMetrics.xDpi.toStringAsFixed(2));
+
+  /// Ydpi
+  static double get yDpi =>
+      double.parse(_androidDeviceInfo.displayMetrics.yDpi.toStringAsFixed(2));
+
   /// 获取当前电量值
   static int get batteryLevel => _batteryLevel;
 }

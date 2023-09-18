@@ -5,3 +5,4 @@ export 'on_ink.dart';
 export 'use_button.dart';
 export 'outlined_text_button.dart';
 export 'color_text_card.dart';
+export 'device_info_card.dart';

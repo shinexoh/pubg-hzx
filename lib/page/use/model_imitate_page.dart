@@ -281,10 +281,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('使用教程',
-                style: TextStyle(
-                    fontSize: 15,
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
             SizedBox(height: 8),
             Text('''
 1.设备品牌、例如（小米）

@@ -31,7 +31,10 @@ class UseHelpPage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(10),
-                // border: Border.all(color: Colors.grey.withOpacity(0.15)),
+                // border: Border.all(
+                //   color: Colors.grey.withOpacity(0.15),
+                //   strokeAlign: BorderSide.strokeAlignOutside,
+                // ),
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -148,10 +148,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
               children: [
                 Text(
                   '温馨提示',
-                  style: TextStyle(
-                      fontSize: 15,
-                      letterSpacing: 1,
-                      fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8),
                 Text(
@@ -165,7 +162,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
           child: TextButton(
               onPressed: onQQ,
               style: TextButton.styleFrom(foregroundColor: Colors.blue),
-              child: const Text('联系客服', style: TextStyle(fontSize: 13))),
+              child: const Text('联系客服')),
         ),
       ],
     );
