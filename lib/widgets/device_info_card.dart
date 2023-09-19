@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// 设备信息卡片封装
 class DeviceInfoCard extends StatelessWidget {
   final Color color;
   final IconData icons;

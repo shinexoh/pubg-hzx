@@ -109,7 +109,7 @@ class DevicePage extends StatelessWidget {
               DeviceInfoCard(
                   color: Colors.purple,
                   icons: Remix.mouse_line,
-                  title: 'DPi',
+                  title: 'DPI',
                   devceInfo: '${DeviceInfo.xDpi}×${DeviceInfo.yDpi}')
             ],
           ),
@@ -151,10 +151,7 @@ class DevicePage extends StatelessWidget {
                   child: const Icon(Remix.folder_line, color: Colors.white),
                 ),
                 const SizedBox(width: 10),
-                const Text(
-                  '应用存储权限',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
-                ),
+                const Text('应用存储权限', style: TextStyle(fontSize: 15)),
                 const Spacer(),
                 Text(
                   storageState ? '已授予' : '点击授予',
@@ -185,10 +182,7 @@ class DevicePage extends StatelessWidget {
                       const Icon(Remix.folder_lock_line, color: Colors.white),
                 ),
                 const SizedBox(width: 10),
-                const Text(
-                  '游戏目录权限',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
-                ),
+                const Text('游戏目录权限', style: TextStyle(fontSize: 15)),
                 const Spacer(),
                 Text(
                   directoryState ? '已授予' : '点击授予',
@@ -215,9 +209,7 @@ class DevicePage extends StatelessWidget {
     );
   }
 
-  void onStorage() {
-    navigatorKey.currentState!.pushNamed('/permission');
-  }
+  void onStorage() => navigatorKey.currentState!.pushNamed('/permission');
 
   void onDirectory() => AppDialog.directoryDialog();
 
