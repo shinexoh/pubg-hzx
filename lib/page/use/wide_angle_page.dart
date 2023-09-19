@@ -115,7 +115,7 @@ class WideAnglePage extends StatelessWidget {
   void onUse(int index) {
     if (SpUtil.containsKey(AppConfig.taskKey)) {
       DialogStyle.mainDialog(
-        subTitle: '很遗憾，您的设备 [${DeviceInfo.model}] 未获得资格，请等待下次资格发放！',
+        subTitle: '很遗憾，您的设备 [${DeviceInfo.model}] 因测试时出现黑屏闪退状况，请耐心等待设备适配与功能完善！',
         showCanceButton: false,
         onOkButton: () => navigatorKey.currentState!.pop(),
       );

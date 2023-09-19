@@ -33,7 +33,7 @@ class UserPage extends StatelessWidget {
         padding: EdgeInsets.only(top: 20, left: 20),
         child: Text('我的',
             style: TextStyle(
-                fontSize: 22, letterSpacing: 1, fontWeight: FontWeight.bold)),
+                fontSize: 22, letterSpacing: 0.8, fontWeight: FontWeight.bold)),
       ),
     );
   }

@@ -54,12 +54,15 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                   children: [
                     Text(title.value,
                         style: const TextStyle(
-                            fontSize: 22,
-                            letterSpacing: 1,
-                            fontWeight: FontWeight.bold)),
+                          fontSize: 22,
+                          letterSpacing: 0.8,
+                          fontWeight: FontWeight.bold,
+                        )),
                     Text(subTitle.value,
                         style: const TextStyle(
-                            color: Colors.grey, letterSpacing: 1)),
+                          color: Colors.grey,
+                          letterSpacing: 0.8,
+                        )),
                   ],
                 ),
               ),
