@@ -159,10 +159,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
         ),
         Align(
           alignment: Alignment.centerRight,
-          child: TextButton(
-              onPressed: onQQ,
-              style: TextButton.styleFrom(foregroundColor: Colors.blue),
-              child: const Text('联系客服')),
+          child: TextButton(onPressed: onQQ, child: const Text('联系客服')),
         ),
       ],
     );

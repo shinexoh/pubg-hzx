@@ -138,7 +138,7 @@ class DevicePage extends StatelessWidget {
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
             onTap: storageState ? null : onStorage,
             child: Row(
               children: [
@@ -168,7 +168,7 @@ class DevicePage extends StatelessWidget {
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
             onTap: directoryState ? null : onDirectory,
             child: Row(
               children: [
@@ -201,10 +201,7 @@ class DevicePage extends StatelessWidget {
       padding: const EdgeInsets.only(right: 10),
       child: Align(
         alignment: Alignment.centerRight,
-        child: TextButton(
-            onPressed: onReport,
-            style: TextButton.styleFrom(foregroundColor: Colors.blue),
-            child: const Text('信息有误？点击报告')),
+        child: TextButton(onPressed: onReport, child: const Text('信息有误？点击报告')),
       ),
     );
   }

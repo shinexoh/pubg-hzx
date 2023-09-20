@@ -6,7 +6,10 @@ class AppTheme {
   static ThemeData get light => ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
-        colorSchemeSeed: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          primary: Colors.blue,
+        ),
         scaffoldBackgroundColor: Colors.grey.shade100,
         cardColor: Colors.white,
         splashFactory: InkSparkle.splashFactory,
@@ -15,12 +18,16 @@ class AppTheme {
           scrolledUnderElevation: 0,
           centerTitle: true,
           backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-          titleTextStyle:
-              TextStyle(fontSize: 20, color: Colors.black, letterSpacing: 0.8),
+          foregroundColor: Colors.black87,
+          titleTextStyle: TextStyle(
+            fontSize: 20,
+            color: Colors.black87,
+            letterSpacing: 0.8,
+          ),
           systemOverlayStyle: SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
-              statusBarIconBrightness: Brightness.dark),
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.dark,
+          ),
         ),
 
         // 文本选择光标等颜色配置
@@ -37,10 +44,15 @@ class AppTheme {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         ),
 
-        // 路由跳转动画样式
+        // 路由跳转动画样式配置
         pageTransitionsTheme: const PageTransitionsTheme(builders: {
           TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         }),
+
+        // 文本按钮样式配置
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(foregroundColor: Colors.blue),
+        ),
       );
 }
