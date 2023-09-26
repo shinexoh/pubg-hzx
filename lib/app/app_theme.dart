@@ -18,23 +18,16 @@ class AppTheme {
           scrolledUnderElevation: 0,
           centerTitle: true,
           backgroundColor: Colors.white,
-          foregroundColor: Colors.black87,
+          foregroundColor: Colors.black,
           titleTextStyle: TextStyle(
             fontSize: 20,
-            color: Colors.black87,
+            color: Colors.black,
             letterSpacing: 0.8,
           ),
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: Colors.transparent,
             statusBarIconBrightness: Brightness.dark,
           ),
-        ),
-
-        // 文本选择光标等颜色配置
-        textSelectionTheme: TextSelectionThemeData(
-          cursorColor: Colors.blue,
-          selectionHandleColor: Colors.blue,
-          selectionColor: Colors.blue.shade200,
         ),
 
         // SnackBar样式配置
@@ -49,10 +42,5 @@ class AppTheme {
           TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         }),
-
-        // 文本按钮样式配置
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(foregroundColor: Colors.blue),
-        ),
       );
 }
