@@ -15,43 +15,42 @@ class PermissionPage extends StatefulWidget {
   State<PermissionPage> createState() => _PermissionPageState();
 }
 
-class _PermissionPageState extends State<PermissionPage>
-    with WidgetsBindingObserver {
+class _PermissionPageState extends State<PermissionPage> {
   final _appController = navigatorKey.currentContext!.read<AppController>();
 
   // 存储权限状态
   final ValueNotifier<bool> _permissionIsGranted = ValueNotifier(false);
+  // 生命周期监听
+  late final AppLifecycleListener _appLifecycleListener;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+
+    // 初始化生命周期监听
+    _appLifecycleListener = AppLifecycleListener(
+      onResume: () async {
+        if (await Permission.storage.status == PermissionStatus.granted) {
+          _permissionIsGranted.value = true;
+          _appController.setStorageState(true);
+
+          DialogStyle.mainDialog(
+            subTitle: '存储权限授予成功，开始你的旅程吧！',
+            showCanceButton: false,
+            okButtonTitle: '开始旅程',
+            onOkButton: () => navigatorKey.currentState!
+                .pushNamedAndRemoveUntil('/', (route) => false),
+          );
+        }
+      },
+    );
   }
 
   @override
   void dispose() {
     super.dispose();
-    WidgetsBinding.instance.removeObserver(this);
     _permissionIsGranted.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) async {
-    super.didChangeAppLifecycleState(state);
-    if (state == AppLifecycleState.resumed) {
-      if (await Permission.storage.status == PermissionStatus.granted) {
-        _permissionIsGranted.value = true;
-        _appController.setStorageState(true);
-
-        DialogStyle.mainDialog(
-          subTitle: '存储权限授予成功，开始你的旅程吧！',
-          showCanceButton: false,
-          okButtonTitle: '开始旅程',
-          onOkButton: () => navigatorKey.currentState!
-              .pushNamedAndRemoveUntil('/', (route) => false),
-        );
-      }
-    }
+    _appLifecycleListener.dispose();
   }
 
   @override
