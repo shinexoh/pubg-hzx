@@ -23,7 +23,7 @@ mixin MainLogic on State<MainPage> {
 
   // 检查存储权限
   void checkStorage() async {
-    await Permission.storage.status == PermissionStatus.granted
+    await Permission.storage.status.isGranted
         ? _appController.setStorageState(true)
         : _appController.setStorageState(false);
   }

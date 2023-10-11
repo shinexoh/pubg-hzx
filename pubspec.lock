@@ -5,10 +5,10 @@ packages:
     dependency: "direct main"
     description:
       name: android_intent_plus
-      sha256: f72ae20bb37108694f442e7ae6acbd28b453ca62ce86842f6787b784355abfe6
+      sha256: e1c62bb41c90e15083b7fb84dc327fe90396cc9c1445b55ff1082144fabfb4d9
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.0.2"
+    version: "4.0.3"
   archive:
     dependency: transitive
     description:
@@ -45,10 +45,10 @@ packages:
     dependency: "direct main"
     description:
       name: battery_plus
-      sha256: e85c518029ae063666df860f57c41e5833d30a737316e7ef029cb3cfdc603e78
+      sha256: e2b3d280f7f410c601c2a6b2742789a4f7f09bdbc6f5041916da77bea044a89b
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.0.2"
+    version: "5.0.0"
   battery_plus_platform_interface:
     dependency: transitive
     description:
@@ -109,10 +109,10 @@ packages:
     dependency: "direct main"
     description:
       name: connectivity_plus
-      sha256: "77a180d6938f78ca7d2382d2240eb626c0f6a735d0bfdce227d8ffb80f95c48b"
+      sha256: "94d51c6f1299133a2baa4c5c3d2c11ec7d7fb4768dee5c52a56f7d7522fcf70e"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.0.2"
+    version: "5.0.0"
   connectivity_plus_platform_interface:
     dependency: transitive
     description:
@@ -173,10 +173,10 @@ packages:
     dependency: "direct main"
     description:
       name: device_info_plus
-      sha256: "86add5ef97215562d2e090535b0a16f197902b10c369c558a100e74ea06e8659"
+      sha256: "093b02a284b4969bb641a6236bbb8e626e4035c6ec9e30c20b65d505c24b3080"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "9.0.3"
+    version: "10.0.0"
   device_info_plus_platform_interface:
     dependency: transitive
     description:
@@ -529,10 +529,10 @@ packages:
     dependency: "direct main"
     description:
       name: share_plus
-      sha256: "6cec740fa0943a826951223e76218df002804adb588235a8910dc3d6b0654e11"
+      sha256: f86c5acc512b20e074137075824fc29e29b2cf395dcbfcc371e96e3e6290cce1
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "7.1.0"
+    version: "8.0.0"
   share_plus_platform_interface:
     dependency: transitive
     description:
@@ -545,10 +545,10 @@ packages:
     dependency: "direct main"
     description:
       name: shared_preferences
-      sha256: b7f41bad7e521d205998772545de63ff4e6c97714775902c199353f8bf1511ac
+      sha256: "81429e4481e1ccfb51ede496e916348668fd0921627779233bd24cc3ff6abd02"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.2"
   shared_preferences_android:
     dependency: transitive
     description:

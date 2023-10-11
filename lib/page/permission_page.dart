@@ -30,7 +30,7 @@ class _PermissionPageState extends State<PermissionPage> {
     // 初始化生命周期监听
     _appLifecycleListener = AppLifecycleListener(
       onResume: () async {
-        if (await Permission.storage.status == PermissionStatus.granted) {
+        if (await Permission.storage.status.isGranted) {
           _permissionIsGranted.value = true;
           _appController.setStorageState(true);
 
@@ -108,21 +108,20 @@ class _PermissionPageState extends State<PermissionPage> {
   // 请求权限
   void requestPermission() async {
     final request = await Permission.storage.request();
-
-    if (request.isGranted) {
-      _permissionIsGranted.value = true;
-      _appController.setStorageState(true);
+    if (request.isPermanentlyDenied) {
+      AppDialog.permissionDeniedDialog();
+      return;
     } else if (request.isDenied) {
       final newRequest = await Permission.storage.request();
-
-      if (newRequest.isGranted) {
-        _permissionIsGranted.value = true;
-        _appController.setStorageState(true);
-      } else {
-        AppDialog.storageDialog();
+      if (!newRequest.isGranted) {
+        AppDialog.permissionDeniedDialog();
+        return;
       }
-    } else {
-      AppDialog.storageDialog();
+    }
+
+    if (await Permission.storage.status.isGranted) {
+      _permissionIsGranted.value = true;
+      _appController.setStorageState(true);
     }
   }
 }

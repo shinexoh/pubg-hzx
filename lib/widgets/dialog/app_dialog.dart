@@ -60,7 +60,7 @@ class AppDialog {
   }
 
   /// 存储权限被拒绝弹窗
-  static void storageDialog() {
+  static void permissionDeniedDialog() {
     DialogStyle.mainDialog(
       title: '你已拒绝权限',
       subTitle: '由于画质侠需要【文件存储权限】才能修改画质，请点击【手动授予】跳转到设置，手动给画质侠授予【文件存储权限】',

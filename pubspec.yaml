@@ -2,7 +2,7 @@ name: huazhixia
 description: A new Flutter project.
 publish_to: 'none'
 
-version: 2.2.0+6
+version: 2.2.1+7
 
 environment:
   # sdk: '>=2.19.6 <3.0.0'
@@ -31,21 +31,21 @@ dependencies:
   # 授予文件夹、安卓11及以上的文件操作
   shared_storage: ^0.8.0
   # 键值对存储
-  shared_preferences: ^2.2.1
+  shared_preferences: ^2.2.2
   # 应用操作
   device_apps: ^2.2.0
   # 底部导航
   salomon_bottom_bar: ^3.3.2
   # 分享
-  share_plus: ^7.1.0
+  share_plus: ^8.0.0
   # 电池信息
-  battery_plus: ^4.0.2
+  battery_plus: ^5.0.0
   # 安卓intent操作
-  android_intent_plus: ^4.0.2
+  android_intent_plus: ^4.0.3
   # 设备信息
-  device_info_plus: ^9.0.3
+  device_info_plus: ^10.0.0
   # 网络检查
-  connectivity_plus: ^4.0.2
+  connectivity_plus: ^5.0.0
 
 dev_dependencies:
   flutter_test:
