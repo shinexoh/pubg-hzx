@@ -24,8 +24,8 @@ class _KeyPassPageState extends State<KeyPassPage> {
 
   @override
   void dispose() {
-    super.dispose();
     _textEditingController.dispose();
+    super.dispose();
   }
 
   @override

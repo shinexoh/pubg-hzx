@@ -25,8 +25,6 @@ class _PermissionPageState extends State<PermissionPage> {
 
   @override
   void initState() {
-    super.initState();
-
     // 初始化生命周期监听
     _appLifecycleListener = AppLifecycleListener(
       onResume: () async {
@@ -44,13 +42,15 @@ class _PermissionPageState extends State<PermissionPage> {
         }
       },
     );
+
+    super.initState();
   }
 
   @override
   void dispose() {
-    super.dispose();
     _permissionIsGranted.dispose();
     _appLifecycleListener.dispose();
+    super.dispose();
   }
 
   @override

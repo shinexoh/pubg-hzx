@@ -58,8 +58,6 @@ class _MainPageState extends State<MainPage> with MainLogic {
 
   @override
   void initState() {
-    super.initState();
-
     Future.microtask(() {
       checkTask();
       checkStorage();
@@ -72,6 +70,8 @@ class _MainPageState extends State<MainPage> with MainLogic {
     restoreFile();
 
     printInfo();
+
+    super.initState();
   }
 
   @override
