@@ -84,10 +84,7 @@ class AppDialog {
         context: navigatorKey.currentContext!,
         builder: (context) => WillPopScope(
             onWillPop: () async {
-              if (isForce) {
-                SystemNavigator.pop();
-                return true;
-              }
+              if (isForce) SystemNavigator.pop();
               return true;
             },
             child: AlertDialog(

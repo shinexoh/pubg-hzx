@@ -16,8 +16,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with HomeLogic {
   @override
   void initState() {
-    initTitle();
     super.initState();
+    initTitle();
   }
 
   @override

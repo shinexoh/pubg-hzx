@@ -18,7 +18,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> with MainLogic {
   // 界面索引
-  final ValueNotifier<int> _pageIndex = ValueNotifier(0);
+  int _pageIndex = 0;
 
   // 界面列表
   List<Widget> get _pageBody =>
@@ -58,7 +58,9 @@ class _MainPageState extends State<MainPage> with MainLogic {
 
   @override
   void initState() {
-    Future.microtask(() {
+    super.initState();
+
+    Future(() {
       checkTask();
       checkStorage();
       checkDirectory();
@@ -68,35 +70,29 @@ class _MainPageState extends State<MainPage> with MainLogic {
     showAppTips();
     statistics();
     restoreFile();
-
     printInfo();
-
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: _pageIndex,
-      builder: (context, pageIndex, child) => Scaffold(
-        bottomNavigationBar: DecoratedBox(
-          decoration: BoxDecoration(boxShadow: [
-            BoxShadow(color: Colors.grey.shade200, blurRadius: 10)
-          ]),
-          child: SalomonBottomBar(
-            backgroundColor: Colors.white,
-            curve: Curves.bounceOut,
-            margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 25),
-            currentIndex: pageIndex,
-            onTap: (index) => onTap(index),
-            items: _items,
-          ),
+    return Scaffold(
+      bottomNavigationBar: DecoratedBox(
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(color: Colors.grey.shade200, blurRadius: 10)
+        ]),
+        child: SalomonBottomBar(
+          currentIndex: _pageIndex,
+          backgroundColor: Colors.white,
+          curve: Curves.bounceOut,
+          margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 25),
+          onTap: (index) => onTap(index),
+          items: _items,
         ),
-        body: IndexedStack(index: pageIndex, children: _pageBody),
       ),
+      body: IndexedStack(index: _pageIndex, children: _pageBody),
     );
   }
 
   // 底部导航切换界面
-  void onTap(int index) => _pageIndex.value = index;
+  void onTap(int index) => setState(() => _pageIndex = index);
 }

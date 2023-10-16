@@ -24,6 +24,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
 
   @override
   void initState() {
+    super.initState();
     if (SpUtil.getList(AppConfig.modelImitateKey) != null) {
       final List<String> content = SpUtil.getList(AppConfig.modelImitateKey)!;
 
@@ -33,8 +34,6 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
       _hertzController.text = content[3];
       _cpuController.text = content[4];
     }
-
-    super.initState();
   }
 
   @override
