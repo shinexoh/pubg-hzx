@@ -94,7 +94,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
           const Text(
             '机型画质模拟',
             style: TextStyle(
-                fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.bold),
+                fontSize: 20, letterSpacing: 1.2, fontWeight: FontWeight.bold),
           ),
         ],
       ),

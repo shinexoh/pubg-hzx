@@ -52,7 +52,7 @@ class MediumModelPage extends StatelessWidget {
           const Text(
             '中端机',
             style: TextStyle(
-                fontSize: 20, letterSpacing: 2, fontWeight: FontWeight.bold),
+                fontSize: 20, letterSpacing: 1.2, fontWeight: FontWeight.bold),
           ),
         ],
       ),

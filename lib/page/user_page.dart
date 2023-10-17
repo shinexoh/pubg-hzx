@@ -87,7 +87,7 @@ class UserPage extends StatelessWidget {
               child: Row(children: [
                 Image.asset(AssetsConfig.font, height: 28, width: 28),
                 const SizedBox(width: 15),
-                const Text('切换字体', style: TextStyle(fontSize: 16)),
+                const Text('字体样式', style: TextStyle(fontSize: 16)),
                 const Spacer(),
                 const Text('系统默认', style: TextStyle(color: Colors.grey)),
               ])),

@@ -4,17 +4,19 @@ import '../config/config.dart';
 import 'color_text_card.dart';
 import 'on_ink.dart';
 
-// 修改界面的按钮封装
+// 功能界面的按钮封装
 class UseButton extends StatelessWidget {
   final String title;
   final EdgeInsetsGeometry? margin;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+  final bool isWideAngle;
 
   const UseButton({
     super.key,
     required this.title,
     this.margin,
-    required this.onTap,
+    this.onTap,
+    this.isWideAngle = false,
   });
 
   @override
@@ -38,18 +40,26 @@ class UseButton extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    maxLines: 1,
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontSize: 15),
                   ),
                   const SizedBox(height: 5),
-                  const Row(children: [
-                    ColorTextCard(color: Colors.blue, text: '120FPS'),
-                    SizedBox(width: 5),
-                    ColorTextCard(color: Colors.pink, text: 'SV优化'),
-                    SizedBox(width: 5),
-                    ColorTextCard(color: Colors.green, text: 'OpenGL'),
-                  ]),
+                  isWideAngle
+                      ? const Row(children: [
+                          ColorTextCard(color: Colors.blueGrey, text: '阶段测试中'),
+                          SizedBox(width: 5),
+                          ColorTextCard(color: Colors.green, text: '无黑边'),
+                          SizedBox(width: 5),
+                          ColorTextCard(color: Colors.blue, text: '无花屏'),
+                        ])
+                      : const Row(children: [
+                          ColorTextCard(color: Colors.blue, text: '120FPS'),
+                          SizedBox(width: 5),
+                          ColorTextCard(color: Colors.pink, text: 'SV优化'),
+                          SizedBox(width: 5),
+                          ColorTextCard(color: Colors.green, text: 'OpenGL'),
+                        ])
                 ],
               ),
             ),

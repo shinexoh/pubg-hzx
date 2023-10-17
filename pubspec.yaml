@@ -34,10 +34,10 @@ dependencies:
   shared_preferences: ^2.2.2
   # 应用操作
   device_apps: ^2.2.0
-  # 底部导航
+  # 底部导航栏
   salomon_bottom_bar: ^3.3.2
   # 分享
-  share_plus: ^7.2.0
+  share_plus: ^7.2.1
   # 电池信息
   battery_plus: ^4.1.0
   # 安卓intent操作
