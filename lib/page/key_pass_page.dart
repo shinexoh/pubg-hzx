@@ -61,10 +61,22 @@ class _KeyPassPageState extends State<KeyPassPage> {
   Widget vipBar() {
     return SizedBox(
       width: double.infinity,
-      child: Material(
-        elevation: 4,
-        color: const Color.fromRGBO(26, 26, 26, 0.9),
-        borderRadius: BorderRadius.circular(15),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            gradient: const LinearGradient(
+              colors: [
+                Color.fromRGBO(123, 83, 1, 1.0),
+                Color.fromRGBO(50, 34, 14, 1.0),
+              ],
+            ),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.orange,
+                blurRadius: 5.0,
+                spreadRadius: 0.2,
+              )
+            ]),
         child: Padding(
           padding: const EdgeInsets.all(15),
           child:
@@ -72,8 +84,8 @@ class _KeyPassPageState extends State<KeyPassPage> {
             const Text(
               'VIP',
               style: TextStyle(
-                fontSize: 24,
-                color: Color.fromRGBO(252, 162, 86, 1),
+                fontSize: 25,
+                color: Colors.orange,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
                 height: 1.2,
@@ -85,9 +97,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
                 builder: (context, taskState, child) => Text(
                       taskState ? '您已成功激活画质侠会员' : '激活画质侠享受更多画质功能',
                       style: const TextStyle(
-                          fontSize: 13,
-                          color: Color.fromRGBO(252, 162, 86, 1),
-                          letterSpacing: 2),
+                          fontSize: 13, color: Colors.orange, letterSpacing: 2),
                     )),
           ]),
         ),
