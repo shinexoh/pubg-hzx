@@ -26,8 +26,13 @@ class DeviceInfoCard extends StatelessWidget {
             child: Icon(icons, color: Colors.white),
           ),
           const SizedBox(height: 3),
-          Text(title, style: const TextStyle(fontSize: 13, color: Colors.grey)),
-          Text(devceInfo, maxLines: 1, overflow: TextOverflow.ellipsis),
+          Text(title, style: const TextStyle(color: Colors.grey)),
+          Text(
+            devceInfo,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontSize: 15),
+          ),
         ],
       ),
     );

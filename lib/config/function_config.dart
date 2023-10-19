@@ -31,35 +31,35 @@ class FunctionConfig {
 
   /// 其他功能
   static const List otherData = [
-    '解锁画质+120帧（EC）',
-    '解锁超高音质',
-    '1000陀螺仪灵敏度',
+    {'title': '解锁画质+120帧（EC）', 'subtitle': '一键解锁画质帧率 长期有效'},
+    {'title': '解锁超高音质', 'subtitle': '一键解锁超高音质 长期有效'},
+    {'title': '1000陀螺仪灵敏度', 'subtitle': '1000陀螺仪灵敏度分享码'}
   ];
 
   /// 重置功能
   static const List restoreData = [
-    {'title': '重置画质', 'subtitle': '重置画质为初始值'},
-    {'title': '重置音质', 'subtitle': '重置音质为初始值'},
-    {'title': '重置所有功能', 'subtitle': '重新初始化所有功能'}
+    {'title': '重置画质', 'subtitle': '[重置画质为初始值]'},
+    {'title': '重置音质', 'subtitle': '[重置音质为初始值]'},
+    {'title': '重置所有功能', 'subtitle': '[重新初始化所有功能]'}
   ];
 
   /// 多样化修改
   static const List diversifyData = [
-    {'title': '专属修改', 'subtitle': '更加多样化的画质修改'},
-    {'title': '高优化修改', 'subtitle': '更多精心优化的画质修改'},
+    {'title': '专属修改', 'subtitle': '[更加多样化的画质修改]'},
+    {'title': '高优化修改', 'subtitle': '[更多精心优化的画质修改]'},
   ];
 
   /// 机型修改
   static const List modelData = [
-    {'title': '低端机', 'subtitle': '专门针对低端机的画质修改'},
-    {'title': '中端机', 'subtitle': '专门针对中端机的画质修改'},
-    {'title': '高端机', 'subtitle': '专门针对高端机的画质修改'},
+    {'title': '低端机', 'subtitle': '[专门针对低端机的画质修改]'},
+    {'title': '中端机', 'subtitle': '[专门针对中端机的画质修改]'},
+    {'title': '高端机', 'subtitle': '[专门针对高端机的画质修改]'},
   ];
 
   /// 更多功能
   static const List moreData = [
-    {'title': '机型画质模拟', 'subtitle': '根据设备参数一比一模拟原生画质'},
-    {'title': '超广角专区', 'subtitle': '拥有平板比例、超视角游戏等'},
+    {'title': '机型画质模拟', 'subtitle': '[根据设备参数一比一模拟原生画质]'},
+    {'title': '超广角专区', 'subtitle': '[拥有平板比例、超视角游戏等]'},
     {'title': '随机修改', 'subtitle': '选择困难症？试试这个吧！'},
   ];
 

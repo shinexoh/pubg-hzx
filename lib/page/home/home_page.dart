@@ -214,9 +214,10 @@ class _HomePageState extends State<HomePage> with HomeLogic {
               ),
               Text(FunctionConfig.powerData[index]['subtitle'],
                   style: const TextStyle(
-                      color: Colors.blue,
-                      fontSize: 12,
-                      fontStyle: FontStyle.italic)),
+                    color: Colors.blue,
+                    fontSize: 12,
+                    letterSpacing: 0.8,
+                  )),
             ]),
             const Spacer(),
             OutlinedTextButton(
@@ -253,22 +254,15 @@ class _HomePageState extends State<HomePage> with HomeLogic {
             const SizedBox(width: 10),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
-                FunctionConfig.otherData[index],
+                FunctionConfig.otherData[index]['title'],
                 style: const TextStyle(fontSize: 15),
               ),
-              const Row(children: [
-                Text('官方',
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic)),
-                SizedBox(width: 5),
-                Text('推荐',
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic)),
-              ]),
+              Text(FunctionConfig.otherData[index]['subtitle'],
+                  style: const TextStyle(
+                    color: Colors.blue,
+                    fontSize: 12,
+                    letterSpacing: 0.8,
+                  )),
             ]),
             const Spacer(),
             OutlinedTextButton(
@@ -307,9 +301,10 @@ class _HomePageState extends State<HomePage> with HomeLogic {
               ),
               Text(FunctionConfig.restoreData[index]['subtitle'],
                   style: const TextStyle(
-                      color: Colors.pink,
-                      fontSize: 12,
-                      fontStyle: FontStyle.italic)),
+                    color: Colors.pink,
+                    fontSize: 12,
+                    letterSpacing: 0.8,
+                  )),
             ]),
             const Spacer(),
             OutlinedTextButton(

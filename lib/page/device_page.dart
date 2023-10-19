@@ -102,15 +102,17 @@ class DevicePage extends StatelessWidget {
                   title: '设备大小',
                   devceInfo: DeviceInfo.sizeInches.toString()),
               DeviceInfoCard(
-                  color: Colors.indigo,
-                  icons: Remix.server_line,
-                  title: '硬件名称',
-                  devceInfo: DeviceInfo.hardwareName.toString()),
-              DeviceInfoCard(
                   color: Colors.purple,
                   icons: Remix.mouse_line,
                   title: 'DPI',
-                  devceInfo: '${DeviceInfo.xDpi}×${DeviceInfo.yDpi}')
+                  devceInfo: '${DeviceInfo.xDpi}×${DeviceInfo.yDpi}'),
+              DeviceInfoCard(
+                  color: Colors.brown,
+                  icons: Remix.battery_low_line,
+                  title: '当前电量',
+                  devceInfo: DeviceInfo.batteryLevel == 100
+                      ? '已充满'
+                      : '${DeviceInfo.batteryLevel}%'),
             ],
           ),
         ],
