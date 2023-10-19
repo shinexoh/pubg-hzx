@@ -161,26 +161,29 @@ class _HomePageState extends State<HomePage> with HomeLogic {
           child: Row(children: [
             Image.asset(AssetsConfig.quick, height: 45, width: 45),
             const SizedBox(width: 10),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                FunctionConfig.quickData[index],
-                style: const TextStyle(fontSize: 15),
-              ),
-              const Row(children: [
-                Text('官方',
-                    style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic)),
-                SizedBox(width: 5),
-                Text('推荐',
-                    style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic)),
-              ]),
-            ]),
-            const Spacer(),
+            Expanded(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      FunctionConfig.quickData[index],
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    const Row(children: [
+                      Text('官方',
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 12,
+                              fontStyle: FontStyle.italic)),
+                      SizedBox(width: 5),
+                      Text('推荐',
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 12,
+                              fontStyle: FontStyle.italic)),
+                    ]),
+                  ]),
+            ),
             OutlinedTextButton(title: '点击修改', onTap: () => onQuick(index)),
           ]),
         );
@@ -207,19 +210,24 @@ class _HomePageState extends State<HomePage> with HomeLogic {
           child: Row(children: [
             Image.asset(AssetsConfig.power, height: 45, width: 45),
             const SizedBox(width: 10),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                FunctionConfig.powerData[index]['title'],
-                style: const TextStyle(fontSize: 15),
-              ),
-              Text(FunctionConfig.powerData[index]['subtitle'],
-                  style: const TextStyle(
-                    color: Colors.blue,
-                    fontSize: 12,
-                    letterSpacing: 0.8,
-                  )),
-            ]),
-            const Spacer(),
+            Expanded(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      FunctionConfig.powerData[index]['title'],
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    Text(FunctionConfig.powerData[index]['subtitle'],
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: Colors.blue,
+                          fontSize: 12,
+                          letterSpacing: 0.8,
+                        )),
+                  ]),
+            ),
             OutlinedTextButton(
                 title: index == 0
                     ? '点击修复'
@@ -252,19 +260,24 @@ class _HomePageState extends State<HomePage> with HomeLogic {
           child: Row(children: [
             Image.asset(AssetsConfig.other, height: 45, width: 45),
             const SizedBox(width: 10),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                FunctionConfig.otherData[index]['title'],
-                style: const TextStyle(fontSize: 15),
-              ),
-              Text(FunctionConfig.otherData[index]['subtitle'],
-                  style: const TextStyle(
-                    color: Colors.blue,
-                    fontSize: 12,
-                    letterSpacing: 0.8,
-                  )),
-            ]),
-            const Spacer(),
+            Expanded(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      FunctionConfig.otherData[index]['title'],
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    Text(FunctionConfig.otherData[index]['subtitle'],
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: Colors.blue,
+                          fontSize: 12,
+                          letterSpacing: 0.8,
+                        )),
+                  ]),
+            ),
             OutlinedTextButton(
               title: index <= 1 ? '点击解锁' : '点击复制',
               onTap: () => onOther(index),
@@ -294,19 +307,24 @@ class _HomePageState extends State<HomePage> with HomeLogic {
           child: Row(children: [
             Image.asset(AssetsConfig.restore, height: 45, width: 45),
             const SizedBox(width: 10),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                FunctionConfig.restoreData[index]['title'],
-                style: const TextStyle(fontSize: 15),
-              ),
-              Text(FunctionConfig.restoreData[index]['subtitle'],
-                  style: const TextStyle(
-                    color: Colors.pink,
-                    fontSize: 12,
-                    letterSpacing: 0.8,
-                  )),
-            ]),
-            const Spacer(),
+            Expanded(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      FunctionConfig.restoreData[index]['title'],
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                    Text(FunctionConfig.restoreData[index]['subtitle'],
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: Colors.pink,
+                          fontSize: 12,
+                          letterSpacing: 0.8,
+                        )),
+                  ]),
+            ),
             OutlinedTextButton(
                 title: index <= 1 ? '点击重置' : '重置所有',
                 onTap: () => onRestore(index))
