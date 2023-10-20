@@ -50,7 +50,7 @@ void main() async {
 
   // 设备<=安卓10并且权限未授予则跳转授予界面
   if (DeviceInfo.sdkVersion <= 29 &&
-      await Permission.storage.status != PermissionStatus.granted) {
+      !await Permission.storage.status.isGranted) {
     initialRoute = '/permission';
   }
 

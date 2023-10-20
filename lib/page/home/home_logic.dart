@@ -107,10 +107,10 @@ mixin HomeLogic on State<HomePage> {
   void onOther(int index) {
     switch (index) {
       case 0:
-        UseDialog.useDlDialog(FunctionConfig.otherData[index]);
+        UseDialog.useDlDialog(FunctionConfig.otherData[index]['title']);
         break;
       case 1:
-        UseDialog.useTqDialog(FunctionConfig.otherData[index]);
+        UseDialog.useTqDialog(FunctionConfig.otherData[index]['title']);
         break;
       case 2:
         if (SpUtil.containsKey(AppConfig.taskKey)) {
