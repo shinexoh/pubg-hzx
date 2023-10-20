@@ -60,7 +60,8 @@ class _MainPageState extends State<MainPage> with MainLogic {
   void initState() {
     super.initState();
 
-    Future(() {
+    // 在界面最后一帧渲染完成后执行
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       checkTask();
       checkStorage();
       checkDirectory();

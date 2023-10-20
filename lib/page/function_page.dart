@@ -112,17 +112,22 @@ class FunctionPage extends StatelessWidget {
                     Image.asset(AssetsConfig.diversify, height: 45, width: 45),
               ),
               const SizedBox(width: 10),
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(FunctionConfig.diversifyData[index]['title'],
-                    style: const TextStyle(fontSize: 15)),
-                Text(FunctionConfig.diversifyData[index]['subtitle'],
-                    style: const TextStyle(
-                      color: Colors.blue,
-                      fontSize: 12,
-                      letterSpacing: 0.8,
-                    )),
-              ]),
-              const Spacer(),
+              Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(FunctionConfig.diversifyData[index]['title'],
+                          style: const TextStyle(fontSize: 15)),
+                      Text(FunctionConfig.diversifyData[index]['subtitle'],
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.blue,
+                            fontSize: 12,
+                            letterSpacing: 0.8,
+                          )),
+                    ]),
+              ),
               const Icon(Remix.arrow_right_s_line,
                   color: Colors.grey, size: 20),
             ]),
@@ -152,17 +157,22 @@ class FunctionPage extends StatelessWidget {
                 child: Image.asset(AssetsConfig.model, height: 45, width: 45),
               ),
               const SizedBox(width: 10),
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(FunctionConfig.modelData[index]['title'],
-                    style: const TextStyle(fontSize: 15)),
-                Text(FunctionConfig.modelData[index]['subtitle'],
-                    style: const TextStyle(
-                      color: Colors.blue,
-                      fontSize: 12,
-                      letterSpacing: 0.8,
-                    )),
-              ]),
-              const Spacer(),
+              Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(FunctionConfig.modelData[index]['title'],
+                          style: const TextStyle(fontSize: 15)),
+                      Text(FunctionConfig.modelData[index]['subtitle'],
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.blue,
+                            fontSize: 12,
+                            letterSpacing: 0.8,
+                          )),
+                    ]),
+              ),
               const Icon(Remix.arrow_right_s_line,
                   color: Colors.grey, size: 20),
             ]),
@@ -196,17 +206,22 @@ class FunctionPage extends StatelessWidget {
                     width: 45),
               ),
               const SizedBox(width: 10),
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(FunctionConfig.moreData[index]['title'],
-                    style: const TextStyle(fontSize: 15)),
-                Text(FunctionConfig.moreData[index]['subtitle'],
-                    style: const TextStyle(
-                      color: Colors.blue,
-                      fontSize: 12,
-                      letterSpacing: 0.8,
-                    )),
-              ]),
-              const Spacer(),
+              Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(FunctionConfig.moreData[index]['title'],
+                          style: const TextStyle(fontSize: 15)),
+                      Text(FunctionConfig.moreData[index]['subtitle'],
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.blue,
+                            fontSize: 12,
+                            letterSpacing: 0.8,
+                          )),
+                    ]),
+              ),
               index == 2
                   ? Image.asset(AssetsConfig.arrow, height: 20, width: 20)
                   : const Icon(Remix.arrow_right_s_line,

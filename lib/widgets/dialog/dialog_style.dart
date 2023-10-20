@@ -25,7 +25,7 @@ class DialogStyle {
       desc: subTitle,
       dialogType: dialogType,
       descTextStyle: const TextStyle(fontSize: 15),
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       dialogBorderRadius: BorderRadius.circular(15),
       dismissOnTouchOutside: dismissible,
       btnCancel: showCanceButton
