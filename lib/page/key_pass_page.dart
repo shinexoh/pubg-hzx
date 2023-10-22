@@ -1,15 +1,16 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:provider/provider.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
 import '../app/app.dart';
-import '../server/server.dart';
-import '../controller/controller.dart';
-import '../config/config.dart';
-import '../widgets/widgets.dart';
 import '../utils/utils.dart';
+import '../config/config.dart';
+import '../server/server.dart';
+import '../widgets/widgets.dart';
+import '../controller/controller.dart';
 
 class KeyPassPage extends StatefulWidget {
   const KeyPassPage({super.key});
@@ -67,7 +68,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
             gradient: const LinearGradient(
               colors: [
                 Color.fromRGBO(123, 83, 1, 1.0),
-                Color.fromRGBO(50, 34, 14, 1.0),
+                Color.fromRGBO(65, 46, 22, 1.0),
               ],
             ),
             boxShadow: const [
@@ -77,29 +78,39 @@ class _KeyPassPageState extends State<KeyPassPage> {
                 spreadRadius: 0.2,
               )
             ]),
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            const Text(
-              'VIP',
-              style: TextStyle(
-                fontSize: 25,
-                color: Colors.orange,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-                height: 1.2,
-                letterSpacing: 5,
-              ),
+        child: Shimmer.fromColors(
+          baseColor: Colors.orange,
+          highlightColor: Colors.yellowAccent,
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'VIP',
+                  style: TextStyle(
+                    fontSize: 25,
+                    // color: Colors.orange,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                    height: 1.2,
+                    letterSpacing: 5,
+                  ),
+                ),
+                Selector<AppController, bool>(
+                    selector: (_, appController) => appController.taskState,
+                    builder: (context, taskState, child) {
+                      return Text(
+                        taskState ? '您已成功激活画质侠会员' : '激活画质侠享受更多画质功能',
+                        style: const TextStyle(
+                            fontSize: 13,
+                            // color: Colors.orange,
+                            letterSpacing: 2),
+                      );
+                    }),
+              ],
             ),
-            Selector<AppController, bool>(
-                selector: (_, appController) => appController.taskState,
-                builder: (context, taskState, child) => Text(
-                      taskState ? '您已成功激活画质侠会员' : '激活画质侠享受更多画质功能',
-                      style: const TextStyle(
-                          fontSize: 13, color: Colors.orange, letterSpacing: 2),
-                    )),
-          ]),
+          ),
         ),
       ),
     );
