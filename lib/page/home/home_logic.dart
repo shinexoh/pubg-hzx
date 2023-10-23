@@ -53,7 +53,7 @@ mixin HomeLogic on State<HomePage> {
     } else {
       UseDialog.usePqDialog(
         filePath: FileConfig.quickFile[index],
-        title: FunctionConfig.quickData[index],
+        title: FunctionConfig.quickData[index]['title'],
       );
     }
   }

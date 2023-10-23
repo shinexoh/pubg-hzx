@@ -124,7 +124,7 @@ class FunctionPage extends StatelessWidget {
                           style: const TextStyle(
                             color: Colors.blue,
                             fontSize: 12,
-                            letterSpacing: 0.8,
+                            letterSpacing: 0.6,
                           )),
                     ]),
               ),
@@ -169,7 +169,7 @@ class FunctionPage extends StatelessWidget {
                           style: const TextStyle(
                             color: Colors.blue,
                             fontSize: 12,
-                            letterSpacing: 0.8,
+                            letterSpacing: 0.6,
                           )),
                     ]),
               ),
@@ -218,7 +218,7 @@ class FunctionPage extends StatelessWidget {
                           style: const TextStyle(
                             color: Colors.blue,
                             fontSize: 12,
-                            letterSpacing: 0.8,
+                            letterSpacing: 0.6,
                           )),
                     ]),
               ),

@@ -166,22 +166,17 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      FunctionConfig.quickData[index],
+                      FunctionConfig.quickData[index]['title'],
                       style: const TextStyle(fontSize: 15),
                     ),
-                    const Row(children: [
-                      Text('官方',
-                          style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic)),
-                      SizedBox(width: 5),
-                      Text('推荐',
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic)),
-                    ]),
+                    Text(FunctionConfig.quickData[index]['subtitle'],
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          color: Colors.blue,
+                          fontSize: 12,
+                          letterSpacing: 0.6,
+                        )),
                   ]),
             ),
             OutlinedTextButton(title: '点击修改', onTap: () => onQuick(index)),
@@ -224,7 +219,7 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                         style: const TextStyle(
                           color: Colors.blue,
                           fontSize: 12,
-                          letterSpacing: 0.8,
+                          letterSpacing: 0.6,
                         )),
                   ]),
             ),
@@ -274,7 +269,7 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                         style: const TextStyle(
                           color: Colors.blue,
                           fontSize: 12,
-                          letterSpacing: 0.8,
+                          letterSpacing: 0.6,
                         )),
                   ]),
             ),
@@ -321,7 +316,7 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                         style: const TextStyle(
                           color: Colors.pink,
                           fontSize: 12,
-                          letterSpacing: 0.8,
+                          letterSpacing: 0.6,
                         )),
                   ]),
             ),

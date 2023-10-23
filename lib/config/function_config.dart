@@ -1,12 +1,12 @@
 class FunctionConfig {
   /// 快捷修改
   static const List quickData = [
-    '渣机画质',
-    '流畅画质',
-    'HDR高清画质',
-    '超高清画质',
-    '8P原生画质',
-    '大主播同款',
+    {'title': '渣机画质', 'subtitle': '最渣的画质 适用于最渣的设备'},
+    {'title': '流畅画质', 'subtitle': '通用流畅+120帧率'},
+    {'title': 'HDR高清画质', 'subtitle': '通用HDR高清画质+120帧率'},
+    {'title': '超高清画质', 'subtitle': '通用超高清+120帧率'},
+    {'title': '8P原生画质', 'subtitle': 'iPhone8 Plus原生画质+120帧率'},
+    {'title': '大主播同款', 'subtitle': '鲨鱼 不求人等大主播同款画质'},
   ];
 
   /// 性能优化
@@ -45,21 +45,21 @@ class FunctionConfig {
 
   /// 多样化修改
   static const List diversifyData = [
-    {'title': '专属修改', 'subtitle': '[更加多样化的画质修改]'},
-    {'title': '高优化修改', 'subtitle': '[更多精心优化的画质修改]'},
+    {'title': '专属修改', 'subtitle': '更加多样化的画质修改'},
+    {'title': '高优化修改', 'subtitle': '更多精心优化的画质修改'},
   ];
 
   /// 机型修改
   static const List modelData = [
-    {'title': '低端机', 'subtitle': '[专门针对低端机的画质修改]'},
-    {'title': '中端机', 'subtitle': '[专门针对中端机的画质修改]'},
-    {'title': '高端机', 'subtitle': '[专门针对高端机的画质修改]'},
+    {'title': '低端机', 'subtitle': '专门针对低端机的画质修改'},
+    {'title': '中端机', 'subtitle': '专门针对中端机的画质修改'},
+    {'title': '高端机', 'subtitle': '专门针对高端机的画质修改'},
   ];
 
   /// 更多功能
   static const List moreData = [
-    {'title': '机型画质模拟', 'subtitle': '[根据设备参数一比一模拟原生画质]'},
-    {'title': '超广角专区', 'subtitle': '[拥有平板比例、超视角游戏等]'},
+    {'title': '机型画质模拟', 'subtitle': '根据设备参数一比一模拟原生画质'},
+    {'title': '超广角专区', 'subtitle': '拥有平板比例、超视角游戏等'},
     {'title': '随机修改', 'subtitle': '选择困难症？试试这个吧！'},
   ];
 
@@ -147,8 +147,10 @@ class FunctionConfig {
     '《和平精英》渣机超广角🔴（低分辨率+120帧率）',
     '《和平精英》渣机平板超广角+120帧率⭐',
     '《和平精英》超级广角视野💥（腰射优势）',
-    '《和平精英》平板低超广角+120帧率（防闪退）🤖',
+    '《和平精英》平板超广角+120帧率（防闪退）🤖',
     '《PUBG国际服》手机16：9专用超广角+120帧率🚀',
-    '《PUBG国际服》渣机超广角🔴（低分辨率+120帧率）'
+    '《PUBG国际服》渣机超广角🔴（低分辨率+120帧率）',
+    '《PUBG国际服》超级广角视野💥（腰射优势）（120帧率）',
+    '《PUBG国际服》平板模式超广角+120帧率（防闪退）🧨'
   ];
 }
