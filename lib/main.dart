@@ -5,7 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'app/app.dart';
-import 'server/server.dart';
+import 'http/http.dart';
 import 'utils/utils.dart';
 import 'controller/controller.dart';
 

@@ -3,11 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../app/app.dart';
-import '../../server/server.dart';
+import '../../http/http.dart';
+import '../../utils/utils.dart';
 import '../../controller/controller.dart';
 import '../../widgets/widgets.dart';
 import '../../config/config.dart';
-import '../../utils/utils.dart';
 
 import 'main_page.dart';
 

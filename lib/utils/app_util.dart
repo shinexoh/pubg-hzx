@@ -1,18 +1,18 @@
 import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:android_intent_plus/android_intent.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 import '../app/app.dart';
+import '../http/http.dart';
 import '../utils/utils.dart';
 import '../config/config.dart';
-import '../controller/controller.dart';
-import '../server/server.dart';
 import '../widgets/widgets.dart';
+import '../controller/controller.dart';
 
 // 常用的方法封装
 class AppUtil {

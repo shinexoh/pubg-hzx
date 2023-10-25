@@ -6,9 +6,9 @@ import 'package:remixicon_updated/remixicon_updated.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
 import '../app/app.dart';
+import '../http/http.dart';
 import '../utils/utils.dart';
 import '../config/config.dart';
-import '../server/server.dart';
 import '../widgets/widgets.dart';
 import '../controller/controller.dart';
 

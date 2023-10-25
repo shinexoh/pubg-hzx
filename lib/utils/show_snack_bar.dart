@@ -6,7 +6,6 @@ import '../app/app.dart';
 /// * [msg] 提示内容
 /// * [label] SnackBarAction的label内容
 /// * [onPressed] SnackBarAction的点击事件
-
 void showSnackBar(String msg, {String? label, VoidCallback? onPressed}) {
   final SnackBar snackBar = SnackBar(
     content: Text(

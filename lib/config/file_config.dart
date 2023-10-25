@@ -1,4 +1,3 @@
-// 画质修改等文件的配置
 class FileConfig {
   /// 超高音质
   static const String tqSuperHigh = 'assets/files/tq_superhigh.ini';
