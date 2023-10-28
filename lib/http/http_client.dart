@@ -1,55 +1,87 @@
-import 'dart:io';
 import 'package:dio/dio.dart';
 
-import 'http_client_interceptor.dart';
+import '../utils/utils.dart';
+
+import 'http_interceptor.dart';
 
 class HttpClient {
+  late final Dio dio;
+
   static HttpClient? _instance;
 
-  static late Dio _dio;
-
   HttpClient._() {
-    _dio = Dio();
-    _dio.options = BaseOptions(
-      // 连接超时时间
-      connectTimeout: const Duration(seconds: 10),
-      // 接收超时时间
-      receiveTimeout: const Duration(seconds: 10),
-      // 发送超时时间
-      sendTimeout: const Duration(seconds: 10),
-    );
-    // 添加拦截器
-    _dio.interceptors.add(HttpClientInterceptor());
+    dio = Dio()
+      ..options = BaseOptions(
+        // 连接超时时间
+        connectTimeout: const Duration(seconds: 10),
+        // 接收超时时间
+        receiveTimeout: const Duration(seconds: 10),
+        // 发送超时时间
+        sendTimeout: const Duration(seconds: 10),
+      )
+      // 添加拦截器
+      ..interceptors.add(HttpInterceptor());
   }
 
-  static HttpClient getInstance() => _instance ??= HttpClient._();
+  static HttpClient get instance {
+    _instance ??= HttpClient._();
+    return _instance!;
+  }
 
-  static Future<HttpData> get(String url) async {
+  /// Get请求
+  /// * [path] 请求地址
+  /// * [queryParameters] 请求参数
+  /// * [cancelToken] 取消请求Token
+  /// * [responseType] 响应类型
+  Future<dynamic> get(
+    String path, {
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    ResponseType responseType = ResponseType.json,
+  }) async {
+    if (!await AppUtil.checkNetConnectivity()) return null;
     Response response;
     try {
-      response = await _dio.get(url);
-      if (response.statusCode == HttpStatus.ok) {
-        return HttpData(isOk: true, data: response.data);
-      } else {
-        return HttpData(
-          isOk: false,
-          errorMsg: '请求失败，状态码：${response.statusCode}',
-        );
-      }
+      response = await dio.get(
+        path,
+        queryParameters: queryParameters,
+        cancelToken: cancelToken,
+        options: Options(responseType: responseType),
+      );
+      return response.data;
     } catch (e) {
-      return HttpData(isOk: false, errorMsg: '请求错误：$e');
+      return null;
     }
   }
-}
 
-class HttpData {
-  bool isOk;
-  dynamic data;
-  String? errorMsg;
+  /// Post请求
+  /// * [path] 请求地址
+  /// * [queryParameters] 请求参数
+  /// * [cancelToken] 取消请求Token
+  /// * [responseType] 响应类型
+  Future<dynamic> post(
+    String path, {
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    ResponseType responseType = ResponseType.json,
+  }) async {
+    if (!await AppUtil.checkNetConnectivity()) return null;
+    Response response;
+    try {
+      response = await dio.post(
+        path,
+        queryParameters: queryParameters,
+        cancelToken: cancelToken,
+        options: Options(responseType: responseType),
+      );
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
 
-  HttpData({
-    required this.isOk,
-    this.data,
-    this.errorMsg,
-  });
+  /// 取消请求
+  ///
+  /// 单个CancelToken可用于多个请求，如CancelToken被取消了，使用该CancelToken的请求都会取消
+  void cancelRequest(CancelToken cancelToken) => cancelToken.cancel();
 }

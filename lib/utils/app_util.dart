@@ -124,12 +124,16 @@ class AppUtil {
     return false;
   }
 
+  /// 检查网络环境
+  static Future<bool> checkNetConnectivity() async {
+    final connectivity = await Connectivity().checkConnectivity();
+    return connectivity != ConnectivityResult.none;
+  }
+
   /// 检查网络是否可用
   static Future<bool> checkNetAvailability() async {
-    final connectivity = await Connectivity().checkConnectivity();
-    if (connectivity != ConnectivityResult.none) {
-      final http = await HttpClient.get('https://juejin.cn/');
-      return http.isOk;
+    if (await checkNetConnectivity()) {
+      return await HttpClient.instance.get('https://juejin.cn/about/') != null;
     }
     return false;
   }

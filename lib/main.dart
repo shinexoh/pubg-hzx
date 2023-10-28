@@ -5,7 +5,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'app/app.dart';
-import 'http/http.dart';
 import 'utils/utils.dart';
 import 'controller/controller.dart';
 
@@ -34,7 +33,6 @@ void main() async {
   AppUtil.setStatusBarDark();
 
   // 初始化实例
-  HttpClient.getInstance();
   await SpUtil.getInstance();
   await DeviceInfo.getInstance();
 

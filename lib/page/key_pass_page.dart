@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:provider/provider.dart';
@@ -21,11 +22,11 @@ class KeyPassPage extends StatefulWidget {
 
 class _KeyPassPageState extends State<KeyPassPage> {
   final _appController = navigatorKey.currentContext!.read<AppController>();
-  final _textEditingController = TextEditingController();
+  final _keyPassController = TextEditingController();
 
   @override
   void dispose() {
-    _textEditingController.dispose();
+    _keyPassController.dispose();
     super.dispose();
   }
 
@@ -124,7 +125,7 @@ class _KeyPassPageState extends State<KeyPassPage> {
         boxShadow: [BoxShadow(color: Colors.grey.shade100, blurRadius: 10)],
       ),
       child: TextField(
-          controller: _textEditingController,
+          controller: _keyPassController,
           selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
           decoration: const InputDecoration(
             hintText: '请输入激活卡密',
@@ -236,21 +237,22 @@ class _KeyPassPageState extends State<KeyPassPage> {
 
   // 激活卡密
   void onUse() async {
-    if (_textEditingController.text.isEmpty) {
+    if (_keyPassController.text.isEmpty) {
       showSnackBar('请输入卡密');
       return;
     }
-
     FocusScope.of(context).unfocus();
     DialogStyle.loadingDialog(dismissible: false);
 
-    final httpKeyPass = await HttpClient.get(Api.keyPass);
-
-    if (httpKeyPass.isOk) {
+    final String? httpKeyPass = await HttpClient.instance.get(
+      Api.keyPass,
+      responseType: ResponseType.plain,
+    );
+    if (httpKeyPass != null) {
       navigatorKey.currentState!.pop();
 
-      final List<String> keyPassList = httpKeyPass.data.split('\n');
-      if (keyPassList.contains(_textEditingController.text.toUpperCase())) {
+      final List<String> keyPassList = httpKeyPass.split('\n');
+      if (keyPassList.contains(_keyPassController.text.toUpperCase())) {
         SpUtil.addString(AppConfig.taskKey, '');
         _appController.setTaskState(true);
 

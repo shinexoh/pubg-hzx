@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:remixicon_updated/remixicon_updated.dart';
@@ -49,7 +50,11 @@ class UserPage extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             onTap: onUserInfo,
             child: Row(children: [
-              Image.asset(AssetsConfig.vip, height: 28, width: 28),
+              Shimmer.fromColors(
+                baseColor: Colors.orange,
+                highlightColor: Colors.yellowAccent,
+                child: Image.asset(AssetsConfig.vip, height: 28, width: 28),
+              ),
               const SizedBox(width: 15),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 const Text('画质侠用户', style: TextStyle(fontSize: 16)),
@@ -89,7 +94,8 @@ class UserPage extends StatelessWidget {
                 const SizedBox(width: 15),
                 const Text('字体样式', style: TextStyle(fontSize: 16)),
                 const Spacer(),
-                const Text('系统默认', style: TextStyle(color: Colors.grey)),
+                const Text('系统默认',
+                    style: TextStyle(color: Colors.grey, fontSize: 16)),
               ])),
           const SizedBox(height: 15),
           OnInk(

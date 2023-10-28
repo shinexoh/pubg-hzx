@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
-class HttpClientInterceptor extends Interceptor {
+class HttpInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     debugPrint('开始请求：${options.uri}');
@@ -15,30 +15,30 @@ class HttpClientInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) async {
-    debugPrint('发生错误：${await _errorHandling(err)}');
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
+    debugPrint('发生错误：${await _parseError(err)}');
     super.onError(err, handler);
   }
 }
 
-/// 错误处理
-Future<String> _errorHandling(DioError error) async {
+/// 解析错误
+Future<String> _parseError(DioException error) async {
   switch (error.type) {
-    case DioErrorType.badCertificate:
+    case DioExceptionType.badCertificate:
       return '证书有误！';
-    case DioErrorType.badResponse:
+    case DioExceptionType.badResponse:
       return '响应异常，请稍后重试！';
-    case DioErrorType.cancel:
+    case DioExceptionType.cancel:
       return '请求已被取消，请重新请求！';
-    case DioErrorType.connectionError:
+    case DioExceptionType.connectionError:
       return '连接错误，请检查网络设置！';
-    case DioErrorType.connectionTimeout:
+    case DioExceptionType.connectionTimeout:
       return '网络连接超时，请检查网络设置！';
-    case DioErrorType.receiveTimeout:
+    case DioExceptionType.receiveTimeout:
       return '接收超时，请稍后重试！';
-    case DioErrorType.sendTimeout:
+    case DioExceptionType.sendTimeout:
       return '发送请求超时，请检查网络设置！';
-    case DioErrorType.unknown:
+    case DioExceptionType.unknown:
       return '网络异常，请稍后重试！';
     default:
       return "Dio异常";

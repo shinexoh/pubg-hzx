@@ -36,38 +36,37 @@ mixin MainLogic on State<MainPage> {
   }
 
   // 统计应用数据
-  void statistics() => HttpClient.get(Api.appStatistics);
+  void statistics() => HttpClient.instance.get(Api.appStatistics);
 
   // 检查应用更新，如果主更新链接失败就请求备用更新链接
   void checkUpdate() async {
-    final appUpdate = await HttpClient.get(Api.main);
-
-    if (appUpdate.isOk) {
-      final newVersion =
-          appUpdate.data['appupdate']['version'].toString().split('.').join();
-
+    final Map? appUpdate = await HttpClient.instance.get(Api.main);
+    if (appUpdate != null) {
+      final String newVersion =
+          appUpdate['appupdate']['version'].toString().split('.').join();
       if (double.parse(newVersion) > AppConfig.updateVersion) {
         AppDialog.updateDialog(
-            title: appUpdate.data['appupdate']['title'],
-            subTitle: appUpdate.data['appupdate']['subtitle'],
-            url: appUpdate.data['appupdate']['downloadurl'],
-            isForce: appUpdate.data['appupdate']['isforce']);
+          title: appUpdate['appupdate']['title'],
+          subTitle: appUpdate['appupdate']['subtitle'],
+          url: appUpdate['appupdate']['downloadurl'],
+          isForce: appUpdate['appupdate']['isforce'],
+        );
       }
     } else {
-      final alAppUpdate = await HttpClient.get(Api.alternateUpdate);
+      final Map? alAppUpdate =
+          await HttpClient.instance.get(Api.alternateUpdate);
 
-      if (alAppUpdate.isOk) {
-        final alNewVersion = alAppUpdate.data['appupdate']['version']
-            .toString()
-            .split('.')
-            .join();
+      if (alAppUpdate != null) {
+        final alNewVersion =
+            alAppUpdate['appupdate']['version'].toString().split('.').join();
 
         if (double.parse(alNewVersion) > AppConfig.updateVersion) {
           AppDialog.updateDialog(
-              title: alAppUpdate.data['appupdate']['title'],
-              subTitle: alAppUpdate.data['appupdate']['subtitle'],
-              url: alAppUpdate.data['appupdate']['downloadurl'],
-              isForce: alAppUpdate.data['appupdate']['isforce']);
+            title: alAppUpdate['appupdate']['title'],
+            subTitle: alAppUpdate['appupdate']['subtitle'],
+            url: alAppUpdate['appupdate']['downloadurl'],
+            isForce: alAppUpdate['appupdate']['isforce'],
+          );
         }
       }
     }
@@ -100,22 +99,18 @@ mixin MainLogic on State<MainPage> {
 
   // 显示应用公告SnackBar
   void showAppTips() async {
-    final appTips = await HttpClient.get(Api.main);
-
-    if (appTips.isOk) {
-      final String? tipsContent = appTips.data['apptips'];
-
-      if (tipsContent != null) {
-        showSnackBar(
-          tipsContent,
-          label: '查看',
-          onPressed: () => DialogStyle.mainDialog(
-              subTitle: tipsContent,
-              showCanceButton: false,
-              okButtonTitle: '知道了',
-              onOkButton: () => navigatorKey.currentState!.pop()),
-        );
-      }
+    final Map? appTips = await HttpClient.instance.get(Api.main);
+    if (appTips != null && appTips['apptips'] != null) {
+      showSnackBar(
+        appTips['apptips'],
+        label: '查看',
+        onPressed: () => DialogStyle.mainDialog(
+          subTitle: appTips['apptips'],
+          showCanceButton: false,
+          okButtonTitle: '知道了',
+          onOkButton: () => navigatorKey.currentState!.pop(),
+        ),
+      );
     }
   }
 }
