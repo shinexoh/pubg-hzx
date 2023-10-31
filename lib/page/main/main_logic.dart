@@ -44,6 +44,7 @@ mixin MainLogic on State<MainPage> {
     if (appUpdate != null) {
       final String newVersion =
           appUpdate['appupdate']['version'].toString().split('.').join();
+
       if (double.parse(newVersion) > AppConfig.updateVersion) {
         AppDialog.updateDialog(
           title: appUpdate['appupdate']['title'],
@@ -57,7 +58,7 @@ mixin MainLogic on State<MainPage> {
           await HttpClient.instance.get(Api.alternateUpdate);
 
       if (alAppUpdate != null) {
-        final alNewVersion =
+        final String alNewVersion =
             alAppUpdate['appupdate']['version'].toString().split('.').join();
 
         if (double.parse(alNewVersion) > AppConfig.updateVersion) {

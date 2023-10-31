@@ -16,13 +16,13 @@ class HttpInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    debugPrint('发生错误：${await _parseError(err)}');
+    debugPrint('发生错误：${_parseError(err)}');
     super.onError(err, handler);
   }
 }
 
 /// 解析错误
-Future<String> _parseError(DioException error) async {
+String _parseError(DioException error) {
   switch (error.type) {
     case DioExceptionType.badCertificate:
       return '证书有误！';
