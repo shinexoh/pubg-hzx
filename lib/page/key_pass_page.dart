@@ -20,13 +20,21 @@ class KeyPassPage extends StatefulWidget {
   State<KeyPassPage> createState() => _KeyPassPageState();
 }
 
-class _KeyPassPageState extends State<KeyPassPage> {
+class _KeyPassPageState extends State<KeyPassPage>
+    with SingleTickerProviderStateMixin {
   final _appController = navigatorKey.currentContext!.read<AppController>();
   final _keyPassController = TextEditingController();
+
+  // 使用late延迟初始化，只有在使用时才会初始化，这样可以让vsync的this无需在initState初始化。
+  late final AnimationController _animationController = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 500),
+  )..forward();
 
   @override
   void dispose() {
     _keyPassController.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -224,8 +232,14 @@ class _KeyPassPageState extends State<KeyPassPage> {
                         shape: BoxShape.circle,
                       )),
                   const SizedBox(width: 15),
-                  Text(enjoyContent[index],
-                      style: const TextStyle(fontSize: 15)),
+                  SizeTransition(
+                    sizeFactor: Tween(begin: 0.0, end: 1.0)
+                        .chain(CurveTween(curve: Curves.easeInOutQuint))
+                        .animate(_animationController),
+                    axis: Axis.horizontal,
+                    child: Text(enjoyContent[index],
+                        style: const TextStyle(fontSize: 15)),
+                  ),
                 ],
               ),
             );
