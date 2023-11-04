@@ -199,6 +199,7 @@ class _KeyPassPageState extends State<KeyPassPage>
     const List<String> enjoyContent = [
       '24小时专属客服解决问题',
       '享受解锁画质+120帧率',
+      '享受和平精英与国际服超广角功能',
       '专属画质修改功能',
       '高优化画质修改功能',
       '机型画质模拟器带来原生的体验',
@@ -232,13 +233,16 @@ class _KeyPassPageState extends State<KeyPassPage>
                         shape: BoxShape.circle,
                       )),
                   const SizedBox(width: 15),
-                  SizeTransition(
-                    sizeFactor: Tween(begin: 0.0, end: 1.0)
-                        .chain(CurveTween(curve: Curves.easeInOutQuint))
-                        .animate(_animationController),
-                    axis: Axis.horizontal,
-                    child: Text(enjoyContent[index],
-                        style: const TextStyle(fontSize: 15)),
+                  FadeTransition(
+                    opacity: _animationController,
+                    child: SizeTransition(
+                      sizeFactor: Tween(begin: 0.0, end: 1.0)
+                          .chain(CurveTween(curve: Curves.easeInOutQuint))
+                          .animate(_animationController),
+                      axis: Axis.horizontal,
+                      child: Text(enjoyContent[index],
+                          style: const TextStyle(fontSize: 15)),
+                    ),
                   ),
                 ],
               ),

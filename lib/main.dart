@@ -37,8 +37,8 @@ void main() async {
   await DeviceInfo.getInstance();
 
   // 初始化状态类
-  final AppController appController = AppController();
-  appController.setSdkVersion(DeviceInfo.sdkVersion);
+  final AppController appController = AppController()
+    ..setSdkVersion(DeviceInfo.sdkVersion);
 
   // 检查网络是否可用
   if (!await AppUtil.checkNetAvailability()) return;
