@@ -70,7 +70,7 @@ class UserPage extends StatelessWidget {
               const Icon(Remix.arrow_right_s_line, color: Colors.grey, size: 20)
             ]),
           ),
-          const SizedBox(height: 15),
+          // const SizedBox(height: 15),
           // OnInk(
           //     color: Colors.white,
           //     borderRadius: const BorderRadius.only(
@@ -84,19 +84,19 @@ class UserPage extends StatelessWidget {
           //       const Spacer(),
           //       const Text('浅色模式', style: TextStyle(color: Colors.grey)),
           //     ])),
-          OnInk(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              padding: const EdgeInsets.all(15),
-              onTap: onFont,
-              child: Row(children: [
-                Image.asset(AssetsConfig.font, height: 28, width: 28),
-                const SizedBox(width: 15),
-                const Text('字体样式', style: TextStyle(fontSize: 16)),
-                const Spacer(),
-                const Text('系统默认',
-                    style: TextStyle(color: Colors.grey, fontSize: 16)),
-              ])),
+          // OnInk(
+          //     color: Colors.white,
+          //     borderRadius: BorderRadius.circular(10),
+          //     padding: const EdgeInsets.all(15),
+          //     onTap: onFont,
+          //     child: Row(children: [
+          //       Image.asset(AssetsConfig.font, height: 28, width: 28),
+          //       const SizedBox(width: 15),
+          //       const Text('字体样式', style: TextStyle(fontSize: 16)),
+          //       const Spacer(),
+          //       const Text('系统默认',
+          //           style: TextStyle(color: Colors.grey, fontSize: 16)),
+          //     ])),
           const SizedBox(height: 15),
           OnInk(
               color: Colors.white,

@@ -15,7 +15,7 @@ class HttpInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioException err, ErrorInterceptorHandler handler) async {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     debugPrint('发生错误：${_parseError(err)}');
     super.onError(err, handler);
   }
