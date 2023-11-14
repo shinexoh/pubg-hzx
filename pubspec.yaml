@@ -21,7 +21,7 @@ dependencies:
   # 网络请求
   dio: ^5.3.3
   # 状态管理
-  provider: ^6.1.0
+  provider: ^6.1.1
   # Remix图标库
   remixicon_updated: ^1.0.2
   # 权限处理
