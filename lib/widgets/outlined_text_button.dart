@@ -18,7 +18,6 @@ class OutlinedTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OnInk(
-      color: Colors.white,
       borderRadius: BorderRadius.circular(10),
       onTap: onTap,
       child: Container(

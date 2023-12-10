@@ -124,7 +124,7 @@ class AppUtil {
     return false;
   }
 
-  /// 检查网络环境
+  /// 检查网络环境（是否已连接WIFI、流量等可用网络）
   static Future<bool> checkNetConnectivity() async {
     final connectivity = await Connectivity().checkConnectivity();
     return connectivity != ConnectivityResult.none;

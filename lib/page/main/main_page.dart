@@ -78,9 +78,9 @@ class _MainPageState extends State<MainPage> with MainLogic {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: DecoratedBox(
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(color: Colors.grey.shade200, blurRadius: 10)
-        ]),
+        decoration: BoxDecoration(
+          boxShadow: [BoxShadow(color: Colors.grey.shade200, blurRadius: 5)],
+        ),
         child: SalomonBottomBar(
           currentIndex: _pageIndex,
           backgroundColor: Colors.white,

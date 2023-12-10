@@ -19,7 +19,7 @@ class AppDialog {
     DialogStyle.mainDialog(
       title: '温馨提示',
       subTitle:
-          '从安卓11开始，你需要授予【游戏目录】权限才能修改画质。点击【立即授予】跳转到授予界面，然后直接点击底部【使用此文件夹】即可完成授予！',
+          '从安卓11开始，你需要授予【游戏目录】权限才能修改画质。点击【立即授予】跳转到授予界面，然后直接点击底部【使用此文件夹】即可完成授予！\n\n注意：授予前请确保游戏更新至最新版本，否则将不会跳转到【游戏目录】进行授予！',
       showCanceButton: false,
       okButtonTitle: '立即授予',
       onOkButton: () async {
@@ -99,10 +99,10 @@ class AppDialog {
         );
       },
       pageBuilder: (context, animation, secondaryAnimation) {
-        return WillPopScope(
-            onWillPop: () async {
-              if (isForce) SystemNavigator.pop();
-              return true;
+        return PopScope(
+            canPop: isForce,
+            onPopInvoked: (didPop) {
+              if (!didPop) SystemNavigator.pop();
             },
             child: AlertDialog(
               title: Text(title),
