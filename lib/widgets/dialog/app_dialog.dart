@@ -19,7 +19,7 @@ class AppDialog {
     DialogStyle.mainDialog(
       title: '温馨提示',
       subTitle:
-          '从安卓11开始，你需要授予【游戏目录】权限才能修改画质。点击【立即授予】跳转到授予界面，然后直接点击底部【使用此文件夹】即可完成授予！\n\n注意：授予前请确保游戏更新至最新版本，否则将不会跳转到【游戏目录】进行授予！',
+          '从安卓11开始，你需要授予【游戏目录】权限才能修改画质。点击【立即授予】跳转到授予界面，然后直接点击底部【使用此文件夹】完成授予！\n\n注意：授予前请确保游戏更新至最新版本，否则将不会跳转到【游戏目录】进行授予！',
       showCanceButton: false,
       okButtonTitle: '立即授予',
       onOkButton: () async {
@@ -84,6 +84,7 @@ class AppDialog {
 
     showGeneralDialog(
       context: context,
+      // 如果isForce是true时，不允许关闭弹窗。
       barrierDismissible: isForce ? false : true,
       transitionDuration: const Duration(milliseconds: 300),
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
@@ -100,7 +101,8 @@ class AppDialog {
       },
       pageBuilder: (context, animation, secondaryAnimation) {
         return PopScope(
-            canPop: isForce,
+            // 如果isForce是true时，点击返回键直接退出应用而不是关闭弹窗。
+            canPop: isForce ? false : true,
             onPopInvoked: (didPop) {
               if (!didPop) SystemNavigator.pop();
             },

@@ -2,7 +2,7 @@ name: huazhixia
 description: A new Flutter project.
 publish_to: 'none'
 
-version: 2.2.2+8
+version: 2.2.3+9
 
 environment:
   # sdk: '>=2.19.6 <3.0.0'
@@ -41,7 +41,7 @@ dependencies:
   # 分享
   share_plus: ^7.2.1
   # 电池信息
-  battery_plus: ^5.0.1
+  battery_plus: ^5.0.2
   # 安卓intent操作
   android_intent_plus: ^4.0.3
   # 设备信息

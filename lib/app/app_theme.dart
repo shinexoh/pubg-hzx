@@ -31,11 +31,8 @@ class AppTheme {
         ),
 
         // SnackBar样式配置
-        snackBarTheme: SnackBarThemeData(
-          behavior: SnackBarBehavior.floating,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        ),
+        snackBarTheme:
+            const SnackBarThemeData(behavior: SnackBarBehavior.floating),
 
         // 路由跳转动画样式配置
         pageTransitionsTheme: const PageTransitionsTheme(builders: {
