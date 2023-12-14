@@ -9,7 +9,7 @@ class SharedStorage {
     return await storage.isPersistedUri(directoryUri);
   }
 
-  /// 使用Saf授予指定目录
+  /// 拉起SAF授予指定目录
   static Future<GrantUriState> grantDirectory(Uri directoryUri) async {
     final grantUri = await storage.openDocumentTree(initialUri: directoryUri);
 
@@ -25,8 +25,7 @@ class SharedStorage {
   /// 查看游戏目录内指定的文件是否存在
   static Future<bool> fileExist(String fileName) async {
     final file = await storage.findFile(UriConfig.mainUri, fileName);
-
-    return file != null ? true : false;
+    return file != null;
   }
 
   /// 读取指定文件内容（需先判断文件是否存在，防止崩溃）
@@ -53,7 +52,7 @@ class SharedStorage {
       displayName: fileName,
       content: content,
     );
-    return fileCreate != null ? true : false;
+    return fileCreate != null;
   }
 
   /// 删除文件（需先判断文件是否存在，防止崩溃）
