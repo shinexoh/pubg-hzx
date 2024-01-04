@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                 Icon(Remix.wireless_charging_line),
                 SizedBox(width: 10),
                 Expanded(
-                  child: Text('服务器状态：正常',
+                  child: Text('服务器：正常',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: TextStyle(fontSize: 15)),
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> with HomeLogic {
                 Icon(Remix.compasses_2_line),
                 SizedBox(width: 10),
                 Expanded(
-                  child: Text('文件状态：正常',
+                  child: Text('文件修改：正常',
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: TextStyle(fontSize: 15)),
