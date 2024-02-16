@@ -25,11 +25,12 @@ dependencies:
   # Remix图标库
   remixicon_updated: ^1.0.2
   # 权限处理
-  permission_handler: ^11.2.0
+  permission_handler: ^11.3.0
   # 动画弹窗、动画按钮
-  awesome_dialog: 3.0.2
+  # awesome_dialog: 3.0.2
+  awesome_dialog: ^3.2.0
   # 授予文件夹、安卓11及以上的文件操作
-  shared_storage: ^0.8.0
+  shared_storage: ^0.8.1
   # 键值对存储
   shared_preferences: ^2.2.2
   # 应用操作
@@ -41,7 +42,7 @@ dependencies:
   # 分享
   share_plus: ^7.2.2
   # 电池信息
-  battery_plus: ^5.0.2
+  battery_plus: ^5.0.3
   # 安卓intent操作
   android_intent_plus: ^4.0.3
   # 设备信息
