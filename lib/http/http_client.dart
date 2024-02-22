@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 
-import '../utils/utils.dart';
-
 import 'http_interceptor.dart';
 
 class HttpClient {
@@ -39,7 +37,6 @@ class HttpClient {
     CancelToken? cancelToken,
     ResponseType responseType = ResponseType.json,
   }) async {
-    if (!await AppUtil.checkNetConnectivity()) return null;
     Response response;
     try {
       response = await dio.get(
@@ -65,7 +62,6 @@ class HttpClient {
     CancelToken? cancelToken,
     ResponseType responseType = ResponseType.json,
   }) async {
-    if (!await AppUtil.checkNetConnectivity()) return null;
     Response response;
     try {
       response = await dio.post(

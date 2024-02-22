@@ -16,6 +16,7 @@ class ModelImitatePage extends StatefulWidget {
 }
 
 class _ModelImitatePageState extends State<ModelImitatePage> {
+  final FocusScopeNode _focusScopeNode = FocusScopeNode();
   final TextEditingController _brandController = TextEditingController();
   final TextEditingController _modelController = TextEditingController();
   final TextEditingController _resController = TextEditingController();
@@ -38,6 +39,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
 
   @override
   void dispose() {
+    _focusScopeNode.dispose();
     _brandController.dispose();
     _modelController.dispose();
     _resController.dispose();
@@ -52,23 +54,27 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
-        child: Column(children: [
-          headBar(),
-          const SizedBox(height: 30),
-          brandBar(),
-          const SizedBox(height: 10),
-          modelBar(),
-          const SizedBox(height: 10),
-          resBar(),
-          const SizedBox(height: 10),
-          hertzBar(),
-          const SizedBox(height: 10),
-          cpuBar(),
-          const SizedBox(height: 15),
-          buttonBar(),
-          const SizedBox(height: 15),
-          infoBar(),
-        ]),
+        // 使用 FocusScope 组件管理子组件的焦点
+        child: FocusScope(
+          node: _focusScopeNode,
+          child: Column(children: [
+            headBar(),
+            const SizedBox(height: 30),
+            brandBar(),
+            const SizedBox(height: 10),
+            modelBar(),
+            const SizedBox(height: 10),
+            resBar(),
+            const SizedBox(height: 10),
+            hertzBar(),
+            const SizedBox(height: 10),
+            cpuBar(),
+            const SizedBox(height: 15),
+            buttonBar(),
+            const SizedBox(height: 15),
+            infoBar(),
+          ]),
+        ),
       ),
     );
   }
@@ -343,8 +349,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
       showSnackBar('请先输入完整参数');
       return;
     }
-
-    FocusScope.of(context).unfocus();
+    _focusScopeNode.unfocus();
 
     if (await AppUtil.checkDlFile()) {
       AppDialog.dlRestoreDialog();
@@ -383,7 +388,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
         _cpuController.text.isEmpty) {
       showSnackBar('请先输入完整参数');
     } else {
-      FocusScope.of(context).unfocus();
+      _focusScopeNode.unfocus();
 
       SpUtil.addList(AppConfig.modelImitateKey, [
         _brandController.text,
@@ -398,7 +403,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
 
   // 清除已保存参数
   void clearArguments() {
-    FocusScope.of(context).unfocus();
+    _focusScopeNode.unfocus();
 
     if (SpUtil.containsKey(AppConfig.modelImitateKey)) {
       SpUtil.remove(AppConfig.modelImitateKey);

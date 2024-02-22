@@ -24,6 +24,7 @@ class _KeyPassPageState extends State<KeyPassPage>
     with SingleTickerProviderStateMixin {
   final _appController = navigatorKey.currentContext!.read<AppController>();
   final _keyPassController = TextEditingController();
+  final _focusNode = FocusNode();
 
   // 使用late延迟初始化，只有在使用时才会初始化，这样可以让vsync的this无需在initState初始化。
   late final AnimationController _animationController = AnimationController(
@@ -35,6 +36,7 @@ class _KeyPassPageState extends State<KeyPassPage>
   void dispose() {
     _keyPassController.dispose();
     _animationController.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -134,6 +136,7 @@ class _KeyPassPageState extends State<KeyPassPage>
       ),
       child: TextField(
           controller: _keyPassController,
+          focusNode: _focusNode,
           selectionHeightStyle: BoxHeightStyle.includeLineSpacingMiddle,
           decoration: const InputDecoration(
             hintText: '请输入激活卡密',
@@ -259,7 +262,7 @@ class _KeyPassPageState extends State<KeyPassPage>
       showSnackBar('请输入卡密');
       return;
     }
-    FocusScope.of(context).unfocus();
+    _focusNode.unfocus();
     DialogStyle.loadingDialog(dismissible: false);
 
     final String? httpKeyPass = await HttpClient.instance.get(
@@ -292,13 +295,13 @@ class _KeyPassPageState extends State<KeyPassPage>
 
   // 购买卡密
   void onBuy() {
-    FocusScope.of(context).unfocus();
+    _focusNode.unfocus();
     AppUtil.openUrl('http://shinex.haihaihai.cc/');
   }
 
   // 联系客服
   void onQQ() {
-    FocusScope.of(context).unfocus();
+    _focusNode.unfocus();
     AppUtil.openQQ(653143454);
   }
 }

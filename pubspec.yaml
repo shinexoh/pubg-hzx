@@ -19,7 +19,7 @@ dependencies:
   # Cupertino图标
   cupertino_icons: ^1.0.2
   # 网络请求
-  dio: ^5.4.0
+  dio: ^5.4.1
   # 状态管理
   provider: ^6.1.1
   # Remix图标库
@@ -27,7 +27,6 @@ dependencies:
   # 权限处理
   permission_handler: ^11.3.0
   # 动画弹窗、动画按钮
-  # awesome_dialog: 3.0.2
   awesome_dialog: ^3.2.0
   # 授予文件夹、安卓11及以上的文件操作
   shared_storage: ^0.8.1
