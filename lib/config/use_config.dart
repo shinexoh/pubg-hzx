@@ -19,13 +19,13 @@ class UriConfig {
   //     'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo');
 
   // static final pqFileUri = Uri.parse(
-  //     'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FUserCustom.ini');
+  //     '$mainUri/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FUserCustom.ini');
 
   // static final dlFileUri = Uri.parse(
-  //     'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FEnjoyCJZC.ini');
+  //     '$mainUri/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FEnjoyCJZC.ini');
 
   // static final tqFileUri = Uri.parse(
-  //     'content://com.android.externalstorage.documents/tree/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FUserSettings.ini');
+  //     '$mainUri/document/primary%3AAndroid%2Fdata%2Fmark.via%2Fdemo%2FUserSettings.ini');
 }
 
 class GameFilePath {

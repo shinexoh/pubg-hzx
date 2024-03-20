@@ -81,31 +81,10 @@ class DevicePage extends StatelessWidget {
                   title: 'SDK版本',
                   devceInfo: DeviceInfo.sdkVersion.toString()),
               DeviceInfoCard(
-                  color: Colors.deepOrange,
-                  icons: Remix.device_line,
-                  title: '分辨率',
-                  devceInfo:
-                      '${DeviceInfo.screenHeight}×${DeviceInfo.screenWidth}'),
-              DeviceInfoCard(
                   color: Colors.pink,
                   icons: Remix.cpu_line,
                   title: '处理器',
                   devceInfo: DeviceInfo.cpu),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Row(
-            children: [
-              DeviceInfoCard(
-                  color: const Color.fromRGBO(238, 75, 134, 1.0),
-                  icons: Remix.phone_find_line,
-                  title: '设备大小',
-                  devceInfo: DeviceInfo.sizeInches.toString()),
-              DeviceInfoCard(
-                  color: Colors.purple,
-                  icons: Remix.mouse_line,
-                  title: 'DPI',
-                  devceInfo: '${DeviceInfo.xDpi}×${DeviceInfo.yDpi}'),
               DeviceInfoCard(
                   color: Colors.brown,
                   icons: Remix.battery_low_line,
