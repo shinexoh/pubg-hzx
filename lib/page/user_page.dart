@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:remixicon_updated/remixicon_updated.dart';
+import 'package:remixicon/remixicon.dart';
 
 import '../app/app.dart';
 import '../controller/controller.dart';

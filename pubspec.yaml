@@ -19,13 +19,13 @@ dependencies:
   # Cupertino图标
   cupertino_icons: ^1.0.2
   # 网络请求
-  dio: ^5.4.1
+  dio: ^5.4.2+1
   # 状态管理
   provider: ^6.1.2
   # Remix图标库
-  remixicon_updated: ^1.0.2
+  remixicon: ^1.2.0
   # 权限处理
-  permission_handler: ^11.3.0
+  permission_handler: ^11.3.1
   # 动画弹窗、动画按钮
   awesome_dialog: ^3.2.0
   # 授予文件夹、安卓11及以上的文件操作
@@ -53,7 +53,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.1
+  flutter_lints: ^3.0.2
   flutter_launcher_icons: ^0.13.1
 
 # 生成应用图标

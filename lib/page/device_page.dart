@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:remixicon_updated/remixicon_updated.dart';
+import 'package:remixicon/remixicon.dart';
 
 import '../app/app.dart';
 import '../utils/utils.dart';
