@@ -64,9 +64,9 @@ mixin HomeLogic on State<HomePage> {
       case 0:
         DialogStyle.mainDialog(
           title: FunctionConfig.powerData[index]['title'],
-          subTitle: FunctionConfig.powerData[index]['content'],
-          okButtonTitle: '修复',
-          onOkButton: () {
+          content: FunctionConfig.powerData[index]['content'],
+          mainButtonText: '修复',
+          onMainButton: () {
             navigatorKey.currentState!.pop();
             SpUtil.containsKey(AppConfig.taskKey)
                 ? showSnackBar('修复成功')
@@ -77,9 +77,9 @@ mixin HomeLogic on State<HomePage> {
       case 1:
         DialogStyle.mainDialog(
           title: FunctionConfig.powerData[index]['title'],
-          subTitle: FunctionConfig.powerData[index]['content'],
-          okButtonTitle: '注入优化',
-          onOkButton: () {
+          content: FunctionConfig.powerData[index]['content'],
+          mainButtonText: '注入优化',
+          onMainButton: () {
             navigatorKey.currentState!.pop();
             SpUtil.containsKey(AppConfig.taskKey)
                 ? showSnackBar('SV优化注入成功')
@@ -90,9 +90,9 @@ mixin HomeLogic on State<HomePage> {
       case 2:
         DialogStyle.mainDialog(
           title: FunctionConfig.powerData[index]['title'],
-          subTitle: FunctionConfig.powerData[index]['content'],
-          okButtonTitle: '立即下载',
-          onOkButton: () {
+          content: FunctionConfig.powerData[index]['content'],
+          mainButtonText: '立即下载',
+          onMainButton: () {
             navigatorKey.currentState!.pop();
             SpUtil.containsKey(AppConfig.taskKey)
                 ? AppUtil.openUrl('https://rcls.lanzoub.com/ieuBj0tndm4h')
@@ -116,9 +116,9 @@ mixin HomeLogic on State<HomePage> {
         if (SpUtil.containsKey(AppConfig.taskKey)) {
           Clipboard.setData(const ClipboardData(text: '3044-2867-9345-7278'));
           DialogStyle.mainDialog(
-            subTitle: '灵敏度分享码复制成功！请进入游戏大厅->设置->灵敏度设置->云端方案管理->搜索方案->粘贴分享码使用即可！',
-            showCanceButton: false,
-            onOkButton: () => navigatorKey.currentState!.pop(),
+            content: '灵敏度分享码复制成功！请进入游戏大厅->设置->灵敏度设置->云端方案管理->搜索方案->粘贴分享码使用即可！',
+            showCancelButton: false,
+            onMainButton: () => navigatorKey.currentState!.pop(),
           );
         } else {
           AppDialog.taskDialog();

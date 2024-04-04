@@ -15,14 +15,14 @@ class UseDialog {
   static void usePqDialog({
     required String filePath,
     String title = '温馨提示',
-    String subTitle = '确定要修改此画质？如出现问题请前往首页重置画质！',
-    String buttonTitle = '修改',
+    String content = '确定要修改此画质？如出现问题请前往首页重置画质！',
+    String buttonText = '修改',
   }) {
     DialogStyle.mainDialog(
       title: title,
-      subTitle: subTitle,
-      okButtonTitle: buttonTitle,
-      onOkButton: () async {
+      content: content,
+      mainButtonText: buttonText,
+      onMainButton: () async {
         navigatorKey.currentState!.pop();
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
@@ -48,9 +48,9 @@ class UseDialog {
   static void useDlDialog(String title) {
     DialogStyle.mainDialog(
       title: title,
-      subTitle: '一旦解锁画质+120帧将会持续有效，期间修改其他画质功能会导致无效果，需要重置画质后即可修改其他画质功能！',
-      okButtonTitle: '解锁',
-      onOkButton: () async {
+      content: '一旦解锁画质+120帧将会持续有效，期间修改其他画质功能会导致无效果，需要重置画质后即可修改其他画质功能！',
+      mainButtonText: '解锁',
+      onMainButton: () async {
         navigatorKey.currentState!.pop();
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {
@@ -76,9 +76,9 @@ class UseDialog {
   static void useTqDialog(String title) {
     DialogStyle.mainDialog(
       title: title,
-      subTitle: '确定要解锁超高音质？如出现问题请前往首页重置音质！',
-      okButtonTitle: '解锁',
-      onOkButton: () async {
+      content: '确定要解锁超高音质？如出现问题请前往首页重置音质！',
+      mainButtonText: '解锁',
+      onMainButton: () async {
         navigatorKey.currentState!.pop();
 
         if (SpUtil.containsKey(AppConfig.taskKey)) {

@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:device_apps/device_apps.dart';
 
 import '../../app/app.dart';
@@ -301,40 +300,50 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
 
   Widget buttonBar() {
     return Column(children: [
-      AnimatedButton(
-        text: '开始模拟',
-        height: 45,
-        isFixedHeight: false,
-        color: Colors.blue,
-        pressEvent: onStart,
+      ElevatedButton(
+        onPressed: onStart,
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.blue,
+          fixedSize: const Size(double.maxFinite, 45),
+        ),
+        child: const Text('开始模拟'),
       ),
       const SizedBox(height: 10),
-      AnimatedButton(
-        text: '开始模拟（兼容模式）',
-        height: 45,
-        isFixedHeight: false,
-        color: Colors.deepOrange,
-        pressEvent: () => onStart(true),
+      ElevatedButton(
+        onPressed: onStart,
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.deepOrange,
+          fixedSize: const Size(double.maxFinite, 45),
+        ),
+        child: const Text('开始模拟（兼容模式）'),
       ),
       const SizedBox(height: 10),
       Row(children: [
         Expanded(
-            child: AnimatedButton(
-          text: '保存参数',
-          height: 45,
-          isFixedHeight: false,
-          color: Colors.teal,
-          pressEvent: saveArguments,
-        )),
+          child: ElevatedButton(
+            onPressed: onSaveArguments,
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.teal,
+              fixedSize: const Size(double.maxFinite, 45),
+            ),
+            child: const Text('保存参数'),
+          ),
+        ),
         const SizedBox(width: 10),
         Expanded(
-            child: AnimatedButton(
-          text: '清除已保存参数',
-          height: 45,
-          isFixedHeight: false,
-          color: Colors.purple,
-          pressEvent: clearArguments,
-        )),
+          child: ElevatedButton(
+            onPressed: onClearArguments,
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Colors.purple,
+              fixedSize: const Size(double.maxFinite, 45),
+            ),
+            child: const Text('清除已保存参数'),
+          ),
+        ),
       ])
     ]);
   }
@@ -355,19 +364,18 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
       AppDialog.dlRestoreDialog();
     } else {
       await DialogStyle.loadingDialog(
-          autoHideDuration: const Duration(milliseconds: 1500),
-          loadingColor: isCompatible ? Colors.deepOrange : Colors.blue,
-          dismissible: false);
+        loadingDuration: const Duration(milliseconds: 1500),
+        loadingColor: isCompatible ? Colors.deepOrange : Colors.blue,
+      );
 
       AppUtil.randomUsePq(
         errorToast: '模拟失败，请检查权限是否授予',
         callBack: () {
           DialogStyle.mainDialog(
-            dialogType: DialogType.success,
             title: '模拟成功',
-            subTitle: '机型画质模拟成功，是否立即启动游戏？',
-            okButtonTitle: '启动游戏',
-            onOkButton: () async {
+            content: '机型画质模拟成功，是否立即启动游戏？',
+            mainButtonText: '启动游戏',
+            onMainButton: () async {
               navigatorKey.currentState!.pop();
               if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
                 showSnackBar('启动游戏失败，请手动启动');
@@ -380,7 +388,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
   }
 
   // 保存参数
-  void saveArguments() {
+  void onSaveArguments() {
     if (_brandController.text.isEmpty ||
         _modelController.text.isEmpty ||
         _resController.text.isEmpty ||
@@ -402,7 +410,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
   }
 
   // 清除已保存参数
-  void clearArguments() {
+  void onClearArguments() {
     _focusScopeNode.unfocus();
 
     if (SpUtil.containsKey(AppConfig.modelImitateKey)) {

@@ -195,18 +195,18 @@ class UserPage extends StatelessWidget {
   // 切换主题
   void onTheme() {
     DialogStyle.mainDialog(
-      subTitle: '暂不支持切换主题',
-      showCanceButton: false,
-      onOkButton: () => navigatorKey.currentState!.pop(),
+      content: '暂不支持切换主题',
+      showCancelButton: false,
+      onMainButton: () => navigatorKey.currentState!.pop(),
     );
   }
 
   // 切换字体
   void onFont() {
     DialogStyle.mainDialog(
-      subTitle: '暂不支持切换字体',
-      showCanceButton: false,
-      onOkButton: () => navigatorKey.currentState!.pop(),
+      content: '暂不支持切换字体',
+      showCancelButton: false,
+      onMainButton: () => navigatorKey.currentState!.pop(),
     );
   }
 
@@ -227,13 +227,12 @@ class UserPage extends StatelessWidget {
   // 检查更新
   void onCheckUpdate() async {
     await DialogStyle.loadingDialog(
-      autoHideDuration: const Duration(seconds: 1),
-      dismissible: false,
+      loadingDuration: const Duration(seconds: 1),
     );
     DialogStyle.mainDialog(
-      subTitle: '画质侠已是最新版本！',
-      showCanceButton: false,
-      onOkButton: () => navigatorKey.currentState!.pop(),
+      content: '画质侠已是最新版本！',
+      showCancelButton: false,
+      onMainButton: () => navigatorKey.currentState!.pop(),
     );
   }
 
@@ -241,9 +240,9 @@ class UserPage extends StatelessWidget {
   void onAbout() {
     DialogStyle.mainDialog(
         title: '关于画质侠',
-        subTitle: '画质侠是专为和平精英玩家量身打造的画质助手。我们致力于提供简洁高效的服务，以协助玩家获得更加优质的游戏体验。',
-        okButtonTitle: '开源许可',
-        onOkButton: () {
+        content: '画质侠是专为和平精英玩家量身打造的画质助手。我们致力于提供简洁高效的服务，以协助玩家获得更加优质的游戏体验。',
+        mainButtonText: '开源许可',
+        onMainButton: () {
           navigatorKey.currentState!.pop();
           showLicensePage(
             context: navigatorKey.currentContext!,

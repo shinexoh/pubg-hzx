@@ -18,11 +18,11 @@ class AppDialog {
   static void directoryDialog() {
     DialogStyle.mainDialog(
       title: '温馨提示',
-      subTitle:
+      content:
           '从安卓11开始，你需要授予【游戏目录】权限才能修改画质。点击【立即授予】跳转到授予界面，然后直接点击底部【使用此文件夹】完成授予！\n\n注意：授予前请确保游戏更新至最新版本，否则将不会跳转到【游戏目录】进行授予！',
-      showCanceButton: false,
-      okButtonTitle: '立即授予',
-      onOkButton: () async {
+      showCancelButton: false,
+      mainButtonText: '立即授予',
+      onMainButton: () async {
         navigatorKey.currentState!.pop();
         final grantUri = await SharedStorage.grantDirectory(UriConfig.mainUri);
 
@@ -49,10 +49,10 @@ class AppDialog {
 
     DialogStyle.mainDialog(
         title: '画质侠未激活！',
-        subTitle: '画质侠会员未激活，为了你的正常使用，请立即激活！',
-        showCanceButton: false,
-        okButtonTitle: '我要激活',
-        onOkButton: () {
+        content: '画质侠会员未激活，为了你的正常使用，请立即激活！',
+        showCancelButton: false,
+        mainButtonText: '我要激活',
+        onMainButton: () {
           navigatorKey.currentState!
             ..pop()
             ..pushNamed('/keypass');
@@ -63,10 +63,10 @@ class AppDialog {
   static void permissionDeniedDialog() {
     DialogStyle.mainDialog(
       title: '你已拒绝权限',
-      subTitle: '由于画质侠需要【文件存储权限】才能修改画质，请点击【手动授予】跳转到设置，手动给画质侠授予【文件存储权限】',
-      showCanceButton: false,
-      okButtonTitle: '手动授予',
-      onOkButton: () {
+      content: '由于画质侠需要【文件存储权限】才能修改画质，请点击【手动授予】跳转到设置，手动给画质侠授予【文件存储权限】',
+      showCancelButton: false,
+      mainButtonText: '手动授予',
+      onMainButton: () {
         navigatorKey.currentState!.pop();
         AppUtil.openAppSettings();
       },
@@ -133,10 +133,10 @@ class AppDialog {
   static void restoreDialog() {
     DialogStyle.mainDialog(
       title: '重置成功',
-      subTitle: '重置后需重启游戏才能生效，否则修改其他画质功能将导致无效，进入游戏5秒左右即可退出，请立即重启！',
-      okButtonTitle: '重启游戏',
-      showCanceButton: false,
-      onOkButton: () async {
+      content: '重置后需重启游戏才能生效，否则修改其他画质功能将导致无效，进入游戏5秒左右即可退出，请立即重启！',
+      mainButtonText: '重启游戏',
+      showCancelButton: false,
+      onMainButton: () async {
         navigatorKey.currentState!.pop();
         if (!await DeviceApps.openApp('com.tencent.tmgp.pubgmhd')) {
           showSnackBar('重启游戏失败，请手动重启');
@@ -149,10 +149,10 @@ class AppDialog {
   static void dlRestoreDialog() {
     DialogStyle.mainDialog(
       title: '温馨提示',
-      subTitle: '检测到你使用过“解锁画质+120帧”，你需要重置画质并重启游戏才能修改其他画质功能！',
-      okButtonTitle: '重置画质',
-      showCanceButton: false,
-      onOkButton: () async {
+      content: '检测到你使用过“解锁画质+120帧”，你需要重置画质并重启游戏才能修改其他画质功能！',
+      mainButtonText: '重置画质',
+      showCancelButton: false,
+      onMainButton: () async {
         navigatorKey.currentState!.pop();
 
         if (_appController.sdkVersion <= 29) {

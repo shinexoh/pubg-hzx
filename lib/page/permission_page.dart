@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../app/app.dart';
 import '../config/config.dart';
@@ -34,10 +33,10 @@ class _PermissionPageState extends State<PermissionPage> {
           _appController.setStorageState(true);
 
           DialogStyle.mainDialog(
-            subTitle: '存储权限授予成功，开始你的旅程吧！',
-            showCanceButton: false,
-            okButtonTitle: '开始旅程',
-            onOkButton: () => navigatorKey.currentState!
+            content: '存储权限授予成功，开始你的旅程吧！',
+            showCancelButton: false,
+            mainButtonText: '开始旅程',
+            onMainButton: () => navigatorKey.currentState!
                 .pushNamedAndRemoveUntil('/', (route) => false),
           );
         }
@@ -80,12 +79,14 @@ class _PermissionPageState extends State<PermissionPage> {
               ValueListenableBuilder(
                   valueListenable: _permissionIsGranted,
                   builder: (context, permissionIsGranted, child) {
-                    return AnimatedButton(
-                      text: permissionIsGranted ? '进入画质侠' : '立即授予',
-                      height: 45,
-                      isFixedHeight: false,
-                      color: Colors.blue,
-                      pressEvent: onGrant,
+                    return ElevatedButton(
+                      onPressed: onGrant,
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.blue,
+                        fixedSize: const Size(double.maxFinite, 45),
+                      ),
+                      child: Text(permissionIsGranted ? '进入画质侠' : '立即授予'),
                     );
                   }),
               const SizedBox(height: 20),

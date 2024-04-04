@@ -83,9 +83,10 @@ class WideAnglePage extends StatelessWidget {
   void onUse(int index) {
     if (SpUtil.containsKey(AppConfig.taskKey)) {
       DialogStyle.mainDialog(
-        subTitle: '很遗憾，您的设备 [${DeviceInfo.model}] 因测试时出现黑屏闪退状况，请耐心等待设备适配与功能完善！',
-        showCanceButton: false,
-        onOkButton: () => navigatorKey.currentState!.pop(),
+        content:
+            '你的设备 [${DeviceInfo.model}] 目前处于异常情况，为了你的完整体验，请等待我们排查并修复后为你开放体验！',
+        showCancelButton: false,
+        onMainButton: () => navigatorKey.currentState!.pop(),
       );
     } else {
       AppDialog.taskDialog();

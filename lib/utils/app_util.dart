@@ -30,10 +30,10 @@ class AppUtil {
       intent.launch();
     } else {
       DialogStyle.mainDialog(
-          subTitle: '打开浏览器失败，请点击下方复制网址后粘贴到浏览器打开！\n\n$url',
-          okButtonTitle: '点击复制网址',
-          showCanceButton: false,
-          onOkButton: () {
+          content: '打开浏览器失败，请点击下方复制网址后粘贴到浏览器打开！\n\n$url',
+          mainButtonText: '点击复制网址',
+          showCancelButton: false,
+          onMainButton: () {
             navigatorKey.currentState!.pop();
             Clipboard.setData(ClipboardData(text: url));
             showSnackBar('复制网址成功');
@@ -51,9 +51,9 @@ class AppUtil {
       intent.launch();
     } else {
       DialogStyle.mainDialog(
-        subTitle: '打开QQ失败，请手动添加QQ：$qq',
-        showCanceButton: false,
-        onOkButton: () => navigatorKey.currentState!.pop(),
+        content: '打开QQ失败，请手动添加QQ：$qq',
+        showCancelButton: false,
+        onMainButton: () => navigatorKey.currentState!.pop(),
       );
     }
   }
@@ -68,9 +68,9 @@ class AppUtil {
       intent.launch();
     } else {
       DialogStyle.mainDialog(
-        subTitle: '打开QQ失败，请手动添加QQ群：$qqGroup',
-        showCanceButton: false,
-        onOkButton: () => navigatorKey.currentState!.pop(),
+        content: '打开QQ失败，请手动添加QQ群：$qqGroup',
+        showCancelButton: false,
+        onMainButton: () => navigatorKey.currentState!.pop(),
       );
     }
   }
@@ -136,7 +136,7 @@ class AppUtil {
   /// 检查网络是否可用
   static Future<bool> checkNetAvailability() async {
     if (await checkNetConnectivity()) {
-      return await HttpClient.instance.get('https://juejin.cn/about/') != null;
+      return await HttpClient.instance.get('https://www.baidu.com/') != null;
     }
     return false;
   }

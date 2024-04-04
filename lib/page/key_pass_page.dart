@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:provider/provider.dart';
 import 'package:remixicon/remixicon.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 
 import '../app/app.dart';
 import '../http/http.dart';
@@ -149,19 +148,25 @@ class _KeyPassPageState extends State<KeyPassPage>
   Widget buttonBar() {
     return Column(
       children: [
-        AnimatedButton(
-            height: 45,
-            text: '激活卡密',
-            color: Colors.blue,
-            isFixedHeight: false,
-            pressEvent: onUse),
+        ElevatedButton(
+          onPressed: onUse,
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.blue,
+            fixedSize: const Size(double.maxFinite, 45),
+          ),
+          child: const Text('激活卡密'),
+        ),
         const SizedBox(height: 10),
-        AnimatedButton(
-            height: 45,
-            text: '没有卡密？点击购买',
-            isFixedHeight: false,
-            color: Colors.orange,
-            pressEvent: onBuy)
+        ElevatedButton(
+          onPressed: onBuy,
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.orange,
+            fixedSize: const Size(double.maxFinite, 45),
+          ),
+          child: const Text('购买卡密'),
+        ),
       ],
     );
   }
@@ -263,7 +268,7 @@ class _KeyPassPageState extends State<KeyPassPage>
       return;
     }
     _focusNode.unfocus();
-    DialogStyle.loadingDialog(dismissible: false);
+    DialogStyle.loadingDialog();
 
     final String? httpKeyPass = await HttpClient.instance.get(
       Api.keyPass,
@@ -279,10 +284,10 @@ class _KeyPassPageState extends State<KeyPassPage>
 
         DialogStyle.mainDialog(
           title: '激活成功',
-          subTitle:
+          content:
               '画质侠激活成功！注意：一张卡密只能激活一台设备，如果在另一台设备激活同一张卡密，那么原设备将会失效，请勿将卡密泄露给他人！',
-          showCanceButton: false,
-          onOkButton: () => navigatorKey.currentState!.pop(),
+          showCancelButton: false,
+          onMainButton: () => navigatorKey.currentState!.pop(),
         );
       } else {
         showSnackBar('卡密不存在');

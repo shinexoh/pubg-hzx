@@ -274,9 +274,9 @@ class FunctionPage extends StatelessWidget {
         } else {
           DialogStyle.mainDialog(
             title: '随机修改',
-            subTitle: '确定要随机修改一项画质？如出现问题请前往首页重置画质！',
-            okButtonTitle: '修改',
-            onOkButton: () {
+            content: '确定要随机修改一项画质？如出现问题请前往首页重置画质！',
+            mainButtonText: '修改',
+            onMainButton: () {
               navigatorKey.currentState!.pop();
               AppUtil.randomUsePq(callBack: () => showSnackBar('修改成功，请重启游戏'));
             },

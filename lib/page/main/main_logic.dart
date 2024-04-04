@@ -106,10 +106,10 @@ mixin MainLogic on State<MainPage> {
         appTips['apptips'],
         label: '查看',
         onPressed: () => DialogStyle.mainDialog(
-          subTitle: appTips['apptips'],
-          showCanceButton: false,
-          okButtonTitle: '知道了',
-          onOkButton: () => navigatorKey.currentState!.pop(),
+          content: appTips['apptips'],
+          showCancelButton: false,
+          mainButtonText: '知道了',
+          onMainButton: () => navigatorKey.currentState!.pop(),
         ),
       );
     }

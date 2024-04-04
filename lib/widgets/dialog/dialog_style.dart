@@ -1,70 +1,93 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 
+import 'simple_text_dialog.dart';
+import '../animation_transition.dart';
 import '../../app/app.dart';
+
+const Duration _dialogTransitionDuration = Duration(milliseconds: 300);
 
 // 弹窗样式的封装
 class DialogStyle {
   /// 主要的弹窗样式
   static void mainDialog({
     String? title,
-    String? subTitle,
-    DialogType dialogType = DialogType.noHeader,
-    String canceButtonTitle = '取消',
-    String okButtonTitle = '确定',
-    Color canceButtonColor = Colors.pink,
-    Color okButtonColor = Colors.blue,
-    bool dismissible = true,
-    bool showCanceButton = true,
-    GestureTapCallback? onCanceButton,
-    GestureTapCallback? onOkButton,
+    String? content,
+    String mainButtonText = '确定',
+    Color mainButtonColor = Colors.blue,
+    Color mainButtonForegroundColor = Colors.white,
+    GestureTapCallback? onMainButton,
+    bool showCancelButton = true,
   }) {
-    AwesomeDialog(
+    showGeneralDialog(
       context: navigatorKey.currentContext!,
-      title: title,
-      desc: subTitle,
-      dialogType: dialogType,
-      descTextStyle: const TextStyle(fontSize: 15),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      dialogBorderRadius: BorderRadius.circular(15),
-      dismissOnTouchOutside: dismissible,
-      btnCancel: showCanceButton
-          ? AnimatedButton(
-              text: canceButtonTitle,
-              isFixedHeight: false,
-              color: canceButtonColor,
-              buttonTextStyle: const TextStyle(color: Colors.white),
-              pressEvent:
-                  onCanceButton ?? () => navigatorKey.currentState!.pop())
-          : null,
-      btnOk: AnimatedButton(
-        text: okButtonTitle,
-        isFixedHeight: false,
-        color: okButtonColor,
-        buttonTextStyle: const TextStyle(color: Colors.white),
-        pressEvent: onOkButton ?? () {},
-      ),
-    ).show();
+      transitionDuration: _dialogTransitionDuration,
+      barrierDismissible: true,
+      barrierLabel: MaterialLocalizations.of(navigatorKey.currentContext!)
+          .modalBarrierDismissLabel,
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return AnimationTransition.scale(animation, child);
+      },
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return SimpleTextDialog(
+          title: title,
+          content: content,
+          mainButtonText: mainButtonText,
+          mainButtonColor: mainButtonColor,
+          mainButtonForegroundColor: mainButtonForegroundColor,
+          onMainButton: onMainButton,
+          showCancelButton: showCancelButton,
+        );
+      },
+    );
   }
 
   /// 加载中弹窗
   ///
-  /// 如 [autoHideDuration] 不为null则使用await等待时间自动关闭
+  /// 如 [loadingDuration] 不为null则使用await等待时间结束自动关闭弹窗
   static Future<void> loadingDialog({
-    Duration? autoHideDuration,
-    bool dismissible = true,
+    Duration? loadingDuration,
+    bool barrierDismissible = false,
     Color loadingColor = Colors.blue,
   }) async {
-    await AwesomeDialog(
+    Timer? timer;
+    await showGeneralDialog(
       context: navigatorKey.currentContext!,
-      dialogType: DialogType.noHeader,
-      bodyHeaderDistance: 0,
-      autoHide: autoHideDuration,
-      dismissOnTouchOutside: dismissible,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30),
-        child: CircularProgressIndicator(color: loadingColor),
-      ),
-    ).show();
+      transitionDuration: _dialogTransitionDuration,
+      barrierDismissible: barrierDismissible,
+      barrierLabel: MaterialLocalizations.of(navigatorKey.currentContext!)
+          .modalBarrierDismissLabel,
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return AnimationTransition.scale(animation, child);
+      },
+      pageBuilder: (context, animation, secondaryAnimation) {
+        if (loadingDuration != null) {
+          timer = Timer(loadingDuration, () {
+            final NavigatorState navigatorState = navigatorKey.currentState!;
+            if (navigatorState.canPop()) {
+              navigatorState.pop();
+            }
+          });
+        }
+        return Center(
+          child: Container(
+            width: double.infinity,
+            margin: const EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(vertical: 30),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: IntrinsicHeight(
+              child: Center(
+                child: CircularProgressIndicator(color: loadingColor),
+              ),
+            ),
+          ),
+        );
+      },
+    ).then((value) {
+      if (timer != null) timer!.cancel();
+    });
   }
 }
