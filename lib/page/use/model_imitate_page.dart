@@ -364,7 +364,7 @@ class _ModelImitatePageState extends State<ModelImitatePage> {
       AppDialog.dlRestoreDialog();
     } else {
       await DialogStyle.loadingDialog(
-        loadingDuration: const Duration(milliseconds: 1500),
+        loadingDuration: const Duration(milliseconds: 800),
         loadingColor: isCompatible ? Colors.deepOrange : Colors.blue,
       );
 

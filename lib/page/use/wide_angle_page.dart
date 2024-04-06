@@ -84,8 +84,9 @@ class WideAnglePage extends StatelessWidget {
     if (SpUtil.containsKey(AppConfig.taskKey)) {
       DialogStyle.mainDialog(
         content:
-            '你的设备 [${DeviceInfo.model}] 目前处于异常情况，为了你的完整体验，请等待我们排查并修复后为你开放体验！',
+            '你的设备 [${DeviceInfo.model}] 目前处于异常状态，为了你的完整体验，请等待我们排查并修复后为你开放体验！',
         showCancelButton: false,
+        mainButtonText: '知道了',
         onMainButton: () => navigatorKey.currentState!.pop(),
       );
     } else {

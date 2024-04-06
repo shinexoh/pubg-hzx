@@ -70,10 +70,7 @@ class AnimationTransition {
     return FadeTransition(
       opacity: animation,
       child: ScaleTransition(
-        scale: Tween<double>(
-          begin: 0.7,
-          end: 1,
-        ).animate(
+        scale: Tween<double>(begin: 0.7, end: 1).animate(
           CurvedAnimation(parent: animation, curve: Curves.ease),
         ),
         child: child,
@@ -86,10 +83,7 @@ class AnimationTransition {
     return FadeTransition(
       opacity: animation,
       child: ScaleTransition(
-        scale: Tween<double>(
-          begin: 1.2,
-          end: 1,
-        ).animate(
+        scale: Tween<double>(begin: 1.2, end: 1).animate(
           CurvedAnimation(parent: animation, curve: const Interval(0.50, 1)),
         ),
         child: child,
