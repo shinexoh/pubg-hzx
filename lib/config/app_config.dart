@@ -1,6 +1,6 @@
 class AppConfig {
   /// 应用版本号
-  static const String appVersion = '2.2.4';
+  static const String appVersion = '2.2.5';
 
   /// 更新版本号
   static final double updateVersion =

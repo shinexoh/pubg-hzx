@@ -89,15 +89,7 @@ class AppDialog {
       transitionDuration: const Duration(milliseconds: 300),
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       transitionBuilder: (context, animation, secondaryAnimation, child) {
-        return FadeTransition(
-          opacity: animation,
-          child: ScaleTransition(
-            scale: Tween(begin: 0.7, end: 1.0).animate(
-              CurvedAnimation(parent: animation, curve: Curves.ease),
-            ),
-            child: child,
-          ),
-        );
+        return AnimationTransition.scale(animation, child);
       },
       pageBuilder: (context, animation, secondaryAnimation) {
         return PopScope(
