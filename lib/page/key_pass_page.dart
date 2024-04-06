@@ -165,7 +165,7 @@ class _KeyPassPageState extends State<KeyPassPage>
             backgroundColor: Colors.orange,
             fixedSize: const Size(double.maxFinite, 45),
           ),
-          child: const Text('购买卡密'),
+          child: const Text('没有卡密？点击购买'),
         ),
       ],
     );
@@ -287,6 +287,7 @@ class _KeyPassPageState extends State<KeyPassPage>
           content:
               '画质侠激活成功！注意：一张卡密只能激活一台设备，如果在另一台设备激活同一张卡密，那么原设备将会失效，请勿将卡密泄露给他人！',
           showCancelButton: false,
+          mainButtonText: '知道了',
           onMainButton: () => navigatorKey.currentState!.pop(),
         );
       } else {

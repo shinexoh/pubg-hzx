@@ -53,6 +53,7 @@ class AppUtil {
       DialogStyle.mainDialog(
         content: '打开QQ失败，请手动添加QQ：$qq',
         showCancelButton: false,
+        mainButtonText: '知道了',
         onMainButton: () => navigatorKey.currentState!.pop(),
       );
     }

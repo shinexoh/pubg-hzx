@@ -232,6 +232,7 @@ class UserPage extends StatelessWidget {
     DialogStyle.mainDialog(
       content: '画质侠已是最新版本！',
       showCancelButton: false,
+      mainButtonText: '知道了',
       onMainButton: () => navigatorKey.currentState!.pop(),
     );
   }
