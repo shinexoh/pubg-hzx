@@ -19,7 +19,7 @@ dependencies:
   # Cupertino图标
   cupertino_icons: ^1.0.2
   # 网络请求
-  dio: ^5.4.2+1
+  dio: ^5.4.3+1
   # 状态管理
   provider: ^6.1.2
   # Remix图标库
@@ -37,15 +37,15 @@ dependencies:
   # 微光效果
   shimmer: ^3.0.0
   # 分享
-  share_plus: ^8.0.2
+  share_plus: ^8.0.3
   # 电池信息
-  battery_plus: ^6.0.0
+  battery_plus: ^6.0.1
   # 安卓intent操作
-  android_intent_plus: ^5.0.1
+  android_intent_plus: ^5.0.2
   # 设备信息
-  device_info_plus: ^10.0.1
+  device_info_plus: ^10.1.0
   # 网络检查
-  connectivity_plus: ^6.0.1
+  connectivity_plus: ^6.0.2
 
 dev_dependencies:
   flutter_test:
