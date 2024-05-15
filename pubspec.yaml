@@ -29,7 +29,7 @@ dependencies:
   # 授予文件夹、安卓11及以上的文件操作
   shared_storage: ^0.8.1
   # 键值对存储
-  shared_preferences: ^2.2.2
+  shared_preferences: ^2.2.3
   # 应用操作
   device_apps: ^2.2.0
   # 底部导航栏
@@ -37,7 +37,7 @@ dependencies:
   # 微光效果
   shimmer: ^3.0.0
   # 分享
-  share_plus: ^8.0.3
+  share_plus: ^9.0.0
   # 电池信息
   battery_plus: ^6.0.1
   # 安卓intent操作
@@ -45,13 +45,13 @@ dependencies:
   # 设备信息
   device_info_plus: ^10.1.0
   # 网络检查
-  connectivity_plus: ^6.0.2
+  connectivity_plus: ^6.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.2
+  flutter_lints: ^4.0.0
   flutter_launcher_icons: ^0.13.1
 
 # 生成应用图标
